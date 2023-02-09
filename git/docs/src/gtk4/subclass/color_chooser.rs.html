@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/color_chooser.rs`."><title>color_chooser.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/color_chooser.rs`."><title>color_chooser.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (6be96e386 2024-07-09)" data-channel="nightly" data-search-js="search-d234aafac6c221dd.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../gtk4/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -249,183 +249,186 @@
 <a href="#176" id="176">176</a>
 <a href="#177" id="177">177</a>
 <a href="#178" id="178">178</a>
-</pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a>
+</pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
-</span><span class="doccomment">//! Traits intended for implementing the [`ColorChooser`](crate::ColorChooser) interface.
+</span><span class="doccomment">//! Traits intended for implementing the [`ColorChooser`](crate::ColorChooser)
+//! interface.
 
-</span><span class="kw">use crate</span>::{prelude::<span class="kw-2">*</span>, subclass::prelude::<span class="kw-2">*</span>, ColorChooser, Orientation};
-<span class="kw">use </span>gdk::RGBA;
-<span class="kw">use </span>glib::translate::<span class="kw-2">*</span>;
+</span><span class="kw">use </span><a href="../../../gdk4/auto/rgba/struct.RGBA.html">gdk::RGBA</a>;
+<span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
 
-<span class="attr">#[cfg_attr(feature = <span class="string">&quot;v4_10&quot;</span>, deprecated = <span class="string">&quot;Since 4.10&quot;</span>)]
+<span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#91-174">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>, <a href="../auto/enums.rs.html#7816-7825">Orientation</a>};
+
+<span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span>ColorChooserImpl: ObjectImpl {
-    <span class="kw">fn </span>add_palette(<span class="kw-2">&amp;</span><span class="self">self</span>, orientation: Orientation, colors_per_line: i32, colors: <span class="kw-2">&amp;</span>[RGBA]) {
-        <span class="self">self</span>.parent_add_palette(orientation, colors_per_line, colors);
+</span><span class="kw">pub trait </span><a href="../../../gtk4/subclass/color_chooser/trait.ColorChooserImpl.html">ColorChooserImpl</a>: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> {
+    <span class="kw">fn </span>add_palette(<span class="kw-2">&amp;</span><span class="self">self</span>, orientation: <a href="../auto/enums.rs.html#7816-7825">Orientation</a>, colors_per_line: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, colors: <span class="kw-2">&amp;</span>[<a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>]) {
+        <a class="self" href="#15">self</a>.<a href="#36-58">parent_add_palette</a>(<a href="#15">orientation</a>, <a href="#15">colors_per_line</a>, <a href="#15">colors</a>);
     }
 
-    <span class="kw">fn </span>color_activated(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: RGBA) {
-        <span class="self">self</span>.parent_color_activated(rgba);
+    <span class="kw">fn </span>color_activated(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: <a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>) {
+        <a class="self" href="#19">self</a>.<a href="#60-76">parent_color_activated</a>(<a href="#19">rgba</a>);
     }
 
-    <span class="attr">#[doc(alias = <span class="string">&quot;get_rgba&quot;</span>)]
-    </span><span class="kw">fn </span>rgba(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; RGBA;
-    <span class="kw">fn </span>set_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: RGBA);
+    <span class="attr">#[doc(alias = <span class="string">"get_rgba"</span>)]
+    </span><span class="kw">fn </span>rgba(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>;
+    <span class="kw">fn </span>set_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: <a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>);
 }
 
-<span class="attr">#[cfg_attr(feature = <span class="string">&quot;v4_10&quot;</span>, deprecated = <span class="string">&quot;Since 4.10&quot;</span>)]
+<span class="kw">mod </span>sealed {
+    <span class="kw">pub trait </span>Sealed {}
+    <span class="kw">impl</span>&lt;T: <a href="#35-116"><span class="kw">super</span>::ColorChooserImplExt</a>&gt; <a href="#29">Sealed</a> <span class="kw">for </span>T {}
+}
+
+<span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span>ColorChooserImplExt: ObjectSubclass {
-    <span class="kw">fn </span>parent_add_palette(<span class="kw-2">&amp;</span><span class="self">self</span>, orientation: Orientation, colors_per_line: i32, colors: <span class="kw-2">&amp;</span>[RGBA]);
-    <span class="kw">fn </span>parent_color_activated(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: RGBA);
-    <span class="kw">fn </span>parent_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; RGBA;
-    <span class="kw">fn </span>parent_set_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: RGBA);
-}
-
-<span class="kw">impl</span>&lt;T: ColorChooserImpl&gt; ColorChooserImplExt <span class="kw">for </span>T {
-    <span class="kw">fn </span>parent_add_palette(<span class="kw-2">&amp;</span><span class="self">self</span>, orientation: Orientation, colors_per_line: i32, colors: <span class="kw-2">&amp;</span>[RGBA]) {
+</span><span class="kw">pub trait </span><a href="../../../gtk4/subclass/color_chooser/trait.ColorChooserImplExt.html">ColorChooserImplExt</a>: <a href="#29">sealed::Sealed</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclass.html">ObjectSubclass</a> {
+    <span class="kw">fn </span>parent_add_palette(<span class="kw-2">&amp;</span><span class="self">self</span>, orientation: <a href="../auto/enums.rs.html#7816-7825">Orientation</a>, colors_per_line: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, colors: <span class="kw-2">&amp;</span>[<a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>]) {
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>type_data = <span class="self">Self</span>::type_data();
-            <span class="kw">let </span>parent_iface = type_data.as_ref().parent_interface::&lt;ColorChooser&gt;()
-                <span class="kw">as </span><span class="kw-2">*const </span>ffi::GtkColorChooserInterface;
+            <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
+            <span class="kw">let </span>parent_iface = <a href="#38">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkColorChooserInterface.html">ffi::GtkColorChooserInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span>parent_iface).add_palette {
-                <span class="kw">let </span>colors_ptr: Vec&lt;gdk::ffi::GdkRGBA&gt; =
-                    colors.iter().map(|c| <span class="kw-2">*</span>c.to_glib_none().<span class="number">0</span>).collect();
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#39">parent_iface</a>).add_palette {
+                <span class="kw">let </span>colors_ptr: Vec&lt;<a href="../../../gdk4_sys/struct.GdkRGBA.html">gdk::ffi::GdkRGBA</a>&gt; =
+                    <a href="#36">colors</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.map">map</a>(|c| <span class="kw-2">*</span><a href="#44">c</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.collect">collect</a>();
 
-                func(
-                    <span class="self">self</span>.obj()
-                        .unsafe_cast_ref::&lt;ColorChooser&gt;()
-                        .to_glib_none()
+                <a href="#42">func</a>(
+                    <a class="self" href="#36">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
+                        .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                        .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>()
                         .<span class="number">0</span>,
-                    orientation.into_glib(),
-                    colors_per_line,
-                    colors.len() <span class="kw">as </span>i32,
-                    mut_override(colors_ptr.as_ptr()),
+                    <a href="#36">orientation</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
+                    <a href="#36">colors_per_line</a>,
+                    <a href="#36">colors</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+                    <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.mut_override.html">mut_override</a>(<a href="#43">colors_ptr</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.as_ptr">as_ptr</a>()),
                 )
             }
         }
     }
 
-    <span class="kw">fn </span>parent_color_activated(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: RGBA) {
+    <span class="kw">fn </span>parent_color_activated(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: <a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>) {
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>type_data = <span class="self">Self</span>::type_data();
-            <span class="kw">let </span>parent_iface = type_data.as_ref().parent_interface::&lt;ColorChooser&gt;()
-                <span class="kw">as </span><span class="kw-2">*const </span>ffi::GtkColorChooserInterface;
+            <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
+            <span class="kw">let </span>parent_iface = <a href="#62">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkColorChooserInterface.html">ffi::GtkColorChooserInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span>parent_iface).color_activated {
-                func(
-                    <span class="self">self</span>.obj()
-                        .unsafe_cast_ref::&lt;ColorChooser&gt;()
-                        .to_glib_none()
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#63">parent_iface</a>).color_activated {
+                <a href="#66">func</a>(
+                    <a class="self" href="#60">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
+                        .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                        .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>()
                         .<span class="number">0</span>,
-                    rgba.to_glib_none().<span class="number">0</span>,
+                    <a href="#60">rgba</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
     }
 
-    <span class="kw">fn </span>parent_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; RGBA {
+    <span class="kw">fn </span>parent_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a> {
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>type_data = <span class="self">Self</span>::type_data();
-            <span class="kw">let </span>parent_iface = type_data.as_ref().parent_interface::&lt;ColorChooser&gt;()
-                <span class="kw">as </span><span class="kw-2">*const </span>ffi::GtkColorChooserInterface;
+            <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
+            <span class="kw">let </span>parent_iface = <a href="#80">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkColorChooserInterface.html">ffi::GtkColorChooserInterface</a>;
 
-            <span class="kw">let </span>func = (<span class="kw-2">*</span>parent_iface)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#81">parent_iface</a>)
                 .get_rgba
-                .expect(<span class="string">&quot;no parent \&quot;get_rgba\&quot; implementation&quot;</span>);
-            <span class="kw">let </span>rgba = std::ptr::null_mut();
-            func(
-                <span class="self">self</span>.obj()
-                    .unsafe_cast_ref::&lt;ColorChooser&gt;()
-                    .to_glib_none()
+                .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_rgba\" implementation"</span>);
+            <span class="kw">let </span>rgba = <a href="https://doc.rust-lang.org/nightly/core/ptr/fn.null_mut.html">std::ptr::null_mut</a>();
+            <a href="#84">func</a>(
+                <a class="self" href="#78">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
+                    .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                    .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>()
                     .<span class="number">0</span>,
-                rgba,
+                <a href="#87">rgba</a>,
             );
-            from_glib_none(rgba)
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#87">rgba</a>)
         }
     }
 
-    <span class="kw">fn </span>parent_set_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: RGBA) {
+    <span class="kw">fn </span>parent_set_rgba(<span class="kw-2">&amp;</span><span class="self">self</span>, rgba: <a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>) {
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>type_data = <span class="self">Self</span>::type_data();
-            <span class="kw">let </span>parent_iface = type_data.as_ref().parent_interface::&lt;ColorChooser&gt;()
-                <span class="kw">as </span><span class="kw-2">*const </span>ffi::GtkColorChooserInterface;
+            <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
+            <span class="kw">let </span>parent_iface = <a href="#101">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkColorChooserInterface.html">ffi::GtkColorChooserInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span>parent_iface).set_rgba {
-                func(
-                    <span class="self">self</span>.obj()
-                        .unsafe_cast_ref::&lt;ColorChooser&gt;()
-                        .to_glib_none()
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#102">parent_iface</a>).set_rgba {
+                <a href="#105">func</a>(
+                    <a class="self" href="#99">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
+                        .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a>&gt;()
+                        .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>()
                         .<span class="number">0</span>,
-                    rgba.to_glib_none().<span class="number">0</span>,
+                    <a href="#99">rgba</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
     }
 }
 
-<span class="kw">unsafe impl</span>&lt;T: ColorChooserImpl&gt; IsImplementable&lt;T&gt; <span class="kw">for </span>ColorChooser {
+<span class="kw">impl</span>&lt;T: <a href="#14-26">ColorChooserImpl</a>&gt; <a href="#35-116">ColorChooserImplExt</a> <span class="kw">for </span>T {}
+
+<span class="kw">unsafe impl</span>&lt;T: <a href="#14-26">ColorChooserImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/color_chooser.rs.html#14-71">ColorChooser</a> {
     <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
-        <span class="kw">let </span>iface = iface.as_mut();
+        <span class="kw">let </span>iface = <a href="#121">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
-        <span class="macro">assert_initialized_main_thread!</span>();
+        <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
-        iface.add_palette = <span class="prelude-val">Some</span>(color_chooser_add_palette::&lt;T&gt;);
-        iface.color_activated = <span class="prelude-val">Some</span>(color_chooser_color_activated::&lt;T&gt;);
-        iface.get_rgba = <span class="prelude-val">Some</span>(color_chooser_get_rgba::&lt;T&gt;);
-        iface.set_rgba = <span class="prelude-val">Some</span>(color_chooser_set_rgba::&lt;T&gt;);
+        <a href="#122">iface</a>.add_palette = <span class="prelude-val">Some</span>(color_chooser_add_palette::&lt;T&gt;);
+        <a href="#122">iface</a>.color_activated = <span class="prelude-val">Some</span>(color_chooser_color_activated::&lt;T&gt;);
+        <a href="#122">iface</a>.get_rgba = <span class="prelude-val">Some</span>(color_chooser_get_rgba::&lt;T&gt;);
+        <a href="#122">iface</a>.set_rgba = <span class="prelude-val">Some</span>(color_chooser_set_rgba::&lt;T&gt;);
     }
 }
 
-<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>color_chooser_add_palette&lt;T: ColorChooserImpl&gt;(
-    color_chooser: <span class="kw-2">*mut </span>ffi::GtkColorChooser,
-    orientation: ffi::GtkOrientation,
-    colors_per_line: i32,
-    total: i32,
-    colorsptr: <span class="kw-2">*mut </span>gdk::ffi::GdkRGBA,
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>color_chooser_add_palette&lt;T: <a href="#14-26">ColorChooserImpl</a>&gt;(
+    color_chooser: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkColorChooser.html">ffi::GtkColorChooser</a>,
+    orientation: <a href="../../../gtk4_sys/type.GtkOrientation.html">ffi::GtkOrientation</a>,
+    colors_per_line: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    total: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    colorsptr: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkRGBA.html">gdk::ffi::GdkRGBA</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(color_chooser <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = instance.imp();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#134">color_chooser</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#140">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
     <span class="kw">let </span>colors = <span class="kw">if </span>total == <span class="number">0 </span>{
         <span class="kw-2">&amp;</span>[]
     } <span class="kw">else </span>{
-        std::slice::from_raw_parts(colorsptr <span class="kw">as </span><span class="kw-2">*const </span>RGBA, total <span class="kw">as </span>usize)
+        <a href="https://doc.rust-lang.org/nightly/core/slice/raw/fn.from_raw_parts.html">std::slice::from_raw_parts</a>(<a href="#138">colorsptr</a> <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4/auto/rgba/struct.RGBA.html">RGBA</a>, <a href="#137">total</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)
     };
-    imp.add_palette(from_glib(orientation), colors_per_line, colors);
+    <a href="#141">imp</a>.<a href="#15-17">add_palette</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#135">orientation</a>), <a href="#136">colors_per_line</a>, <a href="#143">colors</a>);
 }
 
-<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>color_chooser_color_activated&lt;T: ColorChooserImpl&gt;(
-    color_chooser: <span class="kw-2">*mut </span>ffi::GtkColorChooser,
-    rgba: <span class="kw-2">*const </span>gdk::ffi::GdkRGBA,
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>color_chooser_color_activated&lt;T: <a href="#14-26">ColorChooserImpl</a>&gt;(
+    color_chooser: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkColorChooser.html">ffi::GtkColorChooser</a>,
+    rgba: <span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkRGBA.html">gdk::ffi::GdkRGBA</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(color_chooser <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = instance.imp();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#152">color_chooser</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#155">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    imp.color_activated(from_glib_none(rgba))
+    <a href="#156">imp</a>.<a href="#19-21">color_activated</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#153">rgba</a>))
 }
 
-<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>color_chooser_get_rgba&lt;T: ColorChooserImpl&gt;(
-    color_chooser: <span class="kw-2">*mut </span>ffi::GtkColorChooser,
-    rgbaptr: <span class="kw-2">*const </span>gdk::ffi::GdkRGBA,
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>color_chooser_get_rgba&lt;T: <a href="#14-26">ColorChooserImpl</a>&gt;(
+    color_chooser: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkColorChooser.html">ffi::GtkColorChooser</a>,
+    rgbaptr: <span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkRGBA.html">gdk::ffi::GdkRGBA</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(color_chooser <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = instance.imp();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#162">color_chooser</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#165">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span>rgba = imp.rgba();
-    <span class="kw-2">*</span>(rgbaptr <span class="kw">as </span><span class="kw-2">*mut </span>gdk::ffi::GdkRGBA) = <span class="kw-2">*</span>rgba.to_glib_none().<span class="number">0</span>;
+    <span class="kw">let </span>rgba = <a href="#166">imp</a>.<a href="#24">rgba</a>();
+    <span class="kw-2">*</span>(<a href="#163">rgbaptr</a> <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkRGBA.html">gdk::ffi::GdkRGBA</a>) = <span class="kw-2">*</span><a href="#168">rgba</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
 }
 
-<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>color_chooser_set_rgba&lt;T: ColorChooserImpl&gt;(
-    color_chooser: <span class="kw-2">*mut </span>ffi::GtkColorChooser,
-    rgba: <span class="kw-2">*const </span>gdk::ffi::GdkRGBA,
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>color_chooser_set_rgba&lt;T: <a href="#14-26">ColorChooserImpl</a>&gt;(
+    color_chooser: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkColorChooser.html">ffi::GtkColorChooser</a>,
+    rgba: <span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkRGBA.html">gdk::ffi::GdkRGBA</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(color_chooser <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = instance.imp();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#173">color_chooser</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#176">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    imp.set_rgba(from_glib_none(rgba))
+    <a href="#177">imp</a>.<a href="#25">set_rgba</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#174">rgba</a>))
 }
-</code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (ef934d9b6 2023-02-08)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</code></pre></div></section></main></body></html>

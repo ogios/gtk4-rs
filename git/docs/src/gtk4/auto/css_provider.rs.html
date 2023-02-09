@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/css_provider.rs`."><title>css_provider.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/css_provider.rs`."><title>css_provider.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (6be96e386 2024-07-09)" data-channel="nightly" data-search-js="search-d234aafac6c221dd.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../gtk4/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -329,19 +329,68 @@
 <a href="#256" id="256">256</a>
 <a href="#257" id="257">257</a>
 <a href="#258" id="258">258</a>
-</pre><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
+<a href="#259" id="259">259</a>
+<a href="#260" id="260">260</a>
+<a href="#261" id="261">261</a>
+<a href="#262" id="262">262</a>
+<a href="#263" id="263">263</a>
+<a href="#264" id="264">264</a>
+<a href="#265" id="265">265</a>
+<a href="#266" id="266">266</a>
+<a href="#267" id="267">267</a>
+<a href="#268" id="268">268</a>
+<a href="#269" id="269">269</a>
+<a href="#270" id="270">270</a>
+<a href="#271" id="271">271</a>
+<a href="#272" id="272">272</a>
+<a href="#273" id="273">273</a>
+<a href="#274" id="274">274</a>
+<a href="#275" id="275">275</a>
+<a href="#276" id="276">276</a>
+<a href="#277" id="277">277</a>
+<a href="#278" id="278">278</a>
+<a href="#279" id="279">279</a>
+<a href="#280" id="280">280</a>
+<a href="#281" id="281">281</a>
+<a href="#282" id="282">282</a>
+<a href="#283" id="283">283</a>
+<a href="#284" id="284">284</a>
+<a href="#285" id="285">285</a>
+<a href="#286" id="286">286</a>
+<a href="#287" id="287">287</a>
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a>
+<a href="#293" id="293">293</a>
+<a href="#294" id="294">294</a>
+<a href="#295" id="295">295</a>
+<a href="#296" id="296">296</a>
+<a href="#297" id="297">297</a>
+<a href="#298" id="298">298</a>
+<a href="#299" id="299">299</a>
+<a href="#300" id="300">300</a>
+<a href="#301" id="301">301</a>
+<a href="#302" id="302">302</a>
+<a href="#303" id="303">303</a>
+<a href="#304" id="304">304</a>
+<a href="#305" id="305">305</a>
+<a href="#306" id="306">306</a>
+</pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
+</span><span class="attr">#![allow(deprecated)]
 
-</span><span class="kw">use crate</span>::{CssSection, StyleProvider};
+</span><span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="css_section.rs.html#8-21">CssSection</a>, <a href="style_provider.rs.html#13-39">StyleProvider</a>};
 <span class="kw">use </span>glib::{
-    prelude::<span class="kw-2">*</span>,
-    signal::{connect_raw, SignalHandlerId},
-    translate::<span class="kw-2">*</span>,
+    <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>,
+    signal::{<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a>},
+    <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>,
 };
-<span class="kw">use </span>std::{boxed::Box <span class="kw">as </span>Box_, fmt, mem::transmute};
+<span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">std::boxed::Box</a> <span class="kw">as </span>Box_;
 
-<span class="macro">glib::wrapper! </span>{
+<a class="macro" href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/macro.wrapper.html">glib::wrapper!</a> {
     <span class="doccomment">/// [`CssProvider`][crate::CssProvider] is an object implementing the [`StyleProvider`][crate::StyleProvider] interface
     /// for CSS.
     ///
@@ -378,6 +427,9 @@
     /// #### `parsing-error`
     ///  Signals that a parsing error occurred.
     ///
+    /// The expected error values are in the [`CssParserError`][crate::CssParserError]
+    /// and [`CssParserWarning`][crate::CssParserWarning] enumerations.
+    ///
     /// The @path, @line and @position describe the actual location of
     /// the error as accurately as possible.
     ///
@@ -385,6 +437,9 @@
     /// the error. Errors may however cause parts of the given data or
     /// even all of it to not be parsed at all. So it is a useful idea
     /// to check that the parsing succeeds by connecting to this signal.
+    ///
+    /// Errors in the [`CssParserWarning`][crate::CssParserWarning] enumeration should not
+    /// be treated as fatal errors.
     ///
     /// Note that this signal may be emitted at any time as the css provider
     /// may opt to defer parsing parts or all of the input to a later time
@@ -401,41 +456,62 @@
     /// # Implements
     ///
     /// [`trait@glib::ObjectExt`], [`StyleProviderExt`][trait@crate::prelude::StyleProviderExt]
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GtkCssProvider&quot;</span>)]
-    </span><span class="kw">pub struct </span>CssProvider(Object&lt;ffi::GtkCssProvider, ffi::GtkCssProviderClass&gt;) @implements StyleProvider;
+    </span><span class="attr">#[doc(alias = <span class="string">"GtkCssProvider"</span>)]
+    </span><span class="kw">pub struct </span><a href="../../../gtk4/struct.CssProvider.html">CssProvider</a>(Object&lt;<a href="../../../gtk4_sys/struct.GtkCssProvider.html">ffi::GtkCssProvider</a>, <a href="../../../gtk4_sys/type.GtkCssProviderClass.html">ffi::GtkCssProviderClass</a>&gt;) @implements <a href="style_provider.rs.html#13-39">StyleProvider</a>;
 
     <span class="kw">match fn </span>{
         type_ =&gt; || ffi::gtk_css_provider_get_type(),
     }
 }
 
-<span class="kw">impl </span>CssProvider {
+<span class="kw">impl </span><a href="#14-86">CssProvider</a> {
     <span class="doccomment">/// Returns a newly created [`CssProvider`][crate::CssProvider].
     ///
     /// # Returns
     ///
     /// A new [`CssProvider`][crate::CssProvider]
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_css_provider_new&quot;</span>)]
-    </span><span class="kw">pub fn </span>new() -&gt; CssProvider {
-        <span class="macro">assert_initialized_main_thread!</span>();
-        <span class="kw">unsafe </span>{ from_glib_full(ffi::gtk_css_provider_new()) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_css_provider_new"</span>)]
+    </span><span class="kw">pub fn </span>new() -&gt; <a href="#14-86">CssProvider</a> {
+        <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_css_provider_new.html">ffi::gtk_css_provider_new</a>()) }
     }
 
     <span class="doccomment">/// Loads @data into @self.
     ///
     /// This clears any previously loaded information.
     /// ## `data`
+    /// `GBytes` containing the data to load
+    </span><span class="attr">#[cfg(feature = <span class="string">"v4_12"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_12"</span>)))]
+    #[doc(alias = <span class="string">"gtk_css_provider_load_from_bytes"</span>)]
+    </span><span class="kw">pub fn </span>load_from_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>, data: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/bytes/struct.Bytes.html">glib::Bytes</a>) {
+        <span class="kw">unsafe </span>{
+            <a href="../../../gtk4_sys/fn.gtk_css_provider_load_from_bytes.html">ffi::gtk_css_provider_load_from_bytes</a>(<a class="self" href="#108">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#108">data</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
+        }
+    }
+
+    <span class="doccomment">/// Loads @data into @self.
+    ///
+    /// This clears any previously loaded information.
+    ///
+    /// # Deprecated since 4.12
+    ///
+    /// Use [`load_from_string()`][Self::load_from_string()]
+    ///   or [`load_from_bytes()`][Self::load_from_bytes()] instead
+    /// ## `data`
     /// CSS data to be parsed
     /// ## `length`
     /// the length of @data in bytes, or -1 for NUL terminated strings
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_css_provider_load_from_data&quot;</span>)]
-    </span><span class="kw">pub fn </span>load_from_data(<span class="kw-2">&amp;</span><span class="self">self</span>, data: <span class="kw-2">&amp;</span>str) {
-        <span class="kw">let </span>length = data.len() <span class="kw">as _</span>;
+    </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_12"</span>, deprecated = <span class="string">"Since 4.12"</span>)]
+    #[allow(deprecated)]
+    #[doc(alias = <span class="string">"gtk_css_provider_load_from_data"</span>)]
+    </span><span class="kw">pub fn </span>load_from_data(<span class="kw-2">&amp;</span><span class="self">self</span>, data: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
+        <span class="kw">let </span>length = <a href="#129">data</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>() <span class="kw">as _</span>;
         <span class="kw">unsafe </span>{
-            ffi::gtk_css_provider_load_from_data(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                data.to_glib_none().<span class="number">0</span>,
-                length,
+            <a href="../../../gtk4_sys/fn.gtk_css_provider_load_from_data.html">ffi::gtk_css_provider_load_from_data</a>(
+                <a class="self" href="#129">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#129">data</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#130">length</a>,
             );
         }
     }
@@ -445,12 +521,12 @@
     /// This clears any previously loaded information.
     /// ## `file`
     /// `GFile` pointing to a file to load
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_css_provider_load_from_file&quot;</span>)]
-    </span><span class="kw">pub fn </span>load_from_file(<span class="kw-2">&amp;</span><span class="self">self</span>, file: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;gio::File&gt;) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_css_provider_load_from_file"</span>)]
+    </span><span class="kw">pub fn </span>load_from_file(<span class="kw-2">&amp;</span><span class="self">self</span>, file: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/file/struct.File.html">gio::File</a>&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_css_provider_load_from_file(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                file.as_ref().to_glib_none().<span class="number">0</span>,
+            <a href="../../../gtk4_sys/fn.gtk_css_provider_load_from_file.html">ffi::gtk_css_provider_load_from_file</a>(
+                <a class="self" href="#146">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#146">file</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             );
         }
     }
@@ -460,12 +536,12 @@
     /// This clears any previously loaded information.
     /// ## `path`
     /// the path of a filename to load, in the GLib filename encoding
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_css_provider_load_from_path&quot;</span>)]
-    </span><span class="kw">pub fn </span>load_from_path(<span class="kw-2">&amp;</span><span class="self">self</span>, path: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_css_provider_load_from_path"</span>)]
+    </span><span class="kw">pub fn </span>load_from_path(<span class="kw-2">&amp;</span><span class="self">self</span>, path: <span class="kw">impl </span>AsRef&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">std::path::Path</a>&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_css_provider_load_from_path(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                path.as_ref().to_glib_none().<span class="number">0</span>,
+            <a href="../../../gtk4_sys/fn.gtk_css_provider_load_from_path.html">ffi::gtk_css_provider_load_from_path</a>(
+                <a class="self" href="#161">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#161">path</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             );
         }
     }
@@ -476,13 +552,27 @@
     /// This clears any previously loaded information.
     /// ## `resource_path`
     /// a `GResource` resource path
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_css_provider_load_from_resource&quot;</span>)]
-    </span><span class="kw">pub fn </span>load_from_resource(<span class="kw-2">&amp;</span><span class="self">self</span>, resource_path: <span class="kw-2">&amp;</span>str) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_css_provider_load_from_resource"</span>)]
+    </span><span class="kw">pub fn </span>load_from_resource(<span class="kw-2">&amp;</span><span class="self">self</span>, resource_path: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_css_provider_load_from_resource(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                resource_path.to_glib_none().<span class="number">0</span>,
+            <a href="../../../gtk4_sys/fn.gtk_css_provider_load_from_resource.html">ffi::gtk_css_provider_load_from_resource</a>(
+                <a class="self" href="#177">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#177">resource_path</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             );
+        }
+    }
+
+    <span class="doccomment">/// Loads @string into @self.
+    ///
+    /// This clears any previously loaded information.
+    /// ## `string`
+    /// the CSS to load
+    </span><span class="attr">#[cfg(feature = <span class="string">"v4_12"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_12"</span>)))]
+    #[doc(alias = <span class="string">"gtk_css_provider_load_from_string"</span>)]
+    </span><span class="kw">pub fn </span>load_from_string(<span class="kw-2">&amp;</span><span class="self">self</span>, string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
+        <span class="kw">unsafe </span>{
+            <a href="../../../gtk4_sys/fn.gtk_css_provider_load_from_string.html">ffi::gtk_css_provider_load_from_string</a>(<a class="self" href="#194">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#194">string</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
         }
     }
 
@@ -494,15 +584,15 @@
     /// ## `name`
     /// A theme name
     /// ## `variant`
-    /// variant to load, for example, &quot;dark&quot;, or
+    /// variant to load, for example, "dark", or
     ///   [`None`] for the default
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_css_provider_load_named&quot;</span>)]
-    </span><span class="kw">pub fn </span>load_named(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str, variant: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_css_provider_load_named"</span>)]
+    </span><span class="kw">pub fn </span>load_named(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, variant: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_css_provider_load_named(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                name.to_glib_none().<span class="number">0</span>,
-                variant.to_glib_none().<span class="number">0</span>,
+            <a href="../../../gtk4_sys/fn.gtk_css_provider_load_named.html">ffi::gtk_css_provider_load_named</a>(
+                <a class="self" href="#211">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#211">name</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#211">variant</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             );
         }
     }
@@ -510,7 +600,7 @@
     <span class="doccomment">/// Converts the @self into a string representation in CSS
     /// format.
     ///
-    /// Using [`load_from_data()`][Self::load_from_data()] with the return
+    /// Using [`load_from_string()`][Self::load_from_string()] with the return
     /// value from this function on a new provider created with
     /// [`new()`][Self::new()] will basically create a duplicate
     /// of this @self.
@@ -518,13 +608,16 @@
     /// # Returns
     ///
     /// a new string representing the @self.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_css_provider_to_string&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;to_string&quot;</span>)]
-    </span><span class="kw">pub fn </span>to_str(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::GString {
-        <span class="kw">unsafe </span>{ from_glib_full(ffi::gtk_css_provider_to_string(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_css_provider_to_string"</span>)]
+    #[doc(alias = <span class="string">"to_string"</span>)]
+    </span><span class="kw">pub fn </span>to_str(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">glib::GString</a> {
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_css_provider_to_string.html">ffi::gtk_css_provider_to_string</a>(<a class="self" href="#234">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)) }
     }
 
     <span class="doccomment">/// Signals that a parsing error occurred.
+    ///
+    /// The expected error values are in the [`CssParserError`][crate::CssParserError]
+    /// and [`CssParserWarning`][crate::CssParserWarning] enumerations.
     ///
     /// The @path, @line and @position describe the actual location of
     /// the error as accurately as possible.
@@ -534,6 +627,9 @@
     /// even all of it to not be parsed at all. So it is a useful idea
     /// to check that the parsing succeeds by connecting to this signal.
     ///
+    /// Errors in the [`CssParserWarning`][crate::CssParserWarning] enumeration should not
+    /// be treated as fatal errors.
+    ///
     /// Note that this signal may be emitted at any time as the css provider
     /// may opt to defer parsing parts or all of the input to a later time
     /// than when a loading function was called.
@@ -541,51 +637,50 @@
     /// section the error happened in
     /// ## `error`
     /// The parsing error
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;parsing-error&quot;</span>)]
-    </span><span class="kw">pub fn </span>connect_parsing_error&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>CssSection, <span class="kw-2">&amp;</span>glib::Error) + <span class="lifetime">&#39;static</span>&gt;(
+    </span><span class="attr">#[doc(alias = <span class="string">"parsing-error"</span>)]
+    </span><span class="kw">pub fn </span>connect_parsing_error&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><a href="css_section.rs.html#8-21">CssSection</a>, <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>) + <span class="lifetime">'static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         f: F,
-    ) -&gt; SignalHandlerId {
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>parsing_error_trampoline&lt;
-            F: Fn(<span class="kw-2">&amp;</span>CssProvider, <span class="kw-2">&amp;</span>CssSection, <span class="kw-2">&amp;</span>glib::Error) + <span class="lifetime">&#39;static</span>,
+    ) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>parsing_error_trampoline&lt;
+            F: Fn(<span class="kw-2">&amp;</span><a href="#14-86">CssProvider</a>, <span class="kw-2">&amp;</span><a href="css_section.rs.html#8-21">CssSection</a>, <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>) + <span class="lifetime">'static</span>,
         &gt;(
-            this: <span class="kw-2">*mut </span>ffi::GtkCssProvider,
-            section: <span class="kw-2">*mut </span>ffi::GtkCssSection,
+            this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkCssProvider.html">ffi::GtkCssProvider</a>,
+            section: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkCssSection.html">ffi::GtkCssSection</a>,
             error: <span class="kw-2">*mut </span>glib::ffi::GError,
             f: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(f <span class="kw">as </span><span class="kw-2">*const </span>F);
-            f(
-                <span class="kw-2">&amp;</span>from_glib_borrow(this),
-                <span class="kw-2">&amp;</span>from_glib_borrow(section),
-                <span class="kw-2">&amp;</span>from_glib_borrow(error),
+            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#272">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
+            <a href="#274">f</a>(
+                <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#269">this</a>),
+                <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#270">section</a>),
+                <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#271">error</a>),
             )
         }
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>f: Box_&lt;F&gt; = Box_::new(f);
-            connect_raw(
-                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b&quot;parsing-error\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
-                <span class="prelude-val">Some</span>(transmute::&lt;<span class="kw">_</span>, <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>()&gt;(
+            <span class="kw">let </span>f: Box_&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#264">f</a>);
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
+                <a class="self" href="#263">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <span class="string">b"parsing-error\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="prelude-val">Some</span>(std::mem::transmute::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     parsing_error_trampoline::&lt;F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
-                Box_::into_raw(f),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#282">f</a>),
             )
         }
     }
 }
 
-<span class="kw">impl </span>Default <span class="kw">for </span>CssProvider {
+<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#14-86">CssProvider</a> {
     <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-        <span class="self">Self</span>::new()
+        <a href="#95-98"><span class="self">Self</span>::new</a>()
     }
 }
 
-<span class="kw">impl </span>fmt::Display <span class="kw">for </span>CssProvider {
+<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html">std::fmt::Display</a> <span class="kw">for </span><a href="#14-86">CssProvider</a> {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
-        f.write_str(<span class="kw-2">&amp;</span><span class="self">self</span>.to_str())
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html">std::fmt::Formatter</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">std::fmt::Result</a> {
+        <a href="#303">f</a>.<a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html#method.write_str">write_str</a>(<span class="kw-2">&amp;</span><a class="self" href="#303">self</a>.<a href="#234-236">to_str</a>())
     }
 }
-</code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (ef934d9b6 2023-02-08)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</code></pre></div></section></main></body></html>

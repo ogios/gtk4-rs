@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/font_dialog.rs`."><title>font_dialog.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/font_dialog.rs`."><title>font_dialog.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (6be96e386 2024-07-09)" data-channel="nightly" data-search-js="search-d234aafac6c221dd.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../gtk4/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -767,38 +767,26 @@
 <a href="#694" id="694">694</a>
 <a href="#695" id="695">695</a>
 <a href="#696" id="696">696</a>
-<a href="#697" id="697">697</a>
-<a href="#698" id="698">698</a>
-<a href="#699" id="699">699</a>
-<a href="#700" id="700">700</a>
-<a href="#701" id="701">701</a>
-<a href="#702" id="702">702</a>
-<a href="#703" id="703">703</a>
-<a href="#704" id="704">704</a>
-<a href="#705" id="705">705</a>
-<a href="#706" id="706">706</a>
-</pre><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
+</pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-</span><span class="kw">use crate</span>::{Filter, Window};
+</span><span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="filter.rs.html#13-59">Filter</a>, <a href="window.rs.html#17-752">Window</a>};
 <span class="kw">use </span>glib::{
-    prelude::<span class="kw-2">*</span>,
-    signal::{connect_raw, SignalHandlerId},
-    translate::<span class="kw-2">*</span>,
+    <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>,
+    signal::{<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a>},
+    <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>,
 };
-<span class="kw">use </span>std::{boxed::Box <span class="kw">as </span>Box_, fmt, mem::transmute, pin::Pin, ptr};
+<span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">boxed::Box</a> <span class="kw">as </span>Box_, <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">pin::Pin</a>};
 
-<span class="macro">glib::wrapper! </span>{
+<a class="macro" href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/macro.wrapper.html">glib::wrapper!</a> {
     <span class="doccomment">/// A [`FontDialog`][crate::FontDialog] object collects the arguments that
     /// are needed to present a font chooser dialog to the
     /// user, such as a title for the dialog and whether it
     /// should be modal.
     ///
     /// The dialog is shown with the [`choose_font()`][Self::choose_font()]
-    /// function or its variants. This API follows the GIO async pattern,
-    /// and the result can be obtained by calling the corresponding
-    /// finish function, such as `Gtk::FontDialog::choose_font_finish()`.
+    /// function or its variants.
     ///
     /// See [`FontDialogButton`][crate::FontDialogButton] for a convenient control
     /// that uses [`FontDialog`][crate::FontDialog] and presents the results.
@@ -843,41 +831,37 @@
     /// # Implements
     ///
     /// [`trait@glib::ObjectExt`]
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GtkFontDialog&quot;</span>)]
-    </span><span class="kw">pub struct </span>FontDialog(Object&lt;ffi::GtkFontDialog, ffi::GtkFontDialogClass&gt;);
+    </span><span class="attr">#[doc(alias = <span class="string">"GtkFontDialog"</span>)]
+    </span><span class="kw">pub struct </span><a href="../../../gtk4/struct.FontDialog.html">FontDialog</a>(Object&lt;<a href="../../../gtk4_sys/struct.GtkFontDialog.html">ffi::GtkFontDialog</a>, <a href="../../../gtk4_sys/struct.GtkFontDialogClass.html">ffi::GtkFontDialogClass</a>&gt;);
 
     <span class="kw">match fn </span>{
         type_ =&gt; || ffi::gtk_font_dialog_get_type(),
     }
 }
 
-<span class="kw">impl </span>FontDialog {
+<span class="kw">impl </span><a href="#13-71">FontDialog</a> {
     <span class="doccomment">/// Creates a new [`FontDialog`][crate::FontDialog] object.
     ///
     /// # Returns
     ///
     /// the new [`FontDialog`][crate::FontDialog]
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_new&quot;</span>)]
-    </span><span class="kw">pub fn </span>new() -&gt; FontDialog {
-        <span class="macro">assert_initialized_main_thread!</span>();
-        <span class="kw">unsafe </span>{ from_glib_full(ffi::gtk_font_dialog_new()) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_new"</span>)]
+    </span><span class="kw">pub fn </span>new() -&gt; <a href="#13-71">FontDialog</a> {
+        <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_font_dialog_new.html">ffi::gtk_font_dialog_new</a>()) }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Creates a new builder-pattern struct instance to construct [`FontDialog`] objects.
     ///
     /// This method returns an instance of [`FontDialogBuilder`](crate::builders::FontDialogBuilder) which can be used to create [`FontDialog`] objects.
-    </span><span class="kw">pub fn </span>builder() -&gt; FontDialogBuilder {
-        FontDialogBuilder::new()
+    </span><span class="kw">pub fn </span>builder() -&gt; <a href="#629-631">FontDialogBuilder</a> {
+        <a href="#634-638">FontDialogBuilder::new</a>()
     }
 
     <span class="doccomment">/// This function initiates a font selection operation by
     /// presenting a dialog to the user for selecting a font face
     /// (i.e. a font family and style, but not a specific font size).
-    ///
-    /// The @callback will be called when the dialog is dismissed.
-    /// It should call `Gtk::FontDialog::choose_face_finish()`
-    /// to obtain the result.
     /// ## `parent`
     /// the parent [`Window`][crate::Window]
     /// ## `initial_value`
@@ -885,75 +869,76 @@
     /// ## `cancellable`
     /// a `GCancellable` to cancel the operation
     /// ## `callback`
-    /// a callback to call when the operation is complete
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_choose_face&quot;</span>)]
-    </span><span class="kw">pub fn </span>choose_face&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;pango::FontFace, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    /// a callback to call when the
+    ///   operation is complete
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_choose_face"</span>)]
+    </span><span class="kw">pub fn </span>choose_face&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_face/struct.FontFace.html">pango::FontFace</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Window&gt;&gt;,
-        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;pango::FontFace&gt;&gt;,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;gio::Cancellable&gt;&gt;,
+        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="window.rs.html#17-752">Window</a>&gt;&gt;,
+        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_face/struct.FontFace.html">pango::FontFace</a>&gt;&gt;,
+        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/cancellable/struct.Cancellable.html">gio::Cancellable</a>&gt;&gt;,
         callback: P,
     ) {
-        <span class="kw">let </span>main_context = glib::MainContext::ref_thread_default();
-        <span class="kw">let </span>is_main_context_owner = main_context.is_owner();
-        <span class="kw">let </span>has_acquired_main_context = (!is_main_context_owner)
-            .then(|| main_context.acquire().ok())
-            .flatten();
-        <span class="macro">assert!</span>(
+        <span class="kw">let </span>main_context = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.ref_thread_default">glib::MainContext::ref_thread_default</a>();
+        <span class="kw">let </span>is_main_context_owner = <a href="#113">main_context</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.is_owner">is_owner</a>();
+        <span class="kw">let </span>has_acquired_main_context = (!<a href="#114">is_main_context_owner</a>)
+            .<a href="https://doc.rust-lang.org/nightly/core/foreigntype.bool.html#method.then">then</a>(|| <a href="#113">main_context</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.acquire">acquire</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.flatten">flatten</a>();
+        <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(
             is_main_context_owner || has_acquired_main_context.is_some(),
-            <span class="string">&quot;Async operations only allowed if the thread is owning the MainContext&quot;
+            <span class="string">"Async operations only allowed if the thread is owning the MainContext"
         </span>);
 
         <span class="kw">let </span>user_data: Box_&lt;glib::thread_guard::ThreadGuard&lt;P&gt;&gt; =
-            Box_::new(glib::thread_guard::ThreadGuard::new(callback));
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>choose_face_trampoline&lt;
-            P: FnOnce(<span class="prelude-ty">Result</span>&lt;pango::FontFace, glib::Error&gt;) + <span class="lifetime">&#39;static</span>,
+            <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.new">glib::thread_guard::ThreadGuard::new</a>(<a href="#111">callback</a>));
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>choose_face_trampoline&lt;
+            P: FnOnce(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_face/struct.FontFace.html">pango::FontFace</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>,
         &gt;(
             _source_object: <span class="kw-2">*mut </span>glib::gobject_ffi::GObject,
             res: <span class="kw-2">*mut </span>gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span><span class="kw-2">mut </span>error = <a href="https://doc.rust-lang.org/nightly/core/ptr/fn.null_mut.html">std::ptr::null_mut</a>();
             <span class="kw">let </span>ret =
-                ffi::gtk_font_dialog_choose_face_finish(_source_object <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>, res, <span class="kw-2">&amp;mut </span>error);
+                <a href="../../../gtk4_sys/fn.gtk_font_dialog_choose_face_finish.html">ffi::gtk_font_dialog_choose_face_finish</a>(<a href="#128">_source_object</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>, <a href="#129">res</a>, <span class="kw-2">&amp;mut </span><a href="#132">error</a>);
             <span class="kw">let </span>result = <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(from_glib_full(ret))
+                <span class="prelude-val">Ok</span>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#133">ret</a>))
             } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
+                <span class="prelude-val">Err</span>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#132">error</a>))
             };
             <span class="kw">let </span>callback: Box_&lt;glib::thread_guard::ThreadGuard&lt;P&gt;&gt; =
-                Box_::from_raw(user_data <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
-            <span class="kw">let </span>callback: P = callback.into_inner();
-            callback(result);
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box_::from_raw</a>(<a href="#130">user_data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+            <span class="kw">let </span>callback: P = <a href="#140">callback</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.into_inner">into_inner</a>();
+            <a href="#142">callback</a>(<a href="#135">result</a>);
         }
         <span class="kw">let </span>callback = choose_face_trampoline::&lt;P&gt;;
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_choose_face(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                parent.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                initial_value.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="prelude-val">Some</span>(callback),
-                Box_::into_raw(user_data) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_choose_face.html">ffi::gtk_font_dialog_choose_face</a>(
+                <a class="self" href="#107">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#108">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#149">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#109">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#150">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#110">cancellable</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#151">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <span class="prelude-val">Some</span>(<a href="#145">callback</a>),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#123">user_data</a>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
             );
         }
     }
 
     <span class="kw">pub fn </span>choose_face_future(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;Window&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;pango::FontFace&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;pango::FontFace, glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;
+        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;<a href="window.rs.html#17-752">Window</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <span class="lifetime">'static</span>)&gt;,
+        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_face/struct.FontFace.html">pango::FontFace</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <span class="lifetime">'static</span>)&gt;,
+    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_face/struct.FontFace.html">pango::FontFace</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;&gt; + <span class="lifetime">'static</span>&gt;&gt;
     {
-        <span class="kw">let </span>parent = parent.map(ToOwned::to_owned);
-        <span class="kw">let </span>initial_value = initial_value.map(ToOwned::to_owned);
-        Box_::pin(gio::GioFuture::new(<span class="self">self</span>, <span class="kw">move </span>|obj, cancellable, send| {
-            obj.choose_face(
-                parent.as_ref().map(::std::borrow::Borrow::borrow),
-                initial_value.as_ref().map(::std::borrow::Borrow::borrow),
-                <span class="prelude-val">Some</span>(cancellable),
+        <span class="kw">let </span>parent = <a href="#160">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">ToOwned::to_owned</a>);
+        <span class="kw">let </span>initial_value = <a href="#161">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">ToOwned::to_owned</a>);
+        <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">Box_::pin</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/gio_future/struct.GioFuture.html#method.new">gio::GioFuture::new</a>(<a class="self" href="#159">self</a>, <span class="kw">move </span>|obj, cancellable, send| {
+            <a href="#166">obj</a>.<a href="#106-156">choose_face</a>(
+                <a href="#164">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html#tymethod.borrow">::std::borrow::Borrow::borrow</a>),
+                <a href="#165">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html#tymethod.borrow">::std::borrow::Borrow::borrow</a>),
+                <span class="prelude-val">Some</span>(<a href="#166">cancellable</a>),
                 <span class="kw">move </span>|res| {
-                    send.resolve(res);
+                    <a href="#166">send</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/gio_future/struct.GioFutureResult.html#method.resolve">resolve</a>(<a href="#171">res</a>);
                 },
             );
         }))
@@ -961,10 +946,6 @@
 
     <span class="doccomment">/// This function initiates a font selection operation by
     /// presenting a dialog to the user for selecting a font family.
-    ///
-    /// The @callback will be called when the dialog is dismissed.
-    /// It should call `Gtk::FontDialog::choose_family_finish()`
-    /// to obtain the result.
     /// ## `parent`
     /// the parent [`Window`][crate::Window]
     /// ## `initial_value`
@@ -972,78 +953,79 @@
     /// ## `cancellable`
     /// a `GCancellable` to cancel the operation
     /// ## `callback`
-    /// a callback to call when the operation is complete
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_choose_family&quot;</span>)]
-    </span><span class="kw">pub fn </span>choose_family&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;pango::FontFamily, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    /// a callback to call when the
+    ///   operation is complete
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_choose_family"</span>)]
+    </span><span class="kw">pub fn </span>choose_family&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_family/struct.FontFamily.html">pango::FontFamily</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Window&gt;&gt;,
-        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;pango::FontFamily&gt;&gt;,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;gio::Cancellable&gt;&gt;,
+        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="window.rs.html#17-752">Window</a>&gt;&gt;,
+        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_family/struct.FontFamily.html">pango::FontFamily</a>&gt;&gt;,
+        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/cancellable/struct.Cancellable.html">gio::Cancellable</a>&gt;&gt;,
         callback: P,
     ) {
-        <span class="kw">let </span>main_context = glib::MainContext::ref_thread_default();
-        <span class="kw">let </span>is_main_context_owner = main_context.is_owner();
-        <span class="kw">let </span>has_acquired_main_context = (!is_main_context_owner)
-            .then(|| main_context.acquire().ok())
-            .flatten();
-        <span class="macro">assert!</span>(
+        <span class="kw">let </span>main_context = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.ref_thread_default">glib::MainContext::ref_thread_default</a>();
+        <span class="kw">let </span>is_main_context_owner = <a href="#197">main_context</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.is_owner">is_owner</a>();
+        <span class="kw">let </span>has_acquired_main_context = (!<a href="#198">is_main_context_owner</a>)
+            .<a href="https://doc.rust-lang.org/nightly/core/foreigntype.bool.html#method.then">then</a>(|| <a href="#197">main_context</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.acquire">acquire</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.flatten">flatten</a>();
+        <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(
             is_main_context_owner || has_acquired_main_context.is_some(),
-            <span class="string">&quot;Async operations only allowed if the thread is owning the MainContext&quot;
+            <span class="string">"Async operations only allowed if the thread is owning the MainContext"
         </span>);
 
         <span class="kw">let </span>user_data: Box_&lt;glib::thread_guard::ThreadGuard&lt;P&gt;&gt; =
-            Box_::new(glib::thread_guard::ThreadGuard::new(callback));
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>choose_family_trampoline&lt;
-            P: FnOnce(<span class="prelude-ty">Result</span>&lt;pango::FontFamily, glib::Error&gt;) + <span class="lifetime">&#39;static</span>,
+            <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.new">glib::thread_guard::ThreadGuard::new</a>(<a href="#195">callback</a>));
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>choose_family_trampoline&lt;
+            P: FnOnce(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_family/struct.FontFamily.html">pango::FontFamily</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>,
         &gt;(
             _source_object: <span class="kw-2">*mut </span>glib::gobject_ffi::GObject,
             res: <span class="kw-2">*mut </span>gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>ret = ffi::gtk_font_dialog_choose_family_finish(
-                _source_object <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                res,
-                <span class="kw-2">&amp;mut </span>error,
+            <span class="kw">let </span><span class="kw-2">mut </span>error = <a href="https://doc.rust-lang.org/nightly/core/ptr/fn.null_mut.html">std::ptr::null_mut</a>();
+            <span class="kw">let </span>ret = <a href="../../../gtk4_sys/fn.gtk_font_dialog_choose_family_finish.html">ffi::gtk_font_dialog_choose_family_finish</a>(
+                <a href="#212">_source_object</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <a href="#213">res</a>,
+                <span class="kw-2">&amp;mut </span><a href="#216">error</a>,
             );
             <span class="kw">let </span>result = <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(from_glib_full(ret))
+                <span class="prelude-val">Ok</span>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#217">ret</a>))
             } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
+                <span class="prelude-val">Err</span>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#216">error</a>))
             };
             <span class="kw">let </span>callback: Box_&lt;glib::thread_guard::ThreadGuard&lt;P&gt;&gt; =
-                Box_::from_raw(user_data <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
-            <span class="kw">let </span>callback: P = callback.into_inner();
-            callback(result);
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box_::from_raw</a>(<a href="#214">user_data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+            <span class="kw">let </span>callback: P = <a href="#227">callback</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.into_inner">into_inner</a>();
+            <a href="#229">callback</a>(<a href="#222">result</a>);
         }
         <span class="kw">let </span>callback = choose_family_trampoline::&lt;P&gt;;
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_choose_family(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                parent.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                initial_value.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="prelude-val">Some</span>(callback),
-                Box_::into_raw(user_data) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_choose_family.html">ffi::gtk_font_dialog_choose_family</a>(
+                <a class="self" href="#191">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#192">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#236">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#193">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#237">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#194">cancellable</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#238">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <span class="prelude-val">Some</span>(<a href="#232">callback</a>),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#207">user_data</a>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
             );
         }
     }
 
     <span class="kw">pub fn </span>choose_family_future(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;Window&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;pango::FontFamily&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;pango::FontFamily, glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;
+        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;<a href="window.rs.html#17-752">Window</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <span class="lifetime">'static</span>)&gt;,
+        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_family/struct.FontFamily.html">pango::FontFamily</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <span class="lifetime">'static</span>)&gt;,
+    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_family/struct.FontFamily.html">pango::FontFamily</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;&gt; + <span class="lifetime">'static</span>&gt;&gt;
     {
-        <span class="kw">let </span>parent = parent.map(ToOwned::to_owned);
-        <span class="kw">let </span>initial_value = initial_value.map(ToOwned::to_owned);
-        Box_::pin(gio::GioFuture::new(<span class="self">self</span>, <span class="kw">move </span>|obj, cancellable, send| {
-            obj.choose_family(
-                parent.as_ref().map(::std::borrow::Borrow::borrow),
-                initial_value.as_ref().map(::std::borrow::Borrow::borrow),
-                <span class="prelude-val">Some</span>(cancellable),
+        <span class="kw">let </span>parent = <a href="#247">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">ToOwned::to_owned</a>);
+        <span class="kw">let </span>initial_value = <a href="#248">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">ToOwned::to_owned</a>);
+        <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">Box_::pin</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/gio_future/struct.GioFuture.html#method.new">gio::GioFuture::new</a>(<a class="self" href="#246">self</a>, <span class="kw">move </span>|obj, cancellable, send| {
+            <a href="#253">obj</a>.<a href="#190-243">choose_family</a>(
+                <a href="#251">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html#tymethod.borrow">::std::borrow::Borrow::borrow</a>),
+                <a href="#252">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html#tymethod.borrow">::std::borrow::Borrow::borrow</a>),
+                <span class="prelude-val">Some</span>(<a href="#253">cancellable</a>),
                 <span class="kw">move </span>|res| {
-                    send.resolve(res);
+                    <a href="#253">send</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/gio_future/struct.GioFutureResult.html#method.resolve">resolve</a>(<a href="#258">res</a>);
                 },
             );
         }))
@@ -1051,10 +1033,6 @@
 
     <span class="doccomment">/// This function initiates a font selection operation by
     /// presenting a dialog to the user for selecting a font.
-    ///
-    /// The @callback will be called when the dialog is dismissed.
-    /// It should call `Gtk::FontDialog::choose_font_finish()`
-    /// to obtain the result.
     ///
     /// If you want to let the user select font features as well,
     /// use [`choose_font_and_features()`][Self::choose_font_and_features()] instead.
@@ -1065,78 +1043,79 @@
     /// ## `cancellable`
     /// a `GCancellable` to cancel the operation
     /// ## `callback`
-    /// a callback to call when the operation is complete
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_choose_font&quot;</span>)]
-    </span><span class="kw">pub fn </span>choose_font&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;pango::FontDescription, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    /// a callback to call when the
+    ///   operation is complete
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_choose_font"</span>)]
+    </span><span class="kw">pub fn </span>choose_font&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_description/struct.FontDescription.html">pango::FontDescription</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Window&gt;&gt;,
-        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>pango::FontDescription&gt;,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;gio::Cancellable&gt;&gt;,
+        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="window.rs.html#17-752">Window</a>&gt;&gt;,
+        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_description/struct.FontDescription.html">pango::FontDescription</a>&gt;,
+        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/cancellable/struct.Cancellable.html">gio::Cancellable</a>&gt;&gt;,
         callback: P,
     ) {
-        <span class="kw">let </span>main_context = glib::MainContext::ref_thread_default();
-        <span class="kw">let </span>is_main_context_owner = main_context.is_owner();
-        <span class="kw">let </span>has_acquired_main_context = (!is_main_context_owner)
-            .then(|| main_context.acquire().ok())
-            .flatten();
-        <span class="macro">assert!</span>(
+        <span class="kw">let </span>main_context = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.ref_thread_default">glib::MainContext::ref_thread_default</a>();
+        <span class="kw">let </span>is_main_context_owner = <a href="#287">main_context</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.is_owner">is_owner</a>();
+        <span class="kw">let </span>has_acquired_main_context = (!<a href="#288">is_main_context_owner</a>)
+            .<a href="https://doc.rust-lang.org/nightly/core/foreigntype.bool.html#method.then">then</a>(|| <a href="#287">main_context</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/auto/main_context/struct.MainContext.html#method.acquire">acquire</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.flatten">flatten</a>();
+        <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(
             is_main_context_owner || has_acquired_main_context.is_some(),
-            <span class="string">&quot;Async operations only allowed if the thread is owning the MainContext&quot;
+            <span class="string">"Async operations only allowed if the thread is owning the MainContext"
         </span>);
 
         <span class="kw">let </span>user_data: Box_&lt;glib::thread_guard::ThreadGuard&lt;P&gt;&gt; =
-            Box_::new(glib::thread_guard::ThreadGuard::new(callback));
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>choose_font_trampoline&lt;
-            P: FnOnce(<span class="prelude-ty">Result</span>&lt;pango::FontDescription, glib::Error&gt;) + <span class="lifetime">&#39;static</span>,
+            <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.new">glib::thread_guard::ThreadGuard::new</a>(<a href="#285">callback</a>));
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>choose_font_trampoline&lt;
+            P: FnOnce(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_description/struct.FontDescription.html">pango::FontDescription</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>,
         &gt;(
             _source_object: <span class="kw-2">*mut </span>glib::gobject_ffi::GObject,
             res: <span class="kw-2">*mut </span>gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span><span class="kw-2">mut </span>error = <a href="https://doc.rust-lang.org/nightly/core/ptr/fn.null_mut.html">std::ptr::null_mut</a>();
             <span class="kw">let </span>ret =
-                ffi::gtk_font_dialog_choose_font_finish(_source_object <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>, res, <span class="kw-2">&amp;mut </span>error);
+                <a href="../../../gtk4_sys/fn.gtk_font_dialog_choose_font_finish.html">ffi::gtk_font_dialog_choose_font_finish</a>(<a href="#302">_source_object</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>, <a href="#303">res</a>, <span class="kw-2">&amp;mut </span><a href="#306">error</a>);
             <span class="kw">let </span>result = <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(from_glib_full(ret))
+                <span class="prelude-val">Ok</span>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#307">ret</a>))
             } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
+                <span class="prelude-val">Err</span>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#306">error</a>))
             };
             <span class="kw">let </span>callback: Box_&lt;glib::thread_guard::ThreadGuard&lt;P&gt;&gt; =
-                Box_::from_raw(user_data <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
-            <span class="kw">let </span>callback: P = callback.into_inner();
-            callback(result);
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box_::from_raw</a>(<a href="#304">user_data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+            <span class="kw">let </span>callback: P = <a href="#314">callback</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.into_inner">into_inner</a>();
+            <a href="#316">callback</a>(<a href="#309">result</a>);
         }
         <span class="kw">let </span>callback = choose_font_trampoline::&lt;P&gt;;
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_choose_font(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                parent.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                mut_override(initial_value.to_glib_none().<span class="number">0</span>),
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="prelude-val">Some</span>(callback),
-                Box_::into_raw(user_data) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_choose_font.html">ffi::gtk_font_dialog_choose_font</a>(
+                <a class="self" href="#281">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#282">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#323">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.mut_override.html">mut_override</a>(<a href="#283">initial_value</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>),
+                <a href="#284">cancellable</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#325">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <span class="prelude-val">Some</span>(<a href="#319">callback</a>),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#297">user_data</a>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
             );
         }
     }
 
     <span class="kw">pub fn </span>choose_font_future(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;Window&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>pango::FontDescription&gt;,
+        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;<a href="window.rs.html#17-752">Window</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <span class="lifetime">'static</span>)&gt;,
+        initial_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_description/struct.FontDescription.html">pango::FontDescription</a>&gt;,
     ) -&gt; Pin&lt;
         Box_&lt;
-            <span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;pango::FontDescription, glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>,
+            <span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_description/struct.FontDescription.html">pango::FontDescription</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;&gt; + <span class="lifetime">'static</span>,
         &gt;,
     &gt; {
-        <span class="kw">let </span>parent = parent.map(ToOwned::to_owned);
-        <span class="kw">let </span>initial_value = initial_value.map(ToOwned::to_owned);
-        Box_::pin(gio::GioFuture::new(<span class="self">self</span>, <span class="kw">move </span>|obj, cancellable, send| {
-            obj.choose_font(
-                parent.as_ref().map(::std::borrow::Borrow::borrow),
-                initial_value.as_ref().map(::std::borrow::Borrow::borrow),
-                <span class="prelude-val">Some</span>(cancellable),
+        <span class="kw">let </span>parent = <a href="#334">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">ToOwned::to_owned</a>);
+        <span class="kw">let </span>initial_value = <a href="#335">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">ToOwned::to_owned</a>);
+        <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">Box_::pin</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/gio_future/struct.GioFuture.html#method.new">gio::GioFuture::new</a>(<a class="self" href="#333">self</a>, <span class="kw">move </span>|obj, cancellable, send| {
+            <a href="#343">obj</a>.<a href="#280-330">choose_font</a>(
+                <a href="#341">parent</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html#tymethod.borrow">::std::borrow::Borrow::borrow</a>),
+                <a href="#342">initial_value</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html#tymethod.borrow">::std::borrow::Borrow::borrow</a>),
+                <span class="prelude-val">Some</span>(<a href="#343">cancellable</a>),
                 <span class="kw">move </span>|res| {
-                    send.resolve(res);
+                    <a href="#343">send</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/gio_future/struct.GioFutureResult.html#method.resolve">resolve</a>(<a href="#348">res</a>);
                 },
             );
         }))
@@ -1148,10 +1127,10 @@
     /// # Returns
     ///
     /// the filter
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_get_filter&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_filter&quot;</span>)]
-    </span><span class="kw">pub fn </span>filter(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Filter&gt; {
-        <span class="kw">unsafe </span>{ from_glib_none(ffi::gtk_font_dialog_get_filter(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_get_filter"</span>)]
+    #[doc(alias = <span class="string">"get_filter"</span>)]
+    </span><span class="kw">pub fn </span>filter(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="filter.rs.html#13-59">Filter</a>&gt; {
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="../../../gtk4_sys/fn.gtk_font_dialog_get_filter.html">ffi::gtk_font_dialog_get_filter</a>(<a class="self" href="#363">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)) }
     }
 
     <span class="doccomment">/// Returns the fontmap from which fonts are selected,
@@ -1160,10 +1139,11 @@
     /// # Returns
     ///
     /// the fontmap
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_get_font_map&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_font_map&quot;</span>)]
-    </span><span class="kw">pub fn </span>font_map(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;pango::FontMap&gt; {
-        <span class="kw">unsafe </span>{ from_glib_none(ffi::gtk_font_dialog_get_font_map(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_get_font_map"</span>)]
+    #[doc(alias = <span class="string">"get_font_map"</span>)]
+    #[doc(alias = <span class="string">"font-map"</span>)]
+    </span><span class="kw">pub fn </span>font_map(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_map/struct.FontMap.html">pango::FontMap</a>&gt; {
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="../../../gtk4_sys/fn.gtk_font_dialog_get_font_map.html">ffi::gtk_font_dialog_get_font_map</a>(<a class="self" href="#376">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)) }
     }
 
     <span class="doccomment">/// Returns the language for which font features are applied.
@@ -1171,10 +1151,10 @@
     /// # Returns
     ///
     /// the language for font features
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_get_language&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_language&quot;</span>)]
-    </span><span class="kw">pub fn </span>language(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;pango::Language&gt; {
-        <span class="kw">unsafe </span>{ from_glib_full(ffi::gtk_font_dialog_get_language(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_get_language"</span>)]
+    #[doc(alias = <span class="string">"get_language"</span>)]
+    </span><span class="kw">pub fn </span>language(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/language/struct.Language.html">pango::Language</a>&gt; {
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_font_dialog_get_language.html">ffi::gtk_font_dialog_get_language</a>(<a class="self" href="#387">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)) }
     }
 
     <span class="doccomment">/// Returns whether the font chooser dialog
@@ -1184,10 +1164,11 @@
     /// # Returns
     ///
     /// `TRUE` if the font chooser dialog is modal
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_get_modal&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_modal&quot;</span>)]
-    </span><span class="kw">pub fn </span>is_modal(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::gtk_font_dialog_get_modal(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_get_modal"</span>)]
+    #[doc(alias = <span class="string">"get_modal"</span>)]
+    #[doc(alias = <span class="string">"modal"</span>)]
+    </span><span class="kw">pub fn </span>is_modal(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_font_dialog_get_modal.html">ffi::gtk_font_dialog_get_modal</a>(<a class="self" href="#401">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)) }
     }
 
     <span class="doccomment">/// Returns the title that will be shown on the
@@ -1196,10 +1177,10 @@
     /// # Returns
     ///
     /// the title
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_get_title&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_title&quot;</span>)]
-    </span><span class="kw">pub fn </span>title(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::GString {
-        <span class="kw">unsafe </span>{ from_glib_none(ffi::gtk_font_dialog_get_title(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_get_title"</span>)]
+    #[doc(alias = <span class="string">"get_title"</span>)]
+    </span><span class="kw">pub fn </span>title(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">glib::GString</a> {
+        <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="../../../gtk4_sys/fn.gtk_font_dialog_get_title.html">ffi::gtk_font_dialog_get_title</a>(<a class="self" href="#413">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)) }
     }
 
     <span class="doccomment">/// Adds a filter that decides which fonts to display
@@ -1209,12 +1190,13 @@
     /// and [`pango::FontFace`][crate::pango::FontFace] objects.
     /// ## `filter`
     /// a [`Filter`][crate::Filter]
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_set_filter&quot;</span>)]
-    </span><span class="kw">pub fn </span>set_filter(<span class="kw-2">&amp;</span><span class="self">self</span>, filter: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Filter&gt;&gt;) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_set_filter"</span>)]
+    #[doc(alias = <span class="string">"filter"</span>)]
+    </span><span class="kw">pub fn </span>set_filter(<span class="kw-2">&amp;</span><span class="self">self</span>, filter: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="filter.rs.html#13-59">Filter</a>&gt;&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_set_filter(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                filter.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_set_filter.html">ffi::gtk_font_dialog_set_filter</a>(
+                <a class="self" href="#426">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#426">filter</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#430">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             );
         }
     }
@@ -1224,12 +1206,13 @@
     /// If @fontmap is `NULL`, the default fontmap is used.
     /// ## `fontmap`
     /// the fontmap
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_set_font_map&quot;</span>)]
-    </span><span class="kw">pub fn </span>set_font_map(<span class="kw-2">&amp;</span><span class="self">self</span>, fontmap: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;pango::FontMap&gt;&gt;) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_set_font_map"</span>)]
+    #[doc(alias = <span class="string">"font-map"</span>)]
+    </span><span class="kw">pub fn </span>set_font_map(<span class="kw-2">&amp;</span><span class="self">self</span>, fontmap: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_map/struct.FontMap.html">pango::FontMap</a>&gt;&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_set_font_map(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                fontmap.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_set_font_map.html">ffi::gtk_font_dialog_set_font_map</a>(
+                <a class="self" href="#442">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#442">fontmap</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="#446">p</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>()).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             );
         }
     }
@@ -1237,12 +1220,13 @@
     <span class="doccomment">/// Sets the language for which font features are applied.
     /// ## `language`
     /// the language for font features
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_set_language&quot;</span>)]
-    </span><span class="kw">pub fn </span>set_language(<span class="kw-2">&amp;</span><span class="self">self</span>, language: <span class="kw-2">&amp;</span>pango::Language) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_set_language"</span>)]
+    #[doc(alias = <span class="string">"language"</span>)]
+    </span><span class="kw">pub fn </span>set_language(<span class="kw-2">&amp;</span><span class="self">self</span>, language: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/language/struct.Language.html">pango::Language</a>) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_set_language(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                mut_override(language.to_glib_none().<span class="number">0</span>),
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_set_language.html">ffi::gtk_font_dialog_set_language</a>(
+                <a class="self" href="#456">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.mut_override.html">mut_override</a>(<a href="#456">language</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>),
             );
         }
     }
@@ -1252,10 +1236,11 @@
     /// while it is presented.
     /// ## `modal`
     /// the new value
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_set_modal&quot;</span>)]
-    </span><span class="kw">pub fn </span>set_modal(<span class="kw-2">&amp;</span><span class="self">self</span>, modal: bool) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_set_modal"</span>)]
+    #[doc(alias = <span class="string">"modal"</span>)]
+    </span><span class="kw">pub fn </span>set_modal(<span class="kw-2">&amp;</span><span class="self">self</span>, modal: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_set_modal(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, modal.into_glib());
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_set_modal.html">ffi::gtk_font_dialog_set_modal</a>(<a class="self" href="#472">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#472">modal</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>());
         }
     }
 
@@ -1263,144 +1248,145 @@
     /// font chooser dialog.
     /// ## `title`
     /// the new title
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;gtk_font_dialog_set_title&quot;</span>)]
-    </span><span class="kw">pub fn </span>set_title(<span class="kw-2">&amp;</span><span class="self">self</span>, title: <span class="kw-2">&amp;</span>str) {
+    </span><span class="attr">#[doc(alias = <span class="string">"gtk_font_dialog_set_title"</span>)]
+    #[doc(alias = <span class="string">"title"</span>)]
+    </span><span class="kw">pub fn </span>set_title(<span class="kw-2">&amp;</span><span class="self">self</span>, title: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
         <span class="kw">unsafe </span>{
-            ffi::gtk_font_dialog_set_title(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, title.to_glib_none().<span class="number">0</span>);
+            <a href="../../../gtk4_sys/fn.gtk_font_dialog_set_title.html">ffi::gtk_font_dialog_set_title</a>(<a class="self" href="#484">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#484">title</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
         }
     }
 
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;filter&quot;</span>)]
-    </span><span class="kw">pub fn </span>connect_filter_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_filter_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span>FontDialog) + <span class="lifetime">&#39;static</span>&gt;(
-            this: <span class="kw-2">*mut </span>ffi::GtkFontDialog,
+    <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    #[doc(alias = <span class="string">"filter"</span>)]
+    </span><span class="kw">pub fn </span>connect_filter_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_filter_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span><a href="#13-71">FontDialog</a>) + <span class="lifetime">'static</span>&gt;(
+            this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkFontDialog.html">ffi::GtkFontDialog</a>,
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(f <span class="kw">as </span><span class="kw-2">*const </span>F);
-            f(<span class="kw-2">&amp;</span>from_glib_borrow(this))
+            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#497">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
+            <a href="#499">f</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#495">this</a>))
         }
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>f: Box_&lt;F&gt; = Box_::new(f);
-            connect_raw(
-                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b&quot;notify::filter\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
-                <span class="prelude-val">Some</span>(transmute::&lt;<span class="kw">_</span>, <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>()&gt;(
+            <span class="kw">let </span>f: Box_&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#493">f</a>);
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
+                <a class="self" href="#493">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <span class="string">b"notify::filter\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="prelude-val">Some</span>(std::mem::transmute::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     notify_filter_trampoline::&lt;F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
-                Box_::into_raw(f),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#503">f</a>),
             )
         }
     }
 
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;font-map&quot;</span>)]
-    </span><span class="kw">pub fn </span>connect_font_map_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_font_map_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span>FontDialog) + <span class="lifetime">&#39;static</span>&gt;(
-            this: <span class="kw-2">*mut </span>ffi::GtkFontDialog,
+    <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    #[doc(alias = <span class="string">"font-map"</span>)]
+    </span><span class="kw">pub fn </span>connect_font_map_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_font_map_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span><a href="#13-71">FontDialog</a>) + <span class="lifetime">'static</span>&gt;(
+            this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkFontDialog.html">ffi::GtkFontDialog</a>,
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(f <span class="kw">as </span><span class="kw-2">*const </span>F);
-            f(<span class="kw-2">&amp;</span>from_glib_borrow(this))
+            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#522">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
+            <a href="#524">f</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#520">this</a>))
         }
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>f: Box_&lt;F&gt; = Box_::new(f);
-            connect_raw(
-                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b&quot;notify::font-map\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
-                <span class="prelude-val">Some</span>(transmute::&lt;<span class="kw">_</span>, <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>()&gt;(
+            <span class="kw">let </span>f: Box_&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#518">f</a>);
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
+                <a class="self" href="#518">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <span class="string">b"notify::font-map\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="prelude-val">Some</span>(std::mem::transmute::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     notify_font_map_trampoline::&lt;F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
-                Box_::into_raw(f),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#528">f</a>),
             )
         }
     }
 
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;language&quot;</span>)]
-    </span><span class="kw">pub fn </span>connect_language_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_language_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span>FontDialog) + <span class="lifetime">&#39;static</span>&gt;(
-            this: <span class="kw-2">*mut </span>ffi::GtkFontDialog,
+    <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    #[doc(alias = <span class="string">"language"</span>)]
+    </span><span class="kw">pub fn </span>connect_language_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_language_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span><a href="#13-71">FontDialog</a>) + <span class="lifetime">'static</span>&gt;(
+            this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkFontDialog.html">ffi::GtkFontDialog</a>,
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(f <span class="kw">as </span><span class="kw-2">*const </span>F);
-            f(<span class="kw-2">&amp;</span>from_glib_borrow(this))
+            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#547">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
+            <a href="#549">f</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#545">this</a>))
         }
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>f: Box_&lt;F&gt; = Box_::new(f);
-            connect_raw(
-                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b&quot;notify::language\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
-                <span class="prelude-val">Some</span>(transmute::&lt;<span class="kw">_</span>, <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>()&gt;(
+            <span class="kw">let </span>f: Box_&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#543">f</a>);
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
+                <a class="self" href="#543">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <span class="string">b"notify::language\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="prelude-val">Some</span>(std::mem::transmute::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     notify_language_trampoline::&lt;F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
-                Box_::into_raw(f),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#553">f</a>),
             )
         }
     }
 
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;modal&quot;</span>)]
-    </span><span class="kw">pub fn </span>connect_modal_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_modal_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span>FontDialog) + <span class="lifetime">&#39;static</span>&gt;(
-            this: <span class="kw-2">*mut </span>ffi::GtkFontDialog,
+    <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    #[doc(alias = <span class="string">"modal"</span>)]
+    </span><span class="kw">pub fn </span>connect_modal_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_modal_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span><a href="#13-71">FontDialog</a>) + <span class="lifetime">'static</span>&gt;(
+            this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkFontDialog.html">ffi::GtkFontDialog</a>,
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(f <span class="kw">as </span><span class="kw-2">*const </span>F);
-            f(<span class="kw-2">&amp;</span>from_glib_borrow(this))
+            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#572">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
+            <a href="#574">f</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#570">this</a>))
         }
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>f: Box_&lt;F&gt; = Box_::new(f);
-            connect_raw(
-                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b&quot;notify::modal\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
-                <span class="prelude-val">Some</span>(transmute::&lt;<span class="kw">_</span>, <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>()&gt;(
+            <span class="kw">let </span>f: Box_&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#568">f</a>);
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
+                <a class="self" href="#568">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <span class="string">b"notify::modal\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="prelude-val">Some</span>(std::mem::transmute::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     notify_modal_trampoline::&lt;F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
-                Box_::into_raw(f),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#578">f</a>),
             )
         }
     }
 
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;title&quot;</span>)]
-    </span><span class="kw">pub fn </span>connect_title_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
-        <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_title_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span>FontDialog) + <span class="lifetime">&#39;static</span>&gt;(
-            this: <span class="kw-2">*mut </span>ffi::GtkFontDialog,
+    <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    #[doc(alias = <span class="string">"title"</span>)]
+    </span><span class="kw">pub fn </span>connect_title_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_title_trampoline&lt;F: Fn(<span class="kw-2">&amp;</span><a href="#13-71">FontDialog</a>) + <span class="lifetime">'static</span>&gt;(
+            this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkFontDialog.html">ffi::GtkFontDialog</a>,
             _param_spec: glib::ffi::gpointer,
             f: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(f <span class="kw">as </span><span class="kw-2">*const </span>F);
-            f(<span class="kw-2">&amp;</span>from_glib_borrow(this))
+            <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#597">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
+            <a href="#599">f</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#595">this</a>))
         }
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>f: Box_&lt;F&gt; = Box_::new(f);
-            connect_raw(
-                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b&quot;notify::title\0&quot;</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
-                <span class="prelude-val">Some</span>(transmute::&lt;<span class="kw">_</span>, <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>()&gt;(
+            <span class="kw">let </span>f: Box_&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#593">f</a>);
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
+                <a class="self" href="#593">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <span class="string">b"notify::title\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="prelude-val">Some</span>(std::mem::transmute::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     notify_title_trampoline::&lt;F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
-                Box_::into_raw(f),
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#603">f</a>),
             )
         }
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-</span><span class="kw">impl </span>Default <span class="kw">for </span>FontDialog {
+<span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+</span><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#13-71">FontDialog</a> {
     <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-        <span class="self">Self</span>::new()
+        <a href="#80-83"><span class="self">Self</span>::new</a>()
     }
 }
 
@@ -1408,25 +1394,25 @@
 </span><span class="doccomment">/// A [builder-pattern] type to construct [`FontDialog`] objects.
 ///
 /// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
-</span><span class="attr">#[must_use = <span class="string">&quot;The builder must be built to be used&quot;</span>]
-</span><span class="kw">pub struct </span>FontDialogBuilder {
-    builder: glib::object::ObjectBuilder&lt;<span class="lifetime">&#39;static</span>, FontDialog&gt;,
+</span><span class="attr">#[must_use = <span class="string">"The builder must be built to be used"</span>]
+</span><span class="kw">pub struct </span><a href="../../../gtk4/builders/struct.FontDialogBuilder.html">FontDialogBuilder</a> {
+    builder: glib::object::ObjectBuilder&lt;<span class="lifetime">'static</span>, <a href="#13-71">FontDialog</a>&gt;,
 }
 
-<span class="kw">impl </span>FontDialogBuilder {
+<span class="kw">impl </span><a href="#629-631">FontDialogBuilder</a> {
     <span class="kw">fn </span>new() -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: glib::object::Object::builder(),
+            builder: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.Object.html#method.builder">glib::object::Object::builder</a>(),
         }
     }
 
     <span class="doccomment">/// Sets a filter to restrict what fonts are shown
     /// in the font chooser dialog.
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    </span><span class="kw">pub fn </span>filter(<span class="self">self</span>, filter: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Filter&gt;) -&gt; <span class="self">Self </span>{
+    </span><span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    </span><span class="kw">pub fn </span>filter(<span class="self">self</span>, filter: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="filter.rs.html#13-59">Filter</a>&gt;) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: <span class="self">self</span>.builder.property(<span class="string">&quot;filter&quot;</span>, filter.clone().upcast()),
+            builder: <a class="self" href="#644">self</a>.builder.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.ObjectBuilder.html#method.property">property</a>(<span class="string">"filter"</span>, <a href="#644">filter</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.upcast">upcast</a>()),
         }
     }
 
@@ -1434,54 +1420,47 @@
     ///
     /// A custom font map can be used to present application-specific
     /// fonts instead of or in addition to the normal system fonts.
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    </span><span class="kw">pub fn </span>font_map(<span class="self">self</span>, font_map: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;pango::FontMap&gt;) -&gt; <span class="self">Self </span>{
+    </span><span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    </span><span class="kw">pub fn </span>font_map(<span class="self">self</span>, font_map: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/font_map/struct.FontMap.html">pango::FontMap</a>&gt;) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: <span class="self">self</span>.builder.property(<span class="string">&quot;font-map&quot;</span>, font_map.clone().upcast()),
+            builder: <a class="self" href="#656">self</a>.builder.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.ObjectBuilder.html#method.property">property</a>(<span class="string">"font-map"</span>, <a href="#656">font_map</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.upcast">upcast</a>()),
         }
     }
 
     <span class="doccomment">/// The language for which the font features are selected.
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    </span><span class="kw">pub fn </span>language(<span class="self">self</span>, language: <span class="kw-2">&amp;</span>pango::Language) -&gt; <span class="self">Self </span>{
+    </span><span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    </span><span class="kw">pub fn </span>language(<span class="self">self</span>, language: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/pango/auto/language/struct.Language.html">pango::Language</a>) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: <span class="self">self</span>.builder.property(<span class="string">&quot;language&quot;</span>, language),
+            builder: <a class="self" href="#665">self</a>.builder.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.ObjectBuilder.html#method.property">property</a>(<span class="string">"language"</span>, <a href="#665">language</a>),
         }
     }
 
     <span class="doccomment">/// Whether the font chooser dialog is modal.
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    </span><span class="kw">pub fn </span>modal(<span class="self">self</span>, modal: bool) -&gt; <span class="self">Self </span>{
+    </span><span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    </span><span class="kw">pub fn </span>modal(<span class="self">self</span>, modal: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: <span class="self">self</span>.builder.property(<span class="string">&quot;modal&quot;</span>, modal),
+            builder: <a class="self" href="#674">self</a>.builder.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.ObjectBuilder.html#method.property">property</a>(<span class="string">"modal"</span>, <a href="#674">modal</a>),
         }
     }
 
     <span class="doccomment">/// A title that may be shown on the font chooser
     /// dialog that is presented by [`FontDialog::choose_font()`][crate::FontDialog::choose_font()].
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v4_10&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v4_10&quot;</span>)))]
-    </span><span class="kw">pub fn </span>title(<span class="self">self</span>, title: <span class="kw">impl </span>Into&lt;glib::GString&gt;) -&gt; <span class="self">Self </span>{
+    </span><span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
+    </span><span class="kw">pub fn </span>title(<span class="self">self</span>, title: <span class="kw">impl </span>Into&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">glib::GString</a>&gt;) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: <span class="self">self</span>.builder.property(<span class="string">&quot;title&quot;</span>, title.into()),
+            builder: <a class="self" href="#684">self</a>.builder.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.ObjectBuilder.html#method.property">property</a>(<span class="string">"title"</span>, <a href="#684">title</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>()),
         }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Build the [`FontDialog`].
-    </span><span class="attr">#[must_use = <span class="string">&quot;Building the object from the builder is usually expensive and is not expected to have side effects&quot;</span>]
-    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; FontDialog {
-        <span class="self">self</span>.builder.build()
+    </span><span class="attr">#[must_use = <span class="string">"Building the object from the builder is usually expensive and is not expected to have side effects"</span>]
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; <a href="#13-71">FontDialog</a> {
+        <a class="self" href="#693">self</a>.builder.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.ObjectBuilder.html#method.build">build</a>()
     }
 }
-
-<span class="kw">impl </span>fmt::Display <span class="kw">for </span>FontDialog {
-    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
-        f.write_str(<span class="string">&quot;FontDialog&quot;</span>)
-    }
-}
-</code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (ef934d9b6 2023-02-08)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</code></pre></div></section></main></body></html>

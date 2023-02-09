@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4-macros/src/attribute_parser.rs`."><title>attribute_parser.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4-macros/src/attribute_parser.rs`."><title>attribute_parser.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (6be96e386 2024-07-09)" data-channel="nightly" data-search-js="search-d234aafac6c221dd.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../gtk4_macros/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -443,367 +443,343 @@
 <a href="#370" id="370">370</a>
 <a href="#371" id="371">371</a>
 <a href="#372" id="372">372</a>
-<a href="#373" id="373">373</a>
-<a href="#374" id="374">374</a>
-<a href="#375" id="375">375</a>
-<a href="#376" id="376">376</a>
-<a href="#377" id="377">377</a>
-<a href="#378" id="378">378</a>
-<a href="#379" id="379">379</a>
-<a href="#380" id="380">380</a>
-<a href="#381" id="381">381</a>
-<a href="#382" id="382">382</a>
-<a href="#383" id="383">383</a>
-<a href="#384" id="384">384</a>
-</pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+</pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
-</span><span class="kw">use </span>anyhow::{bail, <span class="prelude-ty">Result</span>};
-<span class="kw">use </span>proc_macro2::Span;
+</span><span class="kw">use </span><a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html">proc_macro2::Span</a>;
+<span class="kw">use </span><a href="https://docs.rs/quote/1.0.36/quote/to_tokens/trait.ToTokens.html">quote::ToTokens</a>;
 <span class="kw">use </span>syn::{
-    parse::Error, spanned::Spanned, Attribute, DeriveInput, Field, Fields, Ident, Lit, Meta,
-    MetaList, MetaNameValue, NestedMeta, Type,
+    parse::{<a href="https://docs.rs/syn/2.0.70/syn/parse/trait.Parse.html">Parse</a>, <a href="https://docs.rs/syn/2.0.70/syn/parse/type.ParseStream.html">ParseStream</a>},
+    <a href="https://docs.rs/syn/2.0.70/syn/punctuated/struct.Punctuated.html">punctuated::Punctuated</a>,
+    <a href="https://docs.rs/syn/2.0.70/syn/attr/struct.Attribute.html">Attribute</a>, <a href="https://docs.rs/syn/2.0.70/syn/derive/struct.DeriveInput.html">DeriveInput</a>, <a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html">Error</a>, <a href="https://docs.rs/syn/2.0.70/syn/data/struct.Field.html">Field</a>, <a href="https://docs.rs/syn/2.0.70/syn/data/enum.Fields.html">Fields</a>, Ident, LitBool, LitStr, <a href="https://docs.rs/syn/2.0.70/syn/attr/enum.Meta.html">Meta</a>, <span class="prelude-ty">Result</span>, <a href="https://docs.rs/syn/2.0.70/syn/macro.Token.html">Token</a>,
+    <a href="https://docs.rs/syn/2.0.70/syn/ty/enum.Type.html">Type</a>,
 };
 
-<span class="kw">pub struct </span>Template {
-    <span class="kw">pub </span>source: TemplateSource,
-    <span class="kw">pub </span>allow_template_child_without_attribute: bool,
+<span class="doccomment">/// Custom meta keywords.
+</span><span class="kw">mod </span>kw {
+    <span class="comment">// `template` attribute.
+    </span><a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.custom_keyword.html">syn::custom_keyword!</a>(file);
+    <a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.custom_keyword.html">syn::custom_keyword!</a>(resource);
+    <a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.custom_keyword.html">syn::custom_keyword!</a>(string);
+    <a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.custom_keyword.html">syn::custom_keyword!</a>(allow_template_child_without_attribute);
+
+    <span class="comment">// `template_child` attribute.
+    </span><a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.custom_keyword.html">syn::custom_keyword!</a>(id);
+    <a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.custom_keyword.html">syn::custom_keyword!</a>(internal);
 }
 
-<span class="kw">pub enum </span>TemplateSource {
-    File(String),
-    Resource(String),
-    Xml(String),
-    <span class="attr">#[cfg(feature = <span class="string">&quot;blueprint&quot;</span>)]
-    </span>Blueprint(String),
+<span class="doccomment">/// The parsed `template` attribute.
+</span><span class="kw">pub struct </span>Template {
+    <span class="kw">pub </span>source: <a href="#115-121">TemplateSource</a>,
+    <span class="kw">pub </span>allow_template_child_without_attribute: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 }
 
-<span class="kw">impl </span>TemplateSource {
-    <span class="kw">fn </span>from_string_source(source: String) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">for </span>c <span class="kw">in </span>source.chars() {
-            <span class="attr">#[cfg(feature = <span class="string">&quot;blueprint&quot;</span>)]
+<span class="kw">impl </span><a href="https://docs.rs/syn/2.0.70/syn/parse/trait.Parse.html">Parse</a> <span class="kw">for </span><a href="#26-29">Template</a> {
+    <span class="kw">fn </span>parse(input: <a href="https://docs.rs/syn/2.0.70/syn/parse/type.ParseStream.html">ParseStream</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>source = <span class="prelude-val">None</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>allow_template_child_without_attribute = <span class="bool-val">false</span>;
+
+        <span class="kw">while </span>!input.is_empty() {
+            <span class="kw">let </span>lookahead = input.lookahead1();
+            <span class="kw">if </span>lookahead.peek(kw::file) {
+                <span class="kw">let </span>keyword: kw::file = input.parse()<span class="question-mark">?</span>;
+                <span class="kw">let _</span>: <span class="macro">Token!</span>[=] = input.parse()<span class="question-mark">?</span>;
+                <span class="kw">let </span>value: LitStr = input.parse()<span class="question-mark">?</span>;
+
+                <span class="kw">if </span>source.is_some() {
+                    <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new_spanned(
+                        keyword,
+                        <span class="string">"Specify only one of 'file', 'resource', or 'string'"</span>,
+                    ));
+                }
+
+                source = <span class="prelude-val">Some</span>(TemplateSource::File(value.value()));
+            } <span class="kw">else if </span>lookahead.peek(kw::resource) {
+                <span class="kw">let </span>keyword: kw::resource = input.parse()<span class="question-mark">?</span>;
+                <span class="kw">let _</span>: <span class="macro">Token!</span>[=] = input.parse()<span class="question-mark">?</span>;
+                <span class="kw">let </span>value: LitStr = input.parse()<span class="question-mark">?</span>;
+
+                <span class="kw">if </span>source.is_some() {
+                    <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new_spanned(
+                        keyword,
+                        <span class="string">"Specify only one of 'file', 'resource', or 'string'"</span>,
+                    ));
+                }
+
+                source = <span class="prelude-val">Some</span>(TemplateSource::Resource(value.value()));
+            } <span class="kw">else if </span>lookahead.peek(kw::string) {
+                <span class="kw">let </span>keyword: kw::string = input.parse()<span class="question-mark">?</span>;
+                <span class="kw">let _</span>: <span class="macro">Token!</span>[=] = input.parse()<span class="question-mark">?</span>;
+                <span class="kw">let </span>value: LitStr = input.parse()<span class="question-mark">?</span>;
+
+                <span class="kw">if </span>source.is_some() {
+                    <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new_spanned(
+                        keyword,
+                        <span class="string">"Specify only one of 'file', 'resource', or 'string'"</span>,
+                    ));
+                }
+
+                source = <span class="prelude-val">Some</span>(
+                    TemplateSource::from_string_source(value.value())
+                        .ok_or_else(|| Error::new_spanned(value, <span class="string">"Unknown language"</span>))<span class="question-mark">?</span>,
+                );
+            } <span class="kw">else if </span>lookahead.peek(kw::allow_template_child_without_attribute) {
+                <span class="kw">let </span>keyword: kw::allow_template_child_without_attribute = input.parse()<span class="question-mark">?</span>;
+
+                <span class="kw">if </span>allow_template_child_without_attribute {
+                    <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new_spanned(
+                        keyword,
+                        <span class="string">"Duplicate 'allow_template_child_without_attribute'"</span>,
+                    ));
+                }
+
+                allow_template_child_without_attribute = <span class="bool-val">true</span>;
+            } <span class="kw">else </span>{
+                <span class="kw">return </span><span class="prelude-val">Err</span>(lookahead.error());
+            }
+
+            <span class="kw">if </span>!input.is_empty() {
+                <span class="kw">let _</span>: <span class="macro">Token!</span>[,] = input.parse()<span class="question-mark">?</span>;
+            }
+        }
+
+        <span class="kw">let </span><span class="prelude-val">Some</span>(source) = <a href="#33">source</a> <span class="kw">else </span>{
+            <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html#method.new">Error::new</a>(
+                <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html#method.call_site">Span::call_site</a>(),
+                <span class="string">"Invalid meta, specify one of 'file', 'resource', or 'string'"</span>,
+            ));
+        };
+
+        <span class="prelude-val">Ok</span>(<a href="#26-29">Template</a> {
+            <a href="#100">source</a>,
+            <a href="#34">allow_template_child_without_attribute</a>,
+        })
+    }
+}
+
+<span class="doccomment">/// The source of a template.
+</span><span class="kw">pub enum </span>TemplateSource {
+    File(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>),
+    Resource(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>),
+    Xml(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>),
+    <span class="attr">#[cfg(feature = <span class="string">"blueprint"</span>)]
+    </span>Blueprint(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>),
+}
+
+<span class="kw">impl </span><a href="#115-121">TemplateSource</a> {
+    <span class="kw">fn </span>from_string_source(value: <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">for </span>c <span class="kw">in </span>value.chars() {
+            <span class="attr">#[cfg(feature = <span class="string">"blueprint"</span>)]
             </span><span class="kw">if </span>c.is_ascii_alphabetic() {
                 <span class="comment">// blueprint code starts with some alphabetic letters
-                </span><span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="self">Self</span>::Blueprint(source));
-            } <span class="kw">else if </span>c == <span class="string">&#39;&lt;&#39; </span>{
-                <span class="comment">// xml tags starts with &#39;&lt;&#39; symbol
-                </span><span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="self">Self</span>::Xml(source));
+                </span><span class="kw">return </span><span class="prelude-val">Some</span>(<span class="self">Self</span>::Blueprint(value));
+            } <span class="kw">else if </span>c == <span class="string">'&lt;' </span>{
+                <span class="comment">// xml tags starts with '&lt;' symbol
+                </span><span class="kw">return </span><span class="prelude-val">Some</span>(<span class="self">Self</span>::Xml(value));
             }
-            <span class="attr">#[cfg(not(feature = <span class="string">&quot;blueprint&quot;</span>))]
-            </span><span class="kw">if </span>c == <span class="string">&#39;&lt;&#39; </span>{
-                <span class="comment">// xml tags starts with &#39;&lt;&#39; symbol
-                </span><span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="self">Self</span>::Xml(source));
+            <span class="attr">#[cfg(not(feature = <span class="string">"blueprint"</span>))]
+            </span><span class="kw">if </span>c == <span class="string">'&lt;' </span>{
+                <span class="comment">// xml tags starts with '&lt;' symbol
+                </span><span class="kw">return </span><span class="prelude-val">Some</span>(<span class="self">Self</span>::Xml(value));
             }
         }
-        <span class="macro">bail!</span>(<span class="string">&quot;Unknown lanuage&quot;</span>)
-    }
+
+        <span class="prelude-val">None
+    </span>}
 }
 
-<span class="kw">pub fn </span>parse_template_source(input: <span class="kw-2">&amp;</span>DeriveInput) -&gt; <span class="prelude-ty">Result</span>&lt;Template&gt; {
-    <span class="kw">let </span>meta = <span class="kw">match </span>find_attribute_meta(<span class="kw-2">&amp;</span>input.attrs, <span class="string">&quot;template&quot;</span>)<span class="question-mark">? </span>{
-        <span class="prelude-val">Some</span>(meta) =&gt; meta,
-        <span class="kw">_ </span>=&gt; <span class="macro">bail!</span>(<span class="string">&quot;Missing &#39;template&#39; attribute&quot;</span>),
+<span class="kw">pub fn </span>parse_template_source(input: <span class="kw-2">&amp;</span><a href="https://docs.rs/syn/2.0.70/syn/derive/struct.DeriveInput.html">DeriveInput</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="#26-29">Template</a>&gt; {
+    <span class="kw">let </span><span class="prelude-val">Some</span>(attr) = <a href="#145">input</a>
+        .attrs
+        .<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()
+        .<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.find">find</a>(|attr| <a href="#149">attr</a>.<a href="https://docs.rs/syn/2.0.70/syn/attr/struct.Attribute.html#method.path">path</a>().<a href="https://docs.rs/syn/2.0.70/syn/path/struct.Path.html#method.is_ident">is_ident</a>(<span class="string">"template"</span>))
+    <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html#method.new">Error::new</a>(
+            <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html#method.call_site">Span::call_site</a>(),
+            <span class="string">"Missing 'template' attribute"</span>,
+        ));
     };
 
-    <span class="kw">let </span><span class="kw-2">mut </span>allow_template_child_without_attribute = <span class="bool-val">false</span>;
-    <span class="kw">let </span><span class="kw-2">mut </span>source = <span class="prelude-val">None</span>;
+    <a href="#146">attr</a>.<a href="https://docs.rs/syn/2.0.70/syn/attr/struct.Attribute.html#method.parse_args">parse_args</a>::&lt;<a href="#26-29">Template</a>&gt;()
+}
 
-    <span class="kw">for </span>n <span class="kw">in </span>meta.nested.iter() {
-        <span class="kw">if let </span>NestedMeta::Meta(m) = n {
-            <span class="kw">let </span>p = m.path();
-            <span class="kw">if </span>p.is_ident(<span class="string">&quot;file&quot;</span>) || p.is_ident(<span class="string">&quot;resource&quot;</span>) || p.is_ident(<span class="string">&quot;string&quot;</span>) {
-                <span class="kw">if </span>source.is_some() {
-                    <span class="macro">bail!</span>(Error::new_spanned(
-                        p,
-                        <span class="string">&quot;Specify only one of &#39;file&#39;, &#39;resource&#39;, or &#39;string&#39;&quot;
-                    </span>));
-                }
-                source.replace(n);
-            }
-            <span class="kw">if </span>p.is_ident(<span class="string">&quot;allow_template_child_without_attribute&quot;</span>) {
-                <span class="kw">if </span>!<span class="macro">matches!</span>(m, Meta::Path(<span class="kw">_</span>)) {
-                    <span class="macro">bail!</span>(Error::new_spanned(m, <span class="string">&quot;Wrong meta&quot;</span>));
-                }
-                <span class="kw">if </span>allow_template_child_without_attribute {
-                    <span class="macro">bail!</span>(Error::new_spanned(
-                        p,
-                        <span class="string">&quot;Duplicate &#39;allow_template_child_without_attribute&#39;&quot;
-                    </span>));
-                }
-                allow_template_child_without_attribute = <span class="bool-val">true</span>;
-            }
-        } <span class="kw">else </span>{
-            <span class="macro">bail!</span>(Error::new_spanned(n, <span class="string">&quot;wrong meta type&quot;</span>));
+<span class="doccomment">/// An argument in a field attribute.
+</span><span class="kw">pub enum </span>FieldAttributeArg {
+    <span class="attr">#[allow(dead_code)]
+    </span><span class="comment">// The span is needed for xml_validation feature
+    </span>Id(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html">Span</a>),
+    Internal(<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>),
+}
+
+<span class="kw">impl </span><a href="#161-166">FieldAttributeArg</a> {
+    <span class="kw">fn </span>from_template_child_meta(meta: <span class="kw-2">&amp;</span><a href="#219-228">TemplateChildAttributeMeta</a>) -&gt; <span class="self">Self </span>{
+        <span class="kw">match </span><a href="#169">meta</a> {
+            <a href="#220-223">TemplateChildAttributeMeta::Id</a> { value, .. } =&gt; <a href="#164"><span class="self">Self</span>::Id</a>(<a href="#171">value</a>.<a href="https://docs.rs/syn/2.0.70/syn/lit/struct.LitStr.html#method.value">value</a>(), <a href="#171">value</a>.<a href="https://docs.rs/syn/2.0.70/syn/lit/struct.LitStr.html#method.span">span</a>()),
+            <a href="#224-227">TemplateChildAttributeMeta::Internal</a> { value, .. } =&gt; <a href="#165"><span class="self">Self</span>::Internal</a>(<a href="#172">value</a>.<a href="https://docs.rs/syn/2.0.70/syn/lit/struct.LitBool.html#method.value">value</a>()),
         }
     }
-    <span class="kw">let </span>source = <span class="kw">match </span>source {
-        <span class="prelude-val">Some</span>(source) =&gt; source,
-        <span class="prelude-val">None </span>=&gt; <span class="macro">bail!</span>(Error::new_spanned(
-            <span class="kw-2">&amp;</span>meta,
-            <span class="string">&quot;Invalid meta, specify one of &#39;file&#39;, &#39;resource&#39;, or &#39;string&#39;&quot;
-        </span>)),
-    };
-
-    <span class="kw">let </span>(ident, v) = parse_attribute(source)<span class="question-mark">?</span>;
-
-    <span class="kw">let </span>source = <span class="kw">match </span>ident.as_ref() {
-        <span class="string">&quot;file&quot; </span>=&gt; TemplateSource::File(v),
-        <span class="string">&quot;resource&quot; </span>=&gt; TemplateSource::Resource(v),
-        <span class="string">&quot;string&quot; </span>=&gt; TemplateSource::from_string_source(v)<span class="question-mark">?</span>,
-        s =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Unknown enum meta {}&quot;</span>, s),
-    };
-    <span class="prelude-val">Ok</span>(Template {
-        source,
-        allow_template_child_without_attribute,
-    })
 }
 
-<span class="comment">// find the #[@attr_name] attribute in @attrs
-</span><span class="kw">fn </span>find_attribute_meta(attrs: <span class="kw-2">&amp;</span>[Attribute], attr_name: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;MetaList&gt;&gt; {
-    <span class="kw">let </span>meta = <span class="kw">match </span>attrs.iter().find(|a| a.path.is_ident(attr_name)) {
-        <span class="prelude-val">Some</span>(a) =&gt; a.parse_meta(),
-        <span class="kw">_ </span>=&gt; <span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
-    };
-    <span class="kw">match </span>meta<span class="question-mark">? </span>{
-        Meta::List(n) =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(n)),
-        <span class="kw">_ </span>=&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
-    }
-}
-
-<span class="comment">// parse a single meta like: ident = &quot;value&quot;
-</span><span class="kw">fn </span>parse_attribute(meta: <span class="kw-2">&amp;</span>NestedMeta) -&gt; <span class="prelude-ty">Result</span>&lt;(String, String)&gt; {
-    <span class="kw">let </span>meta = <span class="kw">match </span><span class="kw-2">&amp;</span>meta {
-        NestedMeta::Meta(m) =&gt; m,
-        <span class="kw">_ </span>=&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
-    };
-    <span class="kw">let </span>meta = <span class="kw">match </span>meta {
-        Meta::NameValue(n) =&gt; n,
-        <span class="kw">_ </span>=&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
-    };
-    <span class="kw">let </span>value = <span class="kw">match </span><span class="kw-2">&amp;</span>meta.lit {
-        Lit::Str(s) =&gt; s.value(),
-        <span class="kw">_ </span>=&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
-    };
-
-    <span class="kw">let </span>ident = <span class="kw">match </span>meta.path.get_ident() {
-        <span class="prelude-val">None </span>=&gt; <span class="macro">bail!</span>(<span class="string">&quot;missing ident&quot;</span>),
-        <span class="prelude-val">Some</span>(ident) =&gt; ident,
-    };
-
-    <span class="prelude-val">Ok</span>((ident.to_string(), value))
-}
-
-<span class="kw">pub enum </span>FieldAttributeArg {
-    Id(String, Span),
-    Internal(bool),
-}
-
-<span class="attr">#[derive(Debug)]
+<span class="doccomment">/// The type of a field attribute.
+</span><span class="attr">#[derive(Debug)]
 </span><span class="kw">pub enum </span>FieldAttributeType {
     TemplateChild,
 }
 
-<span class="kw">pub struct </span>FieldAttribute {
-    <span class="kw">pub </span>ty: FieldAttributeType,
-    <span class="kw">pub </span>args: Vec&lt;FieldAttributeArg&gt;,
-    <span class="kw">pub </span>path_span: Span,
-    <span class="kw">pub </span>span: Span,
+<span class="doccomment">/// A field attribute with args.
+</span><span class="kw">pub struct </span>FieldAttribute {
+    <span class="kw">pub </span>ty: <a href="#179-181">FieldAttributeType</a>,
+    <span class="kw">pub </span>args: Vec&lt;<a href="#161-166">FieldAttributeArg</a>&gt;,
 }
 
-<span class="kw">pub struct </span>AttributedField {
-    <span class="kw">pub </span>ident: Ident,
-    <span class="kw">pub </span>ty: Type,
-    <span class="kw">pub </span>attr: FieldAttribute,
+<span class="doccomment">/// A field with an attribute.
+</span><span class="kw">pub struct </span>AttributedField {
+    <span class="kw">pub </span>ident: <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Ident.html">Ident</a>,
+    <span class="kw">pub </span>ty: <a href="https://docs.rs/syn/2.0.70/syn/ty/enum.Type.html">Type</a>,
+    <span class="kw">pub </span>attr: <a href="#184-187">FieldAttribute</a>,
 }
 
-<span class="kw">impl </span>AttributedField {
-    <span class="kw">pub fn </span>id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String {
+<span class="kw">impl </span><a href="#190-194">AttributedField</a> {
+    <span class="kw">pub fn </span>id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> {
         <span class="kw">let </span><span class="kw-2">mut </span>name = <span class="prelude-val">None</span>;
         <span class="kw">for </span>arg <span class="kw">in </span><span class="kw-2">&amp;</span><span class="self">self</span>.attr.args {
             <span class="kw">if let </span>FieldAttributeArg::Id(value, <span class="kw">_</span>) = arg {
                 name = <span class="prelude-val">Some</span>(value)
             }
         }
-        name.cloned().unwrap_or_else(|| <span class="self">self</span>.ident.to_string())
+        <a href="#198">name</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_else">unwrap_or_else</a>(|| <a class="self" href="#197">self</a>.ident.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())
     }
 
-    <span class="attr">#[cfg(feature = <span class="string">&quot;xml_validation&quot;</span>)]
-    </span><span class="kw">pub fn </span>id_span(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Span {
+    <span class="attr">#[cfg(feature = <span class="string">"xml_validation"</span>)]
+    </span><span class="kw">pub fn </span>id_span(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html">Span</a> {
         <span class="kw">for </span>arg <span class="kw">in </span><span class="kw-2">&amp;</span><span class="self">self</span>.attr.args {
             <span class="kw">if let </span>FieldAttributeArg::Id(<span class="kw">_</span>, span) = arg {
                 <span class="kw">return </span><span class="kw-2">*</span>span;
             }
         }
-        <span class="self">self</span>.ident.span()
+        <a class="self" href="#208">self</a>.ident.<a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Ident.html#method.span">span</a>()
     }
 }
 
-<span class="kw">fn </span>parse_field_attr_value_str(name_value: <span class="kw-2">&amp;</span>MetaNameValue) -&gt; <span class="prelude-ty">Result</span>&lt;String, Error&gt; {
-    <span class="kw">match </span><span class="kw-2">&amp;</span>name_value.lit {
-        Lit::Str(s) =&gt; <span class="prelude-val">Ok</span>(s.value()),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(Error::new(
-            name_value.lit.span(),
-            <span class="string">&quot;invalid value type: Expected str literal&quot;</span>,
-        )),
-    }
+<span class="doccomment">/// A meta item of a `template_child` attribute.
+</span><span class="kw">enum </span>TemplateChildAttributeMeta {
+    Id {
+        keyword: <a href="#21">kw::id</a>,
+        value: <a href="https://docs.rs/syn/2.0.70/syn/lit/struct.LitStr.html">LitStr</a>,
+    },
+    Internal {
+        keyword: <a href="#22">kw::internal</a>,
+        value: <a href="https://docs.rs/syn/2.0.70/syn/lit/struct.LitBool.html">LitBool</a>,
+    },
 }
 
-<span class="kw">fn </span>parse_field_attr_value_bool(internal_value: <span class="kw-2">&amp;</span>MetaNameValue) -&gt; <span class="prelude-ty">Result</span>&lt;bool, Error&gt; {
-    <span class="kw">match </span><span class="kw-2">&amp;</span>internal_value.lit {
-        Lit::Bool(s) =&gt; <span class="prelude-val">Ok</span>(s.value()),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(Error::new(
-            internal_value.lit.span(),
-            <span class="string">&quot;invalid value type: Expected bool&quot;</span>,
-        )),
-    }
-}
-
-<span class="kw">fn </span>parse_field_attr_meta(
-    ty: <span class="kw-2">&amp;</span>FieldAttributeType,
-    meta: <span class="kw-2">&amp;</span>NestedMeta,
-) -&gt; <span class="prelude-ty">Result</span>&lt;FieldAttributeArg, Error&gt; {
-    <span class="kw">let </span>meta = <span class="kw">match </span><span class="kw-2">&amp;</span>meta {
-        NestedMeta::Meta(m) =&gt; m,
-        <span class="kw">_ </span>=&gt; {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(
-                meta.span(),
-                <span class="string">&quot;invalid type - expected a name-value pair like id = \&quot;widget\&quot;&quot;</span>,
-            ))
-        }
-    };
-    <span class="kw">let </span>name_value = <span class="kw">match </span>meta {
-        Meta::NameValue(n) =&gt; n,
-        <span class="kw">_ </span>=&gt; {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(
-                meta.span(),
-                <span class="string">&quot;invalid type - expected a name-value pair like id = \&quot;widget\&quot;&quot;</span>,
-            ))
-        }
-    };
-    <span class="kw">let </span>path = <span class="kw-2">&amp;</span>name_value.path;
-    <span class="kw">let </span>ident = path
-        .get_ident()
-        .ok_or_else(|| Error::new(path.span(), <span class="string">&quot;invalid name type - expected identifier&quot;</span>))<span class="question-mark">?</span>;
-
-    <span class="kw">let </span>ident_str = ident.to_string();
-    <span class="kw">let </span>unknown_err = <span class="prelude-val">Err</span>(Error::new(
-        ident.span(),
-        <span class="macro">format!</span>(<span class="string">&quot;unknown attribute argument: `{ident_str}`&quot;</span>),
-    ));
-    <span class="kw">let </span>value = <span class="kw">match </span>ty {
-        FieldAttributeType::TemplateChild =&gt; <span class="kw">match </span>ident_str.as_str() {
-            <span class="string">&quot;id&quot; </span>=&gt; FieldAttributeArg::Id(
-                parse_field_attr_value_str(name_value)<span class="question-mark">?</span>,
-                name_value.lit.span(),
-            ),
-            <span class="string">&quot;internal&quot; </span>=&gt; FieldAttributeArg::Internal(parse_field_attr_value_bool(name_value)<span class="question-mark">?</span>),
-            <span class="kw">_ </span>=&gt; <span class="kw">return </span>unknown_err,
-        },
-    };
-
-    <span class="prelude-val">Ok</span>(value)
-}
-
-<span class="kw">fn </span>parse_field_attr_args(
-    ty: <span class="kw-2">&amp;</span>FieldAttributeType,
-    attr: <span class="kw-2">&amp;</span>Attribute,
-) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;FieldAttributeArg&gt;, Error&gt; {
-    <span class="kw">let </span><span class="kw-2">mut </span>field_attribute_args = Vec::new();
-    <span class="kw">match </span>attr.parse_meta()<span class="question-mark">? </span>{
-        Meta::List(list) =&gt; {
-            <span class="kw">for </span>meta <span class="kw">in </span><span class="kw-2">&amp;</span>list.nested {
-                <span class="kw">let </span>new_arg = parse_field_attr_meta(ty, meta)<span class="question-mark">?</span>;
-                <span class="kw">for </span>arg <span class="kw">in </span><span class="kw-2">&amp;</span>field_attribute_args {
-                    <span class="comment">// Comparison of enum variants, not data
-                    </span><span class="kw">if </span>std::mem::discriminant(arg) == std::mem::discriminant(<span class="kw-2">&amp;</span>new_arg) {
-                        <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(
-                            meta.span(),
-                            <span class="string">&quot;two instances of the same attribute \
-                            argument, each argument must be specified only once&quot;</span>,
-                        ));
-                    }
-                }
-                field_attribute_args.push(new_arg);
-            }
-        }
-        Meta::Path(<span class="kw">_</span>) =&gt; (),
-        meta =&gt; {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(
-                meta.span(),
-                <span class="string">&quot;invalid attribute argument type, expected `name = value` list or nothing&quot;</span>,
-            ))
-        }
-    }
-
-    <span class="prelude-val">Ok</span>(field_attribute_args)
-}
-
-<span class="kw">fn </span>parse_field(field: <span class="kw-2">&amp;</span>Field) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;AttributedField&gt;, Error&gt; {
-    <span class="kw">let </span>field_attrs = <span class="kw-2">&amp;</span>field.attrs;
-    <span class="kw">let </span>ident = <span class="kw">match </span><span class="kw-2">&amp;</span>field.ident {
-        <span class="prelude-val">Some</span>(ident) =&gt; ident,
-        <span class="prelude-val">None </span>=&gt; <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(field.span(), <span class="string">&quot;expected identifier&quot;</span>)),
-    };
-
-    <span class="kw">let </span>ty = <span class="kw-2">&amp;</span>field.ty;
-    <span class="kw">let </span><span class="kw-2">mut </span>attr = <span class="prelude-val">None</span>;
-
-    <span class="kw">for </span>field_attr <span class="kw">in </span>field_attrs {
-        <span class="kw">let </span>span = field_attr.span();
-        <span class="kw">let </span>path_span = field_attr.path.span();
-        <span class="kw">let </span>ty = <span class="kw">if </span>field_attr.path.is_ident(<span class="string">&quot;template_child&quot;</span>) {
-            <span class="prelude-val">Some</span>(FieldAttributeType::TemplateChild)
+<span class="kw">impl </span><a href="https://docs.rs/syn/2.0.70/syn/parse/trait.Parse.html">Parse</a> <span class="kw">for </span><a href="#219-228">TemplateChildAttributeMeta</a> {
+    <span class="kw">fn </span>parse(input: <a href="https://docs.rs/syn/2.0.70/syn/parse/type.ParseStream.html">ParseStream</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span>lookahead = <a href="#231">input</a>.<a href="https://docs.rs/syn/2.0.70/syn/parse/struct.ParseBuffer.html#method.lookahead1">lookahead1</a>();
+        <span class="kw">if </span>lookahead.peek(kw::id) {
+            <span class="kw">let </span>keyword = <a href="#231">input</a>.<a href="https://docs.rs/syn/2.0.70/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+            <span class="kw">let _</span>: <a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.Token.html">Token!</a>[=] = <a href="#231">input</a>.<a href="https://docs.rs/syn/2.0.70/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+            <span class="kw">let </span>value = <a href="#231">input</a>.<a href="https://docs.rs/syn/2.0.70/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+            <span class="prelude-val">Ok</span>(<span class="self">Self</span>::Id { <a href="#234">keyword</a>, <a href="#236">value</a> })
+        } <span class="kw">else if </span>lookahead.peek(kw::internal) {
+            <span class="kw">let </span>keyword = <a href="#231">input</a>.<a href="https://docs.rs/syn/2.0.70/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+            <span class="kw">let _</span>: <a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.Token.html">Token!</a>[=] = <a href="#231">input</a>.<a href="https://docs.rs/syn/2.0.70/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+            <span class="kw">let </span>value = <a href="#231">input</a>.<a href="https://docs.rs/syn/2.0.70/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+            <span class="prelude-val">Ok</span>(<span class="self">Self</span>::Internal { <a href="#239">keyword</a>, <a href="#241">value</a> })
         } <span class="kw">else </span>{
-            <span class="prelude-val">None
-        </span>};
+            <span class="prelude-val">Err</span>(<a href="#232">lookahead</a>.<a href="https://docs.rs/syn/2.0.70/syn/lookahead/struct.Lookahead1.html#method.error">error</a>())
+        }
+    }
+}
 
-        <span class="kw">if let </span><span class="prelude-val">Some</span>(ty) = ty {
-            <span class="kw">let </span>args = parse_field_attr_args(<span class="kw-2">&amp;</span>ty, field_attr)<span class="question-mark">?</span>;
+<span class="kw">impl </span><a href="https://docs.rs/quote/1.0.36/quote/to_tokens/trait.ToTokens.html">ToTokens</a> <span class="kw">for </span><a href="#219-228">TemplateChildAttributeMeta</a> {
+    <span class="kw">fn </span>to_tokens(<span class="kw-2">&amp;</span><span class="self">self</span>, tokens: <span class="kw-2">&amp;mut </span><a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.TokenStream.html">proc_macro2::TokenStream</a>) {
+        <span class="kw">match </span><span class="self"><a href="#250">self</a> </span>{
+            <span class="self">Self</span>::Id { keyword, .. } =&gt; <a href="#252">keyword</a>.<a href="https://docs.rs/quote/1.0.36/quote/to_tokens/trait.ToTokens.html#tymethod.to_tokens">to_tokens</a>(<a href="#250">tokens</a>),
+            <span class="self">Self</span>::Internal { keyword, .. } =&gt; <a href="#253">keyword</a>.<a href="https://docs.rs/quote/1.0.36/quote/to_tokens/trait.ToTokens.html#tymethod.to_tokens">to_tokens</a>(<a href="#250">tokens</a>),
+        }
+    }
+}
 
-            <span class="kw">if </span>attr.is_none() {
-                attr = <span class="prelude-val">Some</span>(FieldAttribute {
-                    ty,
-                    args,
-                    path_span,
-                    span,
-                })
-            } <span class="kw">else </span>{
-                <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(
-                    span,
-                    <span class="string">&quot;multiple attributes on the same field are not supported&quot;</span>,
+<span class="kw">fn </span>parse_field_attr_args(ty: <a href="#179-181">FieldAttributeType</a>, attr: <span class="kw-2">&amp;</span><a href="https://docs.rs/syn/2.0.70/syn/attr/struct.Attribute.html">Attribute</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="#184-187">FieldAttribute</a>&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>args = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">Vec::new</a>();
+
+    <span class="kw">if </span><span class="macro">matches!</span>(ty, FieldAttributeType::TemplateChild) &amp;&amp; !<span class="macro">matches!</span>(attr.meta, Meta::Path(<span class="kw">_</span>)) {
+        <span class="kw">let </span>meta_list = <a href="#258">attr</a>.<a href="https://docs.rs/syn/2.0.70/syn/attr/struct.Attribute.html#method.parse_args_with">parse_args_with</a>(
+            Punctuated::&lt;<a href="#219-228">TemplateChildAttributeMeta</a>, <a class="macro" href="https://docs.rs/syn/2.0.70/syn/macro.Token.html">Token!</a>[,]&gt;::parse_terminated,
+        )<span class="question-mark">?</span>;
+
+        <span class="kw">for </span>meta <span class="kw">in </span>meta_list {
+            <span class="kw">let </span>new_arg = FieldAttributeArg::from_template_child_meta(<span class="kw-2">&amp;</span>meta);
+
+            <span class="kw">if </span>args.iter().any(|arg| {
+                <span class="comment">// Comparison of enum variants, not data
+                </span>std::mem::discriminant(arg) == std::mem::discriminant(<span class="kw-2">&amp;</span>new_arg)
+            }) {
+                <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new_spanned(
+                    meta,
+                    <span class="string">"two instances of the same attribute \
+                    argument, each argument must be specified only once"</span>,
                 ));
             }
+
+            args.push(new_arg);
         }
     }
 
-    <span class="kw">if let </span><span class="prelude-val">Some</span>(attr) = attr {
-        <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(AttributedField {
-            ident: ident.clone(),
-            ty: ty.clone(),
-            attr,
-        }))
-    } <span class="kw">else </span>{
-        <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
-    }
+    <span class="prelude-val">Ok</span>(<a href="#184-187">FieldAttribute</a> { <a href="#258">ty</a>, <a href="#259">args</a> })
 }
 
-<span class="kw">fn </span>path_is_template_child(path: <span class="kw-2">&amp;</span>syn::Path) -&gt; bool {
+<span class="kw">fn </span>parse_field(field: <span class="kw-2">&amp;</span><a href="https://docs.rs/syn/2.0.70/syn/data/struct.Field.html">Field</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;<a href="#190-194">AttributedField</a>&gt;&gt; {
+    <span class="kw">let </span><span class="prelude-val">Some</span>(ident) = <span class="kw-2">&amp;</span><a href="#287">field</a>.ident <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html#method.new_spanned">Error::new_spanned</a>(<a href="#287">field</a>, <span class="string">"expected identifier"</span>));
+    };
+
+    <span class="kw">let </span><span class="kw-2">mut </span>attr_field = <span class="prelude-val">None</span>;
+
+    <span class="kw">for </span>attr <span class="kw">in </span><span class="kw-2">&amp;</span>field.attrs {
+        <span class="kw">let </span>ty = <span class="kw">if </span>attr.path().is_ident(<span class="string">"template_child"</span>) {
+            FieldAttributeType::TemplateChild
+        } <span class="kw">else </span>{
+            <span class="kw">continue</span>;
+        };
+
+        <span class="kw">let </span>field_attr = parse_field_attr_args(ty, attr)<span class="question-mark">?</span>;
+
+        <span class="kw">if </span>attr_field.is_some() {
+            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new_spanned(
+                attr,
+                <span class="string">"multiple attributes on the same field are not supported"</span>,
+            ));
+        }
+
+        attr_field = <span class="prelude-val">Some</span>(AttributedField {
+            ident: ident.clone(),
+            ty: field.ty.clone(),
+            attr: field_attr,
+        })
+    }
+
+    <span class="prelude-val">Ok</span>(<a href="#292">attr_field</a>)
+}
+
+<span class="kw">fn </span>path_is_template_child(path: <span class="kw-2">&amp;</span><a href="https://docs.rs/syn/2.0.70/syn/path/struct.Path.html">syn::Path</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
     <span class="kw">if </span>path.leading_colon.is_none()
         &amp;&amp; path.segments.len() == <span class="number">1
         </span>&amp;&amp; <span class="macro">matches!</span>(
             <span class="kw-2">&amp;</span>path.segments[<span class="number">0</span>].arguments,
             syn::PathArguments::AngleBracketed(<span class="kw">_</span>)
         )
-        &amp;&amp; path.segments[<span class="number">0</span>].ident == <span class="string">&quot;TemplateChild&quot;
+        &amp;&amp; path.segments[<span class="number">0</span>].ident == <span class="string">"TemplateChild"
     </span>{
         <span class="kw">return </span><span class="bool-val">true</span>;
     }
     <span class="kw">if </span>path.segments.len() == <span class="number">2
-        </span>&amp;&amp; (path.segments[<span class="number">0</span>].ident == <span class="string">&quot;gtk&quot; </span>|| path.segments[<span class="number">0</span>].ident == <span class="string">&quot;gtk4&quot;</span>)
+        </span>&amp;&amp; (path.segments[<span class="number">0</span>].ident == <span class="string">"gtk" </span>|| path.segments[<span class="number">0</span>].ident == <span class="string">"gtk4"</span>)
         &amp;&amp; <span class="macro">matches!</span>(
             <span class="kw-2">&amp;</span>path.segments[<span class="number">1</span>].arguments,
             syn::PathArguments::AngleBracketed(<span class="kw">_</span>)
         )
-        &amp;&amp; path.segments[<span class="number">1</span>].ident == <span class="string">&quot;TemplateChild&quot;
+        &amp;&amp; path.segments[<span class="number">1</span>].ident == <span class="string">"TemplateChild"
     </span>{
         <span class="kw">return </span><span class="bool-val">true</span>;
     }
@@ -811,10 +787,10 @@
 </span>}
 
 <span class="kw">pub fn </span>parse_fields(
-    fields: <span class="kw-2">&amp;</span>Fields,
-    allow_missing_attribute: bool,
-) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;AttributedField&gt;, Error&gt; {
-    <span class="kw">let </span><span class="kw-2">mut </span>attributed_fields = Vec::new();
+    fields: <span class="kw-2">&amp;</span><a href="https://docs.rs/syn/2.0.70/syn/data/enum.Fields.html">Fields</a>,
+    allow_missing_attribute: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;<a href="#190-194">AttributedField</a>&gt;&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>attributed_fields = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">Vec::new</a>();
 
     <span class="kw">for </span>field <span class="kw">in </span>fields {
         <span class="kw">let </span><span class="kw-2">mut </span>has_attr = <span class="bool-val">false</span>;
@@ -827,17 +803,16 @@
         <span class="kw">if </span>!has_attr &amp;&amp; !allow_missing_attribute {
             <span class="kw">if let </span>syn::Type::Path(syn::TypePath { path, .. }) = <span class="kw-2">&amp;</span>field.ty {
                 <span class="kw">if </span>path_is_template_child(path) {
-                    <span class="macro">proc_macro_error::emit_error!</span>(
+                    <span class="kw">return </span><span class="prelude-val">Err</span>(Error::new_spanned(
                         field,
-                        <span class="string">&quot;field `{}` with type `TemplateChild` possibly missing #[template_child] attribute. Use a meta attribute on the struct to suppress this error: &#39;#[template(string|file|resource = \&quot;...\&quot;, allow_template_child_without_attribute)]&#39;&quot;</span>,
-                        field.ident.as_ref().unwrap().to_string(),
-                    );
+                        <span class="macro">format!</span>(<span class="string">"field `{}` with type `TemplateChild` possibly missing #[template_child] attribute. Use a meta attribute on the struct to suppress this error: '#[template(string|file|resource = \"...\", allow_template_child_without_attribute)]'"</span>,
+                        field.ident.as_ref().unwrap())
+                    ));
                 }
             }
         }
     }
 
-    <span class="prelude-val">Ok</span>(attributed_fields)
+    <span class="prelude-val">Ok</span>(<a href="#348">attributed_fields</a>)
 }
-</code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (ef934d9b6 2023-02-08)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</code></pre></div></section></main></body></html>
