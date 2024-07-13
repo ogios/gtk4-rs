@@ -616,28 +616,43 @@ impl AdwApplicationWindowImpl for Window {}</code></pre>
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj.downcast_ref().expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;self.tasks());
-</span><span class="boring">        self.tasks().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        self.tasks().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    /// Assure that `tasks_list` is only visible
@@ -694,18 +709,22 @@ impl AdwApplicationWindowImpl for Window {}</code></pre>
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -1227,13 +1246,18 @@ pub struct Window {
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -1285,13 +1309,18 @@ pub struct Window {
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -1304,11 +1333,13 @@ pub struct Window {
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -1360,48 +1391,61 @@ pub struct Window {
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -1473,18 +1517,22 @@ pub struct Window {
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -1861,13 +1909,18 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 
         self.imp().collections_list.bind_model(
             Some(&amp;collections),
-            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-                let collection_object = obj
-                    .downcast_ref()
-                    .expect("The object should be of type `CollectionObject`.");
-                let row = window.create_collection_row(collection_object);
-                row.upcast()
-            }),
+            clone!(
+                #[weak(rename_to = window)]
+                self,
+                #[upgrade_or_panic]
+                move |obj| {
+                    let collection_object = obj
+                        .downcast_ref()
+                        .expect("The object should be of type `CollectionObject`.");
+                    let row = window.create_collection_row(collection_object);
+                    row.upcast()
+                }
+            ),
         )
     }
 <span class="boring">
@@ -1919,13 +1972,18 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -1938,11 +1996,13 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -1994,48 +2054,61 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -2107,18 +2180,22 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -2262,13 +2339,18 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -2320,13 +2402,18 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -2339,11 +2426,13 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -2395,48 +2484,61 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -2508,18 +2610,22 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -2666,13 +2772,18 @@ We choose the first one and let the method <code>set_current_collection</code> d
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -2724,13 +2835,18 @@ We choose the first one and let the method <code>set_current_collection</code> d
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -2743,11 +2859,13 @@ We choose the first one and let the method <code>set_current_collection</code> d
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -2799,48 +2917,61 @@ We choose the first one and let the method <code>set_current_collection</code> d
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -2912,18 +3043,22 @@ We choose the first one and let the method <code>set_current_collection</code> d
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -3073,13 +3208,18 @@ Finally, we select the collection row.</p>
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -3131,13 +3271,18 @@ Finally, we select the collection row.</p>
         let selection_model = NoSelection::new(Some(filter_model.clone()));
         self.imp().tasks_list.bind_model(
             Some(&amp;selection_model),
-            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-                let task_object = obj
-                    .downcast_ref()
-                    .expect("The object should be of type `TaskObject`.");
-                let row = window.create_task_row(task_object);
-                row.upcast()
-            }),
+            clone!(
+                #[weak(rename_to = window)]
+                self,
+                #[upgrade_or_panic]
+                move |obj| {
+                    let task_object = obj
+                        .downcast_ref()
+                        .expect("The object should be of type `TaskObject`.");
+                    let row = window.create_task_row(task_object);
+                    row.upcast()
+                }
+            ),
         );
 
         // Store filter model
@@ -3150,11 +3295,13 @@ Finally, we select the collection row.</p>
 
         // Assure that the task list is only visible when it is supposed to
         self.set_task_list_visible(&amp;tasks);
-        let tasks_changed_handler_id = tasks.connect_items_changed(
-            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |tasks, _, _, _| {
                 window.set_task_list_visible(tasks);
-            }),
-        );
+            }
+        ));
         self.imp()
             .tasks_changed_handler_id
             .replace(Some(tasks_changed_handler_id));
@@ -3206,48 +3353,61 @@ Finally, we select the collection row.</p>
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -3319,18 +3479,22 @@ Finally, we select the collection row.</p>
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -3475,13 +3639,18 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -3533,13 +3702,18 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -3552,11 +3726,13 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -3608,48 +3784,61 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -3721,18 +3910,22 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -3876,13 +4069,18 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -3934,13 +4132,18 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -3953,11 +4156,13 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -4009,48 +4214,61 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -4122,18 +4340,22 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -4416,13 +4638,18 @@ Afterwards we navigate forward on our leaflet, which means we navigate to the ta
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -4474,13 +4701,18 @@ Afterwards we navigate forward on our leaflet, which means we navigate to the ta
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -4493,11 +4725,13 @@ Afterwards we navigate forward on our leaflet, which means we navigate to the ta
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -4549,48 +4783,61 @@ Afterwards we navigate forward on our leaflet, which means we navigate to the ta
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -4662,18 +4909,22 @@ Afterwards we navigate forward on our leaflet, which means we navigate to the ta
         dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 
         // Set entry's css class to "error", when there is no text in it
-        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-            let text = entry.text();
-            let empty = text.is_empty();
+        entry.connect_changed(clone!(
+            #[weak]
+            dialog,
+            move |entry| {
+                let text = entry.text();
+                let empty = text.is_empty();
 
-            dialog.set_response_enabled(create_response, !empty);
+                dialog.set_response_enabled(create_response, !empty);
 
-            if empty {
-                entry.add_css_class("error");
-            } else {
-                entry.remove_css_class("error");
+                if empty {
+                    entry.add_css_class("error");
+                } else {
+                    entry.remove_css_class("error");
+                }
             }
-        }));
+        ));
 
         let response = dialog.choose_future(self).await;
 
@@ -4821,13 +5072,18 @@ Finally, we assure that when we click on a row of <code>collections_list</code>,
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -4879,13 +5135,18 @@ Finally, we assure that when we click on a row of <code>collections_list</code>,
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -4898,11 +5159,13 @@ Finally, we assure that when we click on a row of <code>collections_list</code>,
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -4954,48 +5217,61 @@ Finally, we assure that when we click on a row of <code>collections_list</code>,
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span>        // Filter model whenever the value of the key "filter" changes
         self.settings().connect_changed(
             Some("filter"),
-            clone!(@weak self as window =&gt; move |_, _| {
-                window.set_filter();
-            }),
+            clone!(
+                #[weak(rename_to = window)]
+                self,
+                move |_, _| {
+                    window.set_filter();
+                }
+            ),
         );
 
         // Setup callback when items of collections change
         self.set_stack();
-        self.collections().connect_items_changed(
-            clone!(@weak self as window =&gt; move |_, _, _, _| {
+        self.collections().connect_items_changed(clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |_, _, _, _| {
                 window.set_stack();
-            }),
-        );
+            }
+        ));
 
         // Setup callback for activating a row of collections list
-        self.imp().collections_list.connect_row_activated(
-            clone!(@weak self as window =&gt; move |_, row| {
+        self.imp().collections_list.connect_row_activated(clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |_, row| {
                 let index = row.index();
-                let selected_collection = window.collections()
+                let selected_collection = window
+                    .collections()
                     .item(index as u32)
                     .expect("There needs to be an object at this position.")
                     .downcast::&lt;CollectionObject&gt;()
                     .expect("The object needs to be a `CollectionObject`.");
                 window.set_current_collection(selected_collection);
                 window.imp().split_view.set_show_content(true);
-            }),
-        );
+            }
+        ));
 <span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn set_stack(&amp;self) {
@@ -5067,18 +5343,22 @@ Finally, we assure that when we click on a row of <code>collections_list</code>,
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">
@@ -5223,13 +5503,18 @@ This method ensure when there is at least one collection, the "main" page is sho
 </span><span class="boring">
 </span><span class="boring">        self.imp().collections_list.bind_model(
 </span><span class="boring">            Some(&amp;collections),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let collection_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `CollectionObject`.");
-</span><span class="boring">                let row = window.create_collection_row(collection_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let collection_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `CollectionObject`.");
+</span><span class="boring">                    let row = window.create_collection_row(collection_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        )
 </span><span class="boring">    }
 </span><span class="boring">
@@ -5281,13 +5566,18 @@ This method ensure when there is at least one collection, the "main" page is sho
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj
-</span><span class="boring">                    .downcast_ref()
-</span><span class="boring">                    .expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Store filter model
@@ -5300,11 +5590,13 @@ This method ensure when there is at least one collection, the "main" page is sho
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;tasks);
-</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        let tasks_changed_handler_id = tasks.connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">        self.imp()
 </span><span class="boring">            .tasks_changed_handler_id
 </span><span class="boring">            .replace(Some(tasks_changed_handler_id));
@@ -5356,48 +5648,61 @@ This method ensure when there is at least one collection, the "main" page is sho
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _| {
-</span><span class="boring">                window.set_filter();
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    window.set_filter();
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Setup callback when items of collections change
 </span><span class="boring">        self.set_stack();
-</span><span class="boring">        self.collections().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, _, _, _| {
+</span><span class="boring">        self.collections().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _, _, _| {
 </span><span class="boring">                window.set_stack();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for activating a row of collections list
-</span><span class="boring">        self.imp().collections_list.connect_row_activated(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_, row| {
+</span><span class="boring">        self.imp().collections_list.connect_row_activated(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, row| {
 </span><span class="boring">                let index = row.index();
-</span><span class="boring">                let selected_collection = window.collections()
+</span><span class="boring">                let selected_collection = window
+</span><span class="boring">                    .collections()
 </span><span class="boring">                    .item(index as u32)
 </span><span class="boring">                    .expect("There needs to be an object at this position.")
 </span><span class="boring">                    .downcast::&lt;CollectionObject&gt;()
 </span><span class="boring">                    .expect("The object needs to be a `CollectionObject`.");
 </span><span class="boring">                window.set_current_collection(selected_collection);
 </span><span class="boring">                window.imp().split_view.set_show_content(true);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span>    fn set_stack(&amp;self) {
@@ -5469,18 +5774,22 @@ This method ensure when there is at least one collection, the "main" page is sho
 </span><span class="boring">        dialog.set_response_appearance(create_response, ResponseAppearance::Suggested);
 </span><span class="boring">
 </span><span class="boring">        // Set entry's css class to "error", when there is no text in it
-</span><span class="boring">        entry.connect_changed(clone!(@weak dialog =&gt; move |entry| {
-</span><span class="boring">            let text = entry.text();
-</span><span class="boring">            let empty = text.is_empty();
+</span><span class="boring">        entry.connect_changed(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            dialog,
+</span><span class="boring">            move |entry| {
+</span><span class="boring">                let text = entry.text();
+</span><span class="boring">                let empty = text.is_empty();
 </span><span class="boring">
-</span><span class="boring">            dialog.set_response_enabled(create_response, !empty);
+</span><span class="boring">                dialog.set_response_enabled(create_response, !empty);
 </span><span class="boring">
-</span><span class="boring">            if empty {
-</span><span class="boring">                entry.add_css_class("error");
-</span><span class="boring">            } else {
-</span><span class="boring">                entry.remove_css_class("error");
+</span><span class="boring">                if empty {
+</span><span class="boring">                    entry.add_css_class("error");
+</span><span class="boring">                } else {
+</span><span class="boring">                    entry.remove_css_class("error");
+</span><span class="boring">                }
 </span><span class="boring">            }
-</span><span class="boring">        }));
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        let response = dialog.choose_future(self).await;
 </span><span class="boring">

@@ -313,9 +313,13 @@ This means we have to clone <code>window</code> into the closure.</p>
 
     // Add action "close" to `window` taking no parameter
     let action_close = ActionEntry::builder("close")
-        .activate(clone!(@weak window =&gt; move |_, _, _| {
-            window.close();
-        }))
+        .activate(clone!(
+            #[weak]
+            window,
+            move |_, _, _| {
+                window.close();
+            }
+        ))
         .build();
 
     // Create a new action group and add actions to it
@@ -359,9 +363,13 @@ This means we have to clone <code>window</code> into the closure.</p>
 </span><span class="boring">
 </span><span class="boring">    // Add action "close" to `window` taking no parameter
 </span><span class="boring">    let action_close = ActionEntry::builder("close")
-</span><span class="boring">        .activate(clone!(@weak window =&gt; move |_, _, _| {
-</span><span class="boring">            window.close();
-</span><span class="boring">        }))
+</span><span class="boring">        .activate(clone!(
+</span><span class="boring">            #[weak]
+</span><span class="boring">            window,
+</span><span class="boring">            move |_, _, _| {
+</span><span class="boring">                window.close();
+</span><span class="boring">            }
+</span><span class="boring">        ))
 </span><span class="boring">        .build();
 </span><span class="boring">
 </span><span class="boring">    // Create a new action group and add actions to it

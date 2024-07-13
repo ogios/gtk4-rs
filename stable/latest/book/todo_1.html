@@ -273,18 +273,22 @@ As usual, we have to list all <a href="https://docs.gtk.org/gtk4/class.Applicati
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -815,18 +819,22 @@ Then we store a reference to the model in <code>imp::Window</code> as well as in
 <span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -943,18 +951,22 @@ Then we store a reference to the model in <code>imp::Window</code> as well as in
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span>    fn new_task(&amp;self) {
@@ -1074,18 +1086,22 @@ Finally, the entry will be cleared.</p>
 </span><span class="boring">
 </span>    fn setup_callbacks(&amp;self) {
         // Setup callback for activation of the entry
-        self.imp()
-            .entry
-            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+        self.imp().entry.connect_activate(clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |_| {
                 window.new_task();
-            }));
+            }
+        ));
 
         // Setup callback for clicking (and the releasing) the icon of the entry
-        self.imp().entry.connect_icon_release(
-            clone!(@weak self as window =&gt; move |_,_| {
+        self.imp().entry.connect_icon_release(clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |_, _| {
                 window.new_task();
-            }),
-        );
+            }
+        ));
     }
 <span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -1211,18 +1227,22 @@ We will need to unbind them manually when they are no longer needed.</p>
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {

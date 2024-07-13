@@ -456,9 +456,15 @@ pub struct Window {
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">
@@ -482,18 +488,22 @@ pub struct Window {
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -731,9 +741,15 @@ Then we add the newly created action "filter" to our window.</p>
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">
@@ -757,18 +773,22 @@ Then we add the newly created action "filter" to our window.</p>
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -1063,9 +1083,15 @@ We iterate through the <code>gio::ListStore</code> and remove all completed task
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">
@@ -1089,18 +1115,22 @@ We iterate through the <code>gio::ListStore</code> and remove all completed task
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -1301,9 +1331,15 @@ If the state is "All" nothing has to be filtered out, so we return <code>None</c
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">
@@ -1327,18 +1363,22 @@ If the state is "All" nothing has to be filtered out, so we return <code>None</c
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -1537,9 +1577,15 @@ Whenever the state of the key "filter" changes, we call the method <code>filter<
         // Filter model whenever the value of the key "filter" changes
         self.settings().connect_changed(
             Some("filter"),
-            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-                filter_model.set_filter(window.filter().as_ref());
-            }),
+            clone!(
+                #[weak(rename_to = window)]
+                self,
+                #[weak]
+                filter_model,
+                move |_, _| {
+                    filter_model.set_filter(window.filter().as_ref());
+                }
+            ),
         );
     }
 <span class="boring">
@@ -1563,18 +1609,22 @@ Whenever the state of the key "filter" changes, we call the method <code>filter<
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -2087,9 +2137,15 @@ It might be the first time that we started the app and therefore there is no for
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">
@@ -2113,18 +2169,22 @@ It might be the first time that we started the app and therefore there is no for
 <span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {

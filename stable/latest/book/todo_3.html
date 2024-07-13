@@ -324,9 +324,15 @@ fn build_ui(app: &amp;adw::Application) {
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">
@@ -350,18 +356,22 @@ fn build_ui(app: &amp;adw::Application) {
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -716,28 +726,43 @@ There we specify the model, as well as a closure describing how to transform the
         let selection_model = NoSelection::new(Some(filter_model.clone()));
         self.imp().tasks_list.bind_model(
             Some(&amp;selection_model),
-            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-                let task_object = obj.downcast_ref().expect("The object should be of type `TaskObject`.");
-                let row = window.create_task_row(task_object);
-                row.upcast()
-            }),
+            clone!(
+                #[weak(rename_to = window)]
+                self,
+                #[upgrade_or_panic]
+                move |obj| {
+                    let task_object = obj
+                        .downcast_ref()
+                        .expect("The object should be of type `TaskObject`.");
+                    let row = window.create_task_row(task_object);
+                    row.upcast()
+                }
+            ),
         );
 <span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;self.tasks());
-</span><span class="boring">        self.tasks().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        self.tasks().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    /// Assure that `tasks_list` is only visible
@@ -794,18 +819,22 @@ There we specify the model, as well as a closure describing how to transform the
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -945,28 +974,43 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj.downcast_ref().expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;self.tasks());
-</span><span class="boring">        self.tasks().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        self.tasks().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    /// Assure that `tasks_list` is only visible
@@ -1023,18 +1067,22 @@ That means we can just bind their properties without having to worry about unbin
 <span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -1171,28 +1219,43 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj.downcast_ref().expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span>        // Assure that the task list is only visible when it is supposed to
         self.set_task_list_visible(&amp;self.tasks());
-        self.tasks().connect_items_changed(
-            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+        self.tasks().connect_items_changed(clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |tasks, _, _, _| {
                 window.set_task_list_visible(tasks);
-            }),
-        );
+            }
+        ));
 <span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    /// Assure that `tasks_list` is only visible
@@ -1249,18 +1312,22 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {
@@ -1397,28 +1464,43 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">        let selection_model = NoSelection::new(Some(filter_model.clone()));
 </span><span class="boring">        self.imp().tasks_list.bind_model(
 </span><span class="boring">            Some(&amp;selection_model),
-</span><span class="boring">            clone!(@weak self as window =&gt; @default-panic, move |obj| {
-</span><span class="boring">                let task_object = obj.downcast_ref().expect("The object should be of type `TaskObject`.");
-</span><span class="boring">                let row = window.create_task_row(task_object);
-</span><span class="boring">                row.upcast()
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[upgrade_or_panic]
+</span><span class="boring">                move |obj| {
+</span><span class="boring">                    let task_object = obj
+</span><span class="boring">                        .downcast_ref()
+</span><span class="boring">                        .expect("The object should be of type `TaskObject`.");
+</span><span class="boring">                    let row = window.create_task_row(task_object);
+</span><span class="boring">                    row.upcast()
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Filter model whenever the value of the key "filter" changes
 </span><span class="boring">        self.settings().connect_changed(
 </span><span class="boring">            Some("filter"),
-</span><span class="boring">            clone!(@weak self as window, @weak filter_model =&gt; move |_, _| {
-</span><span class="boring">                filter_model.set_filter(window.filter().as_ref());
-</span><span class="boring">            }),
+</span><span class="boring">            clone!(
+</span><span class="boring">                #[weak(rename_to = window)]
+</span><span class="boring">                self,
+</span><span class="boring">                #[weak]
+</span><span class="boring">                filter_model,
+</span><span class="boring">                move |_, _| {
+</span><span class="boring">                    filter_model.set_filter(window.filter().as_ref());
+</span><span class="boring">                }
+</span><span class="boring">            ),
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        // Assure that the task list is only visible when it is supposed to
 </span><span class="boring">        self.set_task_list_visible(&amp;self.tasks());
-</span><span class="boring">        self.tasks().connect_items_changed(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |tasks, _, _, _| {
+</span><span class="boring">        self.tasks().connect_items_changed(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |tasks, _, _, _| {
 </span><span class="boring">                window.set_task_list_visible(tasks);
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span>    /// Assure that `tasks_list` is only visible
@@ -1475,18 +1557,22 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">
 </span><span class="boring">    fn setup_callbacks(&amp;self) {
 </span><span class="boring">        // Setup callback for activation of the entry
-</span><span class="boring">        self.imp()
-</span><span class="boring">            .entry
-</span><span class="boring">            .connect_activate(clone!(@weak self as window =&gt; move |_| {
+</span><span class="boring">        self.imp().entry.connect_activate(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }));
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">
 </span><span class="boring">        // Setup callback for clicking (and the releasing) the icon of the entry
-</span><span class="boring">        self.imp().entry.connect_icon_release(
-</span><span class="boring">            clone!(@weak self as window =&gt; move |_,_| {
+</span><span class="boring">        self.imp().entry.connect_icon_release(clone!(
+</span><span class="boring">            #[weak(rename_to = window)]
+</span><span class="boring">            self,
+</span><span class="boring">            move |_, _| {
 </span><span class="boring">                window.new_task();
-</span><span class="boring">            }),
-</span><span class="boring">        );
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    fn new_task(&amp;self) {

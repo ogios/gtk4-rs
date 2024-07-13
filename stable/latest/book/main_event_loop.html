@@ -380,11 +380,15 @@ This <code>async</code> block is spawned on the <code>glib</code> main loop with
     });
 
     // The main loop executes the asynchronous block
-    glib::spawn_future_local(clone!(@weak button =&gt; async move {
-        while let Ok(enable_button) = receiver.recv().await {
-            button.set_sensitive(enable_button);
+    glib::spawn_future_local(clone!(
+        #[weak]
+        button,
+        async move {
+            while let Ok(enable_button) = receiver.recv().await {
+                button.set_sensitive(enable_button);
+            }
         }
-    }));
+    ));
 <span class="boring">
 </span><span class="boring">    // Create a window
 </span><span class="boring">    let window = ApplicationWindow::builder()
@@ -441,21 +445,35 @@ The converted code looks and behaves very similar to the multithreaded code.</p>
     let (sender, receiver) = async_channel::bounded(1);
     // Connect to "clicked" signal of `button`
     button.connect_clicked(move |_| {
-        glib::spawn_future_local(clone!(@strong sender =&gt; async move {
-            // Deactivate the button until the operation is done
-            sender.send(false).await.expect("The channel needs to be open.");
-            glib::timeout_future_seconds(5).await;
-            // Activate the button again
-            sender.send(true).await.expect("The channel needs to be open.");
-        }));
+        glib::spawn_future_local(clone!(
+            #[strong]
+            sender,
+            async move {
+                // Deactivate the button until the operation is done
+                sender
+                    .send(false)
+                    .await
+                    .expect("The channel needs to be open.");
+                glib::timeout_future_seconds(5).await;
+                // Activate the button again
+                sender
+                    .send(true)
+                    .await
+                    .expect("The channel needs to be open.");
+            }
+        ));
     });
 
     // The main loop executes the asynchronous block
-    glib::spawn_future_local(clone!(@weak button =&gt; async move {
-        while let Ok(enable_button) = receiver.recv().await {
-            button.set_sensitive(enable_button);
+    glib::spawn_future_local(clone!(
+        #[weak]
+        button,
+        async move {
+            while let Ok(enable_button) = receiver.recv().await {
+                button.set_sensitive(enable_button);
+            }
         }
-    }));
+    ));
 <span class="boring">
 </span><span class="boring">    // Create a window
 </span><span class="boring">    let window = ApplicationWindow::builder()
@@ -498,13 +516,17 @@ The converted code looks and behaves very similar to the multithreaded code.</p>
 </span><span class="boring">
 </span>    // Connect to "clicked" signal of `button`
     button.connect_clicked(move |button| {
-        glib::spawn_future_local(clone!(@weak button =&gt; async move {
-            // Deactivate the button until the operation is done
-            button.set_sensitive(false);
-            glib::timeout_future_seconds(5).await;
-            // Activate the button again
-            button.set_sensitive(true);
-        }));
+        glib::spawn_future_local(clone!(
+            #[weak]
+            button,
+            async move {
+                // Deactivate the button until the operation is done
+                button.set_sensitive(false);
+                glib::timeout_future_seconds(5).await;
+                // Activate the button again
+                button.set_sensitive(true);
+            }
+        ));
     });
 <span class="boring">
 </span><span class="boring">    // Create a window
@@ -623,19 +645,23 @@ We can then get the return value of the function by calling <code>await</code> o
 </span>    // Connect to "clicked" signal of `button`
     button.connect_clicked(move |button| {
         // The main loop executes the asynchronous block
-        glib::spawn_future_local(clone!(@weak button =&gt; async move {
-            // Deactivate the button until the operation is done
-            button.set_sensitive(false);
-            let enable_button = gio::spawn_blocking(move || {
-                let five_seconds = Duration::from_secs(5);
-                thread::sleep(five_seconds);
-                true
-            })
-            .await
-            .expect("Task needs to finish successfully.");
-            // Set sensitivity of button to `enable_button`
-            button.set_sensitive(enable_button);
-        }));
+        glib::spawn_future_local(clone!(
+            #[weak]
+            button,
+            async move {
+                // Deactivate the button until the operation is done
+                button.set_sensitive(false);
+                let enable_button = gio::spawn_blocking(move || {
+                    let five_seconds = Duration::from_secs(5);
+                    thread::sleep(five_seconds);
+                    true
+                })
+                .await
+                .expect("Task needs to finish successfully.");
+                // Set sensitivity of button to `enable_button`
+                button.set_sensitive(enable_button);
+            }
+        ));
     });
 <span class="boring">
 </span><span class="boring">    // Create a window
@@ -695,23 +721,27 @@ We are getting a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/str
 </span>    // Connect to "clicked" signal of `button`
     button.connect_clicked(move |button| {
         // The main loop executes the asynchronous block
-        glib::spawn_future_local(clone!(@weak button =&gt; async move {
-            // Get native of button for window identifier
-            let native = button.native().expect("Need to be able to get native.");
-            // Get window identifier so that the dialog will be modal to the main window
-            let identifier = WindowIdentifier::from_native(&amp;native).await;
-            let request = UserInformation::request()
-                .reason("App would like to access user information.")
-                .identifier(identifier)
-                .send()
-                .await;
+        glib::spawn_future_local(clone!(
+            #[weak]
+            button,
+            async move {
+                // Get native of button for window identifier
+                let native = button.native().expect("Need to be able to get native.");
+                // Get window identifier so that the dialog will be modal to the main window
+                let identifier = WindowIdentifier::from_native(&amp;native).await;
+                let request = UserInformation::request()
+                    .reason("App would like to access user information.")
+                    .identifier(identifier)
+                    .send()
+                    .await;
 
-            if let Ok(response) = request.and_then(|r| r.response()) {
-                println!("User name: {}", response.name());
-            } else {
-                println!("Could not access user information.")
+                if let Ok(response) = request.and_then(|r| r.response()) {
+                    println!("User name: {}", response.name());
+                } else {
+                    println!("Could not access user information.")
+                }
             }
-        }));
+        ));
     });
 <span class="boring">
 </span><span class="boring">    // Create a window
@@ -769,10 +799,17 @@ The response should then be sent to the main thread via a channel.</p>
     // Connect to "clicked" signal of `button`
     button.connect_clicked(move |_| {
         // The main loop executes the asynchronous block
-        glib::spawn_future_local(clone!(@strong sender =&gt; async move {
-            let response = reqwest::get("https://www.gtk-rs.org").await;
-            sender.send(response).await.expect("The channel needs to be open.");
-        }));
+        glib::spawn_future_local(clone!(
+            #[strong]
+            sender,
+            async move {
+                let response = reqwest::get("https://www.gtk-rs.org").await;
+                sender
+                    .send(response)
+                    .await
+                    .expect("The channel needs to be open.");
+            }
+        ));
     });
 
     // The main loop executes the asynchronous block
@@ -850,7 +887,7 @@ static RUNTIME: Runtime =
 </span><span class="boring">   let (sender, receiver) = async_channel::bounded(1);
 </span><span class="boring">   // Connect to "clicked" signal of `button`
 </span><span class="boring">   button.connect_clicked(move |_| {
-</span><span class="boring">       RUNTIME.spawn(clone!(@strong sender =&gt; async move {
+</span><span class="boring">       RUNTIME.spawn(clone!(#[strong] sender, async move {
 </span><span class="boring">           let response = reqwest::get("https://www.gtk-rs.org").await;
 </span><span class="boring">           sender.send(response).await.expect("The channel needs to be open.");
 </span><span class="boring">       }));
@@ -928,10 +965,17 @@ With <a href="https://doc.rust-lang.org/stable/std/sync/struct.OnceLock.html"><c
 </span><span class="boring">    let (sender, receiver) = async_channel::bounded(1);
 </span><span class="boring">    // Connect to "clicked" signal of `button`
 </span><span class="boring">    button.connect_clicked(move |_| {
-</span><span class="boring">        runtime().spawn(clone!(@strong sender =&gt; async move {
-</span><span class="boring">            let response = reqwest::get("https://www.gtk-rs.org").await;
-</span><span class="boring">            sender.send(response).await.expect("The channel needs to be open.");
-</span><span class="boring">        }));
+</span><span class="boring">        runtime().spawn(clone!(
+</span><span class="boring">            #[strong]
+</span><span class="boring">            sender,
+</span><span class="boring">            async move {
+</span><span class="boring">                let response = reqwest::get("https://www.gtk-rs.org").await;
+</span><span class="boring">                sender
+</span><span class="boring">                    .send(response)
+</span><span class="boring">                    .await
+</span><span class="boring">                    .expect("The channel needs to be open.");
+</span><span class="boring">            }
+</span><span class="boring">        ));
 </span><span class="boring">    });
 </span><span class="boring">
 </span><span class="boring">    // The main loop executes the asynchronous block
@@ -998,10 +1042,17 @@ With <a href="https://doc.rust-lang.org/stable/std/sync/struct.OnceLock.html"><c
 </span>    let (sender, receiver) = async_channel::bounded(1);
     // Connect to "clicked" signal of `button`
     button.connect_clicked(move |_| {
-        runtime().spawn(clone!(@strong sender =&gt; async move {
-            let response = reqwest::get("https://www.gtk-rs.org").await;
-            sender.send(response).await.expect("The channel needs to be open.");
-        }));
+        runtime().spawn(clone!(
+            #[strong]
+            sender,
+            async move {
+                let response = reqwest::get("https://www.gtk-rs.org").await;
+                sender
+                    .send(response)
+                    .await
+                    .expect("The channel needs to be open.");
+            }
+        ));
     });
 
     // The main loop executes the asynchronous block
