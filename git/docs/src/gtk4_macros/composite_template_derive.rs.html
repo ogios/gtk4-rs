@@ -324,7 +324,7 @@
 <span class="attr">#[cfg(feature = <span class="string">"xml_validation"</span>)]
 </span><span class="kw">use </span>quick_xml::name::QName;
 <span class="kw">use </span><a href="https://docs.rs/quote/1.0.36/quote/macro.quote.html">quote::quote</a>;
-<span class="kw">use </span>syn::{<a href="https://docs.rs/syn/2.0.70/syn/derive/enum.Data.html">Data</a>, <a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html">Error</a>, <span class="prelude-ty">Result</span>};
+<span class="kw">use </span>syn::{<a href="https://docs.rs/syn/2.0.76/syn/derive/enum.Data.html">Data</a>, <a href="https://docs.rs/syn/2.0.76/syn/error/struct.Error.html">Error</a>, <span class="prelude-ty">Result</span>};
 
 <span class="attr">#[cfg(feature = <span class="string">"blueprint"</span>)]
 </span><span class="kw">use </span><a href="lib.rs.html#9"><span class="kw">crate</span>::blueprint</a>::<span class="kw-2">*</span>;
@@ -406,7 +406,7 @@
             <span class="prelude-val">Ok</span>(Event::Empty(e)) =&gt; <span class="prelude-val">Some</span>(<a href="#89">e</a>),
             <span class="prelude-val">Ok</span>(Event::Eof) =&gt; <span class="kw">break</span>,
             <span class="prelude-val">Err</span>(e) =&gt; {
-                <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html#method.new">Error::new</a>(
+                <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.76/syn/error/struct.Error.html#method.new">Error::new</a>(
                     <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html#method.call_site">Span::call_site</a>(),
                     <a class="macro" href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(
                         <span class="string">"Failed reading template XML at position {}: {:?}"</span>,
@@ -432,7 +432,7 @@
     }
 
     <span class="kw">if let </span><span class="prelude-val">Some</span>((name, span)) = <a href="#76">ids_left</a>.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.next">next</a>() {
-        <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html#method.new">Error::new</a>(
+        <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.76/syn/error/struct.Error.html#method.new">Error::new</a>(
             <a href="#117">span</a>,
             <a class="macro" href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Template child with id `{name}` not found in template XML"</span>,),
         ));
@@ -496,14 +496,14 @@
     }
 }
 
-<span class="kw">pub fn </span>impl_composite_template(input: <span class="kw-2">&amp;</span><a href="https://docs.rs/syn/2.0.70/syn/derive/struct.DeriveInput.html">syn::DeriveInput</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.TokenStream.html">TokenStream</a>&gt; {
+<span class="kw">pub fn </span>impl_composite_template(input: <span class="kw-2">&amp;</span><a href="https://docs.rs/syn/2.0.76/syn/derive/struct.DeriveInput.html">syn::DeriveInput</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.TokenStream.html">TokenStream</a>&gt; {
     <span class="kw">let </span>name = <span class="kw-2">&amp;</span><a href="#182">input</a>.ident;
     <span class="kw">let </span>crate_ident = <a href="util.rs.html#6-17">crate_ident_new</a>();
 
     <span class="kw">let </span>template = <span class="kw">match </span><a href="attribute_parser.rs.html#145-158">parse_template_source</a>(<a href="#182">input</a>) {
         <span class="prelude-val">Ok</span>(v) =&gt; <span class="prelude-val">Some</span>(<a href="#187">v</a>),
         <span class="prelude-val">Err</span>(e) =&gt; {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html#method.new">Error::new</a>(
+            <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.76/syn/error/struct.Error.html#method.new">Error::new</a>(
                 <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html#method.call_site">Span::call_site</a>(),
                 <a class="macro" href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}: derive(CompositeTemplate) requires #[template(...)] to specify 'file', 'resource', or 'string'"</span>,
                 e)
@@ -520,9 +520,9 @@
     <span class="kw">let </span>set_template = <a href="#201">source</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|s| <a href="#16-65">gen_set_template</a>(<a href="#203">s</a>, <span class="kw-2">&amp;</span><a href="#184">crate_ident</a>));
 
     <span class="kw">let </span>fields = <span class="kw">match </span><a href="#182">input</a>.data {
-        <a href="https://docs.rs/syn/2.0.70/syn/derive/enum.Data.html#variant.Struct">Data::Struct</a>(<span class="kw-2">ref </span>s) =&gt; <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><a href="#206">s</a>.fields),
+        <a href="https://docs.rs/syn/2.0.76/syn/derive/enum.Data.html#variant.Struct">Data::Struct</a>(<span class="kw-2">ref </span>s) =&gt; <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><a href="#206">s</a>.fields),
         <span class="kw">_ </span>=&gt; {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.70/syn/error/struct.Error.html#method.new">Error::new</a>(
+            <span class="kw">return </span><span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.76/syn/error/struct.Error.html#method.new">Error::new</a>(
                 <a href="https://docs.rs/proc-macro2/1.0.86/proc_macro2/struct.Span.html#method.call_site">Span::call_site</a>(),
                 <span class="string">"derive(CompositeTemplate) only supports structs"</span>,
             ));

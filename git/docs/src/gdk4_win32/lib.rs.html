@@ -141,19 +141,23 @@
 <a href="#68" id="68">68</a>
 <a href="#69" id="69">69</a>
 <a href="#70" id="70">70</a>
+<a href="#71" id="71">71</a>
+<a href="#72" id="72">72</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#![doc = <span class="macro">include_str!</span>(<span class="string">"../README.md"</span>)]
 #![allow(deprecated)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
-</span><span class="kw">pub use </span><a href="../../gdk4/index.html">gdk</a>;
+</span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">std::ffi::c_void</a>;
+
+<span class="kw">pub use </span><a href="../../gdk4/index.html">gdk</a>;
 <span class="kw">pub use </span><a href="../../gdk4_win32_sys/index.html">gdk4_win32_sys</a> <span class="kw">as </span>ffi;
 <span class="kw">pub use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/index.html">gio</a>;
 <span class="kw">pub use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/index.html">glib</a>;
 <span class="attr">#[cfg(feature = <span class="string">"win32"</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"win32"</span>)))]
-</span><span class="kw">pub use </span>windows;
+</span><span class="kw">pub use </span><a href="https://microsoft.github.io/windows-docs-rs/doc/windows/index.html">windows</a>;
 
 <span class="attr">#[macro_use]
 </span><span class="kw">mod </span><a href="rt.rs.html#3-10">rt</a>;
@@ -164,51 +168,51 @@
 
 <span class="kw">pub mod </span><a href="prelude.rs.html#4-7">prelude</a>;
 
-<span class="kw">pub use </span><a href="#20">auto</a>::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><a href="#22">auto</a>::<span class="kw-2">*</span>;
 
 <span class="kw">mod </span><a href="win32_display.rs.html#3-108">win32_display</a>;
 <span class="kw">pub use </span><a href="win32_display.rs.html#87-92">win32_display::Win32DisplayFilterHandle</a>;
 
 <span class="kw">mod </span><a href="win32_hcursor.rs.html#3-30">win32_hcursor</a>;
-<span class="kw">mod </span><a href="win32_surface.rs.html#3-58">win32_surface</a>;
+<span class="kw">mod </span><a href="win32_surface.rs.html#3-63">win32_surface</a>;
 
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HANDLE(<span class="kw">pub </span>isize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HCURSOR(<span class="kw">pub </span>isize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HICON(<span class="kw">pub </span>isize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HWND(<span class="kw">pub </span>isize);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HANDLE.html">HANDLE</a>(<span class="kw">pub </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">c_void</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HCURSOR.html">HCURSOR</a>(<span class="kw">pub </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">c_void</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HICON.html">HICON</a>(<span class="kw">pub </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">c_void</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HWND.html">HWND</a>(<span class="kw">pub </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">c_void</a>);
 
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(transparent)]
-</span><span class="kw">pub struct </span>WPARAM(<span class="kw">pub </span>usize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.WPARAM.html">WPARAM</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(transparent)]
-</span><span class="kw">pub struct </span>LPARAM(<span class="kw">pub </span>isize);
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.LPARAM.html">LPARAM</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
 
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(C)]
-</span><span class="kw">pub struct </span>POINT {
-    <span class="kw">pub </span>x: i32,
-    <span class="kw">pub </span>y: i32,
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.POINT.html">POINT</a> {
+    <span class="kw">pub </span>x: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    <span class="kw">pub </span>y: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
 }
 
 <span class="attr">#[allow(non_snake_case)]
-#[cfg(not(feature = <span class="string">"win32"</span>))]
+#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(C)]
-</span><span class="kw">pub struct </span>MSG {
-    <span class="kw">pub </span>hwnd: HWND,
-    <span class="kw">pub </span>message: u32,
-    <span class="kw">pub </span>wParam: WPARAM,
-    <span class="kw">pub </span>lParam: LPARAM,
-    <span class="kw">pub </span>time: u32,
-    <span class="kw">pub </span>pt: POINT,
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.MSG.html">MSG</a> {
+    <span class="kw">pub </span>hwnd: <a href="#41">HWND</a>,
+    <span class="kw">pub </span>message: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    <span class="kw">pub </span>wParam: <a href="#45">WPARAM</a>,
+    <span class="kw">pub </span>lParam: <a href="#48">LPARAM</a>,
+    <span class="kw">pub </span>time: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    <span class="kw">pub </span>pt: <a href="#52-55">POINT</a>,
 }
 
-<span class="attr">#[cfg(feature = <span class="string">"win32"</span>)]
-</span><span class="kw">pub use </span>windows::Win32::Foundation::{<a href="../../gdk4_win32/struct.HANDLE.html">HANDLE</a>, <a href="../../gdk4_win32/struct.HWND.html">HWND</a>};
-<span class="attr">#[cfg(feature = <span class="string">"win32"</span>)]
-</span><span class="kw">pub use </span>windows::Win32::UI::WindowsAndMessaging::{<a href="../../gdk4_win32/struct.HCURSOR.html">HCURSOR</a>, <a href="../../gdk4_win32/struct.HICON.html">HICON</a>, <a href="../../gdk4_win32/struct.MSG.html">MSG</a>};
+<span class="attr">#[cfg(all(feature = <span class="string">"win32"</span>, windows))]
+</span><span class="kw">pub use </span>windows::Win32::Foundation::{HANDLE, HWND};
+<span class="attr">#[cfg(all(feature = <span class="string">"win32"</span>, windows))]
+</span><span class="kw">pub use </span>windows::Win32::UI::WindowsAndMessaging::{HCURSOR, HICON, MSG};
 </code></pre></div></section></main></body></html>
