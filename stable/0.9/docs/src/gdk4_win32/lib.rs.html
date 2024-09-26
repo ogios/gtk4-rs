@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4-win32/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-492a78a4a87dcc01.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4_win32" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (515395af0 2024-08-26)" data-channel="nightly" data-search-js="search-acd2e111c9cb27e3.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-cb0df477c2d67d00.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-3b12f09e550e0385.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4-win32/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-42fa08075bb476ff.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4_win32" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (9e394f551 2024-09-25)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-54bc299d2a5e4e43.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,8 @@
 </script>
 
 
-<nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">gdk4_win32/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -140,8 +141,7 @@
 <a href="#67" id="67">67</a>
 <a href="#68" id="68">68</a>
 <a href="#69" id="69">69</a>
-<a href="#70" id="70">70</a>
-</pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#70" id="70">70</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#![doc = <span class="macro">include_str!</span>(<span class="string">"../README.md"</span>)]
 #![allow(deprecated)]
@@ -172,43 +172,43 @@
 <span class="kw">mod </span><a href="win32_hcursor.rs.html#3-30">win32_hcursor</a>;
 <span class="kw">mod </span><a href="win32_surface.rs.html#3-58">win32_surface</a>;
 
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HANDLE(<span class="kw">pub </span>isize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HCURSOR(<span class="kw">pub </span>isize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HICON(<span class="kw">pub </span>isize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
-</span><span class="kw">pub struct </span>HWND(<span class="kw">pub </span>isize);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HANDLE.html">HANDLE</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HCURSOR.html">HCURSOR</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HICON.html">HICON</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.HWND.html">HWND</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
 
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(transparent)]
-</span><span class="kw">pub struct </span>WPARAM(<span class="kw">pub </span>usize);
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.WPARAM.html">WPARAM</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>);
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(transparent)]
-</span><span class="kw">pub struct </span>LPARAM(<span class="kw">pub </span>isize);
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.LPARAM.html">LPARAM</a>(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
 
-<span class="attr">#[cfg(not(feature = <span class="string">"win32"</span>))]
+<span class="attr">#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(C)]
-</span><span class="kw">pub struct </span>POINT {
-    <span class="kw">pub </span>x: i32,
-    <span class="kw">pub </span>y: i32,
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.POINT.html">POINT</a> {
+    <span class="kw">pub </span>x: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+    <span class="kw">pub </span>y: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
 }
 
 <span class="attr">#[allow(non_snake_case)]
-#[cfg(not(feature = <span class="string">"win32"</span>))]
+#[cfg(not(all(feature = <span class="string">"win32"</span>, windows)))]
 #[repr(C)]
-</span><span class="kw">pub struct </span>MSG {
-    <span class="kw">pub </span>hwnd: HWND,
-    <span class="kw">pub </span>message: u32,
-    <span class="kw">pub </span>wParam: WPARAM,
-    <span class="kw">pub </span>lParam: LPARAM,
-    <span class="kw">pub </span>time: u32,
-    <span class="kw">pub </span>pt: POINT,
+</span><span class="kw">pub struct </span><a href="../../gdk4_win32/struct.MSG.html">MSG</a> {
+    <span class="kw">pub </span>hwnd: <a href="#39">HWND</a>,
+    <span class="kw">pub </span>message: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    <span class="kw">pub </span>wParam: <a href="#43">WPARAM</a>,
+    <span class="kw">pub </span>lParam: <a href="#46">LPARAM</a>,
+    <span class="kw">pub </span>time: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    <span class="kw">pub </span>pt: <a href="#50-53">POINT</a>,
 }
 
-<span class="attr">#[cfg(feature = <span class="string">"win32"</span>)]
-</span><span class="kw">pub use </span>windows::Win32::Foundation::{<a href="../../gdk4_win32/struct.HANDLE.html">HANDLE</a>, <a href="../../gdk4_win32/struct.HWND.html">HWND</a>};
-<span class="attr">#[cfg(feature = <span class="string">"win32"</span>)]
-</span><span class="kw">pub use </span>windows::Win32::UI::WindowsAndMessaging::{<a href="../../gdk4_win32/struct.HCURSOR.html">HCURSOR</a>, <a href="../../gdk4_win32/struct.HICON.html">HICON</a>, <a href="../../gdk4_win32/struct.MSG.html">MSG</a>};
+<span class="attr">#[cfg(all(feature = <span class="string">"win32"</span>, windows))]
+</span><span class="kw">pub use </span>windows::Win32::Foundation::{HANDLE, HWND};
+<span class="attr">#[cfg(all(feature = <span class="string">"win32"</span>, windows))]
+</span><span class="kw">pub use </span>windows::Win32::UI::WindowsAndMessaging::{HCURSOR, HICON, MSG};
 </code></pre></div></section></main></body></html>
