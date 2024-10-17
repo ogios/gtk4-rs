@@ -689,9 +689,7 @@ We are getting a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/str
 <p>We need to pass the <code>WindowIdentifier</code> to make the dialog modal. This means that it will be on top of the window and freezes the rest of the application from user input.</p>
 </blockquote>
 <p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/7/main.rs">listings/main_event_loop/7/main.rs</a></p>
-<pre><code class="language-rust"><span class="boring">use ashpd::desktop::account::UserInformation;
-</span><span class="boring">use ashpd::WindowIdentifier;
-</span><span class="boring">use glib::clone;
+<pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
 </span><span class="boring">
@@ -724,23 +722,7 @@ We are getting a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/str
         glib::spawn_future_local(clone!(
             #[weak]
             button,
-            async move {
-                // Get native of button for window identifier
-                let native = button.native().expect("Need to be able to get native.");
-                // Get window identifier so that the dialog will be modal to the main window
-                let identifier = WindowIdentifier::from_native(&amp;native).await;
-                let request = UserInformation::request()
-                    .reason("App would like to access user information.")
-                    .identifier(identifier)
-                    .send()
-                    .await;
-
-                if let Ok(response) = request.and_then(|r| r.response()) {
-                    println!("User name: {}", response.name());
-                } else {
-                    println!("Could not access user information.")
-                }
-            }
+            async move { fetch_user_information(button).await }
         ));
     });
 <span class="boring">
@@ -753,6 +735,33 @@ We are getting a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/str
 </span><span class="boring">
 </span><span class="boring">    // Present window
 </span><span class="boring">    window.present();
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">#[cfg(target_os = "linux")]
+</span><span class="boring">async fn fetch_user_information(button: Button) {
+</span><span class="boring">    use ashpd::desktop::account::UserInformation;
+</span><span class="boring">    use ashpd::WindowIdentifier;
+</span><span class="boring">
+</span><span class="boring">    // Get native of button for window identifier
+</span><span class="boring">    let native = button.native().expect("Need to be able to get native.");
+</span><span class="boring">    // Get window identifier so that the dialog will be modal to the main window
+</span><span class="boring">    let identifier = WindowIdentifier::from_native(&amp;native).await;
+</span><span class="boring">    let request = UserInformation::request()
+</span><span class="boring">        .reason("App would like to access user information.")
+</span><span class="boring">        .identifier(identifier)
+</span><span class="boring">        .send()
+</span><span class="boring">        .await;
+</span><span class="boring">
+</span><span class="boring">    if let Ok(response) = request.and_then(|r| r.response()) {
+</span><span class="boring">        println!("User name: {}", response.name());
+</span><span class="boring">    } else {
+</span><span class="boring">        println!("Could not access user information.")
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">#[cfg(not(target_os = "linux"))]
+</span><span class="boring">async fn fetch_user_information(_button: Button) {
+</span><span class="boring">    println!("fetching user information not available outside target_os = \"linux\"");
 </span><span class="boring">}</span></code></pre>
 <p>After pressing the button, a dialog should open that shows the information that will be shared.
 If you decide to share it, you user name will be printed on the console.</p>
