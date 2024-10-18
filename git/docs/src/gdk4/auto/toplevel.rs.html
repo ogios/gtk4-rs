@@ -959,9 +959,9 @@
 
 </span><span class="attr">#[cfg(feature = <span class="string">"v4_4"</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_4"</span>)))]
-</span><span class="kw">use </span><a href="enums.rs.html#2803-2815"><span class="kw">crate</span>::TitlebarGesture</a>;
+</span><span class="kw">use </span><a href="enums.rs.html#2925-2937"><span class="kw">crate</span>::TitlebarGesture</a>;
 <span class="kw">use crate</span>::{
-    <a href="../../../gdk4_sys/index.html">ffi</a>, <a href="device.rs.html#13-168">Device</a>, <a href="event.rs.html#11-27">Event</a>, <a href="enums.rs.html#1035-1044">FullscreenMode</a>, <a href="surface.rs.html#17-128">Surface</a>, <a href="enums.rs.html#2518-2545">SurfaceEdge</a>, <a href="texture.rs.html#11-53">Texture</a>, <a href="toplevel_layout.rs.html#8-26">ToplevelLayout</a>,
+    <a href="../../../gdk4_sys/index.html">ffi</a>, <a href="device.rs.html#13-168">Device</a>, <a href="event.rs.html#11-27">Event</a>, <a href="enums.rs.html#1157-1166">FullscreenMode</a>, <a href="surface.rs.html#17-128">Surface</a>, <a href="enums.rs.html#2640-2667">SurfaceEdge</a>, <a href="texture.rs.html#14-73">Texture</a>, <a href="toplevel_layout.rs.html#8-26">ToplevelLayout</a>,
     <a href="flags.rs.html#908-973">ToplevelState</a>,
 };
 <span class="kw">use </span>glib::{
@@ -1220,7 +1220,7 @@
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_toplevel_begin_resize"</span>)]
     </span><span class="kw">fn </span>begin_resize(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        edge: <a href="enums.rs.html#2518-2545">SurfaceEdge</a>,
+        edge: <a href="enums.rs.html#2640-2667">SurfaceEdge</a>,
         device: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="device.rs.html#13-168">Device</a>&gt;&gt;,
         button: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
         x: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
@@ -1398,7 +1398,7 @@
     ///   A list of textures to use as icon, of different sizes
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_toplevel_set_icon_list"</span>)]
     #[doc(alias = <span class="string">"icon-list"</span>)]
-    </span><span class="kw">fn </span>set_icon_list(<span class="kw-2">&amp;</span><span class="self">self</span>, surfaces: <span class="kw-2">&amp;</span>[<a href="texture.rs.html#11-53">Texture</a>]) {
+    </span><span class="kw">fn </span>set_icon_list(<span class="kw-2">&amp;</span><span class="self">self</span>, surfaces: <span class="kw-2">&amp;</span>[<a href="texture.rs.html#14-73">Texture</a>]) {
         <span class="kw">unsafe </span>{
             <a href="../../../gdk4_sys/fn.gdk_toplevel_set_icon_list.html">ffi::gdk_toplevel_set_icon_list</a>(
                 <a class="self" href="#446">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -1527,7 +1527,7 @@
     </span><span class="attr">#[cfg(feature = <span class="string">"v4_4"</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_4"</span>)))]
     #[doc(alias = <span class="string">"gdk_toplevel_titlebar_gesture"</span>)]
-    </span><span class="kw">fn </span>titlebar_gesture(<span class="kw-2">&amp;</span><span class="self">self</span>, gesture: <a href="enums.rs.html#2803-2815">TitlebarGesture</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">fn </span>titlebar_gesture(<span class="kw-2">&amp;</span><span class="self">self</span>, gesture: <a href="enums.rs.html#2925-2937">TitlebarGesture</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gdk4_sys/fn.gdk_toplevel_titlebar_gesture.html">ffi::gdk_toplevel_titlebar_gesture</a>(
                 <a class="self" href="#575">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -1548,13 +1548,13 @@
 
     <span class="doccomment">/// The fullscreen mode of the surface.
     </span><span class="attr">#[doc(alias = <span class="string">"fullscreen-mode"</span>)]
-    </span><span class="kw">fn </span>fullscreen_mode(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="enums.rs.html#1035-1044">FullscreenMode</a> {
+    </span><span class="kw">fn </span>fullscreen_mode(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="enums.rs.html#1157-1166">FullscreenMode</a> {
         <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.property">ObjectExt::property</a>(<a class="self" href="#596">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>(), <span class="string">"fullscreen-mode"</span>)
     }
 
     <span class="doccomment">/// The fullscreen mode of the surface.
     </span><span class="attr">#[doc(alias = <span class="string">"fullscreen-mode"</span>)]
-    </span><span class="kw">fn </span>set_fullscreen_mode(<span class="kw-2">&amp;</span><span class="self">self</span>, fullscreen_mode: <a href="enums.rs.html#1035-1044">FullscreenMode</a>) {
+    </span><span class="kw">fn </span>set_fullscreen_mode(<span class="kw-2">&amp;</span><span class="self">self</span>, fullscreen_mode: <a href="enums.rs.html#1157-1166">FullscreenMode</a>) {
         <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.set_property">ObjectExt::set_property</a>(<a class="self" href="#602">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>(), <span class="string">"fullscreen-mode"</span>, <a href="#602">fullscreen_mode</a>)
     }
 

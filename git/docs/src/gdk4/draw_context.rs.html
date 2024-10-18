@@ -105,16 +105,21 @@
 <a href="#31" id="31">31</a>
 <a href="#32" id="32">32</a>
 <a href="#33" id="33">33</a>
-<a href="#34" id="34">34</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#34" id="34">34</a>
+<a href="#35" id="35">35</a>
+<a href="#36" id="36">36</a>
+<a href="#37" id="37">37</a>
+<a href="#38" id="38">38</a>
+<a href="#39" id="39">39</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
 
-<span class="kw">use crate</span>::{<a href="lib.rs.html#79">prelude</a>::<span class="kw-2">*</span>, <a href="auto/draw_context.rs.html#8-44">DrawContext</a>};
+<span class="kw">use crate</span>::{<a href="lib.rs.html#79">prelude</a>::<span class="kw-2">*</span>, <a href="auto/draw_context.rs.html#9-45">DrawContext</a>};
 
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Trait containing manually implemented methods of
 /// [`DrawContext`](crate::DrawContext).
-</span><span class="kw">pub trait </span><a href="../../gdk4/prelude/trait.DrawContextExtManual.html">DrawContextExtManual</a>: IsA&lt;<a href="auto/draw_context.rs.html#8-44">DrawContext</a>&gt; + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../gdk4/prelude/trait.DrawContextExtManual.html">DrawContextExtManual</a>: IsA&lt;<a href="auto/draw_context.rs.html#9-45">DrawContext</a>&gt; + <span class="lifetime">'static </span>{
     <span class="doccomment">/// Retrieves the region that is currently being repainted.
     ///
     /// After a call to [`DrawContextExt::begin_frame()`][crate::prelude::DrawContextExt::begin_frame()] this function will
@@ -124,6 +129,11 @@
     /// If @self is not in between calls to [`DrawContextExt::begin_frame()`][crate::prelude::DrawContextExt::begin_frame()]
     /// and [`DrawContextExt::end_frame()`][crate::prelude::DrawContextExt::end_frame()], [`None`] will be returned.
     ///
+    /// # Deprecated since 4.16
+    ///
+    /// Drawing directly to the surface is no longer recommended.
+    ///   Use `GskRenderNode` and `GskRenderer`.
+    ///
     /// # Returns
     ///
     /// a Cairo region
@@ -132,11 +142,11 @@
     </span><span class="kw">fn </span>frame_region(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/cairo/region/struct.Region.html">cairo::Region</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="../../gdk4_sys/fn.gdk_draw_context_get_frame_region.html"><span class="kw">crate</span>::ffi::gdk_draw_context_get_frame_region</a>(
-                <a class="self" href="#25">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a class="self" href="#30">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             ) <span class="kw">as </span><span class="kw-2">*mut </span>cairo::ffi::cairo_region_t)
         }
     }
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/draw_context.rs.html#8-44">DrawContext</a>&gt;&gt; <a href="#10-32">DrawContextExtManual</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/draw_context.rs.html#9-45">DrawContext</a>&gt;&gt; <a href="#10-37">DrawContextExtManual</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

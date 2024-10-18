@@ -320,7 +320,7 @@
 
 </span><span class="kw">use </span>glib::{<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>};
 
-<span class="kw">use crate</span>::{<a href="../../gdk4_sys/index.html">ffi</a>, <a href="auto/gl_context.rs.html#18-119">GLContext</a>, <a href="auto/gl_texture_builder.rs.html#8-84">GLTextureBuilder</a>, <a href="auto/enums.rs.html#1656-1815">MemoryFormat</a>, <a href="auto/texture.rs.html#11-53">Texture</a>};
+<span class="kw">use crate</span>::{<a href="../../gdk4_sys/index.html">ffi</a>, <a href="auto/gl_context.rs.html#18-119">GLContext</a>, <a href="auto/gl_texture_builder.rs.html#20-102">GLTextureBuilder</a>, <a href="auto/enums.rs.html#1778-1937">MemoryFormat</a>, <a href="auto/texture.rs.html#14-73">Texture</a>};
 
 <span class="attr">#[cfg(not(feature = <span class="string">"gl"</span>))]
 </span><span class="kw">pub type </span>GLsync = <span class="kw-2">*const </span>libc::c_void;
@@ -328,7 +328,7 @@
 <span class="attr">#[cfg(feature = <span class="string">"gl"</span>)]
 </span><span class="kw">pub use </span><a href="https://docs.rs/gl/latest/gl/types/type.GLsync.html">gl::types::GLsync</a>;
 
-<span class="kw">impl </span><a href="auto/gl_texture_builder.rs.html#8-84">GLTextureBuilder</a> {
+<span class="kw">impl </span><a href="auto/gl_texture_builder.rs.html#20-102">GLTextureBuilder</a> {
     <span class="doccomment">/// Builds a new [`Texture`][crate::Texture] with the values set up in the builder.
     ///
     /// The `destroy` function gets called when the returned texture gets released;
@@ -349,7 +349,7 @@
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_gl_texture_builder_build"</span>)]
     #[must_use = <span class="string">"The builder must be built to be used"</span>]
     #[allow(clippy::missing_safety_doc)]
-    </span><span class="kw">pub unsafe fn </span>build(<span class="self">self</span>) -&gt; <a href="auto/texture.rs.html#11-53">Texture</a> {
+    </span><span class="kw">pub unsafe fn </span>build(<span class="self">self</span>) -&gt; <a href="auto/texture.rs.html#14-73">Texture</a> {
         <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../gdk4_sys/fn.gdk_gl_texture_builder_build.html">ffi::gdk_gl_texture_builder_build</a>(
             <a class="self" href="#34">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             <span class="prelude-val">None</span>,
@@ -363,7 +363,7 @@
     </span><span class="kw">pub unsafe fn </span>build_with_release_func&lt;F: FnOnce() + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <span class="lifetime">'static</span>&gt;(
         <span class="self">self</span>,
         release_func: F,
-    ) -&gt; <a href="auto/texture.rs.html#11-53">Texture</a> {
+    ) -&gt; <a href="auto/texture.rs.html#14-73">Texture</a> {
         <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>destroy_closure&lt;F: FnOnce() + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <span class="lifetime">'static</span>&gt;(
             func: glib::ffi::gpointer,
         ) {
@@ -383,7 +383,7 @@
     ///
     /// The context must be set before calling [`build()`][Self::build()].
     /// ## `context`
-    /// The context the texture beongs to or [`None`] to unset
+    /// The context the texture belongs to or [`None`] to unset
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_gl_texture_builder_set_context"</span>)]
     </span><span class="kw">pub fn </span>set_context(<span class="self">self</span>, context: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="auto/gl_context.rs.html#18-119">GLContext</a>&gt;&gt;) -&gt; <span class="self">Self </span>{
         <span class="kw">unsafe </span>{
@@ -415,7 +415,7 @@
     /// ## `format`
     /// The texture's format
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_gl_texture_builder_set_format"</span>)]
-    </span><span class="kw">pub fn </span>set_format(<span class="self">self</span>, format: <a href="auto/enums.rs.html#1656-1815">MemoryFormat</a>) -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>set_format(<span class="self">self</span>, format: <a href="auto/enums.rs.html#1778-1937">MemoryFormat</a>) -&gt; <span class="self">Self </span>{
         <span class="kw">unsafe </span>{
             <a href="../../gdk4_sys/fn.gdk_gl_texture_builder_set_format.html">ffi::gdk_gl_texture_builder_set_format</a>(<a class="self" href="#100">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#100">format</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>());
         }
@@ -500,7 +500,7 @@
     /// ## `texture`
     /// the texture to update
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_gl_texture_builder_set_update_texture"</span>)]
-    </span><span class="kw">pub fn </span>set_update_texture(<span class="self">self</span>, texture: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="auto/texture.rs.html#11-53">Texture</a>&gt;&gt;) -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>set_update_texture(<span class="self">self</span>, texture: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="auto/texture.rs.html#14-73">Texture</a>&gt;&gt;) -&gt; <span class="self">Self </span>{
         <span class="kw">unsafe </span>{
             <a href="../../gdk4_sys/fn.gdk_gl_texture_builder_set_update_texture.html">ffi::gdk_gl_texture_builder_set_update_texture</a>(
                 <a class="self" href="#185">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
