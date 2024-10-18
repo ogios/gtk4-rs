@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/text_buffer.rs`."><title>text_buffer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b778ab399e080a4b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (7608018cb 2024-09-29)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-54bc299d2a5e4e43.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/text_buffer.rs`."><title>text_buffer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3ed6e3cc6 2024-10-17)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -597,12 +597,7 @@
 <a href="#523" id="523">523</a>
 <a href="#524" id="524">524</a>
 <a href="#525" id="525">525</a>
-<a href="#526" id="526">526</a>
-<a href="#527" id="527">527</a>
-<a href="#528" id="528">528</a>
-<a href="#529" id="529">529</a>
-<a href="#530" id="530">530</a>
-<a href="#531" id="531">531</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#526" id="526">526</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! Traits intended for subclassing [`TextBuffer`](crate::TextBuffer).
@@ -613,7 +608,7 @@
     <a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#91-174">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>, <a href="../auto/text_child_anchor.rs.html#8-23">TextChildAnchor</a>, <a href="../auto/text_iter.rs.html#8-23">TextIter</a>, <a href="../auto/text_mark.rs.html#8-70">TextMark</a>, <a href="../auto/text_tag.rs.html#13-625">TextTag</a>,
 };
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/text_buffer/trait.TextBufferImpl.html">TextBufferImpl</a>: <a href="#149-336">TextBufferImplExt</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/text_buffer/trait.TextBufferImpl.html">TextBufferImpl</a>: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;&gt; {
     <span class="doccomment">/// Emits the “apply-tag” signal on @self.
     ///
     /// The default handler for the signal applies
@@ -626,7 +621,7 @@
     /// ## `end`
     /// other bound of range to be tagged
     </span><span class="kw">fn </span>apply_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="kw-2">&amp;</span><a href="../auto/text_tag.rs.html#13-625">TextTag</a>, start: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, end: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>) {
-        <a class="self" href="#24">self</a>.<a href="#150-163">parent_apply_tag</a>(<a href="#24">tag</a>, <a href="#24">start</a>, <a href="#24">end</a>)
+        <a class="self" href="#24">self</a>.<a href="#145-158">parent_apply_tag</a>(<a href="#24">tag</a>, <a href="#24">start</a>, <a href="#24">end</a>)
     }
     <span class="doccomment">/// Called to indicate that the buffer operations between here and a
     /// call to gtk_text_buffer_end_user_action() are part of a single
@@ -647,15 +642,15 @@
     /// so there's no need to add extra calls if you user action consists
     /// solely of a single call to one of those functions.
     </span><span class="kw">fn </span>begin_user_action(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#45">self</a>.<a href="#165-173">parent_begin_user_action</a>()
+        <a class="self" href="#45">self</a>.<a href="#160-168">parent_begin_user_action</a>()
     }
     <span class="doccomment">/// The class handler for the `GtkTextBuffer::changed` signal.
     </span><span class="kw">fn </span>changed(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#49">self</a>.<a href="#175-183">parent_changed</a>()
+        <a class="self" href="#49">self</a>.<a href="#170-178">parent_changed</a>()
     }
     <span class="doccomment">/// The class handler for the `GtkTextBuffer::delete-range` signal.
     </span><span class="kw">fn </span>delete_range(<span class="kw-2">&amp;</span><span class="self">self</span>, start: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, end: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>) {
-        <a class="self" href="#53">self</a>.<a href="#185-197">parent_delete_range</a>(<a href="#53">start</a>, <a href="#53">end</a>)
+        <a class="self" href="#53">self</a>.<a href="#180-192">parent_delete_range</a>(<a href="#53">start</a>, <a href="#53">end</a>)
     }
     <span class="doccomment">/// Ends a user-visible operation.
     ///
@@ -663,7 +658,7 @@
     /// [`TextBufferExt::begin_user_action()`][crate::prelude::TextBufferExt::begin_user_action()].
     /// See that function for a full explanation.
     </span><span class="kw">fn </span>end_user_action(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#61">self</a>.<a href="#199-207">parent_end_user_action</a>()
+        <a class="self" href="#61">self</a>.<a href="#194-202">parent_end_user_action</a>()
     }
     <span class="doccomment">/// Inserts a child widget anchor into the text buffer at @iter.
     ///
@@ -683,7 +678,7 @@
     /// ## `anchor`
     /// a [`TextChildAnchor`][crate::TextChildAnchor]
     </span><span class="kw">fn </span>insert_child_anchor(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, anchor: <span class="kw-2">&amp;</span><a href="../auto/text_child_anchor.rs.html#8-23">TextChildAnchor</a>) {
-        <a class="self" href="#81">self</a>.<a href="#209-221">parent_insert_child_anchor</a>(<a href="#81">iter</a>, <a href="#81">anchor</a>)
+        <a class="self" href="#81">self</a>.<a href="#204-216">parent_insert_child_anchor</a>(<a href="#81">iter</a>, <a href="#81">anchor</a>)
     }
     <span class="doccomment">/// Inserts an image into the text buffer at @iter.
     ///
@@ -699,31 +694,31 @@
     /// ## `paintable`
     /// a [`gdk::Paintable`][crate::gdk::Paintable]
     </span><span class="kw">fn </span>insert_paintable(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, paintable: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/paintable/struct.Paintable.html">gdk::Paintable</a>) {
-        <a class="self" href="#97">self</a>.<a href="#223-235">parent_insert_paintable</a>(<a href="#97">iter</a>, <a href="#97">paintable</a>)
+        <a class="self" href="#97">self</a>.<a href="#218-230">parent_insert_paintable</a>(<a href="#97">iter</a>, <a href="#97">paintable</a>)
     }
     <span class="doccomment">/// The class handler for the `GtkTextBuffer::insert-text` signal.
     </span><span class="kw">fn </span>insert_text(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, new_text: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
-        <a class="self" href="#101">self</a>.<a href="#237-250">parent_insert_text</a>(<a href="#101">iter</a>, <a href="#101">new_text</a>)
+        <a class="self" href="#101">self</a>.<a href="#232-245">parent_insert_text</a>(<a href="#101">iter</a>, <a href="#101">new_text</a>)
     }
     <span class="doccomment">/// The class handler for the `GtkTextBuffer::mark-deleted` signal.
     </span><span class="kw">fn </span>mark_deleted(<span class="kw-2">&amp;</span><span class="self">self</span>, mark: <span class="kw-2">&amp;</span><a href="../auto/text_mark.rs.html#8-70">TextMark</a>) {
-        <a class="self" href="#105">self</a>.<a href="#252-263">parent_mark_deleted</a>(<a href="#105">mark</a>);
+        <a class="self" href="#105">self</a>.<a href="#247-258">parent_mark_deleted</a>(<a href="#105">mark</a>);
     }
     <span class="doccomment">/// The class handler for the `GtkTextBuffer::mark-set` signal.
     </span><span class="kw">fn </span>mark_set(<span class="kw-2">&amp;</span><span class="self">self</span>, location: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, mark: <span class="kw-2">&amp;</span><a href="../auto/text_mark.rs.html#8-70">TextMark</a>) {
-        <a class="self" href="#109">self</a>.<a href="#265-277">parent_mark_set</a>(<a href="#109">location</a>, <a href="#109">mark</a>)
+        <a class="self" href="#109">self</a>.<a href="#260-272">parent_mark_set</a>(<a href="#109">location</a>, <a href="#109">mark</a>)
     }
     <span class="doccomment">/// The class handler for the `GtkTextBuffer::modified-changed` signal.
     </span><span class="kw">fn </span>modified_changed(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#113">self</a>.<a href="#279-287">parent_modified_changed</a>();
+        <a class="self" href="#113">self</a>.<a href="#274-282">parent_modified_changed</a>();
     }
     <span class="doccomment">/// The class handler for the `GtkTextBuffer::paste-done` signal.
     </span><span class="kw">fn </span>paste_done(<span class="kw-2">&amp;</span><span class="self">self</span>, clipboard: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/clipboard/struct.Clipboard.html">gdk::Clipboard</a>) {
-        <a class="self" href="#117">self</a>.<a href="#289-300">parent_paste_done</a>(<a href="#117">clipboard</a>)
+        <a class="self" href="#117">self</a>.<a href="#284-295">parent_paste_done</a>(<a href="#117">clipboard</a>)
     }
     <span class="doccomment">/// Redoes the next redoable action on the buffer, if there is one.
     </span><span class="kw">fn </span>redo(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#121">self</a>.<a href="#302-310">parent_redo</a>()
+        <a class="self" href="#121">self</a>.<a href="#297-305">parent_redo</a>()
     }
     <span class="doccomment">/// Emits the “remove-tag” signal.
     ///
@@ -737,30 +732,25 @@
     /// ## `end`
     /// other bound of range to be untagged
     </span><span class="kw">fn </span>remove_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="kw-2">&amp;</span><a href="../auto/text_tag.rs.html#13-625">TextTag</a>, start: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, end: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>) {
-        <a class="self" href="#135">self</a>.<a href="#312-325">parent_remove_tag</a>(<a href="#135">tag</a>, <a href="#135">start</a>, <a href="#135">end</a>)
+        <a class="self" href="#135">self</a>.<a href="#307-320">parent_remove_tag</a>(<a href="#135">tag</a>, <a href="#135">start</a>, <a href="#135">end</a>)
     }
     <span class="doccomment">/// Undoes the last undoable action on the buffer, if there is one.
     </span><span class="kw">fn </span>undo(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#139">self</a>.<a href="#327-335">parent_undo</a>()
+        <a class="self" href="#139">self</a>.<a href="#322-330">parent_undo</a>()
     }
 }
 
-<span class="kw">mod </span>sealed {
-    <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <a href="#149-336"><span class="kw">super</span>::TextBufferImplExt</a>&gt; <a href="#145">Sealed</a> <span class="kw">for </span>T {}
-}
-
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/text_buffer/trait.TextBufferImplExt.html">TextBufferImplExt</a>: <a href="#145">sealed::Sealed</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclass.html">ObjectSubclass</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/text_buffer/trait.TextBufferImplExt.html">TextBufferImplExt</a>: <a href="#12-142">TextBufferImpl</a> {
     <span class="kw">fn </span>parent_apply_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="kw-2">&amp;</span><a href="../auto/text_tag.rs.html#13-625">TextTag</a>, start: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, end: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#152">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#153">parent_class</a>).apply_tag {
-                <a href="#154">f</a>(
-                    <a class="self" href="#150">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#150">tag</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#150">start</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#150">end</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#147">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#148">parent_class</a>).apply_tag {
+                <a href="#149">f</a>(
+                    <a class="self" href="#145">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#145">tag</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#145">start</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#145">end</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -769,9 +759,9 @@
     <span class="kw">fn </span>parent_begin_user_action(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#167">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#168">parent_class</a>).begin_user_action {
-                <a href="#169">f</a>(<a class="self" href="#165">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#162">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#163">parent_class</a>).begin_user_action {
+                <a href="#164">f</a>(<a class="self" href="#160">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
@@ -779,9 +769,9 @@
     <span class="kw">fn </span>parent_changed(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#177">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#178">parent_class</a>).changed {
-                <a href="#179">f</a>(<a class="self" href="#175">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#172">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#173">parent_class</a>).changed {
+                <a href="#174">f</a>(<a class="self" href="#170">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
@@ -789,12 +779,12 @@
     <span class="kw">fn </span>parent_delete_range(<span class="kw-2">&amp;</span><span class="self">self</span>, start: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, end: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#187">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#188">parent_class</a>).delete_range {
-                <a href="#189">f</a>(
-                    <a class="self" href="#185">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#185">start</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
-                    <a href="#185">end</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#182">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#183">parent_class</a>).delete_range {
+                <a href="#184">f</a>(
+                    <a class="self" href="#180">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#180">start</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
+                    <a href="#180">end</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -803,9 +793,9 @@
     <span class="kw">fn </span>parent_end_user_action(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#201">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#202">parent_class</a>).end_user_action {
-                <a href="#203">f</a>(<a class="self" href="#199">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#196">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#197">parent_class</a>).end_user_action {
+                <a href="#198">f</a>(<a class="self" href="#194">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
@@ -813,12 +803,12 @@
     <span class="kw">fn </span>parent_insert_child_anchor(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, anchor: <span class="kw-2">&amp;</span><a href="../auto/text_child_anchor.rs.html#8-23">TextChildAnchor</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#211">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#212">parent_class</a>).insert_child_anchor {
-                <a href="#213">f</a>(
-                    <a class="self" href="#209">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#209">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
-                    <a href="#209">anchor</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#206">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#207">parent_class</a>).insert_child_anchor {
+                <a href="#208">f</a>(
+                    <a class="self" href="#204">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#204">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
+                    <a href="#204">anchor</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -827,12 +817,12 @@
     <span class="kw">fn </span>parent_insert_paintable(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, paintable: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/paintable/struct.Paintable.html">gdk::Paintable</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#225">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#226">parent_class</a>).insert_paintable {
-                <a href="#227">f</a>(
-                    <a class="self" href="#223">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#223">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
-                    <a href="#223">paintable</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#220">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#221">parent_class</a>).insert_paintable {
+                <a href="#222">f</a>(
+                    <a class="self" href="#218">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#218">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
+                    <a href="#218">paintable</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -841,13 +831,13 @@
     <span class="kw">fn </span>parent_insert_text(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;mut </span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, new_text: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#239">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#240">parent_class</a>).insert_text {
-                <a href="#241">f</a>(
-                    <a class="self" href="#237">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#237">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
-                    <a href="#237">new_text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#237">new_text</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+            <span class="kw">let </span>parent_class = <a href="#234">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#235">parent_class</a>).insert_text {
+                <a href="#236">f</a>(
+                    <a class="self" href="#232">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#232">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
+                    <a href="#232">new_text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#232">new_text</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
                 )
             }
         }
@@ -856,11 +846,11 @@
     <span class="kw">fn </span>parent_mark_deleted(<span class="kw-2">&amp;</span><span class="self">self</span>, mark: <span class="kw-2">&amp;</span><a href="../auto/text_mark.rs.html#8-70">TextMark</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#254">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#255">parent_class</a>).mark_deleted {
-                <a href="#256">f</a>(
-                    <a class="self" href="#252">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#252">mark</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#249">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#250">parent_class</a>).mark_deleted {
+                <a href="#251">f</a>(
+                    <a class="self" href="#247">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#247">mark</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -869,12 +859,12 @@
     <span class="kw">fn </span>parent_mark_set(<span class="kw-2">&amp;</span><span class="self">self</span>, location: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, mark: <span class="kw-2">&amp;</span><a href="../auto/text_mark.rs.html#8-70">TextMark</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#267">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#268">parent_class</a>).mark_set {
-                <a href="#269">f</a>(
-                    <a class="self" href="#265">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#265">location</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#265">mark</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#262">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#263">parent_class</a>).mark_set {
+                <a href="#264">f</a>(
+                    <a class="self" href="#260">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#260">location</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#260">mark</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -883,9 +873,9 @@
     <span class="kw">fn </span>parent_modified_changed(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#281">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#282">parent_class</a>).modified_changed {
-                <a href="#283">f</a>(<a class="self" href="#279">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#276">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#277">parent_class</a>).modified_changed {
+                <a href="#278">f</a>(<a class="self" href="#274">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
@@ -893,11 +883,11 @@
     <span class="kw">fn </span>parent_paste_done(<span class="kw-2">&amp;</span><span class="self">self</span>, clipboard: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/clipboard/struct.Clipboard.html">gdk::Clipboard</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#291">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#292">parent_class</a>).paste_done {
-                <a href="#293">f</a>(
-                    <a class="self" href="#289">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#289">clipboard</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#286">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#287">parent_class</a>).paste_done {
+                <a href="#288">f</a>(
+                    <a class="self" href="#284">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#284">clipboard</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -906,9 +896,9 @@
     <span class="kw">fn </span>parent_redo(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#304">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#305">parent_class</a>).redo {
-                <a href="#306">f</a>(<a class="self" href="#302">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#299">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#300">parent_class</a>).redo {
+                <a href="#301">f</a>(<a class="self" href="#297">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
@@ -916,13 +906,13 @@
     <span class="kw">fn </span>parent_remove_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="kw-2">&amp;</span><a href="../auto/text_tag.rs.html#13-625">TextTag</a>, start: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>, end: <span class="kw-2">&amp;</span><a href="../auto/text_iter.rs.html#8-23">TextIter</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#314">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#315">parent_class</a>).remove_tag {
-                <a href="#316">f</a>(
-                    <a class="self" href="#312">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#312">tag</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#312">start</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#312">end</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <span class="kw">let </span>parent_class = <a href="#309">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#310">parent_class</a>).remove_tag {
+                <a href="#311">f</a>(
+                    <a class="self" href="#307">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#307">tag</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#307">start</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#307">end</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 )
             }
         }
@@ -931,38 +921,38 @@
     <span class="kw">fn </span>parent_undo(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#329">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#330">parent_class</a>).undo {
-                <a href="#331">f</a>(<a class="self" href="#327">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#324">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBufferClass.html">ffi::GtkTextBufferClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#325">parent_class</a>).undo {
+                <a href="#326">f</a>(<a class="self" href="#322">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#12-142">TextBufferImpl</a>&gt; <a href="#149-336">TextBufferImplExt</a> <span class="kw">for </span>T {}
+<span class="kw">impl</span>&lt;T: <a href="#12-142">TextBufferImpl</a>&gt; <a href="#144-331">TextBufferImplExt</a> <span class="kw">for </span>T {}
 
 <span class="kw">unsafe impl</span>&lt;T: <a href="#12-142">TextBufferImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a> {
     <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>glib::Class&lt;<span class="self">Self</span>&gt;) {
-        <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#341">class</a>);
+        <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#336">class</a>);
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
-        <span class="kw">let </span>klass = <a href="#341">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
-        <a href="#346">klass</a>.apply_tag = <span class="prelude-val">Some</span>(text_buffer_apply_tag::&lt;T&gt;);
-        <a href="#346">klass</a>.begin_user_action = <span class="prelude-val">Some</span>(text_buffer_begin_user_action::&lt;T&gt;);
-        <a href="#346">klass</a>.changed = <span class="prelude-val">Some</span>(text_buffer_changed::&lt;T&gt;);
-        <a href="#346">klass</a>.delete_range = <span class="prelude-val">Some</span>(text_buffer_delete_range::&lt;T&gt;);
-        <a href="#346">klass</a>.end_user_action = <span class="prelude-val">Some</span>(text_buffer_end_user_action::&lt;T&gt;);
-        <a href="#346">klass</a>.insert_child_anchor = <span class="prelude-val">Some</span>(text_buffer_insert_child_anchor::&lt;T&gt;);
-        <a href="#346">klass</a>.insert_paintable = <span class="prelude-val">Some</span>(text_buffer_insert_paintable::&lt;T&gt;);
-        <a href="#346">klass</a>.insert_text = <span class="prelude-val">Some</span>(text_buffer_insert_text::&lt;T&gt;);
-        <a href="#346">klass</a>.mark_deleted = <span class="prelude-val">Some</span>(text_buffer_mark_deleted::&lt;T&gt;);
-        <a href="#346">klass</a>.mark_set = <span class="prelude-val">Some</span>(text_buffer_mark_set::&lt;T&gt;);
-        <a href="#346">klass</a>.modified_changed = <span class="prelude-val">Some</span>(text_buffer_modified_changed::&lt;T&gt;);
-        <a href="#346">klass</a>.paste_done = <span class="prelude-val">Some</span>(text_buffer_paste_done::&lt;T&gt;);
-        <a href="#346">klass</a>.remove_tag = <span class="prelude-val">Some</span>(text_buffer_remove_tag::&lt;T&gt;);
-        <a href="#346">klass</a>.redo = <span class="prelude-val">Some</span>(text_buffer_redo::&lt;T&gt;);
-        <a href="#346">klass</a>.undo = <span class="prelude-val">Some</span>(text_buffer_undo::&lt;T&gt;);
+        <span class="kw">let </span>klass = <a href="#336">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
+        <a href="#341">klass</a>.apply_tag = <span class="prelude-val">Some</span>(text_buffer_apply_tag::&lt;T&gt;);
+        <a href="#341">klass</a>.begin_user_action = <span class="prelude-val">Some</span>(text_buffer_begin_user_action::&lt;T&gt;);
+        <a href="#341">klass</a>.changed = <span class="prelude-val">Some</span>(text_buffer_changed::&lt;T&gt;);
+        <a href="#341">klass</a>.delete_range = <span class="prelude-val">Some</span>(text_buffer_delete_range::&lt;T&gt;);
+        <a href="#341">klass</a>.end_user_action = <span class="prelude-val">Some</span>(text_buffer_end_user_action::&lt;T&gt;);
+        <a href="#341">klass</a>.insert_child_anchor = <span class="prelude-val">Some</span>(text_buffer_insert_child_anchor::&lt;T&gt;);
+        <a href="#341">klass</a>.insert_paintable = <span class="prelude-val">Some</span>(text_buffer_insert_paintable::&lt;T&gt;);
+        <a href="#341">klass</a>.insert_text = <span class="prelude-val">Some</span>(text_buffer_insert_text::&lt;T&gt;);
+        <a href="#341">klass</a>.mark_deleted = <span class="prelude-val">Some</span>(text_buffer_mark_deleted::&lt;T&gt;);
+        <a href="#341">klass</a>.mark_set = <span class="prelude-val">Some</span>(text_buffer_mark_set::&lt;T&gt;);
+        <a href="#341">klass</a>.modified_changed = <span class="prelude-val">Some</span>(text_buffer_modified_changed::&lt;T&gt;);
+        <a href="#341">klass</a>.paste_done = <span class="prelude-val">Some</span>(text_buffer_paste_done::&lt;T&gt;);
+        <a href="#341">klass</a>.remove_tag = <span class="prelude-val">Some</span>(text_buffer_remove_tag::&lt;T&gt;);
+        <a href="#341">klass</a>.redo = <span class="prelude-val">Some</span>(text_buffer_redo::&lt;T&gt;);
+        <a href="#341">klass</a>.undo = <span class="prelude-val">Some</span>(text_buffer_undo::&lt;T&gt;);
     }
 }
 
@@ -972,30 +962,30 @@
     start_ptr: <span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
     end_ptr: <span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#366">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#371">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#361">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#366">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#372">imp</a>.<a href="#24-26">apply_tag</a>(
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#367">tag_ptr</a>),
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#368">start_ptr</a>),
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#369">end_ptr</a>),
+    <a href="#367">imp</a>.<a href="#24-26">apply_tag</a>(
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#362">tag_ptr</a>),
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#363">start_ptr</a>),
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#364">end_ptr</a>),
     )
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_begin_user_action&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#382">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#384">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#377">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#379">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#385">imp</a>.<a href="#45-47">begin_user_action</a>()
+    <a href="#380">imp</a>.<a href="#45-47">begin_user_action</a>()
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_changed&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#390">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#391">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#385">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#386">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#392">imp</a>.<a href="#49-51">changed</a>()
+    <a href="#387">imp</a>.<a href="#49-51">changed</a>()
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_delete_range&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
@@ -1003,23 +993,23 @@
     start_ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
     end_ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#398">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#402">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#393">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#397">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span><span class="kw-2">mut </span>start_copy = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#399">start_ptr</a>);
-    <span class="kw">let </span><span class="kw-2">mut </span>end_copy = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#400">end_ptr</a>);
+    <span class="kw">let </span><span class="kw-2">mut </span>start_copy = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#394">start_ptr</a>);
+    <span class="kw">let </span><span class="kw-2">mut </span>end_copy = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#395">end_ptr</a>);
 
-    <a href="#403">imp</a>.<a href="#53-55">delete_range</a>(<span class="kw-2">&amp;mut </span><a href="#405">start_copy</a>, <span class="kw-2">&amp;mut </span><a href="#406">end_copy</a>);
+    <a href="#398">imp</a>.<a href="#53-55">delete_range</a>(<span class="kw-2">&amp;mut </span><a href="#400">start_copy</a>, <span class="kw-2">&amp;mut </span><a href="#401">end_copy</a>);
 
-    <span class="kw-2">*</span><a href="#399">start_ptr</a> = <span class="kw-2">*</span><a href="#405">start_copy</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
-    <span class="kw-2">*</span><a href="#400">end_ptr</a> = <span class="kw-2">*</span><a href="#406">end_copy</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
+    <span class="kw-2">*</span><a href="#394">start_ptr</a> = <span class="kw-2">*</span><a href="#400">start_copy</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
+    <span class="kw-2">*</span><a href="#395">end_ptr</a> = <span class="kw-2">*</span><a href="#401">end_copy</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_end_user_action&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#414">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#415">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#409">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#410">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#416">imp</a>.<a href="#61-63">end_user_action</a>()
+    <a href="#411">imp</a>.<a href="#61-63">end_user_action</a>()
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_insert_child_anchor&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
@@ -1027,13 +1017,13 @@
     iter_ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
     anchor_ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextChildAnchor.html">ffi::GtkTextChildAnchor</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#422">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#426">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#417">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#421">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span><span class="kw-2">mut </span>iter = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#423">iter_ptr</a>);
+    <span class="kw">let </span><span class="kw-2">mut </span>iter = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#418">iter_ptr</a>);
 
-    <a href="#427">imp</a>.<a href="#81-83">insert_child_anchor</a>(<span class="kw-2">&amp;mut </span><a href="#429">iter</a>, <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#424">anchor_ptr</a>));
-    <span class="kw-2">*</span><a href="#423">iter_ptr</a> = <span class="kw-2">*</span><a href="#429">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
+    <a href="#422">imp</a>.<a href="#81-83">insert_child_anchor</a>(<span class="kw-2">&amp;mut </span><a href="#424">iter</a>, <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#419">anchor_ptr</a>));
+    <span class="kw-2">*</span><a href="#418">iter_ptr</a> = <span class="kw-2">*</span><a href="#424">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_insert_paintable&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
@@ -1041,13 +1031,13 @@
     iter_ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
     paintable_ptr: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">gdk::ffi::GdkPaintable</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#436">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#440">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#431">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#435">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span><span class="kw-2">mut </span>iter = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#437">iter_ptr</a>);
+    <span class="kw">let </span><span class="kw-2">mut </span>iter = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#432">iter_ptr</a>);
 
-    <a href="#441">imp</a>.<a href="#97-99">insert_paintable</a>(<span class="kw-2">&amp;mut </span><a href="#443">iter</a>, <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#438">paintable_ptr</a>));
-    <span class="kw-2">*</span><a href="#437">iter_ptr</a> = <span class="kw-2">*</span><a href="#443">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
+    <a href="#436">imp</a>.<a href="#97-99">insert_paintable</a>(<span class="kw-2">&amp;mut </span><a href="#438">iter</a>, <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#433">paintable_ptr</a>));
+    <span class="kw-2">*</span><a href="#432">iter_ptr</a> = <span class="kw-2">*</span><a href="#438">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_insert_text&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
@@ -1056,31 +1046,31 @@
     text_ptr: <span class="kw-2">*const </span>libc::c_char,
     _length: libc::c_int,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#450">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#455">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>text: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">glib::GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#452">text_ptr</a>);
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#445">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#450">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>text: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">glib::GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#447">text_ptr</a>);
 
-    <span class="kw">let </span><span class="kw-2">mut </span>iter = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#451">iter_ptr</a>);
+    <span class="kw">let </span><span class="kw-2">mut </span>iter = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#446">iter_ptr</a>);
 
-    <a href="#456">imp</a>.<a href="#101-103">insert_text</a>(<span class="kw-2">&amp;mut </span><a href="#459">iter</a>, <a href="#457">text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html#method.as_str">as_str</a>());
-    <span class="kw-2">*</span><a href="#451">iter_ptr</a> = <span class="kw-2">*</span><a href="#459">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
+    <a href="#451">imp</a>.<a href="#101-103">insert_text</a>(<span class="kw-2">&amp;mut </span><a href="#454">iter</a>, <a href="#452">text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html#method.as_str">as_str</a>());
+    <span class="kw-2">*</span><a href="#446">iter_ptr</a> = <span class="kw-2">*</span><a href="#454">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_modified_changed&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#465">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#466">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#460">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#461">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#467">imp</a>.<a href="#113-115">modified_changed</a>()
+    <a href="#462">imp</a>.<a href="#113-115">modified_changed</a>()
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_mark_deleted&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>,
     mark: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextMark.html">ffi::GtkTextMark</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#473">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#476">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#468">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#471">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#477">imp</a>.<a href="#105-107">mark_deleted</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#474">mark</a>))
+    <a href="#472">imp</a>.<a href="#105-107">mark_deleted</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#469">mark</a>))
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_mark_set&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
@@ -1088,27 +1078,27 @@
     iter: <span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
     mark: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextMark.html">ffi::GtkTextMark</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#483">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#487">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#478">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#482">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#488">imp</a>.<a href="#109-111">mark_set</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#484">iter</a>), <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#485">mark</a>))
+    <a href="#483">imp</a>.<a href="#109-111">mark_set</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#479">iter</a>), <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#480">mark</a>))
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_paste_done&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>,
     clipboard_ptr: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkClipboard.html">gdk::ffi::GdkClipboard</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#494">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#497">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#489">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#492">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#498">imp</a>.<a href="#117-119">paste_done</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#495">clipboard_ptr</a>))
+    <a href="#493">imp</a>.<a href="#117-119">paste_done</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#490">clipboard_ptr</a>))
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_redo&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#503">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#504">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#498">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#499">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#505">imp</a>.<a href="#121-123">redo</a>()
+    <a href="#500">imp</a>.<a href="#121-123">redo</a>()
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_remove_tag&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(
@@ -1117,20 +1107,20 @@
     start: <span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
     end: <span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkTextIter.html">ffi::GtkTextIter</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#511">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#516">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#506">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#511">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#517">imp</a>.<a href="#135-137">remove_tag</a>(
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#512">tag</a>),
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#513">start</a>),
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#514">end</a>),
+    <a href="#512">imp</a>.<a href="#135-137">remove_tag</a>(
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#507">tag</a>),
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#508">start</a>),
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#509">end</a>),
     )
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>text_buffer_undo&lt;T: <a href="#12-142">TextBufferImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkTextBuffer.html">ffi::GtkTextBuffer</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#526">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#527">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#521">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#522">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#528">imp</a>.<a href="#139-141">undo</a>()
+    <a href="#523">imp</a>.<a href="#139-141">undo</a>()
 }
 </code></pre></div></section></main></body></html>

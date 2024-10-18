@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/editable.rs`."><title>editable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b778ab399e080a4b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (7608018cb 2024-09-29)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-54bc299d2a5e4e43.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/editable.rs`."><title>editable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3ed6e3cc6 2024-10-17)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -471,12 +471,7 @@
 <a href="#397" id="397">397</a>
 <a href="#398" id="398">398</a>
 <a href="#399" id="399">399</a>
-<a href="#400" id="400">400</a>
-<a href="#401" id="401">401</a>
-<a href="#402" id="402">402</a>
-<a href="#403" id="403">403</a>
-<a href="#404" id="404">404</a>
-<a href="#405" id="405">405</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#400" id="400">400</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! Traits intended for implementing the [`Editable`](crate::Editable)
@@ -488,53 +483,48 @@
 
 <span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#91-174">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/editable.rs.html#16-676">Editable</a>};
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/editable/trait.EditableImpl.html">EditableImpl</a>: <a href="widget.rs.html#107-394">WidgetImpl</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/editable/trait.EditableImpl.html">EditableImpl</a>: <a href="widget.rs.html#107-394">WidgetImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;&gt; {
     <span class="kw">fn </span>insert_text(<span class="kw-2">&amp;</span><span class="self">self</span>, text: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, length: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, position: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
-        <a class="self" href="#14">self</a>.<a href="#105-120">parent_insert_text</a>(<a href="#14">text</a>, <a href="#14">length</a>, <a href="#14">position</a>);
+        <a class="self" href="#14">self</a>.<a href="#100-115">parent_insert_text</a>(<a href="#14">text</a>, <a href="#14">length</a>, <a href="#14">position</a>);
     }
 
     <span class="kw">fn </span>delete_text(<span class="kw-2">&amp;</span><span class="self">self</span>, start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
-        <a class="self" href="#18">self</a>.<a href="#122-136">parent_delete_text</a>(<a href="#18">start_position</a>, <a href="#18">end_position</a>)
+        <a class="self" href="#18">self</a>.<a href="#117-131">parent_delete_text</a>(<a href="#18">start_position</a>, <a href="#18">end_position</a>)
     }
 
     <span class="kw">fn </span>changed(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#22">self</a>.<a href="#167-177">parent_changed</a>()
+        <a class="self" href="#22">self</a>.<a href="#162-172">parent_changed</a>()
     }
 
     <span class="attr">#[doc(alias = <span class="string">"get_text"</span>)]
     </span><span class="kw">fn </span>text(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">GString</a> {
-        <a class="self" href="#27">self</a>.<a href="#138-151">parent_text</a>()
+        <a class="self" href="#27">self</a>.<a href="#133-146">parent_text</a>()
     }
 
     <span class="attr">#[doc(alias = <span class="string">"get_delegate"</span>)]
     </span><span class="kw">fn </span>delegate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt; {
-        <a class="self" href="#32">self</a>.<a href="#153-165">parent_delegate</a>()
+        <a class="self" href="#32">self</a>.<a href="#148-160">parent_delegate</a>()
     }
 
     <span class="kw">fn </span>do_insert_text(<span class="kw-2">&amp;</span><span class="self">self</span>, text: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, length: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, position: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
-        <a class="self" href="#36">self</a>.<a href="#179-194">parent_do_insert_text</a>(<a href="#36">text</a>, <a href="#36">length</a>, <a href="#36">position</a>)
+        <a class="self" href="#36">self</a>.<a href="#174-189">parent_do_insert_text</a>(<a href="#36">text</a>, <a href="#36">length</a>, <a href="#36">position</a>)
     }
 
     <span class="kw">fn </span>do_delete_text(<span class="kw-2">&amp;</span><span class="self">self</span>, start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
-        <a class="self" href="#40">self</a>.<a href="#196-210">parent_do_delete_text</a>(<a href="#40">start_position</a>, <a href="#40">end_position</a>)
+        <a class="self" href="#40">self</a>.<a href="#191-205">parent_do_delete_text</a>(<a href="#40">start_position</a>, <a href="#40">end_position</a>)
     }
 
     <span class="attr">#[doc(alias = <span class="string">"get_selection_bounds"</span>)]
     </span><span class="kw">fn </span>selection_bounds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;(<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)&gt; {
-        <a class="self" href="#45">self</a>.<a href="#212-231">parent_selection_bounds</a>()
+        <a class="self" href="#45">self</a>.<a href="#207-226">parent_selection_bounds</a>()
     }
 
     <span class="kw">fn </span>set_selection_bounds(<span class="kw-2">&amp;</span><span class="self">self</span>, start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
-        <a class="self" href="#49">self</a>.<a href="#233-247">parent_set_selection_bounds</a>(<a href="#49">start_position</a>, <a href="#49">end_position</a>)
+        <a class="self" href="#49">self</a>.<a href="#228-242">parent_set_selection_bounds</a>(<a href="#49">start_position</a>, <a href="#49">end_position</a>)
     }
 }
 
-<span class="kw">mod </span>sealed {
-    <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <a href="#59-248"><span class="kw">super</span>::EditableImplExt</a>&gt; <a href="#55">Sealed</a> <span class="kw">for </span>T {}
-}
-
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/editable/trait.EditableImplExt.html">EditableImplExt</a>: <a href="#55">sealed::Sealed</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclass.html">ObjectSubclass</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/editable/trait.EditableImplExt.html">EditableImplExt</a>: <a href="#13-52">EditableImpl</a> {
     <span class="attr">#[doc(alias = <span class="string">"gtk_editable_delegate_get_property"</span>)]
     </span><span class="kw">fn </span>delegate_get_property(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
@@ -542,7 +532,7 @@
         pspec: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/param_spec/struct.ParamSpec.html">glib::ParamSpec</a>,
     ) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>&gt; {
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>value = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html#method.from_type">glib::Value::from_type</a>(<a href="#64">pspec</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/param_spec/struct.ParamSpec.html#method.value_type">value_type</a>());
+            <span class="kw">let </span><span class="kw-2">mut </span>value = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html#method.from_type">glib::Value::from_type</a>(<a href="#59">pspec</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/param_spec/struct.ParamSpec.html#method.value_type">value_type</a>());
 
             <span class="kw">if </span>from_glib(ffi::gtk_editable_delegate_get_property(
                 <span class="self">self</span>.obj()
@@ -553,7 +543,7 @@
                 value.to_glib_none_mut().<span class="number">0</span>,
                 pspec.to_glib_none().<span class="number">0</span>,
             )) {
-                <span class="prelude-val">Some</span>(<a href="#67">value</a>)
+                <span class="prelude-val">Some</span>(<a href="#62">value</a>)
             } <span class="kw">else </span>{
                 <span class="prelude-val">None
             </span>}
@@ -569,13 +559,13 @@
     ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_editable_delegate_set_property.html">ffi::gtk_editable_delegate_set_property</a>(
-                <a class="self" href="#87">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
+                <a class="self" href="#82">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
                     .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.Object.html">glib::Object</a>&gt;()
                     .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>()
                     .<span class="number">0</span>,
-                <a href="#88">prop_id</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
-                <a href="#89">value</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#90">pspec</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#83">prop_id</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+                <a href="#84">value</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#85">pspec</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             ))
         }
     }
@@ -583,15 +573,15 @@
     <span class="kw">fn </span>parent_insert_text(<span class="kw-2">&amp;</span><span class="self">self</span>, text: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, length: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, position: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#107">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#102">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#108">parent_iface</a>).insert_text {
-                <a href="#111">func</a>(
-                    <a class="self" href="#105">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#105">text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#105">length</a>,
-                    <a href="#105">position</a>,
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#103">parent_iface</a>).insert_text {
+                <a href="#106">func</a>(
+                    <a class="self" href="#100">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#100">text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#100">length</a>,
+                    <a href="#100">position</a>,
                 );
             }
         }
@@ -600,14 +590,14 @@
     <span class="kw">fn </span>parent_delete_text(<span class="kw-2">&amp;</span><span class="self">self</span>, start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#124">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#119">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#125">parent_iface</a>).delete_text {
-                <a href="#128">func</a>(
-                    <a class="self" href="#122">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#122">start_position</a>,
-                    <a href="#122">end_position</a>,
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#120">parent_iface</a>).delete_text {
+                <a href="#123">func</a>(
+                    <a class="self" href="#117">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#117">start_position</a>,
+                    <a href="#117">end_position</a>,
                 );
             }
         }
@@ -616,14 +606,14 @@
     <span class="kw">fn </span>parent_text(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">GString</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#140">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#135">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#141">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#136">parent_iface</a>)
                 .get_text
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_text\" implementation"</span>);
 
-            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#143">func</a>(
-                <a class="self" href="#138">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#138">func</a>(
+                <a class="self" href="#133">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             ))
         }
     }
@@ -631,13 +621,13 @@
     <span class="kw">fn </span>parent_delegate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#155">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#150">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#156">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#151">parent_iface</a>)
                 .get_delegate
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_delegate\" implementation"</span>);
-            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#158">func</a>(
-                <a class="self" href="#153">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#153">func</a>(
+                <a class="self" href="#148">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             ))
         }
     }
@@ -645,11 +635,11 @@
     <span class="kw">fn </span>parent_changed(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#169">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#164">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#170">parent_iface</a>).changed {
-                <a href="#173">func</a>(<a class="self" href="#167">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#165">parent_iface</a>).changed {
+                <a href="#168">func</a>(<a class="self" href="#162">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
             }
         }
     }
@@ -657,15 +647,15 @@
     <span class="kw">fn </span>parent_do_insert_text(<span class="kw-2">&amp;</span><span class="self">self</span>, text: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, length: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, position: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#181">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#176">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#182">parent_iface</a>).do_insert_text {
-                <a href="#185">func</a>(
-                    <a class="self" href="#179">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#179">text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#179">length</a>,
-                    <a href="#179">position</a>,
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#177">parent_iface</a>).do_insert_text {
+                <a href="#180">func</a>(
+                    <a class="self" href="#174">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#174">text</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#174">length</a>,
+                    <a href="#174">position</a>,
                 );
             }
         }
@@ -674,14 +664,14 @@
     <span class="kw">fn </span>parent_do_delete_text(<span class="kw-2">&amp;</span><span class="self">self</span>, start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#198">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#193">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#199">parent_iface</a>).do_delete_text {
-                <a href="#202">func</a>(
-                    <a class="self" href="#196">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#196">start_position</a>,
-                    <a href="#196">end_position</a>,
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#194">parent_iface</a>).do_delete_text {
+                <a href="#197">func</a>(
+                    <a class="self" href="#191">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#191">start_position</a>,
+                    <a href="#191">end_position</a>,
                 );
             }
         }
@@ -690,10 +680,10 @@
     <span class="kw">fn </span>parent_selection_bounds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;(<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#214">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#209">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#215">parent_iface</a>).get_selection_bounds {
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#210">parent_iface</a>).get_selection_bounds {
                 <span class="kw">let </span><span class="kw-2">mut </span>start_position = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">std::mem::MaybeUninit::uninit</a>();
                 <span class="kw">let </span><span class="kw-2">mut </span>end_position = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">std::mem::MaybeUninit::uninit</a>();
                 <span class="kw">if </span>from_glib(func(
@@ -701,7 +691,7 @@
                     start_position.as_mut_ptr(),
                     end_position.as_mut_ptr(),
                 )) {
-                    <span class="kw">return </span><span class="prelude-val">Some</span>((<a href="#219">start_position</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>(), <a href="#220">end_position</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>()));
+                    <span class="kw">return </span><span class="prelude-val">Some</span>((<a href="#214">start_position</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>(), <a href="#215">end_position</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>()));
                 }
             }
             <span class="prelude-val">None
@@ -711,50 +701,50 @@
     <span class="kw">fn </span>parent_set_selection_bounds(<span class="kw-2">&amp;</span><span class="self">self</span>, start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#235">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#230">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkEditableInterface.html">ffi::GtkEditableInterface</a>;
 
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#236">parent_iface</a>).set_selection_bounds {
-                <a href="#239">func</a>(
-                    <a class="self" href="#233">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#233">start_position</a>,
-                    <a href="#233">end_position</a>,
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(func) = (<span class="kw-2">*</span><a href="#231">parent_iface</a>).set_selection_bounds {
+                <a href="#234">func</a>(
+                    <a class="self" href="#228">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#228">start_position</a>,
+                    <a href="#228">end_position</a>,
                 );
             }
         }
     }
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#13-52">EditableImpl</a>&gt; <a href="#59-248">EditableImplExt</a> <span class="kw">for </span>T {}
+<span class="kw">impl</span>&lt;T: <a href="#13-52">EditableImpl</a>&gt; <a href="#54-243">EditableImplExt</a> <span class="kw">for </span>T {}
 
 <span class="kw">unsafe impl</span>&lt;T: <a href="#13-52">EditableImpl</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclass.html">ObjectSubclass</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/editable.rs.html#16-676">Editable</a> {
     <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
-        <span class="kw">let </span>instance_type = <a href="#253">iface</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.Interface.html#method.instance_type">instance_type</a>();
-        <span class="kw">let </span>iface = <a href="#253">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
+        <span class="kw">let </span>instance_type = <a href="#248">iface</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.Interface.html#method.instance_type">instance_type</a>();
+        <span class="kw">let </span>iface = <a href="#248">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
-        <a href="#255">iface</a>.insert_text = <span class="prelude-val">Some</span>(editable_insert_text::&lt;T&gt;);
-        <a href="#255">iface</a>.delete_text = <span class="prelude-val">Some</span>(editable_delete_text::&lt;T&gt;);
-        <a href="#255">iface</a>.changed = <span class="prelude-val">Some</span>(editable_changed::&lt;T&gt;);
-        <a href="#255">iface</a>.get_text = <span class="prelude-val">Some</span>(editable_get_text::&lt;T&gt;);
-        <a href="#255">iface</a>.get_delegate = <span class="prelude-val">Some</span>(editable_get_delegate::&lt;T&gt;);
-        <a href="#255">iface</a>.do_insert_text = <span class="prelude-val">Some</span>(editable_do_insert_text::&lt;T&gt;);
-        <a href="#255">iface</a>.do_delete_text = <span class="prelude-val">Some</span>(editable_do_delete_text::&lt;T&gt;);
-        <a href="#255">iface</a>.get_selection_bounds = <span class="prelude-val">Some</span>(editable_get_selection_bounds::&lt;T&gt;);
-        <a href="#255">iface</a>.set_selection_bounds = <span class="prelude-val">Some</span>(editable_set_selection_bounds::&lt;T&gt;);
+        <a href="#250">iface</a>.insert_text = <span class="prelude-val">Some</span>(editable_insert_text::&lt;T&gt;);
+        <a href="#250">iface</a>.delete_text = <span class="prelude-val">Some</span>(editable_delete_text::&lt;T&gt;);
+        <a href="#250">iface</a>.changed = <span class="prelude-val">Some</span>(editable_changed::&lt;T&gt;);
+        <a href="#250">iface</a>.get_text = <span class="prelude-val">Some</span>(editable_get_text::&lt;T&gt;);
+        <a href="#250">iface</a>.get_delegate = <span class="prelude-val">Some</span>(editable_get_delegate::&lt;T&gt;);
+        <a href="#250">iface</a>.do_insert_text = <span class="prelude-val">Some</span>(editable_do_insert_text::&lt;T&gt;);
+        <a href="#250">iface</a>.do_delete_text = <span class="prelude-val">Some</span>(editable_do_delete_text::&lt;T&gt;);
+        <a href="#250">iface</a>.get_selection_bounds = <span class="prelude-val">Some</span>(editable_get_selection_bounds::&lt;T&gt;);
+        <a href="#250">iface</a>.set_selection_bounds = <span class="prelude-val">Some</span>(editable_set_selection_bounds::&lt;T&gt;);
 
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>class_ref = glib::object::Class::&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.Object.html">glib::Object</a>&gt;::from_type(<a href="#254">instance_type</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
+            <span class="kw">let </span>class_ref = glib::object::Class::&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.Object.html">glib::Object</a>&gt;::from_type(<a href="#249">instance_type</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
             <span class="kw">let </span>object_class =
-                <a href="#268">class_ref</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*mut </span>glib::gobject_ffi::GObjectClass;
+                <a href="#263">class_ref</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*mut </span>glib::gobject_ffi::GObjectClass;
 
             <span class="kw">let </span><span class="kw-2">mut </span>first_prop = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">std::mem::MaybeUninit::uninit</a>();
             <span class="kw">let </span>properties = glib::gobject_ffi::g_object_class_list_properties(
-                <a href="#269">object_class</a>,
-                <a href="#272">first_prop</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.as_mut_ptr">as_mut_ptr</a>(),
+                <a href="#264">object_class</a>,
+                <a href="#267">first_prop</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.as_mut_ptr">as_mut_ptr</a>(),
             );
-            glib::ffi::g_free(<a href="#273">properties</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
-            <span class="kw">let </span>first_prop = <a href="#272">first_prop</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>();
-            <a href="../../../gtk4_sys/fn.gtk_editable_install_properties.html">ffi::gtk_editable_install_properties</a>(<a href="#269">object_class</a>, <a href="#278">first_prop</a>);
+            glib::ffi::g_free(<a href="#268">properties</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+            <span class="kw">let </span>first_prop = <a href="#267">first_prop</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>();
+            <a href="../../../gtk4_sys/fn.gtk_editable_install_properties.html">ffi::gtk_editable_install_properties</a>(<a href="#264">object_class</a>, <a href="#273">first_prop</a>);
         }
     }
 }
@@ -765,10 +755,10 @@
     length: c_int,
     position: <span class="kw-2">*mut </span>c_int,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#285">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#290">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#280">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#285">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#291">imp</a>.<a href="#14-16">insert_text</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrBorrow.html#tymethod.from_glib_borrow">GString::from_glib_borrow</a>(<a href="#286">text</a>), <a href="#287">length</a>, <span class="kw-2">&amp;mut *</span><a href="#288">position</a>)
+    <a href="#286">imp</a>.<a href="#14-16">insert_text</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrBorrow.html#tymethod.from_glib_borrow">GString::from_glib_borrow</a>(<a href="#281">text</a>), <a href="#282">length</a>, <span class="kw-2">&amp;mut *</span><a href="#283">position</a>)
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>editable_delete_text&lt;T: <a href="#13-52">EditableImpl</a>&gt;(
@@ -776,40 +766,40 @@
     start_position: c_int,
     end_position: c_int,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#297">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#301">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#292">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#296">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#302">imp</a>.<a href="#18-20">delete_text</a>(<a href="#298">start_position</a>, <a href="#299">end_position</a>)
+    <a href="#297">imp</a>.<a href="#18-20">delete_text</a>(<a href="#293">start_position</a>, <a href="#294">end_position</a>)
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>editable_changed&lt;T: <a href="#13-52">EditableImpl</a>&gt;(editable: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkEditable.html">ffi::GtkEditable</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#307">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#308">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#302">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#303">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#309">imp</a>.<a href="#22-24">changed</a>()
+    <a href="#304">imp</a>.<a href="#22-24">changed</a>()
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>editable_get_text&lt;T: <a href="#13-52">EditableImpl</a>&gt;(
     editable: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkEditable.html">ffi::GtkEditable</a>,
 ) -&gt; <span class="kw-2">*const </span>c_char {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#315">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#317">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#310">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#312">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#318">imp</a>.<a href="#27-29">text</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlibPtr.html#tymethod.into_glib_ptr">into_glib_ptr</a>()
+    <a href="#313">imp</a>.<a href="#27-29">text</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlibPtr.html#tymethod.into_glib_ptr">into_glib_ptr</a>()
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>editable_get_delegate&lt;T: <a href="#13-52">EditableImpl</a>&gt;(
     editable: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkEditable.html">ffi::GtkEditable</a>,
 ) -&gt; <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkEditable.html">ffi::GtkEditable</a> {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#324">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#326">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#319">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#321">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span>delegate = <a href="#327">imp</a>.<a href="#32-34">delegate</a>();
+    <span class="kw">let </span>delegate = <a href="#322">imp</a>.<a href="#32-34">delegate</a>();
 
     <span class="kw">static </span>QUARK: OnceLock&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/quark/struct.Quark.html">Quark</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">OnceLock::new</a>();
-    <span class="kw">let </span>quark = <span class="kw-2">*</span><a href="#331">QUARK</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/quark/struct.Quark.html#method.from_str">Quark::from_str</a>(<span class="string">"gtk-rs-subclass-editable-get-delegate"</span>));
+    <span class="kw">let </span>quark = <span class="kw-2">*</span><a href="#326">QUARK</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/quark/struct.Quark.html#method.from_str">Quark::from_str</a>(<span class="string">"gtk-rs-subclass-editable-get-delegate"</span>));
 
-    <span class="kw">match </span><a href="#327">imp</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.qdata">qdata</a>::&lt;<span class="prelude-ty">Option</span>&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;&gt;(<a href="#332">quark</a>) {
+    <span class="kw">match </span><a href="#322">imp</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.qdata">qdata</a>::&lt;<span class="prelude-ty">Option</span>&lt;<a href="../auto/editable.rs.html#16-676">Editable</a>&gt;&gt;(<a href="#327">quark</a>) {
         <span class="prelude-val">Some</span>(delegate_data) =&gt; {
             <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert_eq.html">assert_eq!</a>(
                 delegate_data.as_ref(),
@@ -818,10 +808,10 @@
             </span>);
         }
         <span class="prelude-val">None </span>=&gt; {
-            <a href="#327">imp</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.set_qdata">set_qdata</a>(<a href="#332">quark</a>, <a href="#329">delegate</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+            <a href="#322">imp</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.set_qdata">set_qdata</a>(<a href="#327">quark</a>, <a href="#324">delegate</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
         }
     };
-    <a href="#329">delegate</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0
+    <a href="#324">delegate</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0
 </span>}
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>editable_do_insert_text&lt;T: <a href="#13-52">EditableImpl</a>&gt;(
@@ -830,10 +820,10 @@
     length: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
     position: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#350">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#355">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#345">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#350">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#356">imp</a>.<a href="#36-38">do_insert_text</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrBorrow.html#tymethod.from_glib_borrow">GString::from_glib_borrow</a>(<a href="#351">text</a>), <a href="#352">length</a>, <span class="kw-2">&amp;mut *</span><a href="#353">position</a>)
+    <a href="#351">imp</a>.<a href="#36-38">do_insert_text</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrBorrow.html#tymethod.from_glib_borrow">GString::from_glib_borrow</a>(<a href="#346">text</a>), <a href="#347">length</a>, <span class="kw-2">&amp;mut *</span><a href="#348">position</a>)
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>editable_do_delete_text&lt;T: <a href="#13-52">EditableImpl</a>&gt;(
@@ -841,10 +831,10 @@
     start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
     end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#362">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#366">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#357">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#361">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#367">imp</a>.<a href="#40-42">do_delete_text</a>(<a href="#363">start_position</a>, <a href="#364">end_position</a>)
+    <a href="#362">imp</a>.<a href="#40-42">do_delete_text</a>(<a href="#358">start_position</a>, <a href="#359">end_position</a>)
 }
 
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>editable_get_selection_bounds&lt;T: <a href="#13-52">EditableImpl</a>&gt;(
@@ -852,21 +842,21 @@
     start_position: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
     end_position: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
 ) -&gt; glib::ffi::gboolean {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#373">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#377">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#368">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#372">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">if let </span><span class="prelude-val">Some</span>((start_pos, end_pos)) = <a href="#378">imp</a>.<a href="#45-47">selection_bounds</a>() {
+    <span class="kw">if let </span><span class="prelude-val">Some</span>((start_pos, end_pos)) = <a href="#373">imp</a>.<a href="#45-47">selection_bounds</a>() {
         <span class="kw">if </span>!start_position.is_null() {
-            <span class="kw-2">*</span><a href="#374">start_position</a> = <a href="#380">start_pos</a>;
+            <span class="kw-2">*</span><a href="#369">start_position</a> = <a href="#375">start_pos</a>;
         }
 
         <span class="kw">if </span>!end_position.is_null() {
-            <span class="kw-2">*</span><a href="#375">end_position</a> = <a href="#380">end_pos</a>;
+            <span class="kw-2">*</span><a href="#370">end_position</a> = <a href="#375">end_pos</a>;
         }
         <span class="bool-val">true</span>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
     } <span class="kw">else </span>{
-        <span class="kw-2">*</span><a href="#374">start_position</a> = <span class="number">0</span>;
-        <span class="kw-2">*</span><a href="#375">end_position</a> = <span class="number">0</span>;
+        <span class="kw-2">*</span><a href="#369">start_position</a> = <span class="number">0</span>;
+        <span class="kw-2">*</span><a href="#370">end_position</a> = <span class="number">0</span>;
         <span class="bool-val">false</span>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
     }
 }
@@ -876,9 +866,9 @@
     start_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
     end_position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#397">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#401">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#392">editable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#396">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#402">imp</a>.<a href="#49-51">set_selection_bounds</a>(<a href="#398">start_position</a>, <a href="#399">end_position</a>)
+    <a href="#397">imp</a>.<a href="#49-51">set_selection_bounds</a>(<a href="#393">start_position</a>, <a href="#394">end_position</a>)
 }
 </code></pre></div></section></main></body></html>

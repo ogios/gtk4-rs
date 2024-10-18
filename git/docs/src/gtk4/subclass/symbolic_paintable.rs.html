@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/symbolic_paintable.rs`."><title>symbolic_paintable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b778ab399e080a4b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (7608018cb 2024-09-29)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-54bc299d2a5e4e43.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/symbolic_paintable.rs`."><title>symbolic_paintable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3ed6e3cc6 2024-10-17)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -160,10 +160,7 @@
 <a href="#86" id="86">86</a>
 <a href="#87" id="87">87</a>
 <a href="#88" id="88">88</a>
-<a href="#89" id="89">89</a>
-<a href="#90" id="90">90</a>
-<a href="#91" id="91">91</a>
-<a href="#92" id="92">92</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#89" id="89">89</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! Traits intended for implementing the
@@ -173,7 +170,9 @@
 
 <span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#91-174">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/symbolic_paintable.rs.html#8-31">SymbolicPaintable</a>};
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/symbolic_paintable/trait.SymbolicPaintableImpl.html">SymbolicPaintableImpl</a>: <a href="../../../gdk4/subclass/paintable/trait.PaintableImpl.html">PaintableImpl</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/symbolic_paintable/trait.SymbolicPaintableImpl.html">SymbolicPaintableImpl</a>:
+    <a href="../../../gdk4/subclass/paintable/trait.PaintableImpl.html">PaintableImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/symbolic_paintable.rs.html#8-31">SymbolicPaintable</a>&gt;&gt;
+{
     <span class="kw">fn </span>snapshot_symbolic(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         snapshot: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/snapshot/struct.Snapshot.html">gdk::Snapshot</a>,
@@ -181,16 +180,11 @@
         height: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
         colors: <span class="kw-2">&amp;</span>[<a href="../../../gdk4/auto/rgba/struct.RGBA.html">gdk::RGBA</a>],
     ) {
-        <a class="self" href="#13">self</a>.<a href="#29-54">parent_snapshot_symbolic</a>(<a href="#14">snapshot</a>, <a href="#15">width</a>, <a href="#16">height</a>, <a href="#17">colors</a>)
+        <a class="self" href="#15">self</a>.<a href="#26-51">parent_snapshot_symbolic</a>(<a href="#16">snapshot</a>, <a href="#17">width</a>, <a href="#18">height</a>, <a href="#19">colors</a>)
     }
 }
 
-<span class="kw">mod </span>sealed {
-    <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <a href="#28-55"><span class="kw">super</span>::SymbolicPaintableImplExt</a>&gt; <a href="#24">Sealed</a> <span class="kw">for </span>T {}
-}
-
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/symbolic_paintable/trait.SymbolicPaintableImplExt.html">SymbolicPaintableImplExt</a>: <a href="#24">sealed::Sealed</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclass.html">ObjectSubclass</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/symbolic_paintable/trait.SymbolicPaintableImplExt.html">SymbolicPaintableImplExt</a>: <a href="#11-23">SymbolicPaintableImpl</a> {
     <span class="kw">fn </span>parent_snapshot_symbolic(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         snapshot: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/snapshot/struct.Snapshot.html">gdk::Snapshot</a>,
@@ -200,38 +194,38 @@
     ) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#37">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/symbolic_paintable.rs.html#8-31">SymbolicPaintable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#34">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/symbolic_paintable.rs.html#8-31">SymbolicPaintable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gtk4_sys/struct.GtkSymbolicPaintableInterface.html">ffi::GtkSymbolicPaintableInterface</a>;
 
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#38">parent_iface</a>).snapshot_symbolic.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
-            <a href="#41">func</a>(
-                <a class="self" href="#30">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#35">parent_iface</a>).snapshot_symbolic.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
+            <a href="#38">func</a>(
+                <a class="self" href="#27">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
                     .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/symbolic_paintable.rs.html#8-31">SymbolicPaintable</a>&gt;()
                     .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>()
                     .<span class="number">0</span>,
-                <a href="#31">snapshot</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#32">width</a>,
-                <a href="#33">height</a>,
-                <a href="#34">colors</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#34">colors</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() <span class="kw">as _</span>,
+                <a href="#28">snapshot</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#29">width</a>,
+                <a href="#30">height</a>,
+                <a href="#31">colors</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#31">colors</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() <span class="kw">as _</span>,
             )
         }
     }
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#11-21">SymbolicPaintableImpl</a>&gt; <a href="#28-55">SymbolicPaintableImplExt</a> <span class="kw">for </span>T {}
+<span class="kw">impl</span>&lt;T: <a href="#11-23">SymbolicPaintableImpl</a>&gt; <a href="#25-52">SymbolicPaintableImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#11-21">SymbolicPaintableImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/symbolic_paintable.rs.html#8-31">SymbolicPaintable</a> {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#11-23">SymbolicPaintableImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/symbolic_paintable.rs.html#8-31">SymbolicPaintable</a> {
     <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
-        <span class="kw">let </span>iface = <a href="#60">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
+        <span class="kw">let </span>iface = <a href="#57">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
-        <a href="#61">iface</a>.snapshot_symbolic = <span class="prelude-val">Some</span>(symbolic_paintable_snapshot_symbolic::&lt;T&gt;);
+        <a href="#58">iface</a>.snapshot_symbolic = <span class="prelude-val">Some</span>(symbolic_paintable_snapshot_symbolic::&lt;T&gt;);
     }
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>symbolic_paintable_snapshot_symbolic&lt;T: <a href="#11-21">SymbolicPaintableImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>symbolic_paintable_snapshot_symbolic&lt;T: <a href="#11-23">SymbolicPaintableImpl</a>&gt;(
     paintable: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkSymbolicPaintable.html">ffi::GtkSymbolicPaintable</a>,
     snapshotptr: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkSnapshot.html">gdk::ffi::GdkSnapshot</a>,
     width: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
@@ -239,19 +233,19 @@
     colors: <span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkRGBA.html">gdk::ffi::GdkRGBA</a>,
     n_colors: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#70">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#77">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#67">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#74">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span>snapshot: Borrowed&lt;<a href="../../../gdk4/auto/snapshot/struct.Snapshot.html">gdk::Snapshot</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#71">snapshotptr</a>);
+    <span class="kw">let </span>snapshot: Borrowed&lt;<a href="../../../gdk4/auto/snapshot/struct.Snapshot.html">gdk::Snapshot</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#68">snapshotptr</a>);
 
-    <a href="#78">imp</a>.<a href="#12-20">snapshot_symbolic</a>(
-        <span class="kw-2">&amp;</span><a href="#80">snapshot</a>,
-        <a href="#72">width</a>,
-        <a href="#73">height</a>,
+    <a href="#75">imp</a>.<a href="#14-22">snapshot_symbolic</a>(
+        <span class="kw-2">&amp;</span><a href="#77">snapshot</a>,
+        <a href="#69">width</a>,
+        <a href="#70">height</a>,
         <span class="kw">if </span>n_colors == <span class="number">0 </span>{
             <span class="kw-2">&amp;</span>[]
         } <span class="kw">else </span>{
-            <a href="https://doc.rust-lang.org/nightly/core/slice/raw/fn.from_raw_parts.html">std::slice::from_raw_parts</a>(<a href="#74">colors</a> <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4/auto/rgba/struct.RGBA.html">gdk::RGBA</a>, <a href="#75">n_colors</a>)
+            <a href="https://doc.rust-lang.org/nightly/core/slice/raw/fn.from_raw_parts.html">std::slice::from_raw_parts</a>(<a href="#71">colors</a> <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4/auto/rgba/struct.RGBA.html">gdk::RGBA</a>, <a href="#72">n_colors</a>)
         },
     )
 }
