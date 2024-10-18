@@ -138,33 +138,23 @@
 <a href="#64" id="64">64</a>
 <a href="#65" id="65">65</a>
 <a href="#66" id="66">66</a>
-<a href="#67" id="67">67</a>
-<a href="#68" id="68">68</a>
-<a href="#69" id="69">69</a>
-<a href="#70" id="70">70</a>
-<a href="#71" id="71">71</a>
-<a href="#72" id="72">72</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#67" id="67">67</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>glib::{<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/trait.FromValue.html">value::FromValue</a>};
 
 <span class="kw">use crate</span>::{<a href="../../gtk4_sys/index.html">ffi</a>, <a href="lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <a href="auto/tree_model.rs.html#14-276">TreeModel</a>};
-
-<span class="kw">mod </span>sealed {
-    <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="auto/tree_model.rs.html#14-276"><span class="kw">super</span>::TreeModel</a>&gt;&gt; <a href="#8">Sealed</a> <span class="kw">for </span>T {}
-}
 
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Trait containing manually implemented methods of
 /// [`TreeModel`](crate::TreeModel).
 </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeModelExtManual.html">TreeModelExtManual</a>: <a href="#8">sealed::Sealed</a> + IsA&lt;<a href="auto/tree_model.rs.html#14-276">TreeModel</a>&gt; + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeModelExtManual.html">TreeModelExtManual</a>: IsA&lt;<a href="auto/tree_model.rs.html#14-276">TreeModel</a>&gt; + <span class="lifetime">'static </span>{
     <span class="attr">#[doc(alias = <span class="string">"gtk_tree_model_get"</span>)]
     #[doc(alias = <span class="string">"gtk_tree_model_get_value"</span>)]
     #[doc(alias = <span class="string">"gtk_tree_model_get_valist"</span>)]
     </span><span class="kw">fn </span>get_value(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, column: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a> {
-        <span class="kw">let </span>total_columns = <a class="self" href="#21">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/tree_model.rs.html#494-496">n_columns</a>();
+        <span class="kw">let </span>total_columns = <a class="self" href="#16">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/tree_model.rs.html#489-491">n_columns</a>();
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(
             column &lt; total_columns,
             <span class="string">"TreeModel has {total_columns} columns but TreeModelExt::get got {column} passed as a column number"</span>,
@@ -172,12 +162,12 @@
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>value = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.Uninitialized.html#tymethod.uninitialized">glib::Value::uninitialized</a>();
             <a href="../../gtk4_sys/fn.gtk_tree_model_get_value.html">ffi::gtk_tree_model_get_value</a>(
-                <a class="self" href="#21">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.mut_override.html">mut_override</a>(<a href="#21">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>),
-                <a href="#21">column</a>,
-                <a href="#28">value</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
+                <a class="self" href="#16">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.mut_override.html">mut_override</a>(<a href="#16">iter</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>),
+                <a href="#16">column</a>,
+                <a href="#23">value</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
             );
-            <a href="#28">value</a>
+            <a href="#23">value</a>
         }
     }
 
@@ -207,12 +197,12 @@
     /// ## `iter`
     /// a row in @self
     </span><span class="kw">fn </span>get&lt;V: <span class="kw">for</span>&lt;<span class="lifetime">'b</span>&gt; FromValue&lt;<span class="lifetime">'b</span>&gt; + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, iter: <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, column: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; V {
-        <span class="kw">let </span>value = <a class="self" href="#64">self</a>.<a href="#21-37">get_value</a>(<a href="#64">iter</a>, <a href="#64">column</a>);
-        <a href="#65">value</a>
+        <span class="kw">let </span>value = <a class="self" href="#59">self</a>.<a href="#16-32">get_value</a>(<a href="#59">iter</a>, <a href="#59">column</a>);
+        <a href="#60">value</a>
             .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html#method.get_owned">get_owned</a>::&lt;V&gt;()
             .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"Failed to get TreeModel value"</span>)
     }
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/tree_model.rs.html#14-276">TreeModel</a>&gt;&gt; <a href="#17-70">TreeModelExtManual</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/tree_model.rs.html#14-276">TreeModel</a>&gt;&gt; <a href="#12-65">TreeModelExtManual</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

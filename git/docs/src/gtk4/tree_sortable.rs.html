@@ -300,12 +300,7 @@
 <a href="#226" id="226">226</a>
 <a href="#227" id="227">227</a>
 <a href="#228" id="228">228</a>
-<a href="#229" id="229">229</a>
-<a href="#230" id="230">230</a>
-<a href="#231" id="231">231</a>
-<a href="#232" id="232">232</a>
-<a href="#233" id="233">233</a>
-<a href="#234" id="234">234</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#229" id="229">229</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/alloc/fmt/index.html">fmt</a>, <a href="https://doc.rust-lang.org/nightly/core/mem/index.html">mem</a>};
 
@@ -366,17 +361,12 @@
     }
 }
 
-<span class="kw">mod </span>sealed {
-    <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="auto/tree_sortable.rs.html#14-92"><span class="kw">super</span>::TreeSortable</a>&gt;&gt; <a href="#63">Sealed</a> <span class="kw">for </span>T {}
-}
-
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Trait containing manually implemented methods of
 /// [`TreeSortable`](crate::TreeSortable).
 </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeSortableExtManual.html">TreeSortableExtManual</a>: <a href="#63">sealed::Sealed</a> + IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt; + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeSortableExtManual.html">TreeSortableExtManual</a>: IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt; + <span class="lifetime">'static </span>{
     <span class="doccomment">/// Sets the default comparison function used when sorting to be @sort_func.
     /// If the current sort column id of @self is
     /// `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, then the model will sort using
@@ -398,9 +388,9 @@
     {
         <span class="kw">unsafe </span>{
             <a href="../../gtk4_sys/fn.gtk_tree_sortable_set_default_sort_func.html">ffi::gtk_tree_sortable_set_default_sort_func</a>(
-                <a class="self" href="#88">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a class="self" href="#83">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 <span class="prelude-val">Some</span>(trampoline::&lt;<span class="self">Self</span>, F&gt;),
-                <a href="#225-232">into_raw</a>(<a href="#88">sort_func</a>),
+                <a href="#220-227">into_raw</a>(<a href="#83">sort_func</a>),
                 <span class="prelude-val">Some</span>(destroy_closure::&lt;<span class="self">Self</span>, F&gt;),
             )
         }
@@ -422,10 +412,10 @@
     {
         <span class="kw">unsafe </span>{
             <a href="../../gtk4_sys/fn.gtk_tree_sortable_set_sort_func.html">ffi::gtk_tree_sortable_set_sort_func</a>(
-                <a class="self" href="#112">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#112">sort_column_id</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
+                <a class="self" href="#107">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#107">sort_column_id</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
                 <span class="prelude-val">Some</span>(trampoline::&lt;<span class="self">Self</span>, F&gt;),
-                <a href="#225-232">into_raw</a>(<a href="#112">sort_func</a>),
+                <a href="#220-227">into_raw</a>(<a href="#107">sort_func</a>),
                 <span class="prelude-val">Some</span>(destroy_closure::&lt;<span class="self">Self</span>, F&gt;),
             )
         }
@@ -455,13 +445,13 @@
             <span class="kw">let </span><span class="kw-2">mut </span>sort_column_id = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">mem::MaybeUninit::uninit</a>();
             <span class="kw">let </span><span class="kw-2">mut </span>order = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">mem::MaybeUninit::uninit</a>();
             <a href="../../gtk4_sys/fn.gtk_tree_sortable_get_sort_column_id.html">ffi::gtk_tree_sortable_get_sort_column_id</a>(
-                <a class="self" href="#146">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#148">sort_column_id</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.as_mut_ptr">as_mut_ptr</a>(),
-                <a href="#149">order</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.as_mut_ptr">as_mut_ptr</a>(),
+                <a class="self" href="#141">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#143">sort_column_id</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.as_mut_ptr">as_mut_ptr</a>(),
+                <a href="#144">order</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.as_mut_ptr">as_mut_ptr</a>(),
             );
-            <span class="kw">let </span>sort_column_id = <a href="#148">sort_column_id</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>();
+            <span class="kw">let </span>sort_column_id = <a href="#143">sort_column_id</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>();
             <span class="kw">if </span>sort_column_id != ffi::GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID {
-                <span class="prelude-val">Some</span>((<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#155">sort_column_id</a>), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#149">order</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>())))
+                <span class="prelude-val">Some</span>((<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#150">sort_column_id</a>), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#144">order</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>())))
             } <span class="kw">else </span>{
                 <span class="prelude-val">None
             </span>}
@@ -487,9 +477,9 @@
     </span><span class="kw">fn </span>set_sort_column_id(<span class="kw-2">&amp;</span><span class="self">self</span>, sort_column_id: <a href="#12-16">SortColumn</a>, order: <a href="auto/enums.rs.html#11187-11196">SortType</a>) {
         <span class="kw">unsafe </span>{
             <a href="../../gtk4_sys/fn.gtk_tree_sortable_set_sort_column_id.html">ffi::gtk_tree_sortable_set_sort_column_id</a>(
-                <a class="self" href="#180">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#180">sort_column_id</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
-                <a href="#180">order</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
+                <a class="self" href="#175">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#175">sort_column_id</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
+                <a href="#175">order</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
             );
         }
     }
@@ -497,7 +487,7 @@
     </span><span class="kw">fn </span>set_unsorted(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <a href="../../gtk4_sys/fn.gtk_tree_sortable_set_sort_column_id.html">ffi::gtk_tree_sortable_set_sort_column_id</a>(
-                <a class="self" href="#190">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a class="self" href="#185">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 <a href="../../gtk4_sys/constant.GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.html">ffi::GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID</a>,
                 <a href="auto/enums.rs.html#11190">SortType::Ascending</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
             );
@@ -514,11 +504,11 @@
 <span class="kw">where
     </span>T: IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt;,
 {
-    <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#205">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
-    <a href="#210">f</a>(
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrNone.html#tymethod.from_glib_none">TreeModel::from_glib_none</a>(<a href="#202">this</a>).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast">unsafe_cast</a>(),
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#203">iter</a>),
-        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#204">iter2</a>),
+    <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#200">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
+    <a href="#205">f</a>(
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrNone.html#tymethod.from_glib_none">TreeModel::from_glib_none</a>(<a href="#197">this</a>).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast">unsafe_cast</a>(),
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#198">iter</a>),
+        <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#199">iter2</a>),
     )
     .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
@@ -526,7 +516,7 @@
 <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>destroy_closure&lt;T, F: Fn(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a>&gt;(
     ptr: glib::ffi::gpointer,
 ) {
-    <span class="kw">let _ </span>= Box::&lt;F&gt;::from_raw(<a href="#220">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+    <span class="kw">let _ </span>= Box::&lt;F&gt;::from_raw(<a href="#215">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
 }
 
 <span class="kw">fn </span>into_raw&lt;F, T&gt;(func: F) -&gt; glib::ffi::gpointer
@@ -534,9 +524,9 @@
     </span>F: Fn(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a> + <span class="lifetime">'static</span>,
 {
     <span class="macro">skip_assert_initialized!</span>();
-    <span class="kw">let </span>func: Box&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#225">func</a>);
-    <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box::into_raw</a>(<a href="#230">func</a>) <span class="kw">as </span>glib::ffi::gpointer
+    <span class="kw">let </span>func: Box&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#220">func</a>);
+    <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box::into_raw</a>(<a href="#225">func</a>) <span class="kw">as </span>glib::ffi::gpointer
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt;&gt; <a href="#72-199">TreeSortableExtManual</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt;&gt; <a href="#67-194">TreeSortableExtManual</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

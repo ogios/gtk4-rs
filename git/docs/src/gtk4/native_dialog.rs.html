@@ -163,12 +163,7 @@
 <a href="#89" id="89">89</a>
 <a href="#90" id="90">90</a>
 <a href="#91" id="91">91</a>
-<a href="#92" id="92">92</a>
-<a href="#93" id="93">93</a>
-<a href="#94" id="94">94</a>
-<a href="#95" id="95">95</a>
-<a href="#96" id="96">96</a>
-<a href="#97" id="97">97</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#92" id="92">92</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{
     cell::{<a href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html">Cell</a>, <a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html">RefCell</a>},
@@ -179,17 +174,12 @@
 
 <span class="kw">use crate</span>::{<a href="lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="auto/native_dialog.rs.html#13-82">NativeDialog</a>, <a href="response_type.rs.html#14-52">ResponseType</a>};
 
-<span class="kw">mod </span>sealed {
-    <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="auto/native_dialog.rs.html#13-82"><span class="kw">super</span>::NativeDialog</a>&gt;&gt; <a href="#13">Sealed</a> <span class="kw">for </span>T {}
-}
-
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Trait containing manually implemented methods of
 /// [`NativeDialog`](crate::NativeDialog).
 </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.NativeDialogExtManual.html">NativeDialogExtManual</a>: <a href="#13">sealed::Sealed</a> + IsA&lt;<a href="auto/native_dialog.rs.html#13-82">NativeDialog</a>&gt; {
+</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.NativeDialogExtManual.html">NativeDialogExtManual</a>: IsA&lt;<a href="auto/native_dialog.rs.html#13-82">NativeDialog</a>&gt; {
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Shows the dialog and returns a `Future` that resolves to the
     /// `ResponseType` on response.
@@ -212,19 +202,19 @@
         <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">Box::pin</a>(<span class="kw">async move </span>{
             <span class="kw">let </span>(sender, receiver) = futures_channel::oneshot::channel();
 
-            <span class="kw">let </span>sender = <a href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html#method.new">Cell::new</a>(<span class="prelude-val">Some</span>(<a href="#43">sender</a>));
+            <span class="kw">let </span>sender = <a href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html#method.new">Cell::new</a>(<span class="prelude-val">Some</span>(<a href="#38">sender</a>));
 
-            <span class="kw">let </span>response_handler = <a class="self" href="#41">self</a>.<a href="auto/native_dialog.rs.html#265-291">connect_response</a>(<span class="kw">move </span>|<span class="kw">_</span>, response_type| {
-                <span class="kw">if let </span><span class="prelude-val">Some</span>(m) = <a href="#45">sender</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html#method.replace">replace</a>(<span class="prelude-val">None</span>) {
-                    <span class="kw">let </span>_result = <a href="#48">m</a>.send(<a href="#47">response_type</a>);
+            <span class="kw">let </span>response_handler = <a class="self" href="#36">self</a>.<a href="auto/native_dialog.rs.html#260-286">connect_response</a>(<span class="kw">move </span>|<span class="kw">_</span>, response_type| {
+                <span class="kw">if let </span><span class="prelude-val">Some</span>(m) = <a href="#40">sender</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html#method.replace">replace</a>(<span class="prelude-val">None</span>) {
+                    <span class="kw">let </span>_result = <a href="#43">m</a>.send(<a href="#42">response_type</a>);
                 }
             });
 
-            <a class="self" href="#41">self</a>.<a href="auto/native_dialog.rs.html#245-249">show</a>();
+            <a class="self" href="#36">self</a>.<a href="auto/native_dialog.rs.html#240-244">show</a>();
 
-            <span class="kw">if let </span><span class="prelude-val">Ok</span>(response) = <a href="#43">receiver</a>.<span class="kw">await </span>{
-                <a class="self" href="#41">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.disconnect">disconnect</a>(<a href="#47">response_handler</a>);
-                <a href="#55">response</a>
+            <span class="kw">if let </span><span class="prelude-val">Ok</span>(response) = <a href="#38">receiver</a>.<span class="kw">await </span>{
+                <a class="self" href="#36">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.disconnect">disconnect</a>(<a href="#42">response_handler</a>);
+                <a href="#50">response</a>
             } <span class="kw">else </span>{
                 <a href="response_type.rs.html#18">ResponseType::None</a>
             }
@@ -252,17 +242,17 @@
     /// ```
     </span><span class="kw">fn </span>run_async&lt;F: FnOnce(<span class="kw-2">&amp;</span><span class="self">Self</span>, <a href="response_type.rs.html#14-52">ResponseType</a>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) {
         <span class="kw">let </span>response_handler = <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html#method.new">Rc::new</a>(<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.new">RefCell::new</a>(<span class="prelude-val">None</span>));
-        <span class="kw">let </span>response_handler_clone = <a href="#84">response_handler</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-        <span class="kw">let </span>f = <a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.new">RefCell::new</a>(<span class="prelude-val">Some</span>(<a href="#83">f</a>));
-        <span class="kw-2">*</span><a href="#84">response_handler</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>() = <span class="prelude-val">Some</span>(<a class="self" href="#83">self</a>.<a href="auto/native_dialog.rs.html#265-291">connect_response</a>(<span class="kw">move </span>|s, response_type| {
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(handler) = <a href="#85">response_handler_clone</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.take">take</a>() {
-                <a href="#87">s</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.disconnect">disconnect</a>(<a href="#88">handler</a>);
+        <span class="kw">let </span>response_handler_clone = <a href="#79">response_handler</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+        <span class="kw">let </span>f = <a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.new">RefCell::new</a>(<span class="prelude-val">Some</span>(<a href="#78">f</a>));
+        <span class="kw-2">*</span><a href="#79">response_handler</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>() = <span class="prelude-val">Some</span>(<a class="self" href="#78">self</a>.<a href="auto/native_dialog.rs.html#260-286">connect_response</a>(<span class="kw">move </span>|s, response_type| {
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(handler) = <a href="#80">response_handler_clone</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.take">take</a>() {
+                <a href="#82">s</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.disconnect">disconnect</a>(<a href="#83">handler</a>);
             }
-            (<span class="kw-2">*</span><a href="#86">f</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.take">take</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"cannot get callback"</span>)(<a href="#87">s</a>, <a href="#87">response_type</a>);
+            (<span class="kw-2">*</span><a href="#81">f</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.take">take</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"cannot get callback"</span>)(<a href="#82">s</a>, <a href="#82">response_type</a>);
         }));
-        <a class="self" href="#83">self</a>.<a href="auto/native_dialog.rs.html#245-249">show</a>();
+        <a class="self" href="#78">self</a>.<a href="auto/native_dialog.rs.html#240-244">show</a>();
     }
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/native_dialog.rs.html#13-82">NativeDialog</a>&gt;&gt; <a href="#22-95">NativeDialogExtManual</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/native_dialog.rs.html#13-82">NativeDialog</a>&gt;&gt; <a href="#17-90">NativeDialogExtManual</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

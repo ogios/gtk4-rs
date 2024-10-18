@@ -189,25 +189,15 @@
 <a href="#115" id="115">115</a>
 <a href="#116" id="116">116</a>
 <a href="#117" id="117">117</a>
-<a href="#118" id="118">118</a>
-<a href="#119" id="119">119</a>
-<a href="#120" id="120">120</a>
-<a href="#121" id="121">121</a>
-<a href="#122" id="122">122</a>
-<a href="#123" id="123">123</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#118" id="118">118</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>glib::{<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/control_flow/enum.ControlFlow.html">ControlFlow</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.WeakRef.html">WeakRef</a>};
 
 <span class="kw">use crate</span>::{<a href="../../gtk4_sys/index.html">ffi</a>, <a href="lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="auto/widget.rs.html#18-853">Widget</a>};
 
-<span class="kw">mod </span>sealed {
-    <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="auto/widget.rs.html#18-853"><span class="kw">super</span>::Widget</a>&gt;&gt; <a href="#8">Sealed</a> <span class="kw">for </span>T {}
-}
-
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Trait containing manually implemented methods of [`Widget`](crate::Widget).
-</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.WidgetExtManual.html">WidgetExtManual</a>: <a href="#8">sealed::Sealed</a> + IsA&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt; + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.WidgetExtManual.html">WidgetExtManual</a>: IsA&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt; + <span class="lifetime">'static </span>{
     <span class="doccomment">/// Queues an animation frame update and adds a callback to be called
     /// before each frame.
     ///
@@ -243,8 +233,8 @@
     </span><span class="kw">fn </span>add_tick_callback&lt;P: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><a href="../../gdk4/auto/frame_clock/struct.FrameClock.html">gdk::FrameClock</a>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/control_flow/enum.ControlFlow.html">ControlFlow</a> + <span class="lifetime">'static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         callback: P,
-    ) -&gt; <a href="#97-100">TickCallbackId</a> {
-        <span class="kw">let </span>callback_data: Box&lt;P&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#49">callback</a>);
+    ) -&gt; <a href="#92-95">TickCallbackId</a> {
+        <span class="kw">let </span>callback_data: Box&lt;P&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#44">callback</a>);
 
         <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>callback_func&lt;
             O: IsA&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt;,
@@ -254,11 +244,11 @@
             frame_clock: <span class="kw-2">*mut </span><a href="../../gdk4_sys/struct.GdkFrameClock.html">gdk::ffi::GdkFrameClock</a>,
             user_data: glib::ffi::gpointer,
         ) -&gt; glib::ffi::gboolean {
-            <span class="kw">let </span>widget: Borrowed&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#57">widget</a>);
-            <span class="kw">let </span>frame_clock = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#58">frame_clock</a>);
-            <span class="kw">let </span>callback: <span class="kw-2">&amp;</span>P = <span class="kw-2">&amp;*</span>(<a href="#59">user_data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
-            <span class="kw">let </span>res = (<span class="kw-2">*</span><a href="#63">callback</a>)(<a href="#61">widget</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>(), <span class="kw-2">&amp;</span><a href="#62">frame_clock</a>);
-            <a href="#64">res</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
+            <span class="kw">let </span>widget: Borrowed&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#52">widget</a>);
+            <span class="kw">let </span>frame_clock = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#53">frame_clock</a>);
+            <span class="kw">let </span>callback: <span class="kw-2">&amp;</span>P = <span class="kw-2">&amp;*</span>(<a href="#54">user_data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+            <span class="kw">let </span>res = (<span class="kw-2">*</span><a href="#58">callback</a>)(<a href="#56">widget</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>(), <span class="kw-2">&amp;</span><a href="#57">frame_clock</a>);
+            <a href="#59">res</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
         }
         <span class="kw">let </span>callback = <span class="prelude-val">Some</span>(callback_func::&lt;<span class="self">Self</span>, P&gt; <span class="kw">as _</span>);
 
@@ -268,26 +258,26 @@
         &gt;(
             data: glib::ffi::gpointer,
         ) {
-            <span class="kw">let </span>_callback: Box&lt;P&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box::from_raw</a>(<a href="#73">data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+            <span class="kw">let </span>_callback: Box&lt;P&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box::from_raw</a>(<a href="#68">data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
         }
         <span class="kw">let </span>destroy_call = <span class="prelude-val">Some</span>(notify_func::&lt;<span class="self">Self</span>, P&gt; <span class="kw">as _</span>);
 
         <span class="kw">let </span>id = <span class="kw">unsafe </span>{
             <a href="../../gtk4_sys/fn.gtk_widget_add_tick_callback.html">ffi::gtk_widget_add_tick_callback</a>(
-                <a class="self" href="#48">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#67">callback</a>,
-                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box::into_raw</a>(<a href="#51">callback_data</a>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <a href="#77">destroy_call</a>,
+                <a class="self" href="#43">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#62">callback</a>,
+                <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box::into_raw</a>(<a href="#46">callback_data</a>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
+                <a href="#72">destroy_call</a>,
             )
         };
-        <a href="#97-100">TickCallbackId</a> {
-            <a href="#79">id</a>,
-            widget: <a class="self" href="#48">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.upcast_ref">upcast_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.downgrade">downgrade</a>(),
+        <a href="#92-95">TickCallbackId</a> {
+            <a href="#74">id</a>,
+            widget: <a class="self" href="#43">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.upcast_ref">upcast_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.downgrade">downgrade</a>(),
         }
     }
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt;&gt; <a href="#14-92">WidgetExtManual</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt;&gt; <a href="#9-87">WidgetExtManual</a> <span class="kw">for </span>O {}
 
 <span class="attr">#[derive(Debug)]
 </span><span class="kw">pub struct </span><a href="../../gtk4/struct.TickCallbackId.html">TickCallbackId</a> {
@@ -295,14 +285,14 @@
     widget: WeakRef&lt;<a href="auto/widget.rs.html#18-853">Widget</a>&gt;,
 }
 
-<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html">PartialEq</a> <span class="kw">for </span><a href="#97-100">TickCallbackId</a> {
+<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html">PartialEq</a> <span class="kw">for </span><a href="#92-95">TickCallbackId</a> {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
-        <a class="self" href="#104">self</a>.id == <a href="#104">other</a>.id
+        <a class="self" href="#99">self</a>.id == <a href="#99">other</a>.id
     }
 }
 
-<span class="kw">impl </span><a href="#97-100">TickCallbackId</a> {
+<span class="kw">impl </span><a href="#92-95">TickCallbackId</a> {
     <span class="doccomment">/// Removes a tick callback previously registered with
     /// gtk_widget_add_tick_callback().
     /// ## `id`
@@ -310,9 +300,9 @@
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_widget_remove_tick_callback"</span>)]
     #[doc(alias = <span class="string">"remove_tick_callback"</span>)]
     </span><span class="kw">pub fn </span>remove(<span class="self">self</span>) {
-        <span class="kw">if let </span><span class="prelude-val">Some</span>(widget) = <a class="self" href="#116">self</a>.widget.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.WeakRef.html#method.upgrade">upgrade</a>() {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(widget) = <a class="self" href="#111">self</a>.widget.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.WeakRef.html#method.upgrade">upgrade</a>() {
             <span class="kw">unsafe </span>{
-                <a href="../../gtk4_sys/fn.gtk_widget_remove_tick_callback.html">ffi::gtk_widget_remove_tick_callback</a>(<a href="#117">widget</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a class="self" href="#116">self</a>.id);
+                <a href="../../gtk4_sys/fn.gtk_widget_remove_tick_callback.html">ffi::gtk_widget_remove_tick_callback</a>(<a href="#112">widget</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a class="self" href="#111">self</a>.id);
             }
         }
     }
