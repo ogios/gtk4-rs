@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/subclass/paintable.rs`."><title>paintable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3ed6e3cc6 2024-10-17)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/subclass/paintable.rs`."><title>paintable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (e92993dbb 2024-10-18)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -269,12 +269,10 @@
 <a href="#195" id="195">195</a>
 <a href="#196" id="196">196</a>
 <a href="#197" id="197">197</a>
-<a href="#198" id="198">198</a>
-<a href="#199" id="199">199</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#198" id="198">198</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
-</span><span class="doccomment">//! Traits intended for implementing the [`Paintable`](crate::Paintable)
-//! interface.
+</span><span class="doccomment">//! Traits intended for implementing the [`Paintable`] interface.
 
 </span><span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
 
@@ -283,59 +281,59 @@
 <span class="kw">pub trait </span><a href="../../../gdk4/subclass/paintable/trait.PaintableImpl.html">PaintableImpl</a>: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;&gt; {
     <span class="attr">#[doc(alias = <span class="string">"get_current_image"</span>)]
     </span><span class="kw">fn </span>current_image(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../auto/paintable.rs.html#13-95">Paintable</a> {
-        <a class="self" href="#13">self</a>.<a href="#41-54">parent_current_image</a>()
+        <a class="self" href="#12">self</a>.<a href="#40-53">parent_current_image</a>()
     }
 
     <span class="attr">#[doc(alias = <span class="string">"get_flags"</span>)]
     </span><span class="kw">fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../auto/flags.rs.html#706-724">PaintableFlags</a> {
-        <a class="self" href="#18">self</a>.<a href="#56-69">parent_flags</a>()
+        <a class="self" href="#17">self</a>.<a href="#55-68">parent_flags</a>()
     }
 
     <span class="attr">#[doc(alias = <span class="string">"get_intrinsic_width"</span>)]
     </span><span class="kw">fn </span>intrinsic_width(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
-        <a class="self" href="#23">self</a>.<a href="#71-82">parent_intrinsic_width</a>()
+        <a class="self" href="#22">self</a>.<a href="#70-81">parent_intrinsic_width</a>()
     }
 
     <span class="attr">#[doc(alias = <span class="string">"get_intrinsic_height"</span>)]
     </span><span class="kw">fn </span>intrinsic_height(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
-        <a class="self" href="#28">self</a>.<a href="#84-95">parent_intrinsic_height</a>()
+        <a class="self" href="#27">self</a>.<a href="#83-94">parent_intrinsic_height</a>()
     }
 
     <span class="attr">#[doc(alias = <span class="string">"get_intrinsic_aspect_ratio"</span>)]
     </span><span class="kw">fn </span>intrinsic_aspect_ratio(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> {
-        <a class="self" href="#33">self</a>.<a href="#97-108">parent_intrinsic_aspect_ratio</a>()
+        <a class="self" href="#32">self</a>.<a href="#96-107">parent_intrinsic_aspect_ratio</a>()
     }
 
     <span class="kw">fn </span>snapshot(<span class="kw-2">&amp;</span><span class="self">self</span>, snapshot: <span class="kw-2">&amp;</span><a href="../auto/snapshot.rs.html#7-19">Snapshot</a>, width: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, height: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>);
 }
 
-<span class="kw">pub trait </span><a href="../../../gdk4/subclass/paintable/trait.PaintableImplExt.html">PaintableImplExt</a>: <a href="#11-38">PaintableImpl</a> {
+<span class="kw">pub trait </span><a href="../../../gdk4/subclass/paintable/trait.PaintableImplExt.html">PaintableImplExt</a>: <a href="#10-37">PaintableImpl</a> {
     <span class="kw">fn </span>parent_current_image(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../auto/paintable.rs.html#13-95">Paintable</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#43">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#42">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkPaintableInterface.html">ffi::GdkPaintableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#44">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#43">parent_iface</a>)
                 .get_current_image
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_current_image\" implementation"</span>);
 
-            <span class="kw">let </span>ret = <a href="#46">func</a>(<a class="self" href="#41">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
+            <span class="kw">let </span>ret = <a href="#45">func</a>(<a class="self" href="#40">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
 
-            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#50">ret</a>)
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="#49">ret</a>)
         }
     }
 
     <span class="kw">fn </span>parent_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../auto/flags.rs.html#706-724">PaintableFlags</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#58">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#57">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkPaintableInterface.html">ffi::GdkPaintableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#59">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#58">parent_iface</a>)
                 .get_flags
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_flags\" implementation"</span>);
 
-            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#61">func</a>(
-                <a class="self" href="#56">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#60">func</a>(
+                <a class="self" href="#55">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             ))
         }
     }
@@ -343,130 +341,130 @@
     <span class="kw">fn </span>parent_intrinsic_width(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#73">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#72">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkPaintableInterface.html">ffi::GdkPaintableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#74">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#73">parent_iface</a>)
                 .get_intrinsic_width
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_intrinsic_width\" implementation"</span>);
 
-            <a href="#76">func</a>(<a class="self" href="#71">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <a href="#75">func</a>(<a class="self" href="#70">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
         }
     }
 
     <span class="kw">fn </span>parent_intrinsic_height(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#86">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#85">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkPaintableInterface.html">ffi::GdkPaintableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#87">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#86">parent_iface</a>)
                 .get_intrinsic_height
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_intrinsic_height\" implementation"</span>);
 
-            <a href="#89">func</a>(<a class="self" href="#84">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <a href="#88">func</a>(<a class="self" href="#83">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
         }
     }
 
     <span class="kw">fn </span>parent_intrinsic_aspect_ratio(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#99">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#98">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkPaintableInterface.html">ffi::GdkPaintableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#100">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#99">parent_iface</a>)
                 .get_intrinsic_aspect_ratio
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"get_intrinsic_aspect_ratio\" implementation"</span>);
 
-            <a href="#102">func</a>(<a class="self" href="#97">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <a href="#101">func</a>(<a class="self" href="#96">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
         }
     }
 
     <span class="kw">fn </span>parent_snapshot(<span class="kw-2">&amp;</span><span class="self">self</span>, snapshot: <span class="kw-2">&amp;</span><a href="../auto/snapshot.rs.html#7-19">Snapshot</a>, width: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, height: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_iface = <a href="#112">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
+            <span class="kw">let </span>parent_iface = <a href="#111">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;()
                 <span class="kw">as </span><span class="kw-2">*const </span><a href="../../../gdk4_sys/struct.GdkPaintableInterface.html">ffi::GdkPaintableInterface</a>;
-            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#113">parent_iface</a>)
+            <span class="kw">let </span>func = (<span class="kw-2">*</span><a href="#112">parent_iface</a>)
                 .snapshot
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"no parent \"snapshot\" implementation"</span>);
 
-            <a href="#115">func</a>(
-                <a class="self" href="#110">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#110">snapshot</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#110">width</a>,
-                <a href="#110">height</a>,
+            <a href="#114">func</a>(
+                <a class="self" href="#109">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/paintable.rs.html#13-95">Paintable</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#109">snapshot</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#109">width</a>,
+                <a href="#109">height</a>,
             )
         }
     }
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#11-38">PaintableImpl</a>&gt; <a href="#40-127">PaintableImplExt</a> <span class="kw">for </span>T {}
+<span class="kw">impl</span>&lt;T: <a href="#10-37">PaintableImpl</a>&gt; <a href="#39-126">PaintableImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#11-38">PaintableImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/paintable.rs.html#13-95">Paintable</a> {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#10-37">PaintableImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/paintable.rs.html#13-95">Paintable</a> {
     <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
-        <span class="kw">let </span>iface = <a href="#132">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
+        <span class="kw">let </span>iface = <a href="#131">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
-        <a href="#133">iface</a>.get_current_image = <span class="prelude-val">Some</span>(paintable_get_current_image::&lt;T&gt;);
-        <a href="#133">iface</a>.get_flags = <span class="prelude-val">Some</span>(paintable_get_flags::&lt;T&gt;);
-        <a href="#133">iface</a>.get_intrinsic_width = <span class="prelude-val">Some</span>(paintable_get_intrinsic_width::&lt;T&gt;);
-        <a href="#133">iface</a>.get_intrinsic_height = <span class="prelude-val">Some</span>(paintable_get_intrinsic_height::&lt;T&gt;);
-        <a href="#133">iface</a>.get_intrinsic_aspect_ratio = <span class="prelude-val">Some</span>(paintable_get_intrinsic_aspect_ratio::&lt;T&gt;);
-        <a href="#133">iface</a>.snapshot = <span class="prelude-val">Some</span>(paintable_snapshot::&lt;T&gt;);
+        <a href="#132">iface</a>.get_current_image = <span class="prelude-val">Some</span>(paintable_get_current_image::&lt;T&gt;);
+        <a href="#132">iface</a>.get_flags = <span class="prelude-val">Some</span>(paintable_get_flags::&lt;T&gt;);
+        <a href="#132">iface</a>.get_intrinsic_width = <span class="prelude-val">Some</span>(paintable_get_intrinsic_width::&lt;T&gt;);
+        <a href="#132">iface</a>.get_intrinsic_height = <span class="prelude-val">Some</span>(paintable_get_intrinsic_height::&lt;T&gt;);
+        <a href="#132">iface</a>.get_intrinsic_aspect_ratio = <span class="prelude-val">Some</span>(paintable_get_intrinsic_aspect_ratio::&lt;T&gt;);
+        <a href="#132">iface</a>.snapshot = <span class="prelude-val">Some</span>(paintable_snapshot::&lt;T&gt;);
     }
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_current_image&lt;T: <a href="#11-38">PaintableImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_current_image&lt;T: <a href="#10-37">PaintableImpl</a>&gt;(
     paintable: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">ffi::GdkPaintable</a>,
 ) -&gt; <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">ffi::GdkPaintable</a> {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#145">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#147">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#144">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#146">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#148">imp</a>.<a href="#13-15">current_image</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlibPtr.html#tymethod.into_glib_ptr">into_glib_ptr</a>()
+    <a href="#147">imp</a>.<a href="#12-14">current_image</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlibPtr.html#tymethod.into_glib_ptr">into_glib_ptr</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_flags&lt;T: <a href="#11-38">PaintableImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_flags&lt;T: <a href="#10-37">PaintableImpl</a>&gt;(
     paintable: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">ffi::GdkPaintable</a>,
 ) -&gt; <a href="../../../gdk4_sys/type.GdkPaintableFlags.html">ffi::GdkPaintableFlags</a> {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#154">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#156">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#153">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#155">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#157">imp</a>.<a href="#18-20">flags</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
+    <a href="#156">imp</a>.<a href="#17-19">flags</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_intrinsic_width&lt;T: <a href="#11-38">PaintableImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_intrinsic_width&lt;T: <a href="#10-37">PaintableImpl</a>&gt;(
     paintable: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">ffi::GdkPaintable</a>,
 ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#163">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#165">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#162">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#164">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#166">imp</a>.<a href="#23-25">intrinsic_width</a>()
+    <a href="#165">imp</a>.<a href="#22-24">intrinsic_width</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_intrinsic_height&lt;T: <a href="#11-38">PaintableImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_intrinsic_height&lt;T: <a href="#10-37">PaintableImpl</a>&gt;(
     paintable: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">ffi::GdkPaintable</a>,
 ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#172">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#174">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#171">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#173">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#175">imp</a>.<a href="#28-30">intrinsic_height</a>()
+    <a href="#174">imp</a>.<a href="#27-29">intrinsic_height</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_intrinsic_aspect_ratio&lt;T: <a href="#11-38">PaintableImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_get_intrinsic_aspect_ratio&lt;T: <a href="#10-37">PaintableImpl</a>&gt;(
     paintable: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">ffi::GdkPaintable</a>,
 ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#181">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#183">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#180">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#182">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#184">imp</a>.<a href="#33-35">intrinsic_aspect_ratio</a>()
+    <a href="#183">imp</a>.<a href="#32-34">intrinsic_aspect_ratio</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_snapshot&lt;T: <a href="#11-38">PaintableImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>paintable_snapshot&lt;T: <a href="#10-37">PaintableImpl</a>&gt;(
     paintable: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkPaintable.html">ffi::GdkPaintable</a>,
     snapshotptr: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkSnapshot.html">ffi::GdkSnapshot</a>,
     width: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
     height: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#190">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#195">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#189">paintable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#194">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#196">imp</a>.<a href="#37">snapshot</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrBorrow.html#tymethod.from_glib_borrow">Snapshot::from_glib_borrow</a>(<a href="#191">snapshotptr</a>), <a href="#192">width</a>, <a href="#193">height</a>)
+    <a href="#195">imp</a>.<a href="#36">snapshot</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrBorrow.html#tymethod.from_glib_borrow">Snapshot::from_glib_borrow</a>(<a href="#190">snapshotptr</a>), <a href="#191">width</a>, <a href="#192">height</a>)
 }
 </code></pre></div></section></main></body></html>
