@@ -965,13 +965,13 @@
                 builder = builder.property(key, <span class="kw-2">*</span>value);
             }
             <span class="kw">let </span>about_dialog = <a href="#412">builder</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.ObjectBuilder.html#method.build">build</a>();
-            <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2197-2201">set_hide_on_close</a>(<span class="bool-val">true</span>);
+            <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2198-2202">set_hide_on_close</a>(<span class="bool-val">true</span>);
 
             <span class="comment">// cache the dialog if a parent is set
             </span><span class="kw">if let </span><span class="prelude-val">Some</span>(dialog_parent) = <a href="#403">parent</a> {
-                <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2248-2252">set_modal</a>(<span class="bool-val">true</span>);
-                <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2353-2360">set_transient_for</a>(<a href="#403">parent</a>);
-                <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2113-2120">set_destroy_with_parent</a>(<span class="bool-val">true</span>);
+                <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2249-2253">set_modal</a>(<span class="bool-val">true</span>);
+                <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2354-2361">set_transient_for</a>(<a href="#403">parent</a>);
+                <a href="#416">about_dialog</a>.<a href="auto/window.rs.html#2114-2121">set_destroy_with_parent</a>(<span class="bool-val">true</span>);
                 <a href="#420">dialog_parent</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectExt.html#tymethod.set_qdata">set_qdata</a>(<a href="#406">quark</a>, <a href="#416">about_dialog</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
             }
 
