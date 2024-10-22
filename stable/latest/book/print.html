@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -209,12 +209,12 @@ In concept chapters, you will learn about an aspect of GTK development.
 In project chapters, we will build small programs together, applying what you've learned so far.</p>
 <p>The book strives to explain essential GTK concepts paired with practical examples.
 However, if a concept can be better conveyed with a less practical example, we took this path most of the time.
-If you are interested in contained and useful examples, we refer you to the corresponding section of <code>gtk4-rs</code>' <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/examples">repository</a>.</p>
+If you are interested in contained and useful examples, we refer you to the corresponding section of <code>gtk4-rs</code>' <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/examples">repository</a>.</p>
 <p>Every valid code snippet in the book is part of a listing.
-Like the examples, the listings be found in the <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book/listings">repository</a> of <code>gtk4-rs</code>.</p>
+Like the examples, the listings be found in the <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book/listings">repository</a> of <code>gtk4-rs</code>.</p>
 <h2 id="license"><a class="header" href="#license">License</a></h2>
 <p>The book itself is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
-The only exception are the code snippets which are licensed under the <a href="https://github.com/gtk-rs/gtk4-rs/blob/master/README.md">MIT license</a>.</p>
+The only exception are the code snippets which are licensed under the <a href="https://github.com/gtk-rs/gtk4-rs/blob/main/README.md">MIT license</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <p>In order to develop a <code>gtk-rs</code> app, you basically need two things on your workstation:</p>
 <ul>
@@ -408,7 +408,7 @@ At the time of this writing the newest version is <code>4.12</code>.</p>
 <p>At the very least, we need to create a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Application.html"><code>gtk::Application</code></a> instance with an <a href="https://developer.gnome.org/documentation/tutorials/application-id.html">application id</a>.
 For that we use the <a href="https://rust-unofficial.github.io/patterns/patterns/creational/builder.html">builder pattern</a> which many <code>gtk-rs</code> objects support.
 Note that we also import the prelude to bring the necessary traits into scope.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/hello_world/1/main.rs">listings/hello_world/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/hello_world/1/main.rs">listings/hello_world/1/main.rs</a></p>
 <pre><code class="language-rust">use gtk::prelude::*;
 use gtk::{glib, Application};
 
@@ -427,7 +427,7 @@ and has no handlers connected to the 'activate' signal. It should do one of thes
 </code></pre>
 <p>GTK tells us that something should be called in its <code>activate</code> step.
 So let's create a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ApplicationWindow.html"><code>gtk::ApplicationWindow</code></a> there.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/hello_world/2/main.rs">listings/hello_world/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/hello_world/2/main.rs">listings/hello_world/2/main.rs</a></p>
 <pre><code class="language-rust">use gtk::prelude::*;
 use gtk::{glib, Application, ApplicationWindow};
 
@@ -458,7 +458,7 @@ fn build_ui(app: &amp;Application) {
 <div style="text-align:center"><img src="img/hello_world_empty.png" alt="An empty window with a header bar with label 'My GTK App'"/></div>
 <p>Normally we expect to be able to interact with the user interface.
 Also, the name of the chapter suggests that the phrase "Hello World!" will be involved.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
 </span><span class="boring">const APP_ID: &amp;str = "org.gtk_rs.HelloWorld3";
@@ -538,7 +538,7 @@ We find that these traits either have a corresponding base class or interface in
 In the "Hello World" app we wanted to react to a button click.
 This behavior is specific to a button, so we expect to find a suitable method in the <code>ButtonExt</code> trait.
 And indeed, <code>ButtonExt</code> includes the method <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/prelude/trait.ButtonExt.html#tymethod.connect_clicked"><code>connect_clicked</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
 </span><span class="boring">const APP_ID: &amp;str = "org.gtk_rs.HelloWorld3";
@@ -731,7 +731,7 @@ We need a data type with interior mutability like <a href="https://doc.rust-lang
 For other objects, <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html"><code>RefCell</code></a> is the way to go.
 You can learn more about interior mutability in this <a href="https://marabos.nl/atomics/basics.html#interior-mutability">section</a> of the book <em>Rust Atomics and Locks</em>.</p>
 </blockquote>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
 </span><span class="boring">use std::cell::Cell;
@@ -783,7 +783,7 @@ For that, we need a way that both closures take ownership of the same value?</p>
 <code>Rc</code> counts the number of strong references created via <a href="https://doc.rust-lang.org/std/clone/trait.Clone.html#tymethod.clone"><code>Clone::clone</code></a> and released via <a href="https://doc.rust-lang.org/std/ops/trait.Drop.html#tymethod.drop"><code>Drop::drop</code></a>, and only deallocates the value when this number drops to zero.
 If we want to modify the content of our <a href="https://doc.rust-lang.org/std/rc/struct.Rc.html"><code>Rc</code></a>,
 we can again use the <a href="https://doc.rust-lang.org/std/cell/struct.Cell.html"><code>Cell</code></a> type.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -846,7 +846,7 @@ we can again use the <a href="https://doc.rust-lang.org/std/cell/struct.Cell.htm
 </span><span class="boring">}</span></code></pre>
 <p>It is not very nice though to fill the scope with temporary variables like <code>number_copy</code>.
 We can improve that by using the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/macro.clone.html"><code>glib::clone!</code></a> macro.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/3/main.rs">listings/g_object_memory_management/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/3/main.rs">listings/g_object_memory_management/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -917,7 +917,7 @@ We can improve that by using the <a href="https://gtk-rs.org/gtk-rs-core/stable/
 </span><span class="boring">}</span></code></pre>
 <p>Just like <code>Rc&lt;Cell&lt;T&gt;&gt;</code>, GObjects are reference-counted and mutable.
 Therefore, we can pass the buttons the same way to the closure as we did with <code>number</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/4/main.rs">listings/g_object_memory_management/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/4/main.rs">listings/g_object_memory_management/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -1004,7 +1004,7 @@ A strong reference keeps the referenced value from being deallocated.
 If this chain leads to a circle, none of the values in this cycle ever get deallocated.
 With weak references we can break this cycle, because they don't keep their value alive but instead provide a way to retrieve a strong reference if the value is still alive.
 Since we want our apps to free unneeded memory, we should use weak references for the buttons instead.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -1092,7 +1092,7 @@ In case the closure expects a different return value <code>@default-return</code
 If we had moved weak references in both closures, nothing would have kept <code>number</code> alive and the closure would have never been called.
 Thinking about this, <code>button_increase</code> and <code>button_decrease</code> are also dropped at the end of the scope of <code>build_ui</code>.
 Who then keeps the buttons alive?</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -1172,7 +1172,7 @@ Who then keeps the buttons alive?</p>
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>When we append the buttons to the <code>gtk_box</code>, <code>gtk_box</code> keeps a strong reference to them.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -1261,7 +1261,7 @@ Without memory cycles, you can rely on GTK to properly manage the memory of GObj
 Therefore, it makes sense that if we want to create a custom GObject, this is done via subclassing.
 Let's see how this works by replacing the button in our "Hello World!" app with a custom one.
 First, we need to create an implementation struct that holds the state and overrides the virtual methods.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_subclassing/1/custom_button/imp.rs">listings/g_object_subclassing/1/custom_button/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_subclassing/1/custom_button/imp.rs">listings/g_object_subclassing/1/custom_button/imp.rs</a></p>
 <pre><code class="language-rust">use gtk::glib;
 use gtk::subclass::prelude::*;
 
@@ -1295,7 +1295,7 @@ impl ButtonImpl for CustomButton {}</code></pre>
 Since we only want to have a plain button for now, we override nothing.
 We still have to add the empty <code>impl</code> though.
 Next, we describe the public interface of our custom GObject.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_subclassing/1/custom_button/mod.rs">listings/g_object_subclassing/1/custom_button/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_subclassing/1/custom_button/mod.rs">listings/g_object_subclassing/1/custom_button/mod.rs</a></p>
 <pre><code class="language-rust">mod imp;
 
 use glib::Object;
@@ -1328,7 +1328,7 @@ Unfortunately, nobody has yet found a good way to do that.
 Which is why, as of today, subclassing of GObjects in Rust requires to mention all ancestors and interfaces apart from <code>GObject</code> and <code>GInitiallyUnowned</code>.
 For <code>gtk::Button</code>, we can look up the ancestors and interfaces in the corresponding <a href="https://docs.gtk.org/gtk4/class.Button.html#hierarchy">doc page</a> of GTK4.</p>
 <p>After these steps, nothing is stopping us from replacing <code>gtk::Button</code> with our <code>CustomButton</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_subclassing/1/main.rs">listings/g_object_subclassing/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_subclassing/1/main.rs">listings/g_object_subclassing/1/main.rs</a></p>
 <pre><code class="language-rust">mod custom_button;
 
 use custom_button::CustomButton;
@@ -1383,7 +1383,7 @@ This is cool, but also not very tempting to do in a real application.
 For the gain of zero benefits, it did involve quite a bit of boilerplate after all.</p>
 <p>So let's make it a bit more interesting!
 <code>gtk::Button</code> does not hold much state, but we can let <code>CustomButton</code> hold a number.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_subclassing/2/custom_button/imp.rs">listings/g_object_subclassing/2/custom_button/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_subclassing/2/custom_button/imp.rs">listings/g_object_subclassing/2/custom_button/imp.rs</a></p>
 <pre><code class="language-rust">use std::cell::Cell;
 
 use gtk::glib;
@@ -1424,7 +1424,7 @@ impl ButtonImpl for CustomButton {
 }</code></pre>
 <p>We override <code>constructed</code> in <code>ObjectImpl</code> so that the label of the button initializes with <code>number</code>.
 We also override <code>clicked</code> in <code>ButtonImpl</code> so that every click increases <code>number</code> and updates the label.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_subclassing/2/main.rs">listings/g_object_subclassing/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_subclassing/2/main.rs">listings/g_object_subclassing/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod custom_button;
 </span><span class="boring">
 </span><span class="boring">use custom_button::CustomButton;
@@ -1498,7 +1498,7 @@ Conceptually, a <code>Value</code> is similar to a Rust <code>enum</code> define
     Object(Option&lt;dyn IsA&lt;glib::Object&gt;&gt;),
 }</code></pre>
 <p>For example, this is how you would use a <code>Value</code> representing an <code>i32</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_values/1/main.rs">listings/g_object_values/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_values/1/main.rs">listings/g_object_values/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -1544,7 +1544,7 @@ Conceptually, a <code>Value</code> is similar to a Rust <code>enum</code> define
 This comes from C, where every boxed type can potentially be <code>None</code> (or <code>NULL</code> in C terms).
 You can still access it the same way as with the <code>i32</code> above.
 <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/value/struct.Value.html#method.get"><code>get</code></a> will then not only return <code>Err</code> if you specified the wrong type, but also if the <code>Value</code> represents <code>None</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_values/1/main.rs">listings/g_object_values/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_values/1/main.rs">listings/g_object_values/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -1587,7 +1587,7 @@ You can still access it the same way as with the <code>i32</code> above.
 </span><span class="boring">    assert_eq!(string_none, None);
 </span><span class="boring">}</span></code></pre>
 <p>If you want to differentiate between specifying the wrong type and a <code>Value</code> representing <code>None</code>, just call <code>get::&lt;Option&lt;T&gt;&gt;</code> instead.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_values/1/main.rs">listings/g_object_values/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_values/1/main.rs">listings/g_object_values/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -1636,7 +1636,7 @@ Although <code>GVariant</code> supports arbitrarily complex types, the Rust bind
 Containers of the above types are possible as well, such as <code>HashMap</code>, <code>Vec</code>, <code>Option</code>, tuples up to 16 elements, and <code>Variant</code>.
 Variants can even be <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib_macros/derive.Variant.html#">derived</a> from Rust structs as long as its members can be represented by variants.</p>
 <p>In the most simple case, converting Rust types to <code>Variant</code> and vice-versa is very similar to the way it worked with <code>Value</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_values/2/main.rs">listings/g_object_values/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_values/2/main.rs">listings/g_object_values/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -1661,7 +1661,7 @@ Variants can even be <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/
 <p>However, a <code>Variant</code> is also able to represent containers such as <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html"><code>HashMap</code></a> or <a href="https://doc.rust-lang.org/std/vec/struct.Vec.html"><code>Vec</code></a>.
 The following snippet shows how to convert between <code>Vec</code> and <code>Variant</code>.
 More examples can be found in the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/variant/index.html">docs</a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_values/2/main.rs">listings/g_object_values/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_values/2/main.rs">listings/g_object_values/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">
 </span><span class="boring">fn main() {
@@ -1690,7 +1690,7 @@ More examples can be found in the <a href="https://gtk-rs.org/gtk-rs-core/stable
 One of its properties is called <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Switch.html#active">active</a>.
 According to the GTK docs, it can be read and be written to.
 That is why <code>gtk-rs</code> provides corresponding <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Switch.html#method.is_active"><code>is_active</code></a> and <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Switch.html#method.set_active"><code>set_active</code></a> methods.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/1/main.rs">listings/g_object_properties/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/1/main.rs">listings/g_object_properties/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Align, Application, ApplicationWindow, Box, Orientation, Switch};
 </span><span class="boring">
@@ -1743,7 +1743,7 @@ That is why <code>gtk-rs</code> provides corresponding <a href="https://gtk-rs.o
 </span><span class="boring">}</span></code></pre>
 <p>Properties can not only be accessed via getters &amp; setters, they can also be bound to each other.
 Let's see how that would look like for two <code>Switch</code> instances.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/2/main.rs">listings/g_object_properties/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/2/main.rs">listings/g_object_properties/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Align, Application, ApplicationWindow, Box, Orientation, Switch};
 </span><span class="boring">
@@ -1796,7 +1796,7 @@ Let's see how that would look like for two <code>Switch</code> instances.</p>
 </span><span class="boring">}</span></code></pre>
 <p>In our case, we want to bind the "active" property of <code>switch_1</code> to the "active" property of <code>switch_2</code>.
 We also want the binding to be bidirectional, so we specify by calling the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/object/struct.BindingBuilder.html#method.bidirectional"><code>bidirectional</code></a> method.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/2/main.rs">listings/g_object_properties/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/2/main.rs">listings/g_object_properties/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Align, Application, ApplicationWindow, Box, Orientation, Switch};
 </span><span class="boring">
@@ -1861,7 +1861,7 @@ Most of the work is done by the <a href="https://gtk-rs.org/gtk-rs-core/stable/l
 We tell it that the wrapper type is <code>super::CustomButton</code>.
 We also annotate <code>number</code>, so that macro knows that it should create a property "number" that is readable and writable.
 It also generates <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/derive.Properties.html#generated-wrapper-methods">wrapper methods</a> which we are going to use later in this chapter.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/3/custom_button/imp.rs">listings/g_object_properties/3/custom_button/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/3/custom_button/imp.rs">listings/g_object_properties/3/custom_button/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">
 </span><span class="boring">use glib::Properties;
@@ -1914,7 +1914,7 @@ pub struct CustomButton {
 In <code>constructed</code> we use our new property "number" by binding the "label" property to it.
 <code>bind_property</code> converts the integer value of "number" to the string of "label" on its own.
 Now we don't have to adapt the label in the "clicked" callback anymore.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/3/custom_button/imp.rs">listings/g_object_properties/3/custom_button/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/3/custom_button/imp.rs">listings/g_object_properties/3/custom_button/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">
 </span><span class="boring">use glib::Properties;
@@ -2015,7 +2015,7 @@ impl ButtonImpl for CustomButton {
     }
 }</code></pre>
 <p>Let's see what we can do with this by creating two custom buttons.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/3/main.rs">listings/g_object_properties/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/3/main.rs">listings/g_object_properties/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod custom_button;
 </span><span class="boring">
 </span><span class="boring">use custom_button::CustomButton;
@@ -2089,7 +2089,7 @@ impl ButtonImpl for CustomButton {
 </span><span class="boring">}</span></code></pre>
 <p>We have already seen that bound properties don't necessarily have to be of the same type.
 By leveraging <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/object/struct.BindingBuilder.html#method.transform_to"><code>transform_to</code></a> and <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/object/struct.BindingBuilder.html#method.transform_from"><code>transform_from</code></a>, we can assure that <code>button_2</code> always displays a number which is 1 higher than the number of <code>button_1</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/3/main.rs">listings/g_object_properties/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/3/main.rs">listings/g_object_properties/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod custom_button;
 </span><span class="boring">
 </span><span class="boring">use custom_button::CustomButton;
@@ -2170,7 +2170,7 @@ By leveraging <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/ob
 </div>
 <p>Another nice feature of properties is, that you can connect a callback to the event, when a property gets changed.
 For example like this:</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_properties/3/main.rs">listings/g_object_properties/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_properties/3/main.rs">listings/g_object_properties/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod custom_button;
 </span><span class="boring">
 </span><span class="boring">use custom_button::CustomButton;
@@ -2256,7 +2256,7 @@ For example, if we press on a button, the "clicked" signal will be emitted.
 The signal then takes care that all the registered callbacks will be executed.</p>
 <p><code>gtk-rs</code> provides convenience methods for registering callbacks.
 In our "Hello World" example we <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/prelude/trait.ButtonExt.html#tymethod.connect_clicked">connected</a> the "clicked" signal to a closure which sets the label of the button to "Hello World" as soon as it gets called.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
 </span><span class="boring">const APP_ID: &amp;str = "org.gtk_rs.HelloWorld3";
@@ -2299,7 +2299,7 @@ In our "Hello World" example we <a href="https://gtk-rs.org/gtk4-rs/stable/lates
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>If we wanted to, we could have connected to it with the generic <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/object/trait.ObjectExt.html#tymethod.connect_closure"><code>connect_closure</code></a> method and the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/macro.closure_local.html"><code>glib::closure_local!</code></a> macro.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_signals/1/main.rs">listings/g_object_signals/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_signals/1/main.rs">listings/g_object_signals/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::closure_local;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
@@ -2359,7 +2359,7 @@ Again we do that by extending our <code>CustomButton</code>.
 First we override the <code>signals</code> method in <code>ObjectImpl</code>.
 In order to do that, we need to lazily initialize a static item <code>SIGNALS</code>.
 <a href="https://doc.rust-lang.org/std/sync/struct.OnceLock.html"><code>std::sync::OnceLock</code></a> ensures that <code>SIGNALS</code> will only be initialized once.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_signals/2/custom_button/imp.rs">listings/g_object_signals/2/custom_button/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_signals/2/custom_button/imp.rs">listings/g_object_signals/2/custom_button/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::sync::OnceLock;
 </span><span class="boring">
@@ -2436,7 +2436,7 @@ When emitted, it sends a single <code>i32</code> value.</p>
 <p>We want the signal to be emitted, whenever <code>number</code> reaches <code>MAX_NUMBER</code>.
 Together with the signal we send the value <code>number</code> currently holds.
 After we did that, we set <code>number</code> back to 0.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_signals/2/custom_button/imp.rs">listings/g_object_signals/2/custom_button/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_signals/2/custom_button/imp.rs">listings/g_object_signals/2/custom_button/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::sync::OnceLock;
 </span><span class="boring">
@@ -2509,7 +2509,7 @@ impl ButtonImpl for CustomButton {
 <p>If we now press on the button, the number of its label increases until it reaches <code>MAX_NUMBER</code>.
 Then it emits the "max-number-reached" signal which we can nicely connect to.
 Whenever we now receive the "max-number-reached" signal, the accompanying number is printed to <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)">standard output</a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_signals/2/main.rs">listings/g_object_signals/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_signals/2/main.rs">listings/g_object_signals/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod custom_button;
 </span><span class="boring">
 </span><span class="boring">use custom_button::CustomButton;
@@ -2569,7 +2569,7 @@ That is why you can move the window at the same time as a progress bar is growin
 <p>However, you surely saw GUIs that became unresponsive, at least for a few seconds.
 That happens when a single task takes too long.
 The following example uses <a href="https://doc.rust-lang.org/std/thread/fn.sleep.html"><code>std::thread::sleep</code></a> to represent a long-running task.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/1/main.rs">listings/main_event_loop/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/1/main.rs">listings/main_event_loop/1/main.rs</a></p>
 <pre><code class="language-rust">use std::thread;
 use std::time::Duration;
 
@@ -2628,7 +2628,7 @@ but frequently, we want to run a slightly longer operation in one go.</p>
 </div>
 <h2 id="how-to-avoid-blocking-the-main-loop"><a class="header" href="#how-to-avoid-blocking-the-main-loop">How to Avoid Blocking the Main Loop</a></h2>
 <p>In order to avoid blocking the main loop, we can spawn a new task with <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/fn.spawn_blocking.html"><code>gio::spawn_blocking</code></a> and let the operation run on the thread pool.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/2/main.rs">listings/main_event_loop/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/2/main.rs">listings/main_event_loop/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::thread;
 </span><span class="boring">use std::time::Duration;
 </span><span class="boring">
@@ -2708,7 +2708,7 @@ This <code>async</code> block is spawned on the <code>glib</code> main loop with
 <blockquote>
 <p>See also <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/fn.spawn_future.html"><code>spawn_future</code></a> for spawning async blocks on the main loop from outside the main thread.</p>
 </blockquote>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/3/main.rs">listings/main_event_loop/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/3/main.rs">listings/main_event_loop/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::thread;
 </span><span class="boring">use std::time::Duration;
 </span><span class="boring">
@@ -2793,7 +2793,7 @@ After the task is finished, the button becomes sensitive again.</p>
 Let's try <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/fn.timeout_future_seconds.html"><code>glib::timeout_future_seconds</code></a> as representation for our task instead of <code>std::thread::sleep</code>.
 It returns a <a href="https://doc.rust-lang.org/std/future/trait.Future.html"><code>std::future::Future</code></a>, which means we can <code>await</code> on it within an <code>async</code> context.
 The converted code looks and behaves very similar to the multithreaded code.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/4/main.rs">listings/main_event_loop/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/4/main.rs">listings/main_event_loop/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
@@ -2866,7 +2866,7 @@ The converted code looks and behaves very similar to the multithreaded code.</p>
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Since we are single-threaded again, we can even get rid of the channel while achieving the same result.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/5/main.rs">listings/main_event_loop/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/5/main.rs">listings/main_event_loop/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
@@ -2991,7 +2991,7 @@ Let's focus on a few more aspects that are interesting to know when running <cod
 In the following listing, we want to execute a synchronous function that returns a boolean and takes ten seconds to run.
 In order to integrate it in our <code>async</code> block, we run the function in a separate thread via <code>spawn_blocking</code>.
 We can then get the return value of the function by calling <code>await</code> on the return value of <code>spawn_blocking</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/6/main.rs">listings/main_event_loop/6/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/6/main.rs">listings/main_event_loop/6/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib};
@@ -3068,7 +3068,7 @@ We are getting a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/str
 <blockquote>
 <p>We need to pass the <code>WindowIdentifier</code> to make the dialog modal. This means that it will be on top of the window and freezes the rest of the application from user input.</p>
 </blockquote>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/7/main.rs">listings/main_event_loop/7/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/7/main.rs">listings/main_event_loop/7/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
@@ -3155,7 +3155,7 @@ Let's add it by executing the following command</p>
 </code></pre>
 <p>As soon as the button is pressed, we want to send a <code>GET</code> request to <a href="https://www.gtk-rs.org">www.gtk-rs.org</a>.
 The response should then be sent to the main thread via a channel.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/8/main.rs">listings/main_event_loop/8/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/8/main.rs">listings/main_event_loop/8/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::glib;
 </span><span class="boring">use gtk::prelude::*;
@@ -3312,7 +3312,7 @@ consider wrapping this expression in `Lazy::new(|| ...)` from the `once_cell` cr
 </code></pre>
 <p>We could follow the advice directly, but the standard library also provides solutions for that.
 With <a href="https://doc.rust-lang.org/stable/std/sync/struct.OnceLock.html"><code>std::sync::OnceLock</code></a> we can initialize the static with the const function <code>OnceLock::new()</code> and initialize it the first time our function <code>runtime</code> is called.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::sync::OnceLock;
 </span><span class="boring">
 </span><span class="boring">use glib::clone;
@@ -3389,7 +3389,7 @@ With <a href="https://doc.rust-lang.org/stable/std/sync/struct.OnceLock.html"><c
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>In the button callback we can now spawn the <code>reqwest</code> <code>async</code> block with <code>tokio</code> rather than with <code>glib</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::sync::OnceLock;
 </span><span class="boring">
 </span><span class="boring">use glib::clone;
@@ -3496,7 +3496,7 @@ That means you have to run the task in a separate thread and let it send results
 However, every time we close the application all of it is gone.
 Let's learn how to use <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Settings.html"><code>gio::Settings</code></a> by storing the state of a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Switch.html"><code>Switch</code></a> in it.</p>
 <p>At the very beginning we have to create a <code>GSchema</code> xml file in order to describe the kind of data our application plans to store in the settings.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/settings/1/org.gtk_rs.Settings1.gschema.xml">listings/settings/1/org.gtk_rs.Settings1.gschema.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/settings/1/org.gtk_rs.Settings1.gschema.xml">listings/settings/1/org.gtk_rs.Settings1.gschema.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schemalist&gt;
   &lt;schema id="org.gtk_rs.Settings1" path="/org/gtk_rs/Settings1/"&gt;
@@ -3509,7 +3509,7 @@ Let's learn how to use <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/doc
 </code></pre>
 <p>Let's get through it step by step.
 The <code>id</code> is the same application id we used when we created our application.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Align, Application, ApplicationWindow, Switch};
@@ -3584,7 +3584,7 @@ glib-compile-schemas C:/ProgramData/glib-2.0/schemas/
 </code></pre>
 </blockquote>
 <p>We initialize the <code>Settings</code> object by specifying the application id.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Align, Application, ApplicationWindow, Switch};
@@ -3640,7 +3640,7 @@ glib-compile-schemas C:/ProgramData/glib-2.0/schemas/
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Then we get the settings key and use it when we create our <code>Switch</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Align, Application, ApplicationWindow, Switch};
@@ -3696,7 +3696,7 @@ glib-compile-schemas C:/ProgramData/glib-2.0/schemas/
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Finally, we assure that the switch state is stored in the settings whenever we click on it.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/settings/1/main.rs">listings/settings/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Align, Application, ApplicationWindow, Switch};
@@ -3763,7 +3763,7 @@ The <code>Switch</code> has a property "active" and <code>Settings</code> allows
 So let's do exactly that.</p>
 <p>We can remove the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/prelude/trait.SettingsExt.html#tymethod.boolean"><code>boolean</code></a> call before initializing the <code>Switch</code> as well as the <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Switch.html#method.connect_state_set"><code>connect_state_set</code></a> call.
 We then bind the setting to the property by specifying the key, object and name of the property.
-Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/settings/2/main.rs">listings/settings/2/main.rs</a></p>
+Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/settings/2/main.rs">listings/settings/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Align, Application, ApplicationWindow, Switch};
@@ -3817,7 +3817,7 @@ If the user resizes or maximizes the window, they might expect to find it in the
 GTK does not provide this functionality out of the box, but luckily it is not too hard to manually implement it.
 We basically want two integers (<code>height</code> &amp; <code>width</code>) and a boolean (<code>is_maximized</code>) to persist.
 We already know how to do this by using <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Settings.html"><code>gio::Settings</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/saving_window_state/1/org.gtk_rs.SavingWindowState1.gschema.xml">listings/saving_window_state/1/org.gtk_rs.SavingWindowState1.gschema.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/saving_window_state/1/org.gtk_rs.SavingWindowState1.gschema.xml">listings/saving_window_state/1/org.gtk_rs.SavingWindowState1.gschema.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schemalist&gt;
   &lt;schema id="org.gtk_rs.SavingWindowState1" path="/org/gtk_rs/SavingWindowState1/"&gt;
@@ -3839,7 +3839,7 @@ We already know how to do this by using <a href="https://gtk-rs.org/gtk-rs-core/
 <p>Since we don't care about intermediate state, we only load the window state when the window is constructed and save it when we close the window.
 That can be done by creating a custom window.
 First, we create one and add convenience methods for accessing settings as well as the window state.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/saving_window_state/1/custom_window/mod.rs">listings/saving_window_state/1/custom_window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/saving_window_state/1/custom_window/mod.rs">listings/saving_window_state/1/custom_window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::Settings;
@@ -3915,7 +3915,7 @@ When creating new GObjects, this is nicer than calling the setter methods manual
 You can see that we embed <code>Settings</code> in <a href="https://doc.rust-lang.org/std/cell/struct.OnceCell.html"><code>std::cell::OnceCell</code></a>.
 This is a nice alternative to <code>RefCell&lt;Option&lt;T&gt;&gt;</code> when you know that you will initialize the value only once.</p>
 <p>We also override the <code>constructed</code> and <code>close_request</code> methods, where we load or save the window state.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/saving_window_state/1/custom_window/imp.rs">listings/saving_window_state/1/custom_window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/saving_window_state/1/custom_window/imp.rs">listings/saving_window_state/1/custom_window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use gtk::subclass::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, ApplicationWindow};
@@ -3962,7 +3962,7 @@ Now our window retains its state between app sessions.</p>
 <code>ListBox</code> describes a vertical list and <code>FlowBox</code> describes a grid.</p>
 <p>Let's explore this concept by adding labels to a <code>ListBox</code>.
 Each label will display an integer starting from 0 and ranging up to 100.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/1/main.rs">listings/list_widgets/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/1/main.rs">listings/list_widgets/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{
 </span><span class="boring">    glib, Application, ApplicationWindow, Label, ListBox, PolicyType, ScrolledWindow,
@@ -4010,7 +4010,7 @@ Each label will display an integer starting from 0 and ranging up to 100.</p>
 <p>We cannot display so many widgets at once.
 Therefore, we add <code>ListBox</code> to a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ScrolledWindow.html"><code>gtk::ScrolledWindow</code></a>.
 Now we can scroll through our elements.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/1/main.rs">listings/list_widgets/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/1/main.rs">listings/list_widgets/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{
 </span><span class="boring">    glib, Application, ApplicationWindow, Label, ListBox, PolicyType, ScrolledWindow,
@@ -4077,7 +4077,7 @@ The following figure demonstrates how this works in practice.</p>
 The model is an instance of <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.ListStore.html"><code>gio::ListStore</code></a>.
 The main limitation here is that <code>gio::ListStore</code> only accepts GObjects.
 So let's create a custom GObject <code>IntegerObject</code> that is initialized with a number.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/2/integer_object/mod.rs">listings/list_widgets/2/integer_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/2/integer_object/mod.rs">listings/list_widgets/2/integer_object/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -4094,7 +4094,7 @@ impl IntegerObject {
 }
 <span class="boring"></span></code></pre>
 <p>This number represents the internal state of <code>IntegerObject</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/2/integer_object/imp.rs">listings/list_widgets/2/integer_object/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/2/integer_object/imp.rs">listings/list_widgets/2/integer_object/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">
 </span><span class="boring">use glib::Properties;
@@ -4124,7 +4124,7 @@ pub struct IntegerObject {
 <p>We now fill the model with integers from 0 to 100 000.
 Please note that models only takes care of the data.
 Neither <code>Label</code> nor any other widget is mentioned here.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4212,7 +4212,7 @@ Neither <code>Label</code> nor any other widget is mentioned here.</p>
 Here, we use the <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.SignalListItemFactory.html"><code>SignalListItemFactory</code></a> which emits a signal for every relevant step in the life of a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ListItem.html"><code>ListItem</code></a>.
 The "setup" signal will be emitted when new widgets have to be created.
 We connect to it to create a <code>Label</code> for every requested widget.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4297,7 +4297,7 @@ We connect to it to create a <code>Label</code> for every requested widget.</p>
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>In the "bind" step we bind the data in our model to the individual list items.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4384,7 +4384,7 @@ We connect to it to create a <code>Label</code> for every requested widget.</p>
 <p>We only want single items to be selectable, so we choose <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.SingleSelection.html"><code>SingleSelection</code></a>.
 The other options would have been <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.MultiSelection.html"><code>MultiSelection</code></a> or <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.NoSelection.html"><code>NoSelection</code></a>.
 Then we pass the model and the factory to the <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ListView.html"><code>ListView</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4469,7 +4469,7 @@ Then we pass the model and the factory to the <a href="https://gtk-rs.org/gtk4-r
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Every <code>ListView</code> has to be a direct child of a <code>ScrolledWindow</code>, so we are adding it to one.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/2/main.rs">listings/list_widgets/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4558,7 +4558,7 @@ Then we pass the model and the factory to the <a href="https://gtk-rs.org/gtk4-r
 <p>Let's see what else we can do.
 We might want to increase the number every time we activate its row.
 For that we first add the method <code>increase_number</code> to our <code>IntegerObject</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/3/integer_object/mod.rs">listings/list_widgets/3/integer_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/3/integer_object/mod.rs">listings/list_widgets/3/integer_object/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -4578,7 +4578,7 @@ For that we first add the method <code>increase_number</code> to our <code>Integ
     }
 }</code></pre>
 <p>In order to interact with our <code>ListView</code>, we connect to its "activate" signal.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/3/main.rs">listings/list_widgets/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/3/main.rs">listings/list_widgets/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4681,7 +4681,7 @@ For that we first add the method <code>increase_number</code> to our <code>Integ
 the corresponding "number" property of the <code>IntegerObject</code> in the model will be increased by 1.
 However, just because the <code>IntegerObject</code> has been modified the corresponding <code>Label</code> does not immediately change.
 One naive approach would be to bind the properties in the "bind" step of the <code>SignalListItemFactory</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/3/main.rs">listings/list_widgets/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/3/main.rs">listings/list_widgets/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4790,7 +4790,7 @@ That also means that in our case, multiple numbers will be bound to the same wid
 <p>Situations like these are so common that GTK offers an alternative to property binding: <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Expression.html">expressions</a>.
 As a first step it allows us to remove the "bind" step.
 Let's see how the "setup" step now works.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/4/main.rs">listings/list_widgets/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/4/main.rs">listings/list_widgets/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -4884,7 +4884,7 @@ When we now activate a label, only the corresponding number visibly changes.</p>
 <p>Let's extend our app a bit more.
 We can, for example, filter our model to only allow even numbers.
 We do that by passing it to a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.FilterListModel.html"><code>gtk::FilterListModel</code></a> together with a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.CustomFilter.html"><code>gtk::CustomFilter</code></a></p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/5/main.rs">listings/list_widgets/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/5/main.rs">listings/list_widgets/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -5002,7 +5002,7 @@ We do that by passing it to a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/
 </span><span class="boring">}</span></code></pre>
 <p>Additionally, we can reverse the order of our model.
 Now we pass the filtered model to <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.SortListModel.html"><code>gtk::SortListModel</code></a> together with <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.CustomSorter.html"><code>gtk::CustomSorter</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/5/main.rs">listings/list_widgets/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/5/main.rs">listings/list_widgets/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -5119,7 +5119,7 @@ Now we pass the filtered model to <a href="https://gtk-rs.org/gtk4-rs/stable/lat
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>To ensure that our filter and sorter get updated when we modify the numbers, we call the <code>changed</code> method on them.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/5/main.rs">listings/list_widgets/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/5/main.rs">listings/list_widgets/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod integer_object;
 </span><span class="boring">
 </span><span class="boring">use gtk::{
@@ -5245,7 +5245,7 @@ GTK provides a convenient model for this use case: <a href="https://gtk-rs.org/g
 Filter and sorter is controlled by the factory, so nothing changes here.
 This is why we will skip this topic here.</p>
 <p>First, we add a bunch of strings to our model.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/6/main.rs">listings/list_widgets/6/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/6/main.rs">listings/list_widgets/6/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::{glib, prelude::*, ListItem};
 </span><span class="boring">use gtk::{
 </span><span class="boring">    Application, ApplicationWindow, Label, ListView, NoSelection, PolicyType,
@@ -5311,7 +5311,7 @@ This is why we will skip this topic here.</p>
 This means we don't have to create a custom GObject for our model anymore.</p>
 <p>As usual, we connect the label to the list item via an expression.
 Here we can use <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.StringObject.html"><code>StringObject</code></a>, which exposes its content via the <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.StringObject.html#string">property "string"</a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/list_widgets/6/main.rs">listings/list_widgets/6/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/list_widgets/6/main.rs">listings/list_widgets/6/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::{glib, prelude::*, ListItem};
 </span><span class="boring">use gtk::{
 </span><span class="boring">    Application, ApplicationWindow, Label, ListView, NoSelection, PolicyType,
@@ -5382,7 +5382,7 @@ However, if we need the widgets to be scalable, we still need to use <a href="ht
 <div style="break-before: page; page-break-before: always;"></div><h1 id="composite-templates"><a class="header" href="#composite-templates">Composite Templates</a></h1>
 <p>Until now, whenever we constructed pre-defined widgets we relied on the <a href="https://rust-unofficial.github.io/patterns/patterns/creational/builder.html">builder pattern</a>.
 As a reminder, that is how we used it to build our trusty "Hello World!" app.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/hello_world/3/main.rs">listings/hello_world/3/main.rs</a></p>
 <pre><code class="language-rust">use gtk::prelude::*;
 use gtk::{glib, Application, ApplicationWindow, Button};
 const APP_ID: &amp;str = "org.gtk_rs.HelloWorld3";
@@ -5433,7 +5433,7 @@ fn build_ui(app: &amp;Application) {
 <p>Creating widgets directly from code is fine, but it makes it harder to separate the logic from the user interface.
 This is why most toolkits allow to describe the user interface with a markup language and GTK is no exception here.
 For example the following <code>xml</code> file describes the window widget of the "Hello World!" app.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/1/resources/window.ui">listings/composite_templates/1/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/1/resources/window.ui">listings/composite_templates/1/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -5462,7 +5462,7 @@ We want to be able to refer to the button later on so we also set its <code>id</
 <p>In order to embed the template file into our application we take advantage of <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Resource.html"><code>gio::Resource</code></a>.
 The files to embed are again described by an <code>xml</code> file.
 For our template file we also add the <code>compressed</code> and <code>preprocess</code> attribute in order to reduce the final size of the resources.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/1/resources/resources.gresource.xml">listings/composite_templates/1/resources/resources.gresource.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/1/resources/resources.gresource.xml">listings/composite_templates/1/resources/resources.gresource.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;gresources&gt;
   &lt;gresource prefix="/org/gtk_rs/example/"&gt;
@@ -5477,7 +5477,7 @@ One way to do this is to execute <a href="https://gtk-rs.org/gtk-rs-core/stable/
 </code></pre>
 <p>Then, we create a <code>build.rs</code> at the root of our package with the following content.
 This will compile the resources whenever we trigger a build with cargo and then statically link our executable to them.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/build.rs">listings/build.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/build.rs">listings/build.rs</a></p>
 <pre><code class="language-rust">fn main() {
     glib_build_tools::compile_resources(
         &amp;["composite_templates/1/resources"],
@@ -5487,7 +5487,7 @@ This will compile the resources whenever we trigger a build with cargo and then 
 }</code></pre>
 <p>Finally, we register and include the resources by calling the macro <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/macro.resources_register_include.html"><code>gio::resources_register_include!</code></a>.
 In your own apps take care to register the resources before creating the <code>gtk::Application</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/1/main.rs">listings/composite_templates/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/1/main.rs">listings/composite_templates/1/main.rs</a></p>
 <pre><code class="language-rust">mod window;
 
 use gtk::prelude::*;
@@ -5516,7 +5516,7 @@ fn build_ui(app: &amp;Application) {
     window.present();
 }</code></pre>
 <p>Within our code we create a custom widget inheriting from <code>gtk::ApplicationWindow</code> to make use of our template.
-Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/1/window/mod.rs">listings/composite_templates/1/window/mod.rs</a></p>
+Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/1/window/mod.rs">listings/composite_templates/1/window/mod.rs</a></p>
 <pre><code class="language-rust">mod imp;
 
 use glib::Object;
@@ -5541,7 +5541,7 @@ We also specify that the template information comes from a resource of prefix <c
 You use it by adding a struct member with the same name as one <code>id</code> attribute in the template.
 <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/subclass/widget/struct.TemplateChild.html"><code>TemplateChild</code></a> then stores a reference to the widget for later use.
 This will be useful later, when we want to add a callback to our button.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/1/window/imp.rs">listings/composite_templates/1/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/1/window/imp.rs">listings/composite_templates/1/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -5596,7 +5596,7 @@ pub struct Window {
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>Within the <code>ObjectSubclass</code> trait, we make sure that <code>NAME</code> corresponds to <code>class</code> in the template and <code>ParentType</code> corresponds to <code>parent</code> in the template.
 We also bind and initialize the template in <code>class_init</code> and <code>instance_init</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/1/window/imp.rs">listings/composite_templates/1/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/1/window/imp.rs">listings/composite_templates/1/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -5651,7 +5651,7 @@ impl ObjectSubclass for Window {
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>Finally, we connect the callback to the "clicked" signal of <code>button</code> within <code>constructed</code>.
 The button is easily available thanks to the stored reference in <code>self</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/1/window/imp.rs">listings/composite_templates/1/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/1/window/imp.rs">listings/composite_templates/1/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -5709,7 +5709,7 @@ impl ObjectImpl for Window {
 First we define <code>CustomButton</code> that inherits from <code>gtk::Button</code>.
 As usual, we define the implementation struct within <code>imp.rs</code>.
 Note the <code>NAME</code> we define here, we will need it later to refer to it in the template.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/2/custom_button/imp.rs">listings/composite_templates/2/custom_button/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/2/custom_button/imp.rs">listings/composite_templates/2/custom_button/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::glib;
 </span><span class="boring">use gtk::subclass::prelude::*;
 </span><span class="boring">
@@ -5734,7 +5734,7 @@ impl ObjectSubclass for CustomButton {
 </span><span class="boring">// Trait shared by all buttons
 </span><span class="boring">impl ButtonImpl for CustomButton {}</span></code></pre>
 <p>We also define the public struct in <code>mod.rs</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/2/custom_button/mod.rs">listings/composite_templates/2/custom_button/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/2/custom_button/mod.rs">listings/composite_templates/2/custom_button/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::Object;
 </span><span class="boring">use gtk::glib;
 </span><span class="boring">
@@ -5759,7 +5759,7 @@ glib::wrapper! {
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>Since we want to refer to a <code>CustomButton</code> now we also have to change the type of the template child to it.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/2/window/imp.rs">listings/composite_templates/2/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/2/window/imp.rs">listings/composite_templates/2/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -5816,7 +5816,7 @@ pub struct Window {
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>Finally, we can replace <code>GtkButton</code> with <code>MyGtkAppCustomButton</code> within our composite template.
 Since the custom button is a direct subclass of <code>gtk::Button</code> without any modifications, the behavior of our app stays the same.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/2/resources/window.ui">listings/composite_templates/2/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/2/resources/window.ui">listings/composite_templates/2/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -5836,7 +5836,7 @@ Since the custom button is a direct subclass of <code>gtk::Button</code> without
 <h2 id="template-callbacks"><a class="header" href="#template-callbacks">Template Callbacks</a></h2>
 <p>We can even specify the handlers of signals within composite templates.
 This can be done with a <code>&lt;signal&gt;</code> tag containing the name of the signal and the handler in our Rust code.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/3/resources/window.ui">listings/composite_templates/3/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/3/resources/window.ui">listings/composite_templates/3/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -5860,7 +5860,7 @@ In our case that would be <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs
 It takes a function of type <code>Fn(&amp;Self)</code>.
 <code>Self</code> refers to our button.
 This means that <code>handle_button_clicked</code> has a single parameter of type <code>&amp;CustomButton</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/3/window/imp.rs">listings/composite_templates/3/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/3/window/imp.rs">listings/composite_templates/3/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -5916,7 +5916,7 @@ impl Window {
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>Then we have to bind the template callbacks with <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/subclass/widget/trait.CompositeTemplateCallbacksClass.html#tymethod.bind_template_callbacks"><code>bind_template_callbacks</code></a>.
 We also need to remove the <code>button.connect_clicked</code> callback implemented in <code>window/imp.rs</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/3/window/imp.rs">listings/composite_templates/3/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/3/window/imp.rs">listings/composite_templates/3/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -5972,7 +5972,7 @@ impl ObjectSubclass for Window {
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>We can also access the state of our widget.
 Let's say we want to manipulate a <code>number</code> stored in <code>imp::Window</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/4/window/imp.rs">listings/composite_templates/4/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/4/window/imp.rs">listings/composite_templates/4/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">
 </span><span class="boring">use glib::subclass::InitializingObject;
@@ -6031,7 +6031,7 @@ pub struct Window {
 </span><span class="boring">// Trait shared by all application windows
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>In order to access the widget's state we have to add <code>swapped="true"</code> to the <code>signal</code> tag.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/4/resources/window.ui">listings/composite_templates/4/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/4/resources/window.ui">listings/composite_templates/4/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -6051,7 +6051,7 @@ pub struct Window {
 </code></pre>
 <p>Now we can add <code>&amp;self</code> as first parameter to <code>handle_button_clicked</code>.
 This lets us access the state of the window and therefore manipulate <code>number</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/4/window/imp.rs">listings/composite_templates/4/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/4/window/imp.rs">listings/composite_templates/4/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">
 </span><span class="boring">use glib::subclass::InitializingObject;
@@ -6112,7 +6112,7 @@ impl Window {
 <h2 id="registering-types"><a class="header" href="#registering-types">Registering Types</a></h2>
 <p>Now that we use template callbacks we don't access the template child anymore.
 Let's remove it.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/5/window/imp.rs">listings/composite_templates/5/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/5/window/imp.rs">listings/composite_templates/5/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">
 </span><span class="boring">use glib::subclass::InitializingObject;
@@ -6176,7 +6176,7 @@ So what happened here?</p>
 <p>Turns out adding a template child not only gives a convenient reference to a widget within the template.
 It also ensures that the widget type is registered.
 Luckily we can also do that by ourselves.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/composite_templates/6/window/imp.rs">listings/composite_templates/6/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/composite_templates/6/window/imp.rs">listings/composite_templates/6/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">
 </span><span class="boring">use glib::subclass::InitializingObject;
@@ -6262,7 +6262,7 @@ Something like this:</p>
 <div style="text-align:center"><img src="img/todo_1_mockup.png" alt="To-Do App with a couple of tasks, some of them crossed-off"/></div>
 <h2 id="window"><a class="header" href="#window">Window</a></h2>
 <p>This mockup can be described by the following composite template.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/resources/window.ui">listings/todo/1/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/resources/window.ui">listings/todo/1/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="TodoWindow" parent="GtkApplicationWindow"&gt;
@@ -6302,7 +6302,7 @@ Something like this:</p>
 <p>In order to use the composite template, we create a custom widget.
 The <code>parent</code> is <code>gtk::ApplicationWindow</code>, so we inherit from it.
 As usual, we have to list all <a href="https://docs.gtk.org/gtk4/class.ApplicationWindow.html#ancestors">ancestors</a> and <a href="https://docs.gtk.org/gtk4/class.ApplicationWindow.html#implements">interfaces</a> apart from <code>GObject</code> and <code>GInitiallyUnowned</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::{clone, Object};
@@ -6438,7 +6438,7 @@ We store references to the entry, the list view as well as the list model.
 This will come in handy when we later add methods to our window.
 After that, we add the typical boilerplate for initializing composite templates.
 We only have to assure that the <code>class</code> attribute of the template in <code>window.ui</code> matches <code>NAME</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/window/imp.rs">listings/todo/1/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/window/imp.rs">listings/todo/1/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use glib::subclass::InitializingObject;
@@ -6496,7 +6496,7 @@ impl ObjectSubclass for Window {
 </span><span class="boring">// Trait shared by all application windows
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p><code>main.rs</code> also does not hold any surprises for us.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/main.rs">listings/todo/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/main.rs">listings/todo/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod task_object;
 </span><span class="boring">mod task_row;
 </span><span class="boring">mod window;
@@ -6529,7 +6529,7 @@ fn build_ui(app: &amp;Application) {
 }</code></pre>
 <p>Finally, we specify our resources.
 Here, they already include <code>task_row.ui</code> which we will handle later in this chapter.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/resources/resources.gresource.xml">listings/todo/1/resources/resources.gresource.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/resources/resources.gresource.xml">listings/todo/1/resources/resources.gresource.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;gresources&gt;
   &lt;gresource prefix="/org/gtk_rs/Todo1/"&gt;
@@ -6552,7 +6552,7 @@ This object will store the state of the task consisting of:</p>
 <li>a boolean describing whether the task is completed or not, and</li>
 <li>a string holding the task name.</li>
 </ul>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/task_object/mod.rs">listings/todo/1/task_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/task_object/mod.rs">listings/todo/1/task_object/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -6578,7 +6578,7 @@ impl TaskObject {
 </span><span class="boring">}</span></code></pre>
 <p>Unlike the lists chapter, the state is stored in a struct rather than in individual members of <code>imp::TaskObject</code>.
 This will be very convenient when saving the state in one of the following chapters.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/task_object/mod.rs">listings/todo/1/task_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/task_object/mod.rs">listings/todo/1/task_object/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -6605,7 +6605,7 @@ pub struct TaskData {
 <p>We are going to expose <code>completed</code> and <code>content</code> as properties.
 Since the data is now inside a struct rather than individual member variables we have to add more annotations.
 For each property we additionally specify the name, the type and which member variable of <code>TaskData</code> we want to access.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/task_object/imp.rs">listings/todo/1/task_object/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/task_object/imp.rs">listings/todo/1/task_object/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use glib::Properties;
@@ -6639,7 +6639,7 @@ impl ObjectImpl for TaskObject {}</code></pre>
 The row of a task should look like this:</p>
 <div style="text-align:center"><img src="img/task_row.png" alt="A single task widget"/></div>
 <p>Again, we describe the mockup with a composite template.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/resources/task_row.ui">listings/todo/1/resources/task_row.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/resources/task_row.ui">listings/todo/1/resources/task_row.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="TodoTaskRow" parent="GtkBox"&gt;
@@ -6663,7 +6663,7 @@ The row of a task should look like this:</p>
 &lt;/interface&gt;
 </code></pre>
 <p>In the code, we <a href="https://docs.gtk.org/gtk4/class.Box.html#hierarchy">derive</a> <code>TaskRow</code> from <code>gtk:Box</code>:</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/task_row/mod.rs">listings/todo/1/task_row/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/task_row/mod.rs">listings/todo/1/task_row/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -6742,7 +6742,7 @@ The row of a task should look like this:</p>
 <p>In <code>imp::TaskRow</code>, we hold references to <code>completed_button</code> and <code>content_label</code>.
 We also store a mutable vector of bindings.
 Why we need that will become clear as soon as we get to bind the state of <code>TaskObject</code> to the corresponding <code>TaskRow</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/task_row/imp.rs">listings/todo/1/task_row/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/task_row/imp.rs">listings/todo/1/task_row/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use glib::Binding;
@@ -6788,7 +6788,7 @@ impl ObjectSubclass for TaskRow {
 </span><span class="boring">impl BoxImpl for TaskRow {}</span></code></pre>
 <p>Now we can bring everything together.
 We override the <code>imp::Window::constructed</code> in order to set up window contents at the time of its construction.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/window/imp.rs">listings/todo/1/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/window/imp.rs">listings/todo/1/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use glib::subclass::InitializingObject;
@@ -6848,7 +6848,7 @@ impl ObjectImpl for Window {
 <p>Since we need to access the list model quite often, we add the convenience method <code>Window::tasks</code> for that.
 In <code>Window::setup_tasks</code> we create a new model.
 Then we store a reference to the model in <code>imp::Window</code> as well as in <code>gtk::ListView</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::{clone, Object};
@@ -6980,7 +6980,7 @@ Then we store a reference to the model in <code>imp::Window</code> as well as in
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>We also create a method <code>new_task</code> which takes the content of the entry, clears the entry and uses the content to create a new task.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::{clone, Object};
@@ -7115,7 +7115,7 @@ Then we store a reference to the model in <code>imp::Window</code> as well as in
 This signal is triggered when we press the enter key in the entry.
 Then a new <code>TaskObject</code> with the content will be created and appended to the model.
 Finally, the entry will be cleared.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::{clone, Object};
@@ -7256,7 +7256,7 @@ Unfortunately, expressions cannot handle bidirectional relationships.
 This means we have to use property bindings.
 We will need to unbind them manually when they are no longer needed.</p>
 <p>We will create empty <code>TaskRow</code> objects in the "setup" step in <code>Window::setup_factory</code> and deal with binding in the "bind" and "unbind" steps.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/window/mod.rs">listings/todo/1/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::{clone, Object};
@@ -7392,7 +7392,7 @@ The only difference is that we store the bindings in a vector.
 This is necessary because a <code>TaskRow</code> will be reused as you scroll through the list.
 That means that over time a <code>TaskRow</code> will need to bound to a new <code>TaskObject</code> and has to be unbound from the old one.
 Unbinding will only work if it can access the stored <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/struct.Binding.html"><code>glib::Binding</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/task_row/mod.rs">listings/todo/1/task_row/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/task_row/mod.rs">listings/todo/1/task_row/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -7471,7 +7471,7 @@ Unbinding will only work if it can access the stored <a href="https://gtk-rs.org
 <p><code>TaskRow::unbind</code> takes care of the cleanup.
 It iterates through the vector and unbinds each binding.
 In the end, it clears the vector.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/1/task_row/mod.rs">listings/todo/1/task_row/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/1/task_row/mod.rs">listings/todo/1/task_row/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -7561,7 +7561,7 @@ We can send messages through channels, emit signals, share reference-counted sta
 Now, we will complete our set by learning about actions.</p>
 <p>An action is a piece of functionality bound to a certain GObject.
 Let's check out the simplest case where we activate an action without a parameter.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
 <pre><code class="language-rust no_run"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Application, ApplicationWindow};
@@ -7604,7 +7604,7 @@ Let's check out the simplest case where we activate an action without a paramete
 <p>First, we created a new <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.ActionEntry.html"><code>gio::ActionEntry</code></a> which is named "close" and takes no parameter.
 We also connected a callback which closes the window when the action is activated.
 Finally, we add the action entry to the window via <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/prelude/trait.ActionMapExtManual.html#method.add_action_entries"><code>add_action_entries</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
 <pre><code class="language-rust no_run"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Application, ApplicationWindow};
@@ -7659,7 +7659,7 @@ The answer is that it is so common to add actions to windows and applications th
 Let's add our action to the action group "custom-group" and add the group then to our window.
 The action entry isn't specific to our window anymore, the first parameter of the "activate" callback is of type <code>SimpleActionGroup</code> instead of <code>ApplicationWindow</code>.
 This means we have to clone <code>window</code> into the closure.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::gio::SimpleActionGroup;
@@ -7709,7 +7709,7 @@ This means we have to clone <code>window</code> into the closure.</p>
     window.present();
 }</code></pre>
 <p>If we bind the accelerator to "custom-group.close", it works just as before.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::gio::SimpleActionGroup;
@@ -7770,7 +7770,7 @@ However, in the future we will use the pre-defined <a href="https://gtk-rs.org/g
 <p>An action, like most functions, can take a parameter.
 However, unlike most functions it can also be stateful.
 Let's see how this works.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/3/main.rs">listings/actions/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/3/main.rs">listings/actions/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{
@@ -7875,7 +7875,7 @@ This is how our app works:</p>
 This way, the action can be specified by setting the "action-name" property.
 If the action accepts a parameter, it can be set via the "action-target" property.
 With <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/builders/struct.ButtonBuilder.html"><code>ButtonBuilder</code></a>, we can set everything up by calling its methods.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/4/main.rs">listings/actions/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/4/main.rs">listings/actions/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{
@@ -7962,7 +7962,7 @@ With <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/builders/struct
 <p>Actionable widgets are also easily accessible through the interface builder.
 As usual, we build up the window via a composite template.
 Within the template we can then set the "action-name" and "action-target" properties.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/5/resources/window.ui">listings/actions/5/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/5/resources/window.ui">listings/actions/5/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -7994,7 +7994,7 @@ Within the template we can then set the "action-name" and "action-target" proper
 &lt;/interface&gt;
 </code></pre>
 <p>We will connect the actions and add them to the window in the <code>Window::setup_actions</code> method.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/5/window/mod.rs">listings/actions/5/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/5/window/mod.rs">listings/actions/5/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::ActionEntry;
@@ -8048,7 +8048,7 @@ Within the template we can then set the "action-name" and "action-target" proper
     }
 }</code></pre>
 <p>Finally, <code>setup_actions</code> will be called within <code>constructed</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/5/window/imp.rs">listings/actions/5/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/5/window/imp.rs">listings/actions/5/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::subclass::prelude::*;
 </span><span class="boring">use gtk::{glib, CompositeTemplate, Label};
@@ -8113,7 +8113,7 @@ Therefore, we don't have to add anything here.</p>
 <p>With the action "button-frame", we manipulate the "has-frame" property of <code>button</code>.
 Here, the convention is that actions with no parameter and boolean state should behave like toggle actions.
 This means that the caller can expect the boolean state to toggle after activating the action. Luckily for us, that is the default behavior for <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.PropertyAction.html"><code>gio::PropertyAction</code></a> with a boolean property.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, PropertyAction};
@@ -8205,7 +8205,7 @@ When activating the action, the property gets set to the same value as the param
 This action can be used to change the orientation of <code>gtk_box</code>.
 Here the convention is that the state should be set to the given parameter.
 We don't need the action state to implement orientation switching, however it is useful for making the menu display the current orientation.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, PropertyAction};
@@ -8288,7 +8288,7 @@ We don't need the action state to implement orientation switching, however it is
 </span><span class="boring">}</span></code></pre>
 <p>Even though <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Menu.html"><code>gio::Menu</code></a> can also be created with the bindings, the most convenient way is to use the interface builder for that.
 We do that by adding the menu in front of the template.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/6/resources/window.ui">listings/actions/6/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/6/resources/window.ui">listings/actions/6/resources/window.ui</a></p>
 <pre><code class="language-diff"> &lt;?xml version="1.0" encoding="UTF-8"?&gt;
  &lt;interface&gt;
 +  &lt;menu id="main-menu"&gt;
@@ -8357,7 +8357,7 @@ They can be embedded with <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/
 <p>The menu entries nicely display the state of our stateful actions, but after the app is closed, all changes to that state are lost.
 As usual, we solve this problem with <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Settings.html"><code>gio::Settings</code></a>.
 First we create a schema with settings corresponding to the stateful actions we created before.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/org.gtk_rs.Actions7.gschema.xml">listings/actions/7/org.gtk_rs.Actions7.gschema.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/org.gtk_rs.Actions7.gschema.xml">listings/actions/7/org.gtk_rs.Actions7.gschema.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schemalist&gt;
   &lt;schema id="org.gtk_rs.Actions7" path="/org/gtk_rs/Actions7/"&gt;
@@ -8379,7 +8379,7 @@ First we create a schema with settings corresponding to the stateful actions we 
 <p>Again, we install the schema as described in the settings <a href="./settings.html">chapter</a>.
 Then we add the settings to <code>imp::Window</code>.
 Since <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Settings.html"><code>gio::Settings</code></a> does not implement <code>Default</code>, we wrap it in a <a href="https://doc.rust-lang.org/std/cell/struct.OnceCell.html"><code>std::cell::OnceCell</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -8439,7 +8439,7 @@ pub struct Window {
 </span><span class="boring">// Trait shared by all application windows
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>Now we create functions to make it easier to access settings.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, Settings};
@@ -8546,7 +8546,7 @@ pub struct Window {
 </span><span class="boring">}</span></code></pre>
 <p>Creating stateful actions from setting entries is so common that <code>Settings</code> provides a method for that exact purpose.
 We create actions with the<a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/prelude/trait.SettingsExt.html#tymethod.create_action"> <code>create_action</code></a> method and then add them to the action group of our window.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, Settings};
@@ -8655,7 +8655,7 @@ We create actions with the<a href="https://gtk-rs.org/gtk-rs-core/stable/latest/
 The action "win.button-frame" toggles its state with each activation and the state of the "win.orientation" action follows the given parameter.</p>
 <p>We still have to specify what should happen when the actions are activated though.
 For the stateful actions, instead of adding callbacks to their "activate" signals, we bind the settings to properties we want to manipulate.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, Settings};
@@ -8761,7 +8761,7 @@ For the stateful actions, instead of adding callbacks to their "activate" signal
     }
 <span class="boring">}</span></code></pre>
 <p>Finally, we make sure that <code>bind_settings</code> is called within <code>constructed</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -8839,7 +8839,7 @@ This is how we want this to work in the end:</p>
 This will come in handy when we later make the app preserve the tasks between sessions.</p>
 <p>Let's start by adding a menu and a header bar to <code>window.ui</code>.
 After reading the <a href="actions.html">actions</a> chapter the added code should feel familiar.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/resources/window.ui">listings/todo/2/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/resources/window.ui">listings/todo/2/resources/window.ui</a></p>
 <pre><code class="language-diff"> &lt;?xml version="1.0" encoding="UTF-8"?&gt;
  &lt;interface&gt;
 +  &lt;menu id="main-menu"&gt;
@@ -8886,7 +8886,7 @@ After reading the <a href="actions.html">actions</a> chapter the added code shou
 </code></pre>
 <p>Then, we create a settings schema.
 Again, the "filter" setting correspond to the stateful actions called by the menu.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/org.gtk_rs.Todo2.gschema.xml">listings/todo/2/org.gtk_rs.Todo2.gschema.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/org.gtk_rs.Todo2.gschema.xml">listings/todo/2/org.gtk_rs.Todo2.gschema.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schemalist&gt;
   &lt;schema id="org.gtk_rs.Todo2" path="/org/gtk_rs/Todo2/"&gt;
@@ -8904,7 +8904,7 @@ Again, the "filter" setting correspond to the stateful actions called by the men
 </code></pre>
 <p>We install the schema as described in the settings <a href="./settings.html">chapter</a>
 Then we add a reference to <code>settings</code> to <code>imp::Window</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -8997,7 +8997,7 @@ pub struct Window {
 </span><span class="boring">// Trait shared by all application windows
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>Again, we create functions to make it easier to access settings.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -9242,7 +9242,7 @@ pub struct Window {
 </span><span class="boring">}</span></code></pre>
 <p>We also add the methods <code>is_completed</code>, <code>task_data</code> and <code>from_task_data</code> to <code>TaskObject</code>.
 We will make use of them in the following snippets.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/task_object/mod.rs">listings/todo/2/task_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/task_object/mod.rs">listings/todo/2/task_object/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -9282,7 +9282,7 @@ We will make use of them in the following snippets.</p>
 </span><span class="boring">}</span></code></pre>
 <p>Similar to the previous chapter, we let <code>settings</code> create the action.
 Then we add the newly created action "filter" to our window.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -9530,7 +9530,7 @@ This time we use another method called <a href="https://gtk-rs.org/gtk4-rs/stabl
 This method has a couple of limitation.
 It can only be used when subclassing widgets, and it doesn't support stateful actions.
 On the flipside, its usage is concise and it has a corresponding sister-method <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/subclass/widget/trait.WidgetClassExt.html#method.install_action_async"><code>install_action_async</code></a> which we will use in one of the future chapters.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -9624,7 +9624,7 @@ impl ObjectSubclass for Window {
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>This is the implementation of <code>remove_done_tasks</code>.
 We iterate through the <code>gio::ListStore</code> and remove all completed task objects.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -9872,7 +9872,7 @@ So we need a method which translates this setting into a filter that the <a href
 The possible states are "All", "Open" and "Done".
 We return <code>Some(filter)</code> for "Open" and "Done".
 If the state is "All" nothing has to be filtered out, so we return <code>None</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -10118,7 +10118,7 @@ If the state is "All" nothing has to be filtered out, so we return <code>None</c
 <p>Now, we can set up the model.
 We initialize <code>filter_model</code> with the state from the settings by calling the method <code>filter</code>.
 Whenever the state of the key "filter" changes, we call the method <code>filter</code> again to get the updated <code>filter_model</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -10364,7 +10364,7 @@ Whenever the state of the key "filter" changes, we call the method <code>filter<
 <p>Then, we bind the shortcuts to their actions with <code>set_accels_for_action</code>.
 Here as well, a detailed action name is used.
 Since this has to be done at the application level, <code>setup_shortcuts</code> takes a <code>gtk::Application</code> as parameter.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/main.rs">listings/todo/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/main.rs">listings/todo/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod task_object;
 </span><span class="boring">mod task_row;
 </span><span class="boring">mod utils;
@@ -10407,7 +10407,7 @@ fn setup_shortcuts(app: &amp;Application) {
 We do that by creating a shortcut window.
 Again we use an <code>ui</code> file to describe it, but here we don't want to use it as template for our custom widget.
 Instead we instantiate a widget of the existing class <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ShortcutsWindow.html"><code>gtk::ShortcutsWindow</code></a> with it.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/resources/shortcuts.ui">listings/todo/2/resources/shortcuts.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/resources/shortcuts.ui">listings/todo/2/resources/shortcuts.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;object class="GtkShortcutsWindow" id="help_overlay"&gt;
@@ -10465,7 +10465,7 @@ Note that we give it the alias <code>gtk/help-overlay.ui</code>.
 We do that to take advantage of a convenience functionality documented <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Application.html#automatic-resources">here</a>.
 It will look for a resource at <code>gtk/help-overlay.ui</code> which defines a <code>ShortcutsWindow</code> with id <code>help_overlay</code>.
 If it can find one it will create a action <code>win.show-help-overlay</code> which will show the window and associate the shortcut <kbd>Ctrl</kbd> + <kbd>?</kbd> with this action.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/resources/resources.gresource.xml">listings/todo/2/resources/resources.gresource.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/resources/resources.gresource.xml">listings/todo/2/resources/resources.gresource.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;gresources&gt;
   &lt;gresource prefix="/org/gtk_rs/Todo2/"&gt;
@@ -10487,7 +10487,7 @@ Combined with <a href="https://lib.rs/crates/serde_json"><code>serde_json</code>
 <pre><code>cargo add serde --features derive
 cargo add serde_json
 </code></pre>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/Cargo.toml">listings/Cargo.toml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/Cargo.toml">listings/Cargo.toml</a></p>
 <pre><code class="language-toml">[dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
@@ -10497,7 +10497,7 @@ The <code>derive</code> feature allows us to make our structures (de-)serializab
 We also use the <code>rc</code> feature so that Serde can deal with <code>std::rc::Rc</code> objects.
 This is why we stored the data of <code>TodoObject</code> in a distinct <code>TodoData</code> structure.
 Doing so allows us to derive <code>Serialize</code> and <code>Deserialize</code> for <code>TodoData</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/task_object/mod.rs">listings/todo/2/task_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/task_object/mod.rs">listings/todo/2/task_object/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use glib::Object;
@@ -10538,7 +10538,7 @@ pub struct TaskData {
 <p>We plan to store our data as a file, so we create a utility function to provide a suitable file path for us.
 We use <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/fn.user_config_dir.html"><code>glib::user_config_dir</code></a> to get the path to the config directory and create a new subdirectory for our app.
 Then we return the file path.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/utils.rs">listings/todo/2/utils.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/utils.rs">listings/todo/2/utils.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::path::PathBuf;
 </span><span class="boring">
 </span><span class="boring">use gtk::glib;
@@ -10555,7 +10555,7 @@ Then we return the file path.</p>
 <p>We override the <code>close_request</code> virtual function to save the tasks when the window is closed.
 To do so, we first iterate through all entries and store them in a <code>Vec</code>.
 Then we serialize the <code>Vec</code> and store the data as a json file.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -10678,7 +10678,7 @@ To create the equivalent but nicely formatted json below you can just replace <c
 Let us add a <code>restore_data</code> method for that.
 We make sure to handle the case where there is no data file there yet.
 It might be the first time that we started the app and therefore there is no former session to restore.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/mod.rs">listings/todo/2/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -10922,7 +10922,7 @@ It might be the first time that we started the app and therefore there is no for
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>Finally, we make sure that everything is set up in <code>constructed</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/2/window/imp.rs">listings/todo/2/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -11028,14 +11028,14 @@ If you are new to CSS or just need a refresher, have a look at the <a href="http
 Every type of widget has a corresponding CSS node.
 In the case of <code>gtk::Button</code>, this node is called <code>button</code>.
 Therefore, we create a <code>style.css</code> file with the following content:</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/1/style.css">listings/css/1/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/1/style.css">listings/css/1/style.css</a></p>
 <pre><code class="language-css">button {
   color: magenta;
 }
 </code></pre>
 <p>Next, we need to load the CSS file in the startup step of the application.
 As usual, the widgets are created during the "activate" step.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/1/main.rs">listings/css/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/1/main.rs">listings/css/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gdk::Display;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gdk, glib, Application, ApplicationWindow, Button, CssProvider};
@@ -11105,7 +11105,7 @@ Open the CSS view and override the button color with the following snippet.</p>
 GTK adds style classes to many of its widgets, often depending on their content.
 A <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Button.html#css-nodes"><code>gtk::Button</code></a>, for example, will get the <code>text-button</code> style class when its content is a label.
 That is why we create a new CSS rule which only applies to <code>button</code> nodes with the style class <code>text_button</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/2/style.css">listings/css/2/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/2/style.css">listings/css/2/style.css</a></p>
 <pre><code class="language-css">button.text-button {
   color: magenta;
 }
@@ -11118,7 +11118,7 @@ One use-case for this is when you want a rule to apply to a hand-picked set of w
 For example if we have two buttons, but want only one of them to have magenta font.
 Relying on one of the style classes which GTK adds will not help since both will get the same ones.
 Which is why we add the style class <code>button-1</code> to the first one.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/3/main.rs">listings/css/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/3/main.rs">listings/css/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gdk::Display;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gdk, glib, Application, ApplicationWindow, Button, CssProvider};
@@ -11177,7 +11177,7 @@ Which is why we add the style class <code>button-1</code> to the first one.</p>
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Then, we create a CSS rule that applies to <code>button</code> nodes with the style class <code>button-1</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/3/style.css">listings/css/3/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/3/style.css">listings/css/3/style.css</a></p>
 <pre><code class="language-css">button.button-1 {
   color: magenta;
 }
@@ -11190,7 +11190,7 @@ Ideally however, you would give the widget a name and match with that name inste
 This way your intentions are more clear, compared to matching with style classes that can apply to multiple widgets.</p>
 <p>Again, we have two buttons but want to color only one of them magenta.
 We set the name of the first one with <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/prelude/trait.WidgetExt.html#tymethod.set_widget_name"><code>set_widget_name</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/4/main.rs">listings/css/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/4/main.rs">listings/css/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gdk::Display;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gdk, glib, Application, ApplicationWindow, Button, CssProvider};
@@ -11250,7 +11250,7 @@ We set the name of the first one with <a href="https://gtk-rs.org/gtk4-rs/stable
 </span><span class="boring">}</span></code></pre>
 <p>Then, create a CSS rule that applies to <code>button</code> nodes with the name <code>button-1</code>.
 The name is specified after the <code>#</code> symbol.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/4/style.css">listings/css/4/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/4/style.css">listings/css/4/style.css</a></p>
 <pre><code class="language-css">button#button-1 {
   color: magenta;
 }
@@ -11262,7 +11262,7 @@ The name is specified after the <code>#</code> symbol.</p>
 For example, if you want to indicate that your button leads to a destructive or suggested action you don't have to provide your own CSS rules.
 All you have to do is to add "destructive-action" or "suggested-action" style class to your button.
 Most widgets will document these rules in their documentation under <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Button.html#css-nodes">CSS nodes</a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/5/main.rs">listings/css/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/5/main.rs">listings/css/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::glib;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{Application, ApplicationWindow, Button};
@@ -11313,7 +11313,7 @@ Most widgets will document these rules in their documentation under <a href="htt
 Just add the <code>&lt;style&gt;</code> element to your widget.
 The <code>&lt;style&gt;</code> element is documented together with <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Widget.html#gtkwidget-as-gtkbuildable"><code>gtk::Widget</code></a>.
 Adding again destructive and suggested buttons, would then look like this:</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/6/window/window.ui">listings/css/6/window/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/6/window/window.ui">listings/css/6/window/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -11350,7 +11350,7 @@ Adding again destructive and suggested buttons, would then look like this:</p>
 <p>Sometimes you want your CSS rules to apply under even more precise conditions than style classes allow.
 That is where <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo-classes</a> come in.
 Let's use a single button with name <code>button-1</code> to demonstrate this concept.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/7/window/window.ui">listings/css/7/window/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/7/window/window.ui">listings/css/7/window/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -11369,7 +11369,7 @@ Let's use a single button with name <code>button-1</code> to demonstrate this co
 &lt;/interface&gt;
 </code></pre>
 <p>By adding the pseudo-class <code>hover</code>, we say that we want this rule to only apply to a <code>button</code> node with name <code>button-1</code> when hovering over it with the mouse pointer.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/7/style.css">listings/css/7/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/7/style.css">listings/css/7/style.css</a></p>
 <pre><code class="language-css">button#button-1:hover {
   color: magenta;
   background: yellow;
@@ -11389,7 +11389,7 @@ This is not always the case.
 For example, <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.MenuButton.html"><code>gtk::MenuButton</code></a> has multiple CSS nodes.
 Let's see how that works.</p>
 <p>First, we create a single <code>MenuButton</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/8/window/window.ui">listings/css/8/window/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/8/window/window.ui">listings/css/8/window/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -11415,7 +11415,7 @@ If you choose to do neither of those, as we currently do, it shows an image disp
 </code></pre>
 <p>We see that the <code>menubutton</code> node has children, which themselves have children and attached style classes.
 Now we know that we have to add a CSS rule that applies to the <code>arrow</code> node, which is a descendant of <code>menubutton</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/8/style.css">listings/css/8/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/8/style.css">listings/css/8/style.css</a></p>
 <pre><code class="language-css">menubutton arrow {
   color: magenta;
 }
@@ -11431,7 +11431,7 @@ However, in that case we would also match with other instance of <code>gtk::Box<
 What we will want to do instead is to give <code>TaskRow</code> its own CSS name.
 When calling <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/subclass/widget/trait.WidgetClassExt.html#method.set_css_name"><code>set_css_name</code> </a>, we change the name of the CSS node of the widget class.
 In our case, the widget <code>TaskRow</code> then corresponds to the node <code>task-row</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/task_row/imp.rs">listings/todo/3/task_row/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/task_row/imp.rs">listings/todo/3/task_row/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use glib::Binding;
@@ -11479,7 +11479,7 @@ impl ObjectSubclass for TaskRow {
 <p>What to do with the new node name now?
 Let's change the background color once more but this time with a twist.
 We are going to use the named color <code>success_color</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/resources/style.css">listings/todo/3/resources/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/resources/style.css">listings/todo/3/resources/style.css</a></p>
 <pre><code class="language-css">task-row {
   background-color: @success_color;
 }
@@ -11489,7 +11489,7 @@ As of this writing, these exported colors can only be found in its <a href="http
 <p>There we find the color <code>success_color</code>, which in real scenarios should be used to indicate success.
 We can then access the pre-defined color by adding an <code>@</code> in front of its name.</p>
 <p>We also have to add <code>style.css</code> to <code>resources.gresource.xml</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/resources/resources.gresource.xml">listings/todo/3/resources/resources.gresource.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/resources/resources.gresource.xml">listings/todo/3/resources/resources.gresource.xml</a></p>
 <pre><code class="language-diff"> &lt;?xml version="1.0" encoding="UTF-8"?&gt;
  &lt;gresources&gt;
    &lt;gresource prefix="/org/gtk_rs/Todo3/"&gt;
@@ -11501,7 +11501,7 @@ We can then access the pre-defined color by adding an <code>@</code> in front of
  &lt;/gresources&gt;
 </code></pre>
 <p>Additionally, we call <code>load_css()</code> in <code>connect_startup</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/main.rs">listings/todo/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/main.rs">listings/todo/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod task_object;
 </span><span class="boring">mod task_row;
 </span><span class="boring">mod utils;
@@ -11619,7 +11619,7 @@ Probably better to revert this immediately again.</p>
 <p>Luckily, finding an actual use for CSS in our To-Do app isn't too hard.
 Until now the different tasks weren't nicely separated.
 We can change that by adding the <code>frame</code> and the <code>separators</code> style class to our <code>tasks_list</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/4/resources/task_row.ui">listings/todo/4/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/4/resources/task_row.ui">listings/todo/4/resources/window.ui</a></p>
 <pre><code class="language-diff"> &lt;object class="GtkListView" id="tasks_list"&gt;
    &lt;property name="valign"&gt;start&lt;/property&gt;
 +  &lt;style&gt;
@@ -11703,7 +11703,7 @@ gtk4-update-icon-cache.exe -t -f C:\gnome\share\icons\hicolor
 <p>Within this chapter we will adapt our To-Do app so that it follows GNOME's <a href="https://developer.gnome.org/hig/">HIG</a>.
 Let's start by installing Libadwaita and adding the <code>libadwaita</code> crate to our dependencies as explained in the <a href="libadwaita.html">previous chapter</a>.</p>
 <p>The simplest way to take advantage of Libadwaita is by replacing <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Application.html"><code>gtk::Application</code></a> with <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.Application.html"><code>adw::Application</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/5/main.rs">listings/todo/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/5/main.rs">listings/todo/5/main.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod task_object;
 </span><span class="boring">mod task_row;
 </span><span class="boring">mod utils;
@@ -11744,7 +11744,7 @@ fn build_ui(app: &amp;adw::Application) {
     let window = Window::new(app);
     window.present();
 }</code></pre>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/5/window/mod.rs">listings/todo/5/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/5/window/mod.rs">listings/todo/5/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -12013,7 +12013,7 @@ We will also add the <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/do
 <p>Let's implement all these changes in the <code>window.ui</code> file.
 All of the changes are confined within the second child of the <code>ApplicationWindow</code>.
 To see the complete file, just click on the link after "Filename".</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/resources/window.ui">listings/todo/6/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/resources/window.ui">listings/todo/6/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;child&gt;
   &lt;object class="GtkScrolledWindow"&gt;
     &lt;property name="hscrollbar-policy"&gt;never&lt;/property&gt;
@@ -12054,7 +12054,7 @@ To see the complete file, just click on the link after "Filename".</p>
 <p>In order to follow the boxed list pattern, we switched to <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ListBox.html"><code>gtk::ListBox</code></a>, set its property "selection-mode" to "none" and added the <code>boxed-list</code> style class.</p>
 <p>Let's continue with <code>window/imp.rs</code>.
 The member variable <code>tasks_list</code> now describes a <code>ListBox</code> rather than a <code>ListView</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/imp.rs">listings/todo/6/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/imp.rs">listings/todo/6/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -12152,7 +12152,7 @@ impl ObjectSubclass for Window {
 <code>setup_factory</code> can therefore be safely deleted.
 To setup the <code>ListBox</code>, we call <code>bind_model</code> in <code>setup_tasks</code>.
 There we specify the model, as well as a closure describing how to transform the given GObject into a widget the list box can display.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -12400,7 +12400,7 @@ There we specify the model, as well as a closure describing how to transform the
 Here, we create an <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.ActionRow.html"><code>adw::ActionRow</code></a> with a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.CheckButton.html"><code>gtk::CheckButton</code></a> as activatable widget.
 Without recycling, a GObject will always belong to the same widget.
 That means we can just bind their properties without having to worry about unbinding them later on.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -12645,7 +12645,7 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>When using boxed lists, you also have to take care to hide the <code>ListBox</code> when there is no task present.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -12890,7 +12890,7 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>Finally, we define the <code>set_task_list_visible</code> method.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -13149,7 +13149,7 @@ The main difference between those two is that <code>adw::ApplicationWindow</code
 That comes in handy when we build up our interface with <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.NavigationSplitView.html"><code>adw::NavigationSplitView</code></a>.
 In the screenshot above, the <code>NavigationSplitView</code> adds a sidebar for the collection view to the left, while the task view occupies the space on the right.
 When using <code>adw::ApplicationWindow</code> the collection view and task view have their own <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.HeaderBar.html"><code>adw::HeaderBar</code></a> and the separator spans over the whole window.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;menu id="main-menu"&gt;
@@ -13195,7 +13195,7 @@ The adaptive behavior of the leaflet allows the To-Do app to work on smaller scr
 </div>
 <p>We add the necessary UI elements for the collection view, such as a header bar with a button to add a new collection, as well as the list box <code>collections_list</code> to display the collections later on.
 We also add the style <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/style-classes.html#sidebars">navigations-sidebar</a> to <code>collections_list</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;object class="AdwNavigationPage"&gt;
   &lt;property name="title" bind-source="TodoWindow"
     bind-property="title" bind-flags="sync-create" /&gt;
@@ -13226,7 +13226,7 @@ We also add the style <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/d
     &lt;/object&gt;
 </code></pre>
 <p>We also add a header bar to the task view.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;object class="AdwNavigationPage"&gt;
   &lt;property name="title" translatable="yes"&gt;Tasks&lt;/property&gt;
   &lt;property name="child"&gt;
@@ -13282,7 +13282,7 @@ We also add the style <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/d
 </code></pre>
 <p>We also have to adapt the window implementation.
 For example, the parent type of our window is now <code>adw::ApplicationWindow</code> instead of <code>gtk::ApplicationWindow</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -13380,7 +13380,7 @@ impl ObjectSubclass for Window {
 </span><span class="boring">// Trait shared by all adwaita application windows
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p>That also means that we have to implement the trait <code>AdwApplicationWindowImpl</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -13478,7 +13478,7 @@ impl ObjectSubclass for Window {
 </span>// Trait shared by all adwaita application windows
 impl AdwApplicationWindowImpl for Window {}</code></pre>
 <p>Finally, we add <code>adw::ApplicationWindow</code> to the ancestors of <code>Window</code> in <code>mod.rs</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/mod.rs">listings/todo/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/mod.rs">listings/todo/7/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -13735,7 +13735,7 @@ In our case, this placeholder page will be presented to the user if they open th
 <p>We now wrap our UI in a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Stack.html"><code>gtk::Stack</code></a>.
 One stack page describes the placeholder page, the other describes the main page.
 We will later wire up the logic to display the correct stack page in the Rust code.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;menu id="main-menu"&gt;
@@ -13780,7 +13780,7 @@ We will later wire up the logic to display the correct stack page in the Rust co
 &lt;/interface&gt;
 </code></pre>
 <p>In order to create the pageholder page as displayed before, we combine a flat header bar with <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.StatusPage.html"><code>adw::StatusPage</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;object class="GtkBox"&gt;
   &lt;property name="orientation"&gt;vertical&lt;/property&gt;
   &lt;child&gt;
@@ -13821,7 +13821,7 @@ We will later wire up the logic to display the correct stack page in the Rust co
 Just like we have already created <code>TaskObject</code>, we will now introduce <code>CollectionObject</code>.
 It will have the members <code>title</code> and <code>tasks</code>, both of which will be exposed as properties.
 As usual, the full implementation can be seen by clicking at the eye symbol at the top right of the snippet.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/collection_object/imp.rs">listings/todo/8/collection_object/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/collection_object/imp.rs">listings/todo/8/collection_object/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use adw::prelude::*;
@@ -13851,7 +13851,7 @@ impl ObjectSubclass for CollectionObject {
 </span><span class="boring">#[glib::derived_properties]
 </span><span class="boring">impl ObjectImpl for CollectionObject {}</span></code></pre>
 <p>We also add the struct <code>CollectionData</code> to aid in serialization and deserialization.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use adw::prelude::*;
@@ -13911,7 +13911,7 @@ pub struct CollectionData {
 <li>easily access the tasks <code>ListStore</code> with <code>tasks</code> and</li>
 <li>convert to and from <code>CollectionData</code> with <code>to_collection_data</code> and <code>from_collection_data</code>.</li>
 </ul>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use adw::prelude::*;
@@ -13971,7 +13971,7 @@ There are additional widgets that we access via the <code>template_child</code> 
 Additionally, we reference the <code>collections</code> list store, the <code>current_collection</code> as well as the <code>current_filter_model</code>.
 We also store <code>tasks_changed_handler_id</code>.
 Its purpose will become clear in later snippets.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -14086,7 +14086,7 @@ pub struct Window {
 </span><span class="boring">// Trait shared by all adwaita application windows
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p>Further, we add a couple of helper methods which will come in handy later on.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -14517,7 +14517,7 @@ pub struct Window {
 </span><span class="boring">}</span></code></pre>
 <p>As always, we want our data to be saved when we close the window.
 Since most of the implementation is in the method <code>CollectionObject::to_collection_data</code>, the implementation of <code>close_request</code> doesn't change much.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -14633,7 +14633,7 @@ impl WindowImpl for Window {
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p><code>constructed</code> stays mostly the same as well.
 Instead of <code>setup_tasks</code> we now call <code>setup_collections</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -14749,7 +14749,7 @@ impl ObjectImpl for Window {
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p><code>setup_collections</code> sets up the <code>collections</code> list store as well as assuring that changes in the model will be reflected in the <code>collections_list</code>.
 To do that it uses the method <code>create_collection_row</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -15179,7 +15179,7 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><code>create_collection_row</code> takes a <code>CollectionObject</code> and builds a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ListBoxRow.html"><code>gtk::ListBoxRow</code></a> from its information.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -15612,7 +15612,7 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 Again, the heavy lifting comes from <code>CollectionObject::from_collection_data</code>, so we don't have to change too much here.
 Since the rows of <code>collections_list</code> can be selected, we have to select one of them after restoring the data.
 We choose the first one and let the method <code>set_current_collection</code> do the rest.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -16048,7 +16048,7 @@ Otherwise, the list box will leave a bad-looking line behind.
 However, we don't want to accumulate signal handlers whenever we switch collections.
 This is why we store the <code>tasks_changed_handler_id</code> and disconnect the old handler as soon as we set a new collection.
 Finally, we select the collection row.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -16479,7 +16479,7 @@ Finally, we select the collection row.</p>
 </span><span class="boring">}</span></code></pre>
 <p>Previously, we used the method <code>set_task_list_visible</code>.
 It assures that <code>tasks_list</code> is only visible if the number of tasks is greater than 0.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -16909,7 +16909,7 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><code>select_collection_row</code> assures that the row for the current collection is selected in <code>collections_list</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -17357,7 +17357,7 @@ After clicking the "Create" button, a new collection is created, and we navigate
 This action will be activated by a click on the <code>+</code> button as well as on the button in the placeholder page.
 We are using <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/subclass/widget/trait.WidgetClassExt.html#method.install_action_async"><code>install_action_async</code></a>.
 It is a convenient way to add asynchronous actions to subclassed widgets.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -17478,7 +17478,7 @@ We then <code>await</code> on the user pressing a button on the dialog.
 If they click "Cancel", we simply return.
 However, if they click "Create", we want a new collection to be created and set as current collection.
 Afterwards we navigate forward on our leaflet, which means we navigate to the task view.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -17912,7 +17912,7 @@ Importantly, we want to filter our current task model whenever the value of the 
 Whenever the items of our collections change we also want to set the stack.
 This makes sure that our placeholder page is shown if there are no collections.
 Finally, we assure that when we click on a row of <code>collections_list</code>, <code>current_collection</code> is set to the selected collection and the split view shows the task view.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -18343,7 +18343,7 @@ Finally, we assure that when we click on a row of <code>collections_list</code>,
 </span><span class="boring">}</span></code></pre>
 <p>Before, we called the method <code>set_stack</code>.
 This method ensure when there is at least one collection, the "main" page is shown, and the "placeholder" page otherwise.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;

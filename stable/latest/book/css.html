@@ -148,7 +148,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -188,14 +188,14 @@ If you are new to CSS or just need a refresher, have a look at the <a href="http
 Every type of widget has a corresponding CSS node.
 In the case of <code>gtk::Button</code>, this node is called <code>button</code>.
 Therefore, we create a <code>style.css</code> file with the following content:</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/1/style.css">listings/css/1/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/1/style.css">listings/css/1/style.css</a></p>
 <pre><code class="language-css">button {
   color: magenta;
 }
 </code></pre>
 <p>Next, we need to load the CSS file in the startup step of the application.
 As usual, the widgets are created during the "activate" step.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/1/main.rs">listings/css/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/1/main.rs">listings/css/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gdk::Display;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gdk, glib, Application, ApplicationWindow, Button, CssProvider};
@@ -265,7 +265,7 @@ Open the CSS view and override the button color with the following snippet.</p>
 GTK adds style classes to many of its widgets, often depending on their content.
 A <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Button.html#css-nodes"><code>gtk::Button</code></a>, for example, will get the <code>text-button</code> style class when its content is a label.
 That is why we create a new CSS rule which only applies to <code>button</code> nodes with the style class <code>text_button</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/2/style.css">listings/css/2/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/2/style.css">listings/css/2/style.css</a></p>
 <pre><code class="language-css">button.text-button {
   color: magenta;
 }
@@ -278,7 +278,7 @@ One use-case for this is when you want a rule to apply to a hand-picked set of w
 For example if we have two buttons, but want only one of them to have magenta font.
 Relying on one of the style classes which GTK adds will not help since both will get the same ones.
 Which is why we add the style class <code>button-1</code> to the first one.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/3/main.rs">listings/css/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/3/main.rs">listings/css/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gdk::Display;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gdk, glib, Application, ApplicationWindow, Button, CssProvider};
@@ -337,7 +337,7 @@ Which is why we add the style class <code>button-1</code> to the first one.</p>
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Then, we create a CSS rule that applies to <code>button</code> nodes with the style class <code>button-1</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/3/style.css">listings/css/3/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/3/style.css">listings/css/3/style.css</a></p>
 <pre><code class="language-css">button.button-1 {
   color: magenta;
 }
@@ -350,7 +350,7 @@ Ideally however, you would give the widget a name and match with that name inste
 This way your intentions are more clear, compared to matching with style classes that can apply to multiple widgets.</p>
 <p>Again, we have two buttons but want to color only one of them magenta.
 We set the name of the first one with <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/prelude/trait.WidgetExt.html#tymethod.set_widget_name"><code>set_widget_name</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/4/main.rs">listings/css/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/4/main.rs">listings/css/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gdk::Display;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gdk, glib, Application, ApplicationWindow, Button, CssProvider};
@@ -410,7 +410,7 @@ We set the name of the first one with <a href="https://gtk-rs.org/gtk4-rs/stable
 </span><span class="boring">}</span></code></pre>
 <p>Then, create a CSS rule that applies to <code>button</code> nodes with the name <code>button-1</code>.
 The name is specified after the <code>#</code> symbol.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/4/style.css">listings/css/4/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/4/style.css">listings/css/4/style.css</a></p>
 <pre><code class="language-css">button#button-1 {
   color: magenta;
 }
@@ -422,7 +422,7 @@ The name is specified after the <code>#</code> symbol.</p>
 For example, if you want to indicate that your button leads to a destructive or suggested action you don't have to provide your own CSS rules.
 All you have to do is to add "destructive-action" or "suggested-action" style class to your button.
 Most widgets will document these rules in their documentation under <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Button.html#css-nodes">CSS nodes</a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/5/main.rs">listings/css/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/5/main.rs">listings/css/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::glib;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{Application, ApplicationWindow, Button};
@@ -473,7 +473,7 @@ Most widgets will document these rules in their documentation under <a href="htt
 Just add the <code>&lt;style&gt;</code> element to your widget.
 The <code>&lt;style&gt;</code> element is documented together with <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Widget.html#gtkwidget-as-gtkbuildable"><code>gtk::Widget</code></a>.
 Adding again destructive and suggested buttons, would then look like this:</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/6/window/window.ui">listings/css/6/window/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/6/window/window.ui">listings/css/6/window/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -510,7 +510,7 @@ Adding again destructive and suggested buttons, would then look like this:</p>
 <p>Sometimes you want your CSS rules to apply under even more precise conditions than style classes allow.
 That is where <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo-classes</a> come in.
 Let's use a single button with name <code>button-1</code> to demonstrate this concept.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/7/window/window.ui">listings/css/7/window/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/7/window/window.ui">listings/css/7/window/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -529,7 +529,7 @@ Let's use a single button with name <code>button-1</code> to demonstrate this co
 &lt;/interface&gt;
 </code></pre>
 <p>By adding the pseudo-class <code>hover</code>, we say that we want this rule to only apply to a <code>button</code> node with name <code>button-1</code> when hovering over it with the mouse pointer.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/7/style.css">listings/css/7/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/7/style.css">listings/css/7/style.css</a></p>
 <pre><code class="language-css">button#button-1:hover {
   color: magenta;
   background: yellow;
@@ -549,7 +549,7 @@ This is not always the case.
 For example, <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.MenuButton.html"><code>gtk::MenuButton</code></a> has multiple CSS nodes.
 Let's see how that works.</p>
 <p>First, we create a single <code>MenuButton</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/8/window/window.ui">listings/css/8/window/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/8/window/window.ui">listings/css/8/window/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -575,7 +575,7 @@ If you choose to do neither of those, as we currently do, it shows an image disp
 </code></pre>
 <p>We see that the <code>menubutton</code> node has children, which themselves have children and attached style classes.
 Now we know that we have to add a CSS rule that applies to the <code>arrow</code> node, which is a descendant of <code>menubutton</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/css/8/style.css">listings/css/8/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/css/8/style.css">listings/css/8/style.css</a></p>
 <pre><code class="language-css">menubutton arrow {
   color: magenta;
 }
@@ -591,7 +591,7 @@ However, in that case we would also match with other instance of <code>gtk::Box<
 What we will want to do instead is to give <code>TaskRow</code> its own CSS name.
 When calling <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/subclass/widget/trait.WidgetClassExt.html#method.set_css_name"><code>set_css_name</code> </a>, we change the name of the CSS node of the widget class.
 In our case, the widget <code>TaskRow</code> then corresponds to the node <code>task-row</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/task_row/imp.rs">listings/todo/3/task_row/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/task_row/imp.rs">listings/todo/3/task_row/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use glib::Binding;
@@ -639,7 +639,7 @@ impl ObjectSubclass for TaskRow {
 <p>What to do with the new node name now?
 Let's change the background color once more but this time with a twist.
 We are going to use the named color <code>success_color</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/resources/style.css">listings/todo/3/resources/style.css</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/resources/style.css">listings/todo/3/resources/style.css</a></p>
 <pre><code class="language-css">task-row {
   background-color: @success_color;
 }
@@ -649,7 +649,7 @@ As of this writing, these exported colors can only be found in its <a href="http
 <p>There we find the color <code>success_color</code>, which in real scenarios should be used to indicate success.
 We can then access the pre-defined color by adding an <code>@</code> in front of its name.</p>
 <p>We also have to add <code>style.css</code> to <code>resources.gresource.xml</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/resources/resources.gresource.xml">listings/todo/3/resources/resources.gresource.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/resources/resources.gresource.xml">listings/todo/3/resources/resources.gresource.xml</a></p>
 <pre><code class="language-diff"> &lt;?xml version="1.0" encoding="UTF-8"?&gt;
  &lt;gresources&gt;
    &lt;gresource prefix="/org/gtk_rs/Todo3/"&gt;
@@ -661,7 +661,7 @@ We can then access the pre-defined color by adding an <code>@</code> in front of
  &lt;/gresources&gt;
 </code></pre>
 <p>Additionally, we call <code>load_css()</code> in <code>connect_startup</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/3/main.rs">listings/todo/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/3/main.rs">listings/todo/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod task_object;
 </span><span class="boring">mod task_row;
 </span><span class="boring">mod utils;
@@ -779,7 +779,7 @@ Probably better to revert this immediately again.</p>
 <p>Luckily, finding an actual use for CSS in our To-Do app isn't too hard.
 Until now the different tasks weren't nicely separated.
 We can change that by adding the <code>frame</code> and the <code>separators</code> style class to our <code>tasks_list</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/4/resources/task_row.ui">listings/todo/4/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/4/resources/task_row.ui">listings/todo/4/resources/window.ui</a></p>
 <pre><code class="language-diff"> &lt;object class="GtkListView" id="tasks_list"&gt;
    &lt;property name="valign"&gt;start&lt;/property&gt;
 +  &lt;style&gt;

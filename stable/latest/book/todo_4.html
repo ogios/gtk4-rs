@@ -148,7 +148,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -190,7 +190,7 @@ The main difference between those two is that <code>adw::ApplicationWindow</code
 That comes in handy when we build up our interface with <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.NavigationSplitView.html"><code>adw::NavigationSplitView</code></a>.
 In the screenshot above, the <code>NavigationSplitView</code> adds a sidebar for the collection view to the left, while the task view occupies the space on the right.
 When using <code>adw::ApplicationWindow</code> the collection view and task view have their own <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.HeaderBar.html"><code>adw::HeaderBar</code></a> and the separator spans over the whole window.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;menu id="main-menu"&gt;
@@ -236,7 +236,7 @@ The adaptive behavior of the leaflet allows the To-Do app to work on smaller scr
 </div>
 <p>We add the necessary UI elements for the collection view, such as a header bar with a button to add a new collection, as well as the list box <code>collections_list</code> to display the collections later on.
 We also add the style <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/style-classes.html#sidebars">navigations-sidebar</a> to <code>collections_list</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;object class="AdwNavigationPage"&gt;
   &lt;property name="title" bind-source="TodoWindow"
     bind-property="title" bind-flags="sync-create" /&gt;
@@ -267,7 +267,7 @@ We also add the style <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/d
     &lt;/object&gt;
 </code></pre>
 <p>We also add a header bar to the task view.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/resources/window.ui">listings/todo/7/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;object class="AdwNavigationPage"&gt;
   &lt;property name="title" translatable="yes"&gt;Tasks&lt;/property&gt;
   &lt;property name="child"&gt;
@@ -323,7 +323,7 @@ We also add the style <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/d
 </code></pre>
 <p>We also have to adapt the window implementation.
 For example, the parent type of our window is now <code>adw::ApplicationWindow</code> instead of <code>gtk::ApplicationWindow</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -421,7 +421,7 @@ impl ObjectSubclass for Window {
 </span><span class="boring">// Trait shared by all adwaita application windows
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p>That also means that we have to implement the trait <code>AdwApplicationWindowImpl</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/7/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -519,7 +519,7 @@ impl ObjectSubclass for Window {
 </span>// Trait shared by all adwaita application windows
 impl AdwApplicationWindowImpl for Window {}</code></pre>
 <p>Finally, we add <code>adw::ApplicationWindow</code> to the ancestors of <code>Window</code> in <code>mod.rs</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/mod.rs">listings/todo/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/mod.rs">listings/todo/7/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -776,7 +776,7 @@ In our case, this placeholder page will be presented to the user if they open th
 <p>We now wrap our UI in a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Stack.html"><code>gtk::Stack</code></a>.
 One stack page describes the placeholder page, the other describes the main page.
 We will later wire up the logic to display the correct stack page in the Rust code.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;menu id="main-menu"&gt;
@@ -821,7 +821,7 @@ We will later wire up the logic to display the correct stack page in the Rust co
 &lt;/interface&gt;
 </code></pre>
 <p>In order to create the pageholder page as displayed before, we combine a flat header bar with <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.StatusPage.html"><code>adw::StatusPage</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/resources/window.ui">listings/todo/8/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;object class="GtkBox"&gt;
   &lt;property name="orientation"&gt;vertical&lt;/property&gt;
   &lt;child&gt;
@@ -862,7 +862,7 @@ We will later wire up the logic to display the correct stack page in the Rust co
 Just like we have already created <code>TaskObject</code>, we will now introduce <code>CollectionObject</code>.
 It will have the members <code>title</code> and <code>tasks</code>, both of which will be exposed as properties.
 As usual, the full implementation can be seen by clicking at the eye symbol at the top right of the snippet.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/collection_object/imp.rs">listings/todo/8/collection_object/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/collection_object/imp.rs">listings/todo/8/collection_object/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">
 </span><span class="boring">use adw::prelude::*;
@@ -892,7 +892,7 @@ impl ObjectSubclass for CollectionObject {
 </span><span class="boring">#[glib::derived_properties]
 </span><span class="boring">impl ObjectImpl for CollectionObject {}</span></code></pre>
 <p>We also add the struct <code>CollectionData</code> to aid in serialization and deserialization.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use adw::prelude::*;
@@ -952,7 +952,7 @@ pub struct CollectionData {
 <li>easily access the tasks <code>ListStore</code> with <code>tasks</code> and</li>
 <li>convert to and from <code>CollectionData</code> with <code>to_collection_data</code> and <code>from_collection_data</code>.</li>
 </ul>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/collection_object/mod.rs">listings/todo/8/collection_object/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use adw::prelude::*;
@@ -1012,7 +1012,7 @@ There are additional widgets that we access via the <code>template_child</code> 
 Additionally, we reference the <code>collections</code> list store, the <code>current_collection</code> as well as the <code>current_filter_model</code>.
 We also store <code>tasks_changed_handler_id</code>.
 Its purpose will become clear in later snippets.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -1127,7 +1127,7 @@ pub struct Window {
 </span><span class="boring">// Trait shared by all adwaita application windows
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p>Further, we add a couple of helper methods which will come in handy later on.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -1558,7 +1558,7 @@ pub struct Window {
 </span><span class="boring">}</span></code></pre>
 <p>As always, we want our data to be saved when we close the window.
 Since most of the implementation is in the method <code>CollectionObject::to_collection_data</code>, the implementation of <code>close_request</code> doesn't change much.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -1674,7 +1674,7 @@ impl WindowImpl for Window {
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p><code>constructed</code> stays mostly the same as well.
 Instead of <code>setup_tasks</code> we now call <code>setup_collections</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/7/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -1790,7 +1790,7 @@ impl ObjectImpl for Window {
 </span><span class="boring">impl AdwApplicationWindowImpl for Window {}</span></code></pre>
 <p><code>setup_collections</code> sets up the <code>collections</code> list store as well as assuring that changes in the model will be reflected in the <code>collections_list</code>.
 To do that it uses the method <code>create_collection_row</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -2220,7 +2220,7 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><code>create_collection_row</code> takes a <code>CollectionObject</code> and builds a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ListBoxRow.html"><code>gtk::ListBoxRow</code></a> from its information.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -2653,7 +2653,7 @@ To do that it uses the method <code>create_collection_row</code>.</p>
 Again, the heavy lifting comes from <code>CollectionObject::from_collection_data</code>, so we don't have to change too much here.
 Since the rows of <code>collections_list</code> can be selected, we have to select one of them after restoring the data.
 We choose the first one and let the method <code>set_current_collection</code> do the rest.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -3089,7 +3089,7 @@ Otherwise, the list box will leave a bad-looking line behind.
 However, we don't want to accumulate signal handlers whenever we switch collections.
 This is why we store the <code>tasks_changed_handler_id</code> and disconnect the old handler as soon as we set a new collection.
 Finally, we select the collection row.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -3520,7 +3520,7 @@ Finally, we select the collection row.</p>
 </span><span class="boring">}</span></code></pre>
 <p>Previously, we used the method <code>set_task_list_visible</code>.
 It assures that <code>tasks_list</code> is only visible if the number of tasks is greater than 0.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -3950,7 +3950,7 @@ It assures that <code>tasks_list</code> is only visible if the number of tasks i
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><code>select_collection_row</code> assures that the row for the current collection is selected in <code>collections_list</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -4398,7 +4398,7 @@ After clicking the "Create" button, a new collection is created, and we navigate
 This action will be activated by a click on the <code>+</code> button as well as on the button in the placeholder page.
 We are using <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/subclass/widget/trait.WidgetClassExt.html#method.install_action_async"><code>install_action_async</code></a>.
 It is a convenient way to add asynchronous actions to subclassed widgets.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -4519,7 +4519,7 @@ We then <code>await</code> on the user pressing a button on the dialog.
 If they click "Cancel", we simply return.
 However, if they click "Create", we want a new collection to be created and set as current collection.
 Afterwards we navigate forward on our leaflet, which means we navigate to the task view.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -4953,7 +4953,7 @@ Importantly, we want to filter our current task model whenever the value of the 
 Whenever the items of our collections change we also want to set the stack.
 This makes sure that our placeholder page is shown if there are no collections.
 Finally, we assure that when we click on a row of <code>collections_list</code>, <code>current_collection</code> is set to the selected collection and the split view shows the task view.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -5384,7 +5384,7 @@ Finally, we assure that when we click on a row of <code>collections_list</code>,
 </span><span class="boring">}</span></code></pre>
 <p>Before, we called the method <code>set_stack</code>.
 This method ensure when there is at least one collection, the "main" page is shown, and the "placeholder" page otherwise.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/8/window/imp.rs">listings/todo/8/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;

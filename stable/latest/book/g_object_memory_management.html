@@ -148,7 +148,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -315,7 +315,7 @@ We need a data type with interior mutability like <a href="https://doc.rust-lang
 For other objects, <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html"><code>RefCell</code></a> is the way to go.
 You can learn more about interior mutability in this <a href="https://marabos.nl/atomics/basics.html#interior-mutability">section</a> of the book <em>Rust Atomics and Locks</em>.</p>
 </blockquote>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/1/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
 </span><span class="boring">use std::cell::Cell;
@@ -367,7 +367,7 @@ For that, we need a way that both closures take ownership of the same value?</p>
 <code>Rc</code> counts the number of strong references created via <a href="https://doc.rust-lang.org/std/clone/trait.Clone.html#tymethod.clone"><code>Clone::clone</code></a> and released via <a href="https://doc.rust-lang.org/std/ops/trait.Drop.html#tymethod.drop"><code>Drop::drop</code></a>, and only deallocates the value when this number drops to zero.
 If we want to modify the content of our <a href="https://doc.rust-lang.org/std/rc/struct.Rc.html"><code>Rc</code></a>,
 we can again use the <a href="https://doc.rust-lang.org/std/cell/struct.Cell.html"><code>Cell</code></a> type.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/2/main.rs">listings/g_object_memory_management/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -430,7 +430,7 @@ we can again use the <a href="https://doc.rust-lang.org/std/cell/struct.Cell.htm
 </span><span class="boring">}</span></code></pre>
 <p>It is not very nice though to fill the scope with temporary variables like <code>number_copy</code>.
 We can improve that by using the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/macro.clone.html"><code>glib::clone!</code></a> macro.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/3/main.rs">listings/g_object_memory_management/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/3/main.rs">listings/g_object_memory_management/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -501,7 +501,7 @@ We can improve that by using the <a href="https://gtk-rs.org/gtk-rs-core/stable/
 </span><span class="boring">}</span></code></pre>
 <p>Just like <code>Rc&lt;Cell&lt;T&gt;&gt;</code>, GObjects are reference-counted and mutable.
 Therefore, we can pass the buttons the same way to the closure as we did with <code>number</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/4/main.rs">listings/g_object_memory_management/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/4/main.rs">listings/g_object_memory_management/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -588,7 +588,7 @@ A strong reference keeps the referenced value from being deallocated.
 If this chain leads to a circle, none of the values in this cycle ever get deallocated.
 With weak references we can break this cycle, because they don't keep their value alive but instead provide a way to retrieve a strong reference if the value is still alive.
 Since we want our apps to free unneeded memory, we should use weak references for the buttons instead.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -676,7 +676,7 @@ In case the closure expects a different return value <code>@default-return</code
 If we had moved weak references in both closures, nothing would have kept <code>number</code> alive and the closure would have never been called.
 Thinking about this, <code>button_increase</code> and <code>button_decrease</code> are also dropped at the end of the scope of <code>build_ui</code>.
 Who then keeps the buttons alive?</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -756,7 +756,7 @@ Who then keeps the buttons alive?</p>
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>When we append the buttons to the <code>gtk_box</code>, <code>gtk_box</code> keeps a strong reference to them.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/g_object_memory_management/5/main.rs">listings/g_object_memory_management/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::cell::Cell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">

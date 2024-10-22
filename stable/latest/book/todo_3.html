@@ -148,7 +148,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -181,7 +181,7 @@
 <p>Within this chapter we will adapt our To-Do app so that it follows GNOME's <a href="https://developer.gnome.org/hig/">HIG</a>.
 Let's start by installing Libadwaita and adding the <code>libadwaita</code> crate to our dependencies as explained in the <a href="libadwaita.html">previous chapter</a>.</p>
 <p>The simplest way to take advantage of Libadwaita is by replacing <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.Application.html"><code>gtk::Application</code></a> with <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.Application.html"><code>adw::Application</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/5/main.rs">listings/todo/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/5/main.rs">listings/todo/5/main.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod task_object;
 </span><span class="boring">mod task_row;
 </span><span class="boring">mod utils;
@@ -222,7 +222,7 @@ fn build_ui(app: &amp;adw::Application) {
     let window = Window::new(app);
     window.present();
 }</code></pre>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/5/window/mod.rs">listings/todo/5/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/5/window/mod.rs">listings/todo/5/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -491,7 +491,7 @@ We will also add the <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/do
 <p>Let's implement all these changes in the <code>window.ui</code> file.
 All of the changes are confined within the second child of the <code>ApplicationWindow</code>.
 To see the complete file, just click on the link after "Filename".</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/resources/window.ui">listings/todo/6/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/resources/window.ui">listings/todo/6/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;child&gt;
   &lt;object class="GtkScrolledWindow"&gt;
     &lt;property name="hscrollbar-policy"&gt;never&lt;/property&gt;
@@ -532,7 +532,7 @@ To see the complete file, just click on the link after "Filename".</p>
 <p>In order to follow the boxed list pattern, we switched to <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.ListBox.html"><code>gtk::ListBox</code></a>, set its property "selection-mode" to "none" and added the <code>boxed-list</code> style class.</p>
 <p>Let's continue with <code>window/imp.rs</code>.
 The member variable <code>tasks_list</code> now describes a <code>ListBox</code> rather than a <code>ListView</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/imp.rs">listings/todo/6/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/imp.rs">listings/todo/6/window/imp.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::fs::File;
 </span><span class="boring">
@@ -630,7 +630,7 @@ impl ObjectSubclass for Window {
 <code>setup_factory</code> can therefore be safely deleted.
 To setup the <code>ListBox</code>, we call <code>bind_model</code> in <code>setup_tasks</code>.
 There we specify the model, as well as a closure describing how to transform the given GObject into a widget the list box can display.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -878,7 +878,7 @@ There we specify the model, as well as a closure describing how to transform the
 Here, we create an <a href="https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/struct.ActionRow.html"><code>adw::ActionRow</code></a> with a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/struct.CheckButton.html"><code>gtk::CheckButton</code></a> as activatable widget.
 Without recycling, a GObject will always belong to the same widget.
 That means we can just bind their properties without having to worry about unbinding them later on.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -1123,7 +1123,7 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>When using boxed lists, you also have to take care to hide the <code>ListBox</code> when there is no task present.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;
@@ -1368,7 +1368,7 @@ That means we can just bind their properties without having to worry about unbin
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>Finally, we define the <code>set_task_list_visible</code> method.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/todo/6/window/mod.rs">listings/todo/6/window/mod.rs</a></p>
 <pre><code class="language-rust no_run noplayground"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use std::fs::File;

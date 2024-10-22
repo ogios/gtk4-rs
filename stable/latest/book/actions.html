@@ -148,7 +148,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -183,7 +183,7 @@ We can send messages through channels, emit signals, share reference-counted sta
 Now, we will complete our set by learning about actions.</p>
 <p>An action is a piece of functionality bound to a certain GObject.
 Let's check out the simplest case where we activate an action without a parameter.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
 <pre><code class="language-rust no_run"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Application, ApplicationWindow};
@@ -226,7 +226,7 @@ Let's check out the simplest case where we activate an action without a paramete
 <p>First, we created a new <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.ActionEntry.html"><code>gio::ActionEntry</code></a> which is named "close" and takes no parameter.
 We also connected a callback which closes the window when the action is activated.
 Finally, we add the action entry to the window via <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/prelude/trait.ActionMapExtManual.html#method.add_action_entries"><code>add_action_entries</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/1/main.rs">listings/actions/1/main.rs</a></p>
 <pre><code class="language-rust no_run"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib, Application, ApplicationWindow};
@@ -281,7 +281,7 @@ The answer is that it is so common to add actions to windows and applications th
 Let's add our action to the action group "custom-group" and add the group then to our window.
 The action entry isn't specific to our window anymore, the first parameter of the "activate" callback is of type <code>SimpleActionGroup</code> instead of <code>ApplicationWindow</code>.
 This means we have to clone <code>window</code> into the closure.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::gio::SimpleActionGroup;
@@ -331,7 +331,7 @@ This means we have to clone <code>window</code> into the closure.</p>
     window.present();
 }</code></pre>
 <p>If we bind the accelerator to "custom-group.close", it works just as before.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/2/main.rs">listings/actions/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::gio::SimpleActionGroup;
@@ -392,7 +392,7 @@ However, in the future we will use the pre-defined <a href="https://gtk-rs.org/g
 <p>An action, like most functions, can take a parameter.
 However, unlike most functions it can also be stateful.
 Let's see how this works.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/3/main.rs">listings/actions/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/3/main.rs">listings/actions/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{
@@ -497,7 +497,7 @@ This is how our app works:</p>
 This way, the action can be specified by setting the "action-name" property.
 If the action accepts a parameter, it can be set via the "action-target" property.
 With <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/builders/struct.ButtonBuilder.html"><code>ButtonBuilder</code></a>, we can set everything up by calling its methods.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/4/main.rs">listings/actions/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/4/main.rs">listings/actions/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::ActionEntry;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{
@@ -584,7 +584,7 @@ With <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/builders/struct
 <p>Actionable widgets are also easily accessible through the interface builder.
 As usual, we build up the window via a composite template.
 Within the template we can then set the "action-name" and "action-target" properties.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/5/resources/window.ui">listings/actions/5/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/5/resources/window.ui">listings/actions/5/resources/window.ui</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;interface&gt;
   &lt;template class="MyGtkAppWindow" parent="GtkApplicationWindow"&gt;
@@ -616,7 +616,7 @@ Within the template we can then set the "action-name" and "action-target" proper
 &lt;/interface&gt;
 </code></pre>
 <p>We will connect the actions and add them to the window in the <code>Window::setup_actions</code> method.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/5/window/mod.rs">listings/actions/5/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/5/window/mod.rs">listings/actions/5/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::ActionEntry;
@@ -670,7 +670,7 @@ Within the template we can then set the "action-name" and "action-target" proper
     }
 }</code></pre>
 <p>Finally, <code>setup_actions</code> will be called within <code>constructed</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/5/window/imp.rs">listings/actions/5/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/5/window/imp.rs">listings/actions/5/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::subclass::prelude::*;
 </span><span class="boring">use gtk::{glib, CompositeTemplate, Label};
@@ -735,7 +735,7 @@ Therefore, we don't have to add anything here.</p>
 <p>With the action "button-frame", we manipulate the "has-frame" property of <code>button</code>.
 Here, the convention is that actions with no parameter and boolean state should behave like toggle actions.
 This means that the caller can expect the boolean state to toggle after activating the action. Luckily for us, that is the default behavior for <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.PropertyAction.html"><code>gio::PropertyAction</code></a> with a boolean property.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, PropertyAction};
@@ -827,7 +827,7 @@ When activating the action, the property gets set to the same value as the param
 This action can be used to change the orientation of <code>gtk_box</code>.
 Here the convention is that the state should be set to the given parameter.
 We don't need the action state to implement orientation switching, however it is useful for making the menu display the current orientation.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/6/window/mod.rs">listings/actions/6/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, PropertyAction};
@@ -910,7 +910,7 @@ We don't need the action state to implement orientation switching, however it is
 </span><span class="boring">}</span></code></pre>
 <p>Even though <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Menu.html"><code>gio::Menu</code></a> can also be created with the bindings, the most convenient way is to use the interface builder for that.
 We do that by adding the menu in front of the template.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/6/resources/window.ui">listings/actions/6/resources/window.ui</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/6/resources/window.ui">listings/actions/6/resources/window.ui</a></p>
 <pre><code class="language-diff"> &lt;?xml version="1.0" encoding="UTF-8"?&gt;
  &lt;interface&gt;
 +  &lt;menu id="main-menu"&gt;
@@ -979,7 +979,7 @@ They can be embedded with <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/
 <p>The menu entries nicely display the state of our stateful actions, but after the app is closed, all changes to that state are lost.
 As usual, we solve this problem with <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Settings.html"><code>gio::Settings</code></a>.
 First we create a schema with settings corresponding to the stateful actions we created before.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/org.gtk_rs.Actions7.gschema.xml">listings/actions/7/org.gtk_rs.Actions7.gschema.xml</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/org.gtk_rs.Actions7.gschema.xml">listings/actions/7/org.gtk_rs.Actions7.gschema.xml</a></p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schemalist&gt;
   &lt;schema id="org.gtk_rs.Actions7" path="/org/gtk_rs/Actions7/"&gt;
@@ -1001,7 +1001,7 @@ First we create a schema with settings corresponding to the stateful actions we 
 <p>Again, we install the schema as described in the settings <a href="./settings.html">chapter</a>.
 Then we add the settings to <code>imp::Window</code>.
 Since <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/struct.Settings.html"><code>gio::Settings</code></a> does not implement <code>Default</code>, we wrap it in a <a href="https://doc.rust-lang.org/std/cell/struct.OnceCell.html"><code>std::cell::OnceCell</code></a>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::subclass::prelude::*;
@@ -1061,7 +1061,7 @@ pub struct Window {
 </span><span class="boring">// Trait shared by all application windows
 </span><span class="boring">impl ApplicationWindowImpl for Window {}</span></code></pre>
 <p>Now we create functions to make it easier to access settings.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, Settings};
@@ -1168,7 +1168,7 @@ pub struct Window {
 </span><span class="boring">}</span></code></pre>
 <p>Creating stateful actions from setting entries is so common that <code>Settings</code> provides a method for that exact purpose.
 We create actions with the<a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/prelude/trait.SettingsExt.html#tymethod.create_action"> <code>create_action</code></a> method and then add them to the action group of our window.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, Settings};
@@ -1277,7 +1277,7 @@ We create actions with the<a href="https://gtk-rs.org/gtk-rs-core/stable/latest/
 The action "win.button-frame" toggles its state with each activation and the state of the "win.orientation" action follows the given parameter.</p>
 <p>We still have to specify what should happen when the actions are activated though.
 For the stateful actions, instead of adding callbacks to their "activate" signals, we bind the settings to properties we want to manipulate.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/mod.rs">listings/actions/7/window/mod.rs</a></p>
 <pre><code class="language-rust"><span class="boring">mod imp;
 </span><span class="boring">
 </span><span class="boring">use gio::{ActionEntry, Settings};
@@ -1383,7 +1383,7 @@ For the stateful actions, instead of adding callbacks to their "activate" signal
     }
 <span class="boring">}</span></code></pre>
 <p>Finally, we make sure that <code>bind_settings</code> is called within <code>constructed</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/actions/7/window/imp.rs">listings/actions/7/window/imp.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use gio::Settings;
 </span><span class="boring">use glib::subclass::InitializingObject;
 </span><span class="boring">use gtk::subclass::prelude::*;

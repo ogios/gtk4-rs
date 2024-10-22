@@ -148,7 +148,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/master/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gtk-rs/gtk4-rs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -189,7 +189,7 @@ That is why you can move the window at the same time as a progress bar is growin
 <p>However, you surely saw GUIs that became unresponsive, at least for a few seconds.
 That happens when a single task takes too long.
 The following example uses <a href="https://doc.rust-lang.org/std/thread/fn.sleep.html"><code>std::thread::sleep</code></a> to represent a long-running task.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/1/main.rs">listings/main_event_loop/1/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/1/main.rs">listings/main_event_loop/1/main.rs</a></p>
 <pre><code class="language-rust">use std::thread;
 use std::time::Duration;
 
@@ -248,7 +248,7 @@ but frequently, we want to run a slightly longer operation in one go.</p>
 </div>
 <h2 id="how-to-avoid-blocking-the-main-loop"><a class="header" href="#how-to-avoid-blocking-the-main-loop">How to Avoid Blocking the Main Loop</a></h2>
 <p>In order to avoid blocking the main loop, we can spawn a new task with <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/fn.spawn_blocking.html"><code>gio::spawn_blocking</code></a> and let the operation run on the thread pool.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/2/main.rs">listings/main_event_loop/2/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/2/main.rs">listings/main_event_loop/2/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::thread;
 </span><span class="boring">use std::time::Duration;
 </span><span class="boring">
@@ -328,7 +328,7 @@ This <code>async</code> block is spawned on the <code>glib</code> main loop with
 <blockquote>
 <p>See also <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/fn.spawn_future.html"><code>spawn_future</code></a> for spawning async blocks on the main loop from outside the main thread.</p>
 </blockquote>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/3/main.rs">listings/main_event_loop/3/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/3/main.rs">listings/main_event_loop/3/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::thread;
 </span><span class="boring">use std::time::Duration;
 </span><span class="boring">
@@ -413,7 +413,7 @@ After the task is finished, the button becomes sensitive again.</p>
 Let's try <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/fn.timeout_future_seconds.html"><code>glib::timeout_future_seconds</code></a> as representation for our task instead of <code>std::thread::sleep</code>.
 It returns a <a href="https://doc.rust-lang.org/std/future/trait.Future.html"><code>std::future::Future</code></a>, which means we can <code>await</code> on it within an <code>async</code> context.
 The converted code looks and behaves very similar to the multithreaded code.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/4/main.rs">listings/main_event_loop/4/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/4/main.rs">listings/main_event_loop/4/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
@@ -486,7 +486,7 @@ The converted code looks and behaves very similar to the multithreaded code.</p>
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>Since we are single-threaded again, we can even get rid of the channel while achieving the same result.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/5/main.rs">listings/main_event_loop/5/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/5/main.rs">listings/main_event_loop/5/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
@@ -611,7 +611,7 @@ Let's focus on a few more aspects that are interesting to know when running <cod
 In the following listing, we want to execute a synchronous function that returns a boolean and takes ten seconds to run.
 In order to integrate it in our <code>async</code> block, we run the function in a separate thread via <code>spawn_blocking</code>.
 We can then get the return value of the function by calling <code>await</code> on the return value of <code>spawn_blocking</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/6/main.rs">listings/main_event_loop/6/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/6/main.rs">listings/main_event_loop/6/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{gio, glib};
@@ -688,7 +688,7 @@ We are getting a <a href="https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/str
 <blockquote>
 <p>We need to pass the <code>WindowIdentifier</code> to make the dialog modal. This means that it will be on top of the window and freezes the rest of the application from user input.</p>
 </blockquote>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/7/main.rs">listings/main_event_loop/7/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/7/main.rs">listings/main_event_loop/7/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::prelude::*;
 </span><span class="boring">use gtk::{glib, Application, ApplicationWindow, Button};
@@ -775,7 +775,7 @@ Let's add it by executing the following command</p>
 </code></pre>
 <p>As soon as the button is pressed, we want to send a <code>GET</code> request to <a href="https://www.gtk-rs.org">www.gtk-rs.org</a>.
 The response should then be sent to the main thread via a channel.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/8/main.rs">listings/main_event_loop/8/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/8/main.rs">listings/main_event_loop/8/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use glib::clone;
 </span><span class="boring">use gtk::glib;
 </span><span class="boring">use gtk::prelude::*;
@@ -932,7 +932,7 @@ consider wrapping this expression in `Lazy::new(|| ...)` from the `once_cell` cr
 </code></pre>
 <p>We could follow the advice directly, but the standard library also provides solutions for that.
 With <a href="https://doc.rust-lang.org/stable/std/sync/struct.OnceLock.html"><code>std::sync::OnceLock</code></a> we can initialize the static with the const function <code>OnceLock::new()</code> and initialize it the first time our function <code>runtime</code> is called.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::sync::OnceLock;
 </span><span class="boring">
 </span><span class="boring">use glib::clone;
@@ -1009,7 +1009,7 @@ With <a href="https://doc.rust-lang.org/stable/std/sync/struct.OnceLock.html"><c
 </span><span class="boring">    window.present();
 </span><span class="boring">}</span></code></pre>
 <p>In the button callback we can now spawn the <code>reqwest</code> <code>async</code> block with <code>tokio</code> rather than with <code>glib</code>.</p>
-<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/master/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
+<p>Filename: <a class=file-link href="https://github.com/gtk-rs/gtk4-rs/blob/main/book/listings/main_event_loop/9/main.rs">listings/main_event_loop/9/main.rs</a></p>
 <pre><code class="language-rust"><span class="boring">use std::sync::OnceLock;
 </span><span class="boring">
 </span><span class="boring">use glib::clone;
