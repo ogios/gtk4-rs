@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/widget.rs`."><title>widget.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-a5dc3bae.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (439284741 2024-10-21)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/widget.rs`."><title>widget.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-a5dc3bae.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (4f2f477fd 2024-10-23)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1945,7 +1945,60 @@
 <a href="#1871" id="1871">1871</a>
 <a href="#1872" id="1872">1872</a>
 <a href="#1873" id="1873">1873</a>
-<a href="#1874" id="1874">1874</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#1874" id="1874">1874</a>
+<a href="#1875" id="1875">1875</a>
+<a href="#1876" id="1876">1876</a>
+<a href="#1877" id="1877">1877</a>
+<a href="#1878" id="1878">1878</a>
+<a href="#1879" id="1879">1879</a>
+<a href="#1880" id="1880">1880</a>
+<a href="#1881" id="1881">1881</a>
+<a href="#1882" id="1882">1882</a>
+<a href="#1883" id="1883">1883</a>
+<a href="#1884" id="1884">1884</a>
+<a href="#1885" id="1885">1885</a>
+<a href="#1886" id="1886">1886</a>
+<a href="#1887" id="1887">1887</a>
+<a href="#1888" id="1888">1888</a>
+<a href="#1889" id="1889">1889</a>
+<a href="#1890" id="1890">1890</a>
+<a href="#1891" id="1891">1891</a>
+<a href="#1892" id="1892">1892</a>
+<a href="#1893" id="1893">1893</a>
+<a href="#1894" id="1894">1894</a>
+<a href="#1895" id="1895">1895</a>
+<a href="#1896" id="1896">1896</a>
+<a href="#1897" id="1897">1897</a>
+<a href="#1898" id="1898">1898</a>
+<a href="#1899" id="1899">1899</a>
+<a href="#1900" id="1900">1900</a>
+<a href="#1901" id="1901">1901</a>
+<a href="#1902" id="1902">1902</a>
+<a href="#1903" id="1903">1903</a>
+<a href="#1904" id="1904">1904</a>
+<a href="#1905" id="1905">1905</a>
+<a href="#1906" id="1906">1906</a>
+<a href="#1907" id="1907">1907</a>
+<a href="#1908" id="1908">1908</a>
+<a href="#1909" id="1909">1909</a>
+<a href="#1910" id="1910">1910</a>
+<a href="#1911" id="1911">1911</a>
+<a href="#1912" id="1912">1912</a>
+<a href="#1913" id="1913">1913</a>
+<a href="#1914" id="1914">1914</a>
+<a href="#1915" id="1915">1915</a>
+<a href="#1916" id="1916">1916</a>
+<a href="#1917" id="1917">1917</a>
+<a href="#1918" id="1918">1918</a>
+<a href="#1919" id="1919">1919</a>
+<a href="#1920" id="1920">1920</a>
+<a href="#1921" id="1921">1921</a>
+<a href="#1922" id="1922">1922</a>
+<a href="#1923" id="1923">1923</a>
+<a href="#1924" id="1924">1924</a>
+<a href="#1925" id="1925">1925</a>
+<a href="#1926" id="1926">1926</a>
+<a href="#1927" id="1927">1927</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! Traits intended for subclassing [`Widget`].
@@ -3574,12 +3627,13 @@
 <span class="kw">unsafe impl</span>&lt;T: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ClassStruct.html">ClassStruct</a>&gt; <a href="#1045-1625">WidgetClassExt</a> <span class="kw">for </span>T <span class="kw">where </span>T::Type: <a href="#107-394">WidgetImpl</a> {}
 
 <span class="attr">#[derive(Debug, PartialEq, Eq)]
-#[repr(transparent)]
+#[repr(C)]
 </span><span class="kw">pub struct </span><a href="../../../gtk4/subclass/widget/struct.TemplateChild.html">TemplateChild</a>&lt;T&gt;
 <span class="kw">where
     </span>T: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html">ObjectType</a> + FromGlibPtrNone&lt;<span class="kw-2">*mut </span>&lt;T <span class="kw">as </span>ObjectType&gt;::GlibType&gt;,
 {
     ptr: <span class="kw-2">*mut </span>&lt;T <span class="kw">as </span>ObjectType&gt;::GlibType,
+    should_drop: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 }
 
 <span class="kw">impl</span>&lt;T&gt; <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span>TemplateChild&lt;T&gt;
@@ -3591,6 +3645,7 @@
 
         <span class="self">Self </span>{
             ptr: <a href="https://doc.rust-lang.org/nightly/core/ptr/fn.null_mut.html">std::ptr::null_mut</a>(),
+            should_drop: <span class="bool-val">false</span>,
         }
     }
 }
@@ -3608,6 +3663,44 @@
     }
 }
 
+<span class="kw">impl</span>&lt;T&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/trait.ToValue.html">ToValue</a> <span class="kw">for </span>TemplateChild&lt;T&gt;
+<span class="kw">where
+    </span>T: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/trait.ToValue.html">ToValue</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html">ObjectType</a> + FromGlibPtrNone&lt;<span class="kw-2">*mut </span>&lt;T <span class="kw">as </span>ObjectType&gt;::GlibType&gt;,
+{
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>to_value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a> {
+        <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/trait.ToValue.html#tymethod.to_value">T::to_value</a>(<span class="kw-2">&amp;</span><a class="self" href="#1671">self</a>.<a href="#1755-1761">get</a>())
+    }
+
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>value_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/types/struct.Type.html">glib::Type</a> {
+        <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/types/trait.StaticType.html#tymethod.static_type">T::static_type</a>()
+    }
+}
+
+<span class="kw">impl</span>&lt;T&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/trait.ValueType.html">glib::value::ValueType</a> <span class="kw">for </span>TemplateChild&lt;T&gt;
+<span class="kw">where
+    </span>T: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/trait.ValueType.html">glib::value::ValueType</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html">ObjectType</a> + FromGlibPtrNone&lt;<span class="kw-2">*mut </span>&lt;T <span class="kw">as </span>ObjectType&gt;::GlibType&gt;,
+{
+    <span class="kw">type </span>Type = &lt;T <span class="kw">as </span>glib::value::ValueType&gt;::Type;
+}
+
+<span class="kw">unsafe impl</span>&lt;<span class="lifetime">'a</span>, T&gt; glib::value::FromValue&lt;<span class="lifetime">'a</span>&gt; <span class="kw">for </span>TemplateChild&lt;T&gt;
+<span class="kw">where
+    </span>T: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html">ObjectType</a> + FromGlibPtrNone&lt;<span class="kw-2">*mut </span>&lt;T <span class="kw">as </span>ObjectType&gt;::GlibType&gt;,
+{
+    <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;T&gt;;
+
+    <span class="attr">#[inline]
+    </span><span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>) -&gt; <span class="self">Self </span>{
+        <span class="macro">skip_assert_initialized!</span>();
+        <a href="#1631-1637">TemplateChild</a> {
+            ptr: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/trait.FromValue.html#tymethod.from_value">T::from_value</a>(<a href="#1695">value</a>).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlibPtr.html#tymethod.into_glib_ptr">into_glib_ptr</a>(),
+            should_drop: <span class="bool-val">true</span>,
+        }
+    }
+}
+
 <span class="kw">impl</span>&lt;T&gt; <a href="https://doc.rust-lang.org/nightly/core/ops/deref/trait.Deref.html">std::ops::Deref</a> <span class="kw">for </span>TemplateChild&lt;T&gt;
 <span class="kw">where
     </span>T: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html">ObjectType</a> + FromGlibPtrNone&lt;<span class="kw-2">*mut </span>&lt;T <span class="kw">as </span>ObjectType&gt;::GlibType&gt;,
@@ -3618,10 +3711,10 @@
     </span><span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="self">Self</span>::Target {
         <span class="kw">unsafe </span>{
             <span class="kw">if </span>!<span class="self">self</span>.is_bound() {
-                <span class="kw">let </span>name = <a href="#1697-1699"><span class="self">Self</span>::name</a>();
+                <span class="kw">let </span>name = <a href="#1750-1752"><span class="self">Self</span>::name</a>();
                 <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"Failed to retrieve template child. Please check that all fields of type `{name}` have been bound and have a #[template_child] attribute."</span>);
             }
-            <span class="kw-2">&amp;*</span>(<span class="kw-2">&amp;</span><a class="self" href="#1671">self</a>.ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*const </span>T)
+            <span class="kw-2">&amp;*</span>(<span class="kw-2">&amp;</span><a class="self" href="#1711">self</a>.ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_ as </span><span class="kw-2">*const </span>T)
         }
     }
 }
@@ -3633,7 +3726,20 @@
     <span class="kw">type </span>Weak = T::Weak;
 
     <span class="kw">fn </span>downgrade(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span>::Weak {
-        <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/clone/trait.Downgrade.html#tymethod.downgrade">T::downgrade</a>(<span class="kw-2">&amp;</span><a class="self" href="#1688">self</a>.<a href="#1702-1708">get</a>())
+        <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/clone/trait.Downgrade.html#tymethod.downgrade">T::downgrade</a>(<span class="kw-2">&amp;</span><a class="self" href="#1728">self</a>.<a href="#1755-1761">get</a>())
+    }
+}
+
+<span class="kw">impl</span>&lt;T&gt; <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span>TemplateChild&lt;T&gt;
+<span class="kw">where
+    </span>T: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html">ObjectType</a> + FromGlibPtrNone&lt;<span class="kw-2">*mut </span>&lt;T <span class="kw">as </span>ObjectType&gt;::GlibType&gt;,
+{
+    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">if </span><span class="self">self</span>.should_drop {
+            <span class="kw">unsafe </span>{
+                <span class="kw">crate</span>::glib::gobject_ffi::g_object_unref(<a class="self" href="#1737">self</a>.ptr <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+            }
+        }
     }
 }
 
@@ -3647,9 +3753,9 @@
 
     <span class="attr">#[track_caller]
     </span><span class="kw">pub fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; T {
-        <a class="self" href="#1702">self</a>.<a href="#1719-1721">try_get</a>()
+        <a class="self" href="#1755">self</a>.<a href="#1772-1774">try_get</a>()
             .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_else">unwrap_or_else</a>(|| {
-                <span class="kw">let </span>name = <a href="#1697-1699"><span class="self">Self</span>::name</a>();
+                <span class="kw">let </span>name = <a href="#1750-1752"><span class="self">Self</span>::name</a>();
                 <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"Failed to retrieve template child. Please check that all fields of type `{name}` have been bound and have a #[template_child] attribute."</span>);
             })
     }
@@ -3658,13 +3764,13 @@
     </span><span class="doccomment">/// Determines if the child has been bound. This is primarily
     /// useful for implementing the [`Buildable`][`crate::Buildable`] interface.
     </span><span class="kw">pub fn </span>is_bound(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
-        !<a class="self" href="#1713">self</a>.ptr.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.is_null">is_null</a>()
+        !<a class="self" href="#1766">self</a>.ptr.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.is_null">is_null</a>()
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns Some(child) if the widget has been bound.
     </span><span class="kw">pub fn </span>try_get(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
-        <span class="kw">unsafe </span>{ <span class="prelude-ty">Option</span>::&lt;T&gt;::from_glib_none(<a class="self" href="#1719">self</a>.ptr) }
+        <span class="kw">unsafe </span>{ <span class="prelude-ty">Option</span>::&lt;T&gt;::from_glib_none(<a class="self" href="#1772">self</a>.ptr) }
     }
 }
 
@@ -3689,13 +3795,13 @@
     </span><span class="kw">fn </span>bind_template(<span class="kw-2">&amp;mut </span><span class="self">self</span>);
 }
 
-<span class="kw">impl</span>&lt;T, U&gt; <a href="#1738-1743">CompositeTemplateClass</a> <span class="kw">for </span>T
+<span class="kw">impl</span>&lt;T, U&gt; <a href="#1791-1796">CompositeTemplateClass</a> <span class="kw">for </span>T
 <span class="kw">where
     </span>T: ClassStruct&lt;Type = U&gt;,
-    U: ObjectSubclass&lt;Class = T&gt; + <a href="#1729-1732">CompositeTemplate</a>,
+    U: ObjectSubclass&lt;Class = T&gt; + <a href="#1782-1785">CompositeTemplate</a>,
 {
     <span class="kw">fn </span>bind_template(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
-        &lt;U <span class="kw">as </span>CompositeTemplate&gt;::bind_template(<a class="self" href="#1750">self</a>);
+        &lt;U <span class="kw">as </span>CompositeTemplate&gt;::bind_template(<a class="self" href="#1803">self</a>);
     }
 }
 
@@ -3707,19 +3813,19 @@
 /// trait is implemented automatically by the
 /// [`template_callbacks`](crate::template_callbacks) macro.
 </span><span class="kw">pub trait </span><a href="../../../gtk4/subclass/widget/trait.CompositeTemplateCallbacks.html">CompositeTemplateCallbacks</a> {
-    <span class="kw">const </span>CALLBACKS: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[<a href="#1755">TemplateCallback</a>];
+    <span class="kw">const </span>CALLBACKS: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[<a href="#1808">TemplateCallback</a>];
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Binds the template callbacks from this type into the default template
     /// scope for `klass`.
     </span><span class="kw">fn </span>bind_template_callbacks&lt;T: <a href="#1045-1625">WidgetClassExt</a>&gt;(klass: <span class="kw-2">&amp;mut </span>T) {
-        <a href="#1779-1783"><span class="self">Self</span>::add_callbacks_to_scope</a>(<span class="kw-2">&amp;</span><a href="#1768">klass</a>.<a href="#1609-1624">rust_template_scope</a>());
+        <a href="#1832-1836"><span class="self">Self</span>::add_callbacks_to_scope</a>(<span class="kw-2">&amp;</span><a href="#1821">klass</a>.<a href="#1609-1624">rust_template_scope</a>());
     }
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Binds the template callbacks from this type into the default template
     /// scope for `klass`, prepending `prefix` to each callback name.
     </span><span class="kw">fn </span>bind_template_callbacks_prefixed&lt;T: <a href="#1045-1625">WidgetClassExt</a>&gt;(klass: <span class="kw-2">&amp;mut </span>T, prefix: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
-        <a href="#1787-1791"><span class="self">Self</span>::add_callbacks_to_scope_prefixed</a>(<span class="kw-2">&amp;</span><a href="#1774">klass</a>.<a href="#1609-1624">rust_template_scope</a>(), <a href="#1774">prefix</a>);
+        <a href="#1840-1844"><span class="self">Self</span>::add_callbacks_to_scope_prefixed</a>(<span class="kw-2">&amp;</span><a href="#1827">klass</a>.<a href="#1609-1624">rust_template_scope</a>(), <a href="#1827">prefix</a>);
     }
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Binds the template callbacks from this type into `scope`.
@@ -3749,13 +3855,13 @@
     </span><span class="kw">fn </span>bind_template_callbacks(<span class="kw-2">&amp;mut </span><span class="self">self</span>);
 }
 
-<span class="kw">impl</span>&lt;T, U&gt; <a href="#1798-1803">CompositeTemplateCallbacksClass</a> <span class="kw">for </span>T
+<span class="kw">impl</span>&lt;T, U&gt; <a href="#1851-1856">CompositeTemplateCallbacksClass</a> <span class="kw">for </span>T
 <span class="kw">where
     </span>T: ClassStruct&lt;Type = U&gt; + <a href="#1045-1625">WidgetClassExt</a>,
-    U: ObjectSubclass&lt;Class = T&gt; + <a href="#1762-1792">CompositeTemplateCallbacks</a>,
+    U: ObjectSubclass&lt;Class = T&gt; + <a href="#1815-1845">CompositeTemplateCallbacks</a>,
 {
     <span class="kw">fn </span>bind_template_callbacks(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
-        &lt;U <span class="kw">as </span>CompositeTemplateCallbacks&gt;::bind_template_callbacks(<a class="self" href="#1810">self</a>);
+        &lt;U <span class="kw">as </span>CompositeTemplateCallbacks&gt;::bind_template_callbacks(<a class="self" href="#1863">self</a>);
     }
 }
 
@@ -3771,14 +3877,14 @@
     </span><span class="kw">fn </span>bind_template_instance_callbacks(<span class="kw-2">&amp;mut </span><span class="self">self</span>);
 }
 
-<span class="kw">impl</span>&lt;T, U, V&gt; <a href="#1820-1825">CompositeTemplateInstanceCallbacksClass</a> <span class="kw">for </span>T
+<span class="kw">impl</span>&lt;T, U, V&gt; <a href="#1873-1878">CompositeTemplateInstanceCallbacksClass</a> <span class="kw">for </span>T
 <span class="kw">where
     </span>T: ClassStruct&lt;Type = U&gt; + <a href="#1045-1625">WidgetClassExt</a>,
     U: ObjectSubclass&lt;Class = T, Type = V&gt;,
-    V: <a href="#1762-1792">CompositeTemplateCallbacks</a>,
+    V: <a href="#1815-1845">CompositeTemplateCallbacks</a>,
 {
     <span class="kw">fn </span>bind_template_instance_callbacks(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
-        &lt;V <span class="kw">as </span>CompositeTemplateCallbacks&gt;::bind_template_callbacks(<a class="self" href="#1833">self</a>);
+        &lt;V <span class="kw">as </span>CompositeTemplateCallbacks&gt;::bind_template_callbacks(<a class="self" href="#1886">self</a>);
     }
 }
 
@@ -3786,17 +3892,17 @@
     <span class="kw">fn </span>init_template(<span class="kw-2">&amp;</span><span class="self">self</span>);
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#107-394">WidgetImpl</a> + <a href="#1729-1732">CompositeTemplate</a>&gt; <a href="#1838-1840">CompositeTemplateInitializingExt</a>
+<span class="kw">impl</span>&lt;T: <a href="#107-394">WidgetImpl</a> + <a href="#1782-1785">CompositeTemplate</a>&gt; <a href="#1891-1893">CompositeTemplateInitializingExt</a>
     <span class="kw">for </span>glib::subclass::InitializingObject&lt;T&gt;
 {
     <span class="kw">fn </span>init_template(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>widget = <span class="self"><a href="#1845">self</a>
+            <span class="kw">let </span>widget = <span class="self"><a href="#1898">self</a>
                 </span>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.InitializingObject.html#method.as_ref">as_ref</a>()
                 .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;&lt;T <span class="kw">as </span>ObjectSubclass&gt;::Type&gt;();
-            <a href="../../../gtk4_sys/fn.gtk_widget_init_template.html">ffi::gtk_widget_init_template</a>(AsRef::&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;::as_ref(<a href="#1847">widget</a>).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
+            <a href="../../../gtk4_sys/fn.gtk_widget_init_template.html">ffi::gtk_widget_init_template</a>(AsRef::&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;::as_ref(<a href="#1900">widget</a>).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
 
-            &lt;T <span class="kw">as </span>CompositeTemplate&gt;::check_template_children(<a href="#1847">widget</a>);
+            &lt;T <span class="kw">as </span>CompositeTemplate&gt;::check_template_children(<a href="#1900">widget</a>);
         }
     }
 }
@@ -3807,13 +3913,13 @@
     </span><span class="kw">fn </span>dispose_template(<span class="kw-2">&amp;</span><span class="self">self</span>);
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#107-394">WidgetImpl</a> + <a href="#1729-1732">CompositeTemplate</a>&gt; <a href="#1857-1861">CompositeTemplateDisposeExt</a> <span class="kw">for </span>T {
+<span class="kw">impl</span>&lt;T: <a href="#107-394">WidgetImpl</a> + <a href="#1782-1785">CompositeTemplate</a>&gt; <a href="#1910-1914">CompositeTemplateDisposeExt</a> <span class="kw">for </span>T {
     <span class="attr">#[cfg(feature = <span class="string">"v4_8"</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_8"</span>)))]
     </span><span class="kw">fn </span>dispose_template(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_widget_dispose_template.html">ffi::gtk_widget_dispose_template</a>(
-                <a class="self" href="#1866">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.upcast_ref">upcast_ref</a>::&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a class="self" href="#1919">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.upcast_ref">upcast_ref</a>::&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 &lt;T <span class="kw">as </span>ObjectSubclass&gt;::Type::static_type().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
             );
         }
