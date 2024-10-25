@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/media_stream.rs`."><title>media_stream.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-a5dc3bae.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (4f2f477fd 2024-10-23)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/media_stream.rs`."><title>media_stream.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-4ee5002b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (a93c1718c 2024-10-24)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -306,25 +306,31 @@
 <a href="#232" id="232">232</a>
 <a href="#233" id="233">233</a>
 <a href="#234" id="234">234</a>
-<a href="#235" id="235">235</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#235" id="235">235</a>
+<a href="#236" id="236">236</a>
+<a href="#237" id="237">237</a>
+<a href="#238" id="238">238</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! Traits intended for subclassing [`MediaStream`].
 
-</span><span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
+</span><span class="kw">use </span><a href="../../../gdk4/auto/paintable/struct.Paintable.html">gdk::Paintable</a>;
+<span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
 
 <span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#91-174">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/media_stream.rs.html#14-126">MediaStream</a>};
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_stream/trait.MediaStreamImpl.html">MediaStreamImpl</a>: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;&gt; {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_stream/trait.MediaStreamImpl.html">MediaStreamImpl</a>:
+    <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt; + IsA&lt;<a href="../../../gdk4/auto/paintable/struct.Paintable.html">Paintable</a>&gt;&gt;
+{
     <span class="doccomment">/// Pauses playback of the stream.
     ///
     /// If the stream is not playing, do nothing.
     </span><span class="kw">fn </span>pause(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#14">self</a>.<a href="#77-86">parent_pause</a>()
+        <a class="self" href="#17">self</a>.<a href="#80-89">parent_pause</a>()
     }
 
     <span class="kw">fn </span>play(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
-        <a class="self" href="#18">self</a>.<a href="#89-102">parent_play</a>()
+        <a class="self" href="#21">self</a>.<a href="#92-105">parent_play</a>()
     }
 
     <span class="doccomment">/// Called by users to attach the media stream to a [`gdk::Surface`][crate::gdk::Surface] they manage.
@@ -346,7 +352,7 @@
     /// ## `surface`
     /// a [`gdk::Surface`][crate::gdk::Surface]
     </span><span class="kw">fn </span>realize(<span class="kw-2">&amp;</span><span class="self">self</span>, surface: <a href="../../../gdk4/auto/surface/struct.Surface.html">gdk::Surface</a>) {
-        <a class="self" href="#40">self</a>.<a href="#104-116">parent_realize</a>(<a href="#40">surface</a>)
+        <a class="self" href="#43">self</a>.<a href="#107-119">parent_realize</a>(<a href="#43">surface</a>)
     }
 
     <span class="doccomment">/// Start a seek operation on @self to @timestamp.
@@ -363,7 +369,7 @@
     /// ## `timestamp`
     /// timestamp to seek to.
     </span><span class="kw">fn </span>seek(<span class="kw-2">&amp;</span><span class="self">self</span>, timestamp: <a href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>) {
-        <a class="self" href="#57">self</a>.<a href="#118-130">parent_seek</a>(<a href="#57">timestamp</a>)
+        <a class="self" href="#60">self</a>.<a href="#121-133">parent_seek</a>(<a href="#60">timestamp</a>)
     }
 
     <span class="doccomment">/// Undoes a previous call to gtk_media_stream_realize().
@@ -373,23 +379,23 @@
     /// ## `surface`
     /// the [`gdk::Surface`][crate::gdk::Surface] the stream was realized with
     </span><span class="kw">fn </span>unrealize(<span class="kw-2">&amp;</span><span class="self">self</span>, surface: <a href="../../../gdk4/auto/surface/struct.Surface.html">gdk::Surface</a>) {
-        <a class="self" href="#67">self</a>.<a href="#132-144">parent_unrealize</a>(<a href="#67">surface</a>)
+        <a class="self" href="#70">self</a>.<a href="#135-147">parent_unrealize</a>(<a href="#70">surface</a>)
     }
 
     <span class="kw">fn </span>update_audio(<span class="kw-2">&amp;</span><span class="self">self</span>, muted: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, volume: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) {
-        <a class="self" href="#71">self</a>.<a href="#146-159">parent_update_audio</a>(<a href="#71">muted</a>, <a href="#71">volume</a>)
+        <a class="self" href="#74">self</a>.<a href="#149-162">parent_update_audio</a>(<a href="#74">muted</a>, <a href="#74">volume</a>)
     }
 }
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_stream/trait.MediaStreamImplExt.html">MediaStreamImplExt</a>: <a href="#10-74">MediaStreamImpl</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_stream/trait.MediaStreamImplExt.html">MediaStreamImplExt</a>: <a href="#11-77">MediaStreamImpl</a> {
     <span class="kw">fn </span>parent_pause(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#79">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
-            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#80">parent_class</a>)
+            <span class="kw">let </span>parent_class = <a href="#82">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
+            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#83">parent_class</a>)
                 .pause
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"No parent class impl for \"pause\""</span>);
-            <a href="#81">f</a>(<a class="self" href="#77">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <a href="#84">f</a>(<a class="self" href="#80">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
         }
     }
 
@@ -397,9 +403,9 @@
     </span><span class="kw">fn </span>parent_play(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#91">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#92">parent_class</a>).play {
-                <span class="kw">return </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#93">f</a>(<span class="self"><a href="#89">self</a>
+            <span class="kw">let </span>parent_class = <a href="#94">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#95">parent_class</a>).play {
+                <span class="kw">return </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#96">f</a>(<span class="self"><a href="#92">self</a>
                     </span>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>()
                     .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;()
                     .<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>()
@@ -412,13 +418,13 @@
     <span class="kw">fn </span>parent_realize(<span class="kw-2">&amp;</span><span class="self">self</span>, surface: <a href="../../../gdk4/auto/surface/struct.Surface.html">gdk::Surface</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#106">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
-            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#107">parent_class</a>)
+            <span class="kw">let </span>parent_class = <a href="#109">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
+            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#110">parent_class</a>)
                 .realize
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"No parent class impl for \"realize\""</span>);
-            <a href="#108">f</a>(
-                <a class="self" href="#104">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#104">surface</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <a href="#111">f</a>(
+                <a class="self" href="#107">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#107">surface</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             )
         }
     }
@@ -426,13 +432,13 @@
     <span class="kw">fn </span>parent_seek(<span class="kw-2">&amp;</span><span class="self">self</span>, timestamp: <a href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#120">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
-            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#121">parent_class</a>)
+            <span class="kw">let </span>parent_class = <a href="#123">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
+            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#124">parent_class</a>)
                 .seek
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"No parent class impl for \"realize\""</span>);
-            <a href="#122">f</a>(
-                <a class="self" href="#118">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#118">timestamp</a>,
+            <a href="#125">f</a>(
+                <a class="self" href="#121">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#121">timestamp</a>,
             )
         }
     }
@@ -440,13 +446,13 @@
     <span class="kw">fn </span>parent_unrealize(<span class="kw-2">&amp;</span><span class="self">self</span>, surface: <a href="../../../gdk4/auto/surface/struct.Surface.html">gdk::Surface</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#134">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
-            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#135">parent_class</a>)
+            <span class="kw">let </span>parent_class = <a href="#137">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
+            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#138">parent_class</a>)
                 .unrealize
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"No parent class impl for \"unrealize\""</span>);
-            <a href="#136">f</a>(
-                <a class="self" href="#132">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#132">surface</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+            <a href="#139">f</a>(
+                <a class="self" href="#135">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#135">surface</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             )
         }
     }
@@ -454,91 +460,91 @@
     <span class="kw">fn </span>parent_update_audio(<span class="kw-2">&amp;</span><span class="self">self</span>, muted: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, volume: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#148">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
-            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#149">parent_class</a>)
+            <span class="kw">let </span>parent_class = <a href="#151">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStreamClass.html">ffi::GtkMediaStreamClass</a>;
+            <span class="kw">let </span>f = (<span class="kw-2">*</span><a href="#152">parent_class</a>)
                 .update_audio
                 .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"No parent class impl for \"update_audio\""</span>);
-            <a href="#150">f</a>(
-                <a class="self" href="#146">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#146">muted</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
-                <a href="#146">volume</a>,
+            <a href="#153">f</a>(
+                <a class="self" href="#149">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_stream.rs.html#14-126">MediaStream</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#149">muted</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
+                <a href="#149">volume</a>,
             )
         }
     }
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt; <a href="#76-160">MediaStreamImplExt</a> <span class="kw">for </span>T {}
+<span class="kw">impl</span>&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt; <a href="#79-163">MediaStreamImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/media_stream.rs.html#14-126">MediaStream</a> {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/media_stream.rs.html#14-126">MediaStream</a> {
     <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>glib::Class&lt;<span class="self">Self</span>&gt;) {
-        <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#165">class</a>);
+        <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#168">class</a>);
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
-        <span class="kw">let </span>klass = <a href="#165">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
-        <a href="#170">klass</a>.pause = <span class="prelude-val">Some</span>(media_stream_pause::&lt;T&gt;);
-        <a href="#170">klass</a>.play = <span class="prelude-val">Some</span>(media_stream_play::&lt;T&gt;);
-        <a href="#170">klass</a>.realize = <span class="prelude-val">Some</span>(media_stream_realize::&lt;T&gt;);
-        <a href="#170">klass</a>.seek = <span class="prelude-val">Some</span>(media_stream_seek::&lt;T&gt;);
-        <a href="#170">klass</a>.unrealize = <span class="prelude-val">Some</span>(media_stream_unrealize::&lt;T&gt;);
-        <a href="#170">klass</a>.update_audio = <span class="prelude-val">Some</span>(media_stream_update_audio::&lt;T&gt;);
+        <span class="kw">let </span>klass = <a href="#168">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
+        <a href="#173">klass</a>.pause = <span class="prelude-val">Some</span>(media_stream_pause::&lt;T&gt;);
+        <a href="#173">klass</a>.play = <span class="prelude-val">Some</span>(media_stream_play::&lt;T&gt;);
+        <a href="#173">klass</a>.realize = <span class="prelude-val">Some</span>(media_stream_realize::&lt;T&gt;);
+        <a href="#173">klass</a>.seek = <span class="prelude-val">Some</span>(media_stream_seek::&lt;T&gt;);
+        <a href="#173">klass</a>.unrealize = <span class="prelude-val">Some</span>(media_stream_unrealize::&lt;T&gt;);
+        <a href="#173">klass</a>.update_audio = <span class="prelude-val">Some</span>(media_stream_update_audio::&lt;T&gt;);
     }
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_pause&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStream.html">ffi::GtkMediaStream</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#180">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#181">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_pause&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStream.html">ffi::GtkMediaStream</a>) {
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#183">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#184">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#182">imp</a>.<a href="#14-16">pause</a>()
+    <a href="#185">imp</a>.<a href="#17-19">pause</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_play&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_play&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStream.html">ffi::GtkMediaStream</a>,
 ) -&gt; glib::ffi::gboolean {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#188">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#190">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#191">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#193">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#191">imp</a>.<a href="#18-20">play</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
+    <a href="#194">imp</a>.<a href="#21-23">play</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_realize&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_realize&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStream.html">ffi::GtkMediaStream</a>,
     surface: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkSurface.html">gdk::ffi::GdkSurface</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#197">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#200">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#200">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#203">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#201">imp</a>.<a href="#40-42">realize</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#198">surface</a>))
+    <a href="#204">imp</a>.<a href="#43-45">realize</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#201">surface</a>))
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_seek&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_seek&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStream.html">ffi::GtkMediaStream</a>,
     timestamp: <a href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#207">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#210">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#210">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#213">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#211">imp</a>.<a href="#57-59">seek</a>(<a href="#208">timestamp</a>)
+    <a href="#214">imp</a>.<a href="#60-62">seek</a>(<a href="#211">timestamp</a>)
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_unrealize&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_unrealize&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStream.html">ffi::GtkMediaStream</a>,
     surface: <span class="kw-2">*mut </span><a href="../../../gdk4_sys/struct.GdkSurface.html">gdk::ffi::GdkSurface</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#217">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#220">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#220">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#223">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#221">imp</a>.<a href="#67-69">unrealize</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#218">surface</a>))
+    <a href="#224">imp</a>.<a href="#70-72">unrealize</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#221">surface</a>))
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_update_audio&lt;T: <a href="#10-74">MediaStreamImpl</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_stream_update_audio&lt;T: <a href="#11-77">MediaStreamImpl</a>&gt;(
     ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaStream.html">ffi::GtkMediaStream</a>,
     muted: glib::ffi::gboolean,
     volume: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
 ) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#227">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#231">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#230">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#234">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#232">imp</a>.<a href="#71-73">update_audio</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#228">muted</a>), <a href="#229">volume</a>)
+    <a href="#235">imp</a>.<a href="#74-76">update_audio</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#231">muted</a>), <a href="#232">volume</a>)
 }
 </code></pre></div></section></main></body></html>

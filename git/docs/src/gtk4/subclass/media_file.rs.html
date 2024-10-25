@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/media_file.rs`."><title>media_file.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-a5dc3bae.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (4f2f477fd 2024-10-23)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/media_file.rs`."><title>media_file.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-4ee5002b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (a93c1718c 2024-10-24)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -136,31 +136,37 @@
 <a href="#62" id="62">62</a>
 <a href="#63" id="63">63</a>
 <a href="#64" id="64">64</a>
-<a href="#65" id="65">65</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#65" id="65">65</a>
+<a href="#66" id="66">66</a>
+<a href="#67" id="67">67</a>
+<a href="#68" id="68">68</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! Traits intended for subclassing [`MediaFile`].
 
-</span><span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
+</span><span class="kw">use </span><a href="../../../gdk4/auto/paintable/struct.Paintable.html">gdk::Paintable</a>;
+<span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
 
 <span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#91-174">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/media_file.rs.html#13-132">MediaFile</a>};
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_file/trait.MediaFileImpl.html">MediaFileImpl</a>: <a href="media_stream.rs.html#10-74">MediaStreamImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/media_file.rs.html#13-132">MediaFile</a>&gt;&gt; {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_file/trait.MediaFileImpl.html">MediaFileImpl</a>:
+    <a href="media_stream.rs.html#11-77">MediaStreamImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/media_file.rs.html#13-132">MediaFile</a>&gt; + IsA&lt;<a href="../../../gdk4/auto/paintable/struct.Paintable.html">Paintable</a>&gt;&gt;
+{
     <span class="kw">fn </span>close(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#11">self</a>.<a href="#20-28">parent_close</a>()
+        <a class="self" href="#14">self</a>.<a href="#23-31">parent_close</a>()
     }
     <span class="kw">fn </span>open(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <a class="self" href="#14">self</a>.<a href="#30-38">parent_open</a>()
+        <a class="self" href="#17">self</a>.<a href="#33-41">parent_open</a>()
     }
 }
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_file/trait.MediaFileImplExt.html">MediaFileImplExt</a>: <a href="#10-17">MediaFileImpl</a> {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/media_file/trait.MediaFileImplExt.html">MediaFileImplExt</a>: <a href="#11-20">MediaFileImpl</a> {
     <span class="kw">fn </span>parent_close(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#22">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFileClass.html">ffi::GtkMediaFileClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#23">parent_class</a>).close {
-                <a href="#24">f</a>(<a class="self" href="#20">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_file.rs.html#13-132">MediaFile</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#25">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFileClass.html">ffi::GtkMediaFileClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#26">parent_class</a>).close {
+                <a href="#27">f</a>(<a class="self" href="#23">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_file.rs.html#13-132">MediaFile</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
@@ -168,37 +174,37 @@
     <span class="kw">fn </span>parent_open(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
-            <span class="kw">let </span>parent_class = <a href="#32">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFileClass.html">ffi::GtkMediaFileClass</a>;
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#33">parent_class</a>).open {
-                <a href="#34">f</a>(<a class="self" href="#30">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_file.rs.html#13-132">MediaFile</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
+            <span class="kw">let </span>parent_class = <a href="#35">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFileClass.html">ffi::GtkMediaFileClass</a>;
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(f) = (<span class="kw-2">*</span><a href="#36">parent_class</a>).open {
+                <a href="#37">f</a>(<a class="self" href="#33">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclassExt.html#tymethod.obj">obj</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>::&lt;<a href="../auto/media_file.rs.html#13-132">MediaFile</a>&gt;().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
             }
         }
     }
 }
 
-<span class="kw">impl</span>&lt;T: <a href="#10-17">MediaFileImpl</a>&gt; <a href="#19-39">MediaFileImplExt</a> <span class="kw">for </span>T {}
+<span class="kw">impl</span>&lt;T: <a href="#11-20">MediaFileImpl</a>&gt; <a href="#22-42">MediaFileImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#10-17">MediaFileImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/media_file.rs.html#13-132">MediaFile</a> {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#11-20">MediaFileImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/media_file.rs.html#13-132">MediaFile</a> {
     <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>glib::Class&lt;<span class="self">Self</span>&gt;) {
-        <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#44">class</a>);
+        <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#47">class</a>);
 
-        <span class="kw">let </span>klass = <a href="#44">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
-        <a href="#47">klass</a>.close = <span class="prelude-val">Some</span>(media_file_close::&lt;T&gt;);
-        <a href="#47">klass</a>.open = <span class="prelude-val">Some</span>(media_file_open::&lt;T&gt;);
+        <span class="kw">let </span>klass = <a href="#47">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
+        <a href="#50">klass</a>.close = <span class="prelude-val">Some</span>(media_file_close::&lt;T&gt;);
+        <a href="#50">klass</a>.open = <span class="prelude-val">Some</span>(media_file_open::&lt;T&gt;);
     }
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_file_close&lt;T: <a href="#10-17">MediaFileImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFile.html">ffi::GtkMediaFile</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#53">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#54">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_file_close&lt;T: <a href="#11-20">MediaFileImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFile.html">ffi::GtkMediaFile</a>) {
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#56">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#57">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#55">imp</a>.<a href="#11-13">close</a>()
+    <a href="#58">imp</a>.<a href="#14-16">close</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_file_open&lt;T: <a href="#10-17">MediaFileImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFile.html">ffi::GtkMediaFile</a>) {
-    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#60">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
-    <span class="kw">let </span>imp = <a href="#61">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>media_file_open&lt;T: <a href="#11-20">MediaFileImpl</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkMediaFile.html">ffi::GtkMediaFile</a>) {
+    <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#63">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
+    <span class="kw">let </span>imp = <a href="#64">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <a href="#62">imp</a>.<a href="#14-16">open</a>()
+    <a href="#65">imp</a>.<a href="#17-19">open</a>()
 }
 </code></pre></div></section></main></body></html>
