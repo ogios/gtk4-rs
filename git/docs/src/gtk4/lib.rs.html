@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-4ee5002b.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (a93c1718c 2024-10-24)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (759e07f06 2024-10-30)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -328,10 +328,12 @@
 <a href="#254" id="254">254</a>
 <a href="#255" id="255">255</a>
 <a href="#256" id="256">256</a>
-<a href="#257" id="257">257</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#257" id="257">257</a>
+<a href="#258" id="258">258</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#![cfg_attr(docsrs, feature(doc_cfg))]
 #![allow(deprecated)]
+#![allow(clippy::manual_c_str_literals)]
 #![doc = <span class="macro">include_str!</span>(<span class="string">"../README.md"</span>)]
 
 </span><span class="comment">// Re-export gtk dependencies
@@ -432,26 +434,26 @@
 {
     <span class="macro">skip_assert_initialized!</span>();
     <span class="kw">static </span>TEST_THREAD_WORKER: std::sync::OnceLock&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_pool/struct.ThreadPool.html">glib::ThreadPool</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">std::sync::OnceLock::new</a>();
-    <span class="kw">let </span>pool = <a href="#104">TEST_THREAD_WORKER</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| {
+    <span class="kw">let </span>pool = <a href="#105">TEST_THREAD_WORKER</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| {
         <span class="kw">let </span>pool = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_pool/struct.ThreadPool.html#method.exclusive">glib::ThreadPool::exclusive</a>(<span class="number">1</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>();
-        <a href="#106">pool</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_pool/struct.ThreadPool.html#method.push">push</a>(<span class="kw">move </span>|| {
+        <a href="#107">pool</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_pool/struct.ThreadPool.html#method.push">push</a>(<span class="kw">move </span>|| {
             <a href="rt.rs.html#130-162"><span class="kw">crate</span>::init</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"Tests failed to initialize gtk"</span>);
         })
         .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"Failed to schedule a test call"</span>);
-        <a href="#106">pool</a>
+        <a href="#107">pool</a>
     });
 
     <span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/index.html">sync::mpsc</a>};
 
     <span class="kw">let </span>(tx, rx) = <a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/fn.sync_channel.html">mpsc::sync_channel</a>(<span class="number">1</span>);
-    <a href="#105">pool</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_pool/struct.ThreadPool.html#method.push">push</a>(<span class="kw">move </span>|| {
-        <a href="#116">tx</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/struct.SyncSender.html#method.send">send</a>(<a href="https://doc.rust-lang.org/nightly/std/panic/fn.catch_unwind.html">panic::catch_unwind</a>(<a href="#98">function</a>))
+    <a href="#106">pool</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_pool/struct.ThreadPool.html#method.push">push</a>(<span class="kw">move </span>|| {
+        <a href="#117">tx</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/struct.SyncSender.html#method.send">send</a>(<a href="https://doc.rust-lang.org/nightly/std/panic/fn.catch_unwind.html">panic::catch_unwind</a>(<a href="#99">function</a>))
             .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"Failed to return result from thread pool"</span>));
     })
     .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"Failed to schedule a test call"</span>);
-    <a href="#116">rx</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/struct.Receiver.html#method.recv">recv</a>()
+    <a href="#117">rx</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/struct.Receiver.html#method.recv">recv</a>()
         .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"Failed to receive result from thread pool"</span>)
-        .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|e| <a href="https://doc.rust-lang.org/nightly/std/panic/fn.resume_unwind.html">std::panic::resume_unwind</a>(<a href="#124">e</a>))
+        .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|e| <a href="https://doc.rust-lang.org/nightly/std/panic/fn.resume_unwind.html">std::panic::resume_unwind</a>(<a href="#125">e</a>))
 }
 
 <span class="attr">#[allow(clippy::derived_hash_with_manual_eq)]
@@ -467,8 +469,8 @@
 <span class="kw">pub mod </span><a href="builders.rs.html#4-9">builders</a>;
 <span class="kw">pub mod </span><a href="prelude.rs.html#4-38">prelude</a>;
 
-<span class="kw">pub use </span><a href="#130">auto</a>::<span class="kw-2">*</span>;
-<span class="kw">pub use </span><a href="#95">rt</a>::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><a href="#131">auto</a>::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><a href="#96">rt</a>::<span class="kw-2">*</span>;
 
 <span class="kw">pub mod </span><a href="accessible.rs.html#3-361">accessible</a>;
 <span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
@@ -575,7 +577,7 @@
 <span class="kw">pub use </span><a href="css_location.rs.html#8-12">css_location::CssLocation</a>;
 <span class="kw">pub use </span><a href="enums.rs.html#77-107">enums::Align</a>;
 <span class="kw">pub use </span><a href="expression_watch.rs.html#7-20">expression_watch::ExpressionWatch</a>;
-<span class="kw">pub use </span><a href="#188">functions</a>::<span class="kw-2">*</span>;
+<span class="kw">pub use </span><a href="#189">functions</a>::<span class="kw-2">*</span>;
 <span class="kw">pub use </span><a href="keyval_trigger.rs.html#10-35">keyval_trigger::KeyvalTrigger</a>;
 <span class="kw">pub use </span><a href="mnemonic_trigger.rs.html#10-32">mnemonic_trigger::MnemonicTrigger</a>;
 <span class="kw">pub use </span><a href="pad_action_entry.rs.html#9-19">pad_action_entry::PadActionEntry</a>;
