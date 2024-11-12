@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (759e07f06 2024-10-30)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -50,7 +50,7 @@
             </section>
         ` };
 
-        if ("0.9" == "master") {
+        if ("0.9" == "main") {
             document.body.insertAdjacentHTML(
                 'beforeend',
                 popup("This is the development version. Go to latest stable version.", "stable/latest")
@@ -328,7 +328,10 @@
 <a href="#254" id="254">254</a>
 <a href="#255" id="255">255</a>
 <a href="#256" id="256">256</a>
-<a href="#257" id="257">257</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#257" id="257">257</a>
+<a href="#258" id="258">258</a>
+<a href="#259" id="259">259</a>
+<a href="#260" id="260">260</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#![cfg_attr(docsrs, feature(doc_cfg))]
 #![allow(deprecated)]
@@ -457,10 +460,10 @@
 <span class="attr">#[allow(clippy::derived_hash_with_manual_eq)]
 #[allow(clippy::too_many_arguments)]
 #[allow(clippy::type_complexity)]
-</span><span class="kw">mod </span><a href="auto/mod.rs.html#5-1785">auto</a>;
+</span><span class="kw">mod </span><a href="auto/mod.rs.html#5-1788">auto</a>;
 
 <span class="attr">#[macro_use]
-</span><span class="kw">pub mod </span><a href="subclass/mod.rs.html#4-174">subclass</a>;
+</span><span class="kw">pub mod </span><a href="subclass/mod.rs.html#4-180">subclass</a>;
 <span class="attr">#[macro_use]
 </span><span class="kw">mod </span><a href="expression.rs.html#3-444">expression</a>;
 
@@ -473,7 +476,7 @@
 <span class="kw">pub mod </span><a href="accessible.rs.html#3-366">accessible</a>;
 <span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_14"</span>)))]
-</span><span class="kw">mod </span><a href="accessible_text_range.rs.html#3-26">accessible_text_range</a>;
+</span><span class="kw">mod </span><a href="accessible_text_range.rs.html#3-42">accessible_text_range</a>;
 <span class="kw">mod </span><a href="actionable.rs.html#3-39">actionable</a>;
 <span class="kw">mod </span><a href="application.rs.html#3-52">application</a>;
 <span class="kw">mod </span><a href="assistant.rs.html#3-20">assistant</a>;
@@ -556,7 +559,7 @@
 <span class="kw">mod </span><a href="string_object.rs.html#3-98">string_object</a>;
 <span class="kw">mod </span><a href="style_context.rs.html#3-63">style_context</a>;
 <span class="kw">mod </span><a href="text.rs.html#3-434">text</a>;
-<span class="kw">mod </span><a href="text_buffer.rs.html#3-185">text_buffer</a>;
+<span class="kw">mod </span><a href="text_buffer.rs.html#3-252">text_buffer</a>;
 <span class="kw">mod </span><a href="tree_model.rs.html#3-72">tree_model</a>;
 <span class="kw">mod </span><a href="tree_model_filter.rs.html#3-97">tree_model_filter</a>;
 <span class="kw">mod </span><a href="tree_path.rs.html#3-35">tree_path</a>;
@@ -568,6 +571,9 @@
 <span class="kw">mod </span><a href="tree_view_column.rs.html#3-102">tree_view_column</a>;
 <span class="kw">mod </span><a href="widget.rs.html#3-123">widget</a>;
 
+<span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_14"</span>)))]
+</span><span class="kw">pub use </span><a href="accessible_text_range.rs.html#6-10">accessible_text_range::AccessibleTextRange</a>;
 <span class="kw">pub use </span><a href="bitset_iter.rs.html#18">bitset_iter::BitsetIter</a>;
 <span class="kw">pub use </span><a href="border.rs.html#8-20">border::Border</a>;
 <span class="kw">pub use </span><a href="builder_cscope.rs.html#5-12">builder_cscope::BuilderCScope</a>;
@@ -582,7 +588,7 @@
 <span class="kw">pub use </span><a href="page_range.rs.html#8-14">page_range::PageRange</a>;
 <span class="kw">pub use </span><a href="recent_data.rs.html#8-19">recent_data::RecentData</a>;
 <span class="kw">pub use </span><a href="response_type.rs.html#14-52">response_type::ResponseType</a>;
-<span class="kw">pub use </span><a href="subclass/widget.rs.html#1636-1641">subclass::widget::TemplateChild</a>;
+<span class="kw">pub use </span><a href="subclass/widget.rs.html#1642-1647">subclass::widget::TemplateChild</a>;
 <span class="kw">pub use </span><a href="tree_sortable.rs.html#12-16">tree_sortable::SortColumn</a>;
 <span class="kw">pub use </span><a href="widget.rs.html#97-100">widget::TickCallbackId</a>;
 </code></pre></div></section></main></body></html>

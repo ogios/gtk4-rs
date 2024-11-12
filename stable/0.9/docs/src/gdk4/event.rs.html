@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/event.rs`."><title>event.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (759e07f06 2024-10-30)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/event.rs`."><title>event.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -50,7 +50,7 @@
             </section>
         ` };
 
-        if ("0.9" == "master") {
+        if ("0.9" == "main") {
             document.body.insertAdjacentHTML(
                 'beforeend',
                 popup("This is the development version. Go to latest stable version.", "stable/latest")
@@ -313,7 +313,7 @@
 
 </span><span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
 
-<span class="kw">use crate</span>::{<a href="../../gdk4_sys/index.html">ffi</a>, <a href="lib.rs.html#79">prelude</a>::<span class="kw-2">*</span>, <a href="auto/event.rs.html#11-27">Event</a>, <a href="auto/enums.rs.html#791-891">EventType</a>};
+<span class="kw">use crate</span>::{<a href="../../gdk4_sys/index.html">ffi</a>, <a href="lib.rs.html#79">prelude</a>::<span class="kw-2">*</span>, <a href="auto/event.rs.html#11-27">Event</a>, <a href="auto/enums.rs.html#913-1013">EventType</a>};
 
 <span class="kw">impl </span><a href="auto/event.rs.html#11-27">Event</a> {
     <span class="attr">#[inline]
@@ -476,7 +476,7 @@
             .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.field">field</a>(<span class="string">"pointer_emulated"</span>, <span class="kw-2">&amp;</span><a class="self" href="#160">self</a>.<a href="auto/event.rs.html#236-242">is_pointer_emulated</a>())
             .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.field">field</a>(<span class="string">"position"</span>, <span class="kw-2">&amp;</span><a class="self" href="#160">self</a>.<a href="auto/event.rs.html#259-274">position</a>())
             .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.field">field</a>(<span class="string">"time"</span>, <span class="kw-2">&amp;</span><a class="self" href="#160">self</a>.<a href="auto/event.rs.html#308-310">time</a>())
-            .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.field">field</a>(<span class="string">"triggers_context_menu"</span>, <span class="kw-2">&amp;</span><a class="self" href="#160">self</a>.<a href="auto/event.rs.html#324-330">triggers_context_menu</a>())
+            .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.field">field</a>(<span class="string">"triggers_context_menu"</span>, <span class="kw-2">&amp;</span><a class="self" href="#160">self</a>.<a href="auto/event.rs.html#330-336">triggers_context_menu</a>())
             .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.finish">finish</a>()
     }
 }
@@ -498,7 +498,7 @@
 </span><span class="kw">pub unsafe trait </span><a href="../../gdk4/prelude/trait.EventKind.html">EventKind</a>:
     <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/types/trait.StaticType.html">StaticType</a> + FromGlibPtrFull&lt;<span class="kw-2">*mut </span><a href="../../gdk4_sys/struct.GdkEvent.html">ffi::GdkEvent</a>&gt; + <span class="lifetime">'static
 </span>{
-    <span class="kw">fn </span>event_types() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[<a href="auto/enums.rs.html#791-891">EventType</a>];
+    <span class="kw">fn </span>event_types() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[<a href="auto/enums.rs.html#913-1013">EventType</a>];
 }
 
 <span class="macro">macro_rules!</span> define_event {

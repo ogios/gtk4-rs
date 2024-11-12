@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/mod.rs`."><title>mod.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (759e07f06 2024-10-30)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/mod.rs`."><title>mod.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -50,7 +50,7 @@
             </section>
         ` };
 
-        if ("0.9" == "master") {
+        if ("0.9" == "main") {
             document.body.insertAdjacentHTML(
                 'beforeend',
                 popup("This is the development version. Go to latest stable version.", "stable/latest")
@@ -245,7 +245,13 @@
 <a href="#171" id="171">171</a>
 <a href="#172" id="172">172</a>
 <a href="#173" id="173">173</a>
-<a href="#174" id="174">174</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a></pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! Traits intended for creating custom types.
@@ -267,6 +273,9 @@
 <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
 </span><span class="kw">pub mod </span><a href="accessible_range.rs.html#4-63">accessible_range</a>;
+<span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_14"</span>)))]
+</span><span class="kw">pub mod </span><a href="accessible_text.rs.html#4-688">accessible_text</a>;
 <span class="kw">pub mod </span><a href="actionable.rs.html#4-143">actionable</a>;
 <span class="kw">pub mod </span><a href="adjustment.rs.html#4-73">adjustment</a>;
 <span class="kw">pub mod </span><a href="application.rs.html#4-121">application</a>;
@@ -329,7 +338,7 @@
 <span class="kw">pub mod </span><a href="tree_drag_source.rs.html#4-138">tree_drag_source</a>;
 <span class="kw">pub mod </span><a href="tree_model_filter.rs.html#4-123">tree_model_filter</a>;
 <span class="kw">pub mod </span><a href="tree_view.rs.html#4-512">tree_view</a>;
-<span class="kw">pub mod </span><a href="widget.rs.html#4-1885">widget</a>;
+<span class="kw">pub mod </span><a href="widget.rs.html#4-1896">widget</a>;
 <span class="kw">pub mod </span><a href="window.rs.html#4-159">window</a>;
 <span class="kw">pub mod </span><a href="window_group.rs.html#4-10">window_group</a>;
 
@@ -345,6 +354,9 @@
     <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::accessible_range::{<a href="accessible_range.rs.html#11-15">AccessibleRangeImpl</a>, <a href="accessible_range.rs.html#22-43">AccessibleRangeImplExt</a>};
+    <span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_14"</span>)))]
+    </span><span class="kw">pub use </span><span class="kw">super</span>::accessible_text::{<a href="accessible_text.rs.html#12-60">AccessibleTextImpl</a>, <a href="accessible_text.rs.html#62-317">AccessibleTextImplExt</a>};
     <span class="attr">#[cfg(feature = <span class="string">"v4_12"</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_12"</span>)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::section_model::{<a href="section_model.rs.html#11-16">SectionModelImpl</a>, <a href="section_model.rs.html#23-48">SectionModelImplExt</a>};
@@ -410,10 +422,10 @@
         tree_model_filter::{<a href="tree_model_filter.rs.html#12-26">TreeModelFilterImpl</a>, <a href="tree_model_filter.rs.html#35-80">TreeModelFilterImplExt</a>},
         tree_view::{<a href="tree_view.rs.html#15-84">TreeViewImpl</a>, <a href="tree_view.rs.html#93-326">TreeViewImplExt</a>},
         widget::{
-            <a href="widget.rs.html#1734-1737">CompositeTemplate</a>, <a href="widget.rs.html#1767-1797">CompositeTemplateCallbacks</a>, <a href="widget.rs.html#1803-1808">CompositeTemplateCallbacksClass</a>,
-            <a href="widget.rs.html#1743-1748">CompositeTemplateClass</a>, <a href="widget.rs.html#1864-1868">CompositeTemplateDisposeExt</a>, <a href="widget.rs.html#1843-1845">CompositeTemplateInitializingExt</a>,
-            <a href="widget.rs.html#1825-1830">CompositeTemplateInstanceCallbacksClass</a>, <a href="widget.rs.html#1636-1641">TemplateChild</a>, <a href="widget.rs.html#1050-1630">WidgetClassExt</a>, <a href="widget.rs.html#107-394">WidgetImpl</a>,
-            <a href="widget.rs.html#401-737">WidgetImplExt</a>,
+            <a href="widget.rs.html#1745-1748">CompositeTemplate</a>, <a href="widget.rs.html#1778-1808">CompositeTemplateCallbacks</a>, <a href="widget.rs.html#1814-1819">CompositeTemplateCallbacksClass</a>,
+            <a href="widget.rs.html#1754-1759">CompositeTemplateClass</a>, <a href="widget.rs.html#1875-1879">CompositeTemplateDisposeExt</a>, <a href="widget.rs.html#1854-1856">CompositeTemplateInitializingExt</a>,
+            <a href="widget.rs.html#1836-1841">CompositeTemplateInstanceCallbacksClass</a>, <a href="widget.rs.html#1642-1647">TemplateChild</a>, <a href="widget.rs.html#1056-1636">WidgetClassExt</a>, <a href="widget.rs.html#113-400">WidgetImpl</a>,
+            <a href="widget.rs.html#407-743">WidgetImplExt</a>,
         },
         window::{<a href="window.rs.html#10-37">WindowImpl</a>, <a href="window.rs.html#44-103">WindowImplExt</a>},
         <a href="window_group.rs.html#8">window_group::WindowGroupImpl</a>,

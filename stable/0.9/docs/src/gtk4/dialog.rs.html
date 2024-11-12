@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/dialog.rs`."><title>dialog.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (759e07f06 2024-10-30)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/dialog.rs`."><title>dialog.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -50,7 +50,7 @@
             </section>
         ` };
 
-        if ("0.9" == "master") {
+        if ("0.9" == "main") {
             document.body.insertAdjacentHTML(
                 'beforeend',
                 popup("This is the development version. Go to latest stable version.", "stable/latest")
@@ -484,13 +484,13 @@
 
             <span class="kw">let </span>sender = <a href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html#method.new">Cell::new</a>(<span class="prelude-val">Some</span>(<a href="#168">sender</a>));
 
-            <span class="kw">let </span>response_handler = <a class="self" href="#166">self</a>.<a href="auto/dialog.rs.html#1729-1755">connect_response</a>(<span class="kw">move </span>|<span class="kw">_</span>, response_type| {
+            <span class="kw">let </span>response_handler = <a class="self" href="#166">self</a>.<a href="auto/dialog.rs.html#1730-1756">connect_response</a>(<span class="kw">move </span>|<span class="kw">_</span>, response_type| {
                 <span class="kw">if let </span><span class="prelude-val">Some</span>(m) = <a href="#170">sender</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html#method.replace">replace</a>(<span class="prelude-val">None</span>) {
                     <span class="kw">let </span>_result = <a href="#173">m</a>.send(<a href="#172">response_type</a>);
                 }
             });
 
-            <a class="self" href="#166">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/window.rs.html#1929-1933">present</a>();
+            <a class="self" href="#166">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/window.rs.html#1938-1942">present</a>();
 
             <span class="kw">if let </span><span class="prelude-val">Ok</span>(response) = <a href="#168">receiver</a>.<span class="kw">await </span>{
                 <a class="self" href="#166">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.ObjectExt.html#tymethod.disconnect">disconnect</a>(<a href="#172">response_handler</a>);
@@ -524,13 +524,13 @@
         <span class="kw">let </span>response_handler = <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html#method.new">Rc::new</a>(<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.new">RefCell::new</a>(<span class="prelude-val">None</span>));
         <span class="kw">let </span>response_handler_clone = <a href="#209">response_handler</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
         <span class="kw">let </span>f = <a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.new">RefCell::new</a>(<span class="prelude-val">Some</span>(<a href="#208">f</a>));
-        <span class="kw-2">*</span><a href="#209">response_handler</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>() = <span class="prelude-val">Some</span>(<a class="self" href="#208">self</a>.<a href="auto/dialog.rs.html#1729-1755">connect_response</a>(<span class="kw">move </span>|s, response_type| {
+        <span class="kw-2">*</span><a href="#209">response_handler</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>() = <span class="prelude-val">Some</span>(<a class="self" href="#208">self</a>.<a href="auto/dialog.rs.html#1730-1756">connect_response</a>(<span class="kw">move </span>|s, response_type| {
             <span class="kw">if let </span><span class="prelude-val">Some</span>(handler) = <a href="#210">response_handler_clone</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.take">take</a>() {
                 <a href="#212">s</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.ObjectExt.html#tymethod.disconnect">disconnect</a>(<a href="#213">handler</a>);
             }
             (<span class="kw-2">*</span><a href="#211">f</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.take">take</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"cannot get callback"</span>)(<a href="#212">s</a>, <a href="#212">response_type</a>);
         }));
-        <a class="self" href="#208">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/window.rs.html#1929-1933">present</a>();
+        <a class="self" href="#208">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/window.rs.html#1938-1942">present</a>();
     }
 }
 
