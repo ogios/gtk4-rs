@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/widget.rs`."><title>widget.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (143ce0920 2024-11-10)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/widget.rs`."><title>widget.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (03ee48451 2024-11-18)" data-channel="nightly" data-search-js="search-53f21e11.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -5450,8 +5450,8 @@
 
 </span><span class="kw">use crate</span>::{
     <a href="../../../gtk4_sys/index.html">ffi</a>, <a href="accessible.rs.html#19-69">Accessible</a>, <a href="../enums.rs.html#77-107">Align</a>, <a href="alias.rs.html#9">Allocation</a>, <a href="buildable.rs.html#8-32">Buildable</a>, <a href="constraint_target.rs.html#8-23">ConstraintTarget</a>, <a href="enums.rs.html#4505-4526">DirectionType</a>,
-    <a href="event_controller.rs.html#13-64">EventController</a>, <a href="layout_manager.rs.html#8-71">LayoutManager</a>, <a href="native.rs.html#8-34">Native</a>, <a href="enums.rs.html#7816-7825">Orientation</a>, <a href="enums.rs.html#7919-7930">Overflow</a>, <a href="flags.rs.html#1097-1112">PickFlags</a>, <a href="requisition.rs.html#8-19">Requisition</a>, <a href="root.rs.html#8-32">Root</a>,
-    <a href="settings.rs.html#16-549">Settings</a>, <a href="enums.rs.html#11083-11095">SizeRequestMode</a>, <a href="snapshot.rs.html#9-32">Snapshot</a>, <a href="flags.rs.html#1503-1561">StateFlags</a>, <a href="style_context.rs.html#14-73">StyleContext</a>, <a href="enums.rs.html#12308-12320">TextDirection</a>, <a href="tooltip.rs.html#8-46">Tooltip</a>,
+    <a href="event_controller.rs.html#13-64">EventController</a>, <a href="layout_manager.rs.html#8-71">LayoutManager</a>, <a href="native.rs.html#8-34">Native</a>, <a href="enums.rs.html#7816-7825">Orientation</a>, <a href="enums.rs.html#7919-7930">Overflow</a>, <a href="flags.rs.html#1102-1117">PickFlags</a>, <a href="requisition.rs.html#8-19">Requisition</a>, <a href="root.rs.html#8-32">Root</a>,
+    <a href="settings.rs.html#16-549">Settings</a>, <a href="enums.rs.html#11083-11095">SizeRequestMode</a>, <a href="snapshot.rs.html#9-32">Snapshot</a>, <a href="flags.rs.html#1508-1566">StateFlags</a>, <a href="style_context.rs.html#14-73">StyleContext</a>, <a href="enums.rs.html#12308-12320">TextDirection</a>, <a href="tooltip.rs.html#8-46">Tooltip</a>,
 };
 <span class="kw">use </span>glib::{
     <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>,
@@ -7858,7 +7858,7 @@
     /// The state flags for widget
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_widget_get_state_flags"</span>)]
     #[doc(alias = <span class="string">"get_state_flags"</span>)]
-    </span><span class="kw">fn </span>state_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="flags.rs.html#1503-1561">StateFlags</a> {
+    </span><span class="kw">fn </span>state_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="flags.rs.html#1508-1566">StateFlags</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_widget_get_state_flags.html">ffi::gtk_widget_get_state_flags</a>(
                 <a class="self" href="#2416">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -8529,7 +8529,7 @@
     ///   the given point
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_widget_pick"</span>)]
     #[must_use]
-    </span><span class="kw">fn </span>pick(<span class="kw-2">&amp;</span><span class="self">self</span>, x: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, y: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, flags: <a href="flags.rs.html#1097-1112">PickFlags</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="#18-853">Widget</a>&gt; {
+    </span><span class="kw">fn </span>pick(<span class="kw-2">&amp;</span><span class="self">self</span>, x: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, y: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, flags: <a href="flags.rs.html#1102-1117">PickFlags</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="#18-853">Widget</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="../../../gtk4_sys/fn.gtk_widget_pick.html">ffi::gtk_widget_pick</a>(
                 <a class="self" href="#3087">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -9242,7 +9242,7 @@
     /// ## `clear`
     /// Whether to clear state before turning on @flags
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_widget_set_state_flags"</span>)]
-    </span><span class="kw">fn </span>set_state_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1503-1561">StateFlags</a>, clear: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) {
+    </span><span class="kw">fn </span>set_state_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1508-1566">StateFlags</a>, clear: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_widget_set_state_flags.html">ffi::gtk_widget_set_state_flags</a>(
                 <a class="self" href="#3800">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -9541,7 +9541,7 @@
     /// ## `flags`
     /// State flags to turn off
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_widget_unset_state_flags"</span>)]
-    </span><span class="kw">fn </span>unset_state_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1503-1561">StateFlags</a>) {
+    </span><span class="kw">fn </span>unset_state_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1508-1566">StateFlags</a>) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_widget_unset_state_flags.html">ffi::gtk_widget_unset_state_flags</a>(<a class="self" href="#4099">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#4099">flags</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>());
         }
@@ -9947,13 +9947,13 @@
     /// ## `flags`
     /// The previous state flags.
     </span><span class="attr">#[doc(alias = <span class="string">"state-flags-changed"</span>)]
-    </span><span class="kw">fn </span>connect_state_flags_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <a href="flags.rs.html#1503-1561">StateFlags</a>) + <span class="lifetime">'static</span>&gt;(
+    </span><span class="kw">fn </span>connect_state_flags_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <a href="flags.rs.html#1508-1566">StateFlags</a>) + <span class="lifetime">'static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         f: F,
     ) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
         <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>state_flags_changed_trampoline&lt;
             P: IsA&lt;<a href="#18-853">Widget</a>&gt;,
-            F: Fn(<span class="kw-2">&amp;</span>P, <a href="flags.rs.html#1503-1561">StateFlags</a>) + <span class="lifetime">'static</span>,
+            F: Fn(<span class="kw-2">&amp;</span>P, <a href="flags.rs.html#1508-1566">StateFlags</a>) + <span class="lifetime">'static</span>,
         &gt;(
             this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkWidget.html">ffi::GtkWidget</a>,
             flags: <a href="../../../gtk4_sys/type.GtkStateFlags.html">ffi::GtkStateFlags</a>,
