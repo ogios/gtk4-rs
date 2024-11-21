@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/text_buffer.rs`."><title>text_buffer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (03ee48451 2024-11-18)" data-channel="nightly" data-search-js="search-53f21e11.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/text_buffer.rs`."><title>text_buffer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3fee0f12e 2024-11-20)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -608,7 +608,7 @@
     <a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#139">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#94-180">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>, <a href="../auto/text_child_anchor.rs.html#8-23">TextChildAnchor</a>, <a href="../auto/text_iter.rs.html#8-23">TextIter</a>, <a href="../auto/text_mark.rs.html#8-70">TextMark</a>, <a href="../auto/text_tag.rs.html#13-625">TextTag</a>,
 };
 
-<span class="kw">pub trait </span><a href="../../../gtk4/subclass/text_buffer/trait.TextBufferImpl.html">TextBufferImpl</a>: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> + ObjectSubclass&lt;Type: IsA&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;&gt; {
+<span class="kw">pub trait </span><a href="../../../gtk4/subclass/text_buffer/trait.TextBufferImpl.html">TextBufferImpl</a>: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> + <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.ObjectSubclass.html">ObjectSubclass</a>&lt;Type: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a>&gt;&gt; {
     <span class="doccomment">/// Emits the “apply-tag” signal on @self.
     ///
     /// The default handler for the signal applies
@@ -931,28 +931,28 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#12-142">TextBufferImpl</a>&gt; <a href="#144-331">TextBufferImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#12-142">TextBufferImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a> {
-    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>glib::Class&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#12-142">TextBufferImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.IsSubclassable.html">IsSubclassable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/text_buffer.rs.html#13-267">TextBuffer</a> {
+    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/struct.Class.html">glib::Class</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#336">class</a>);
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
         <span class="kw">let </span>klass = <a href="#336">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
-        <a href="#341">klass</a>.apply_tag = <span class="prelude-val">Some</span>(text_buffer_apply_tag::&lt;T&gt;);
-        <a href="#341">klass</a>.begin_user_action = <span class="prelude-val">Some</span>(text_buffer_begin_user_action::&lt;T&gt;);
-        <a href="#341">klass</a>.changed = <span class="prelude-val">Some</span>(text_buffer_changed::&lt;T&gt;);
-        <a href="#341">klass</a>.delete_range = <span class="prelude-val">Some</span>(text_buffer_delete_range::&lt;T&gt;);
-        <a href="#341">klass</a>.end_user_action = <span class="prelude-val">Some</span>(text_buffer_end_user_action::&lt;T&gt;);
-        <a href="#341">klass</a>.insert_child_anchor = <span class="prelude-val">Some</span>(text_buffer_insert_child_anchor::&lt;T&gt;);
-        <a href="#341">klass</a>.insert_paintable = <span class="prelude-val">Some</span>(text_buffer_insert_paintable::&lt;T&gt;);
-        <a href="#341">klass</a>.insert_text = <span class="prelude-val">Some</span>(text_buffer_insert_text::&lt;T&gt;);
-        <a href="#341">klass</a>.mark_deleted = <span class="prelude-val">Some</span>(text_buffer_mark_deleted::&lt;T&gt;);
-        <a href="#341">klass</a>.mark_set = <span class="prelude-val">Some</span>(text_buffer_mark_set::&lt;T&gt;);
-        <a href="#341">klass</a>.modified_changed = <span class="prelude-val">Some</span>(text_buffer_modified_changed::&lt;T&gt;);
-        <a href="#341">klass</a>.paste_done = <span class="prelude-val">Some</span>(text_buffer_paste_done::&lt;T&gt;);
-        <a href="#341">klass</a>.remove_tag = <span class="prelude-val">Some</span>(text_buffer_remove_tag::&lt;T&gt;);
-        <a href="#341">klass</a>.redo = <span class="prelude-val">Some</span>(text_buffer_redo::&lt;T&gt;);
-        <a href="#341">klass</a>.undo = <span class="prelude-val">Some</span>(text_buffer_undo::&lt;T&gt;);
+        <a href="#341">klass</a>.apply_tag = <span class="prelude-val">Some</span>(<a href="#360-374">text_buffer_apply_tag</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.begin_user_action = <span class="prelude-val">Some</span>(<a href="#376-383">text_buffer_begin_user_action</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.changed = <span class="prelude-val">Some</span>(<a href="#385-390">text_buffer_changed</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.delete_range = <span class="prelude-val">Some</span>(<a href="#392-407">text_buffer_delete_range</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.end_user_action = <span class="prelude-val">Some</span>(<a href="#409-414">text_buffer_end_user_action</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.insert_child_anchor = <span class="prelude-val">Some</span>(<a href="#416-428">text_buffer_insert_child_anchor</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.insert_paintable = <span class="prelude-val">Some</span>(<a href="#430-442">text_buffer_insert_paintable</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.insert_text = <span class="prelude-val">Some</span>(<a href="#444-458">text_buffer_insert_text</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.mark_deleted = <span class="prelude-val">Some</span>(<a href="#467-475">text_buffer_mark_deleted</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.mark_set = <span class="prelude-val">Some</span>(<a href="#477-486">text_buffer_mark_set</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.modified_changed = <span class="prelude-val">Some</span>(<a href="#460-465">text_buffer_modified_changed</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.paste_done = <span class="prelude-val">Some</span>(<a href="#488-496">text_buffer_paste_done</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.remove_tag = <span class="prelude-val">Some</span>(<a href="#505-519">text_buffer_remove_tag</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.redo = <span class="prelude-val">Some</span>(<a href="#498-503">text_buffer_redo</a>::&lt;T&gt;);
+        <a href="#341">klass</a>.undo = <span class="prelude-val">Some</span>(<a href="#521-526">text_buffer_undo</a>::&lt;T&gt;);
     }
 }
 
@@ -1048,7 +1048,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#445">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#450">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>text: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">glib::GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#447">text_ptr</a>);
+    <span class="kw">let </span>text: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/gstring/struct.GString.html">glib::GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#447">text_ptr</a>);
 
     <span class="kw">let </span><span class="kw-2">mut </span>iter = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="#446">iter_ptr</a>);
 

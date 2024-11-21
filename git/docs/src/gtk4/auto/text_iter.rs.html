@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/text_iter.rs`."><title>text_iter.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (03ee48451 2024-11-18)" data-channel="nightly" data-search-js="search-53f21e11.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/text_iter.rs`."><title>text_iter.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3fee0f12e 2024-11-20)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1947,13 +1947,13 @@
     ///
     /// whether a match was found
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_backward_find_char"</span>)]
-    </span><span class="kw">pub fn </span>backward_find_char&lt;P: FnMut(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
+    </span><span class="kw">pub fn </span>backward_find_char&lt;P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html">FnMut</a>(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
         <span class="kw-2">&amp;mut </span><span class="self">self</span>,
         pred: P,
         limit: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="#8-23">TextIter</a>&gt;,
     ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">let </span><span class="kw-2">mut </span>pred_data: P = <a href="#126">pred</a>;
-        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>pred_func&lt;P: FnMut(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>pred_func&lt;P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html">FnMut</a>(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
             ch: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
             user_data: glib::ffi::gpointer,
         ) -&gt; glib::ffi::gboolean {
@@ -1962,7 +1962,7 @@
             <span class="kw">let </span>callback = <a href="#132">user_data</a> <span class="kw">as </span><span class="kw-2">*mut </span>P;
             (<span class="kw-2">*</span><a href="#136">callback</a>)(<a href="#134">ch</a>).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
         }
-        <span class="kw">let </span>pred = <span class="prelude-val">Some</span>(pred_func::&lt;P&gt; <span class="kw">as _</span>);
+        <span class="kw">let </span>pred = <span class="prelude-val">Some</span>(<a href="#130-138">pred_func</a>::&lt;P&gt; <span class="kw">as _</span>);
         <span class="kw">let </span>super_callback0: <span class="kw-2">&amp;mut </span>P = <span class="kw-2">&amp;mut </span><a href="#129">pred_data</a>;
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_backward_find_char.html">ffi::gtk_text_iter_backward_find_char</a>(
@@ -2119,7 +2119,7 @@
     ///
     /// whether we found a tag toggle before @self
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_backward_to_tag_toggle"</span>)]
-    </span><span class="kw">pub fn </span>backward_to_tag_toggle(<span class="kw-2">&amp;mut </span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">pub fn </span>backward_to_tag_toggle(<span class="kw-2">&amp;mut </span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_backward_to_tag_toggle.html">ffi::gtk_text_iter_backward_to_tag_toggle</a>(
                 <a class="self" href="#296">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
@@ -2393,7 +2393,7 @@
     ///
     /// whether @self is the end of a range tagged with @tag
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_ends_tag"</span>)]
-    </span><span class="kw">pub fn </span>ends_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">pub fn </span>ends_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_ends_tag.html">ffi::gtk_text_iter_ends_tag</a>(
                 <a class="self" href="#570">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -2527,13 +2527,13 @@
     ///
     /// whether a match was found
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_forward_find_char"</span>)]
-    </span><span class="kw">pub fn </span>forward_find_char&lt;P: FnMut(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
+    </span><span class="kw">pub fn </span>forward_find_char&lt;P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html">FnMut</a>(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
         <span class="kw-2">&amp;mut </span><span class="self">self</span>,
         pred: P,
         limit: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="#8-23">TextIter</a>&gt;,
     ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">let </span><span class="kw-2">mut </span>pred_data: P = <a href="#706">pred</a>;
-        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>pred_func&lt;P: FnMut(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
+        <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>pred_func&lt;P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html">FnMut</a>(<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(
             ch: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
             user_data: glib::ffi::gpointer,
         ) -&gt; glib::ffi::gboolean {
@@ -2542,7 +2542,7 @@
             <span class="kw">let </span>callback = <a href="#712">user_data</a> <span class="kw">as </span><span class="kw-2">*mut </span>P;
             (<span class="kw-2">*</span><a href="#716">callback</a>)(<a href="#714">ch</a>).<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
         }
-        <span class="kw">let </span>pred = <span class="prelude-val">Some</span>(pred_func::&lt;P&gt; <span class="kw">as _</span>);
+        <span class="kw">let </span>pred = <span class="prelude-val">Some</span>(<a href="#710-718">pred_func</a>::&lt;P&gt; <span class="kw">as _</span>);
         <span class="kw">let </span>super_callback0: <span class="kw-2">&amp;mut </span>P = <span class="kw-2">&amp;mut </span><a href="#709">pred_data</a>;
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_forward_find_char.html">ffi::gtk_text_iter_forward_find_char</a>(
@@ -2738,7 +2738,7 @@
     ///
     /// whether we found a tag toggle after @self
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_forward_to_tag_toggle"</span>)]
-    </span><span class="kw">pub fn </span>forward_to_tag_toggle(<span class="kw-2">&amp;mut </span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">pub fn </span>forward_to_tag_toggle(<span class="kw-2">&amp;mut </span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_forward_to_tag_toggle.html">ffi::gtk_text_iter_forward_to_tag_toggle</a>(
                 <a class="self" href="#915">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtrMut.html#tymethod.to_glib_none_mut">to_glib_none_mut</a>().<span class="number">0</span>,
@@ -3044,7 +3044,7 @@
     ///   list of [`TextMark`][crate::TextMark]
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_get_marks"</span>)]
     #[doc(alias = <span class="string">"get_marks"</span>)]
-    </span><span class="kw">pub fn </span>marks(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;<a href="text_mark.rs.html#8-70">TextMark</a>&gt; {
+    </span><span class="kw">pub fn </span>marks(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="text_mark.rs.html#8-70">TextMark</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrContainer.html#tymethod.from_glib_container">FromGlibPtrContainer::from_glib_container</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_get_marks.html">ffi::gtk_text_iter_get_marks</a>(
                 <a class="self" href="#1221">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -3122,7 +3122,7 @@
     ///   [`TextTag`][crate::TextTag]
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_get_tags"</span>)]
     #[doc(alias = <span class="string">"get_tags"</span>)]
-    </span><span class="kw">pub fn </span>tags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt; {
+    </span><span class="kw">pub fn </span>tags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrContainer.html#tymethod.from_glib_container">FromGlibPtrContainer::from_glib_container</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_get_tags.html">ffi::gtk_text_iter_get_tags</a>(
                 <a class="self" href="#1299">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -3171,7 +3171,7 @@
     ///   toggled at this point
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_get_toggled_tags"</span>)]
     #[doc(alias = <span class="string">"get_toggled_tags"</span>)]
-    </span><span class="kw">pub fn </span>toggled_tags(<span class="kw-2">&amp;</span><span class="self">self</span>, toggled_on: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Vec&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt; {
+    </span><span class="kw">pub fn </span>toggled_tags(<span class="kw-2">&amp;</span><span class="self">self</span>, toggled_on: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.FromGlibPtrContainer.html#tymethod.from_glib_container">FromGlibPtrContainer::from_glib_container</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_get_toggled_tags.html">ffi::gtk_text_iter_get_toggled_tags</a>(
                 <a class="self" href="#1348">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -3267,7 +3267,7 @@
     ///
     /// whether @self is tagged with @tag
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_has_tag"</span>)]
-    </span><span class="kw">pub fn </span>has_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">pub fn </span>has_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_has_tag.html">ffi::gtk_text_iter_has_tag</a>(
                 <a class="self" href="#1444">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -3511,7 +3511,7 @@
     ///
     /// whether @self is the start of a range tagged with @tag
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_starts_tag"</span>)]
-    </span><span class="kw">pub fn </span>starts_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">pub fn </span>starts_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_starts_tag.html">ffi::gtk_text_iter_starts_tag</a>(
                 <a class="self" href="#1688">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -3545,7 +3545,7 @@
     ///
     /// whether @tag is toggled on or off at @self
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_text_iter_toggles_tag"</span>)]
-    </span><span class="kw">pub fn </span>toggles_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">pub fn </span>toggles_tag(<span class="kw-2">&amp;</span><span class="self">self</span>, tag: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="text_tag.rs.html#13-625">TextTag</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_text_iter_toggles_tag.html">ffi::gtk_text_iter_toggles_tag</a>(
                 <a class="self" href="#1722">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
