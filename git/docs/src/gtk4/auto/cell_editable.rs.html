@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/cell_editable.rs`."><title>cell_editable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3fee0f12e 2024-11-20)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/cell_editable.rs`."><title>cell_editable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (a4cb3c831 2024-12-17)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -735,7 +735,7 @@
 // DO NOT EDIT
 </span><span class="attr">#![allow(deprecated)]
 
-</span><span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="accessible.rs.html#19-69">Accessible</a>, <a href="buildable.rs.html#8-32">Buildable</a>, <a href="constraint_target.rs.html#8-23">ConstraintTarget</a>, <a href="widget.rs.html#18-853">Widget</a>};
+</span><span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="accessible.rs.html#19-69">Accessible</a>, <a href="buildable.rs.html#8-32">Buildable</a>, <a href="constraint_target.rs.html#8-23">ConstraintTarget</a>, <a href="widget.rs.html#18-852">Widget</a>};
 <span class="kw">use </span>glib::{
     <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>,
     signal::{<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a>},
@@ -832,9 +832,10 @@
     ///
     ///
     /// #### `has-tooltip`
-    ///  Enables or disables the emission of the ::query-tooltip signal on @widget.
+    ///  Enables or disables the emission of the [`query-tooltip`][struct@crate::Widget#query-tooltip]
+    /// signal on @widget.
     ///
-    /// A value of [`true`] indicates that @widget can have a tooltip, in this case
+    /// A true value indicates that @widget can have a tooltip, in this case
     /// the widget will be queried using [`query-tooltip`][struct@crate::Widget#query-tooltip] to
     /// determine whether it will provide a tooltip or not.
     ///
@@ -842,7 +843,7 @@
     ///
     ///
     /// #### `height-request`
-    ///  Override for height request of the widget.
+    ///  Overrides for height request of the widget.
     ///
     /// If this is -1, the natural request will be used.
     ///
@@ -862,8 +863,8 @@
     ///
     ///
     /// #### `layout-manager`
-    ///  The [`LayoutManager`][crate::LayoutManager] instance to use to compute the preferred size
-    /// of the widget, and allocate its children.
+    ///  The [`LayoutManager`][crate::LayoutManager] instance to use to compute
+    /// the preferred size of the widget, and allocate its children.
     ///
     /// This property is meant to be set by widget implementations,
     /// typically in their instance init function.
@@ -953,7 +954,7 @@
     /// #### `root`
     ///  The [`Root`][crate::Root] widget of the widget tree containing this widget.
     ///
-    /// This will be [`None`] if the widget is not contained in a root widget.
+    /// This will be `NULL` if the widget is not contained in a root widget.
     ///
     /// Readable
     ///
@@ -977,8 +978,8 @@
     /// Also see [`Tooltip::set_markup()`][crate::Tooltip::set_markup()].
     ///
     /// This is a convenience property which will take care of getting the
-    /// tooltip shown if the given string is not [`None`]:
-    /// [`has-tooltip`][struct@crate::Widget#has-tooltip] will automatically be set to [`true`]
+    /// tooltip shown if the given string is not `NULL`:
+    /// [`has-tooltip`][struct@crate::Widget#has-tooltip] will automatically be set to true
     /// and there will be taken care of [`query-tooltip`][struct@crate::Widget#query-tooltip] in
     /// the default signal handler.
     ///
@@ -994,8 +995,8 @@
     /// Also see [`Tooltip::set_text()`][crate::Tooltip::set_text()].
     ///
     /// This is a convenience property which will take care of getting the
-    /// tooltip shown if the given string is not [`None`]:
-    /// [`has-tooltip`][struct@crate::Widget#has-tooltip] will automatically be set to [`true`]
+    /// tooltip shown if the given string is not `NULL`:
+    /// [`has-tooltip`][struct@crate::Widget#has-tooltip] will automatically be set to true
     /// and there will be taken care of [`query-tooltip`][struct@crate::Widget#query-tooltip] in
     /// the default signal handler.
     ///
@@ -1030,7 +1031,7 @@
     ///
     ///
     /// #### `width-request`
-    ///  Override for width request of the widget.
+    ///  Overrides for width request of the widget.
     ///
     /// If this is -1, the natural request will be used.
     ///
@@ -1122,7 +1123,7 @@
     /// [`visible`][struct@crate::Widget#visible]) and all its parents up to the toplevel widget
     /// are also visible.
     ///
-    /// The ::map signal can be used to determine whether a widget will be drawn,
+    /// The `::map` signal can be used to determine whether a widget will be drawn,
     /// for instance it can resume an animation that was stopped during the
     /// emission of [`unmap`][struct@crate::Widget#unmap].
     ///
@@ -1133,7 +1134,7 @@
     ///  Emitted when a widget is activated via a mnemonic.
     ///
     /// The default handler for this signal activates @widget if @group_cycling
-    /// is [`false`], or just makes @widget grab focus if @group_cycling is [`true`].
+    /// is false, or just makes @widget grab focus if @group_cycling is true.
     ///
     ///
     ///
@@ -1141,7 +1142,7 @@
     /// #### `move-focus`
     ///  Emitted when the focus is moved.
     ///
-    /// The ::move-focus signal is a [keybinding signal](class.SignalAction.html).
+    /// The `::move-focus` signal is a [keybinding signal](class.SignalAction.html).
     ///
     /// The default bindings for this signal are &lt;kbd&gt;Tab&lt;/kbd&gt; to move forward,
     /// and &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Tab&lt;/kbd&gt; to move backward.
@@ -1153,14 +1154,13 @@
     ///  Emitted when the widget’s tooltip is about to be shown.
     ///
     /// This happens when the [`has-tooltip`][struct@crate::Widget#has-tooltip] property
-    /// is [`true`] and the hover timeout has expired with the cursor hovering
-    /// "above" @widget; or emitted when @widget got focus in keyboard mode.
+    /// is true and the hover timeout has expired with the cursor hovering
+    /// above @widget; or emitted when @widget got focus in keyboard mode.
     ///
     /// Using the given coordinates, the signal handler should determine
     /// whether a tooltip should be shown for @widget. If this is the case
-    /// [`true`] should be returned, [`false`] otherwise.  Note that if
-    /// @keyboard_mode is [`true`], the values of @x and @y are undefined and
-    /// should not be used.
+    /// true should be returned, false otherwise. Note that if @keyboard_mode
+    /// is true, the values of @x and @y are undefined and should not be used.
     ///
     /// The signal handler is free to manipulate @tooltip with the therefore
     /// destined function calls.
@@ -1197,7 +1197,7 @@
     /// A widget is unmapped when either it or any of its parents up to the
     /// toplevel widget have been set as hidden.
     ///
-    /// As ::unmap indicates that a widget will not be shown any longer,
+    /// As `::unmap` indicates that a widget will not be shown any longer,
     /// it can be used to, for example, stop an animation on the widget.
     ///
     ///
@@ -1216,7 +1216,7 @@
     ///
     /// [`CellEditableExt`][trait@crate::prelude::CellEditableExt], [`WidgetExt`][trait@crate::prelude::WidgetExt], [`trait@glib::ObjectExt`], [`AccessibleExt`][trait@crate::prelude::AccessibleExt], [`BuildableExt`][trait@crate::prelude::BuildableExt], [`ConstraintTargetExt`][trait@crate::prelude::ConstraintTargetExt], [`WidgetExtManual`][trait@crate::prelude::WidgetExtManual], [`AccessibleExtManual`][trait@crate::prelude::AccessibleExtManual]
     </span><span class="attr">#[doc(alias = <span class="string">"GtkCellEditable"</span>)]
-    </span><span class="kw">pub struct </span><a href="../../../gtk4/struct.CellEditable.html">CellEditable</a>(Interface&lt;<a href="../../../gtk4_sys/struct.GtkCellEditable.html">ffi::GtkCellEditable</a>, <a href="../../../gtk4_sys/struct.GtkCellEditableIface.html">ffi::GtkCellEditableIface</a>&gt;) @requires <a href="widget.rs.html#18-853">Widget</a>, <a href="accessible.rs.html#19-69">Accessible</a>, <a href="buildable.rs.html#8-32">Buildable</a>, <a href="constraint_target.rs.html#8-23">ConstraintTarget</a>;
+    </span><span class="kw">pub struct </span><a href="../../../gtk4/struct.CellEditable.html">CellEditable</a>(Interface&lt;<a href="../../../gtk4_sys/struct.GtkCellEditable.html">ffi::GtkCellEditable</a>, <a href="../../../gtk4_sys/struct.GtkCellEditableIface.html">ffi::GtkCellEditableIface</a>&gt;) @requires <a href="widget.rs.html#18-852">Widget</a>, <a href="accessible.rs.html#19-69">Accessible</a>, <a href="buildable.rs.html#8-32">Buildable</a>, <a href="constraint_target.rs.html#8-23">ConstraintTarget</a>;
 
     <span class="kw">match fn </span>{
         type_ =&gt; || ffi::gtk_cell_editable_get_type(),
@@ -1224,7 +1224,7 @@
 }
 
 <span class="kw">impl </span><a href="#14-492">CellEditable</a> {
-    <span class="kw">pub const </span>NONE: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#14-492">CellEditable</a>&gt; = <span class="prelude-val">None</span>;
+    <span class="kw">pub const </span>NONE: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#14-492">CellEditable</a>&gt; = <span class="prelude-val">None</span>;
 }
 
 <span class="doccomment">/// Trait containing all [`struct@CellEditable`] methods.
@@ -1273,7 +1273,7 @@
     /// The [`gdk::Event`][crate::gdk::Event] that began the editing process, or
     ///   [`None`] if editing was initiated programmatically
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_cell_editable_start_editing"</span>)]
-    </span><span class="kw">fn </span>start_editing(<span class="kw-2">&amp;</span><span class="self">self</span>, event: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">AsRef</a>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt;) {
+    </span><span class="kw">fn </span>start_editing(<span class="kw-2">&amp;</span><span class="self">self</span>, event: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">AsRef</a>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt;) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_cell_editable_start_editing.html">ffi::gtk_cell_editable_start_editing</a>(
                 <a class="self" href="#544">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -1318,7 +1318,7 @@
             <span class="kw">let </span>f: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box_</a>&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#577">f</a>);
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
                 <a class="self" href="#577">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b"editing-done\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="string">c"editing-done"</span>.<a href="https://doc.rust-lang.org/nightly/core/ffi/c_str/struct.CStr.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
                 <span class="prelude-val">Some</span>(<a href="https://doc.rust-lang.org/nightly/core/intrinsics/fn.transmute.html">std::mem::transmute</a>::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     <a href="#578-584">editing_done_trampoline</a>::&lt;<span class="self">Self</span>, F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
@@ -1352,7 +1352,7 @@
             <span class="kw">let </span>f: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box_</a>&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#611">f</a>);
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
                 <a class="self" href="#611">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b"remove-widget\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="string">c"remove-widget"</span>.<a href="https://doc.rust-lang.org/nightly/core/ffi/c_str/struct.CStr.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
                 <span class="prelude-val">Some</span>(<a href="https://doc.rust-lang.org/nightly/core/intrinsics/fn.transmute.html">std::mem::transmute</a>::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     <a href="#612-618">remove_widget_trampoline</a>::&lt;<span class="self">Self</span>, F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
@@ -1378,7 +1378,7 @@
             <span class="kw">let </span>f: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box_</a>&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#633">f</a>);
             <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
                 <a class="self" href="#633">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
-                <span class="string">b"notify::editing-canceled\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="string">c"notify::editing-canceled"</span>.<a href="https://doc.rust-lang.org/nightly/core/ffi/c_str/struct.CStr.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
                 <span class="prelude-val">Some</span>(<a href="https://doc.rust-lang.org/nightly/core/intrinsics/fn.transmute.html">std::mem::transmute</a>::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
                     <a href="#634-644">notify_editing_canceled_trampoline</a>::&lt;<span class="self">Self</span>, F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gsk4/src/path_point.rs`."><title>path_point.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gsk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3fee0f12e 2024-11-20)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gsk4/src/path_point.rs`."><title>path_point.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gsk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (a4cb3c831 2024-12-17)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -138,7 +138,7 @@
 
 </span><span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">glib::translate</a>::<span class="kw-2">*</span>;
 
-<span class="kw">use crate</span>::{<a href="../../gsk4_sys/index.html">ffi</a>, <a href="auto/path.rs.html#8-36">Path</a>, <a href="auto/enums.rs.html#980-999">PathDirection</a>, <a href="auto/path_point.rs.html#8-29">PathPoint</a>};
+<span class="kw">use crate</span>::{<a href="../../gsk4_sys/index.html">ffi</a>, <a href="auto/path.rs.html#8-35">Path</a>, <a href="auto/enums.rs.html#980-999">PathDirection</a>, <a href="auto/path_point.rs.html#8-29">PathPoint</a>};
 
 <span class="kw">impl </span><a href="auto/path_point.rs.html#8-29">PathPoint</a> {
     <span class="doccomment">/// Calculates the curvature of the path at the point.
@@ -147,15 +147,15 @@
     /// The curvature is the inverse of the radius of the osculating circle.
     ///
     /// Lines have a curvature of zero (indicating an osculating circle of
-    /// infinite radius. In this case, the @center is not modified.
+    /// infinite radius). In this case, the @center is not modified.
     ///
     /// Circles with a radius of zero have `INFINITY` as curvature
     ///
     /// Note that certain points on a path may not have a single curvature,
-    /// such as sharp turns. At such points, there are two curvatures --
-    /// the (limit of) the curvature of the path going into the point,
-    /// and the (limit of) the curvature of the path coming out of it.
-    /// The @direction argument lets you choose which one to get.
+    /// such as sharp turns. At such points, there are two curvatures — the
+    /// (limit of) the curvature of the path going into the point, and the
+    /// (limit of) the curvature of the path coming out of it. The @direction
+    /// argument lets you choose which one to get.
     ///
     /// &lt;picture&gt;
     ///   &lt;source srcset="curvature-dark.png" media="(prefers-color-scheme: dark)"&gt;
@@ -168,18 +168,18 @@
     ///
     /// # Returns
     ///
-    /// The curvature of the path at the given point
+    /// the curvature of the path at the given point
     ///
     /// ## `center`
-    /// Return location for
+    /// return location for
     ///   the center of the osculating circle
     </span><span class="attr">#[doc(alias = <span class="string">"gsk_path_point_get_curvature"</span>)]
     #[doc(alias = <span class="string">"get_curvature"</span>)]
     </span><span class="kw">pub fn </span>curvature(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        path: <span class="kw-2">&amp;</span><a href="auto/path.rs.html#8-36">Path</a>,
+        path: <span class="kw-2">&amp;</span><a href="auto/path.rs.html#8-35">Path</a>,
         direction: <a href="auto/enums.rs.html#980-999">PathDirection</a>,
-    ) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/graphene/auto/point/struct.Point.html">graphene::Point</a>&gt;) {
+    ) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/graphene/auto/point/struct.Point.html">graphene::Point</a>&gt;) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>center = <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.Uninitialized.html#tymethod.uninitialized">graphene::Point::uninitialized</a>();
             <span class="kw">let </span>ret = <a href="../../gsk4_sys/fn.gsk_path_point_get_curvature.html">ffi::gsk_path_point_get_curvature</a>(

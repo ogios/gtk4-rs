@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/functions.rs`."><title>functions.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3fee0f12e 2024-11-20)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/functions.rs`."><title>functions.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (a4cb3c831 2024-12-17)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -572,12 +572,12 @@
 /// ## `callback`
 /// callback to call when the operation is done
 </span><span class="attr">#[doc(alias = <span class="string">"gdk_content_deserialize_async"</span>)]
-</span><span class="kw">pub fn </span><a href="../../gdk4/fn.content_deserialize_async.html">content_deserialize_async</a>&lt;R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>&gt;(
+</span><span class="kw">pub fn </span><a href="../../gdk4/fn.content_deserialize_async.html">content_deserialize_async</a>&lt;R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>&gt;(
     stream: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/input_stream/struct.InputStream.html">gio::InputStream</a>&gt;,
     mime_type: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     type_: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/types/struct.Type.html">glib::types::Type</a>,
     io_priority: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/source/struct.Priority.html">glib::Priority</a>,
-    cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/cancellable/struct.Cancellable.html">gio::Cancellable</a>&gt;&gt;,
+    cancellable: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/cancellable/struct.Cancellable.html">gio::Cancellable</a>&gt;&gt;,
     callback: R,
 ) {
     <span class="macro">assert_initialized_main_thread!</span>();
@@ -594,7 +594,7 @@
     <span class="kw">let </span>user_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html">glib::thread_guard::ThreadGuard</a>&lt;R&gt;&gt; =
         <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.new">glib::thread_guard::ThreadGuard::new</a>(<a href="#79">callback</a>));
     <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>content_deserialize_async_trampoline&lt;
-        R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>,
+        R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>,
     &gt;(
         _source_object: <span class="kw-2">*mut </span>glib::gobject_ffi::GObject,
         res: <span class="kw-2">*mut </span>gio::ffi::GAsyncResult,
@@ -631,7 +631,7 @@
     mime_type: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     type_: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/types/struct.Type.html">glib::types::Type</a>,
     io_priority: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/source/struct.Priority.html">glib::Priority</a>,
-) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">future::Future</a>&lt;Output = <span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;&gt; + <span class="lifetime">'static</span>&gt;&gt; {
+) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">future::Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;&gt; + <span class="lifetime">'static</span>&gt;&gt; {
     <span class="macro">assert_initialized_main_thread!</span>();
 
     <span class="kw">let </span>stream = <a href="#128">stream</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
@@ -662,7 +662,7 @@
 </span><span class="attr">#[doc(alias = <span class="string">"gdk_content_register_deserializer"</span>)]
 </span><span class="kw">pub fn </span><a href="../../gdk4/fn.content_register_deserializer.html">content_register_deserializer</a>&lt;
     T: <span class="lifetime">'static</span>,
-    P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_deserializer.rs.html#8-26">ContentDeserializer</a>, <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;T&gt;) + <span class="lifetime">'static</span>,
+    P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_deserializer.rs.html#8-26">ContentDeserializer</a>, <span class="kw-2">&amp;mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;) + <span class="lifetime">'static</span>,
 &gt;(
     mime_type: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     type_: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/types/struct.Type.html">glib::types::Type</a>,
@@ -672,7 +672,7 @@
     <span class="kw">let </span>deserialize_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;P&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#167">deserialize</a>);
     <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>deserialize_func&lt;
         T: <span class="lifetime">'static</span>,
-        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_deserializer.rs.html#8-26">ContentDeserializer</a>, <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;T&gt;) + <span class="lifetime">'static</span>,
+        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_deserializer.rs.html#8-26">ContentDeserializer</a>, <span class="kw-2">&amp;mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;) + <span class="lifetime">'static</span>,
     &gt;(
         deserializer: <span class="kw-2">*mut </span><a href="../../gdk4_sys/struct.GdkContentDeserializer.html">ffi::GdkContentDeserializer</a>,
     ) {
@@ -681,11 +681,11 @@
             <span class="kw-2">&amp;*</span>(<a href="../../gdk4_sys/fn.gdk_content_deserializer_get_user_data.html">ffi::gdk_content_deserializer_get_user_data</a>(<a href="#177">deserializer</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>)
                 <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
 
-        <span class="kw">let </span><span class="kw-2">mut </span>task_data: <span class="kw-2">*mut </span><span class="prelude-ty">Option</span>&lt;T&gt; =
+        <span class="kw">let </span><span class="kw-2">mut </span>task_data: <span class="kw-2">*mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt; =
             <a href="../../gdk4_sys/fn.gdk_content_deserializer_get_task_data.html">ffi::gdk_content_deserializer_get_task_data</a>(<a href="#177">deserializer</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>;
         <span class="kw">if </span>task_data.is_null() {
             <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_func&lt;T: <span class="lifetime">'static</span>&gt;(data: glib::ffi::gpointer) {
-                <span class="kw">let </span>_task_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="prelude-ty">Option</span>&lt;T&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box::from_raw</a>(<a href="#185">data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+                <span class="kw">let </span>_task_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box::from_raw</a>(<a href="#185">data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
             }
             <a href="#182">task_data</a> = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box::into_raw</a>(<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<span class="prelude-val">None</span>));
             <a href="../../gdk4_sys/fn.gdk_content_deserializer_set_task_data.html">ffi::gdk_content_deserializer_set_task_data</a>(
@@ -700,7 +700,7 @@
     <span class="kw">let </span>deserialize = <span class="prelude-val">Some</span>(<a href="#171-197">deserialize_func</a>::&lt;T, P&gt; <span class="kw">as _</span>);
     <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_func&lt;
         T: <span class="lifetime">'static</span>,
-        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_deserializer.rs.html#8-26">ContentDeserializer</a>, <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;T&gt;) + <span class="lifetime">'static</span>,
+        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_deserializer.rs.html#8-26">ContentDeserializer</a>, <span class="kw-2">&amp;mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;) + <span class="lifetime">'static</span>,
     &gt;(
         data: glib::ffi::gpointer,
     ) {
@@ -731,7 +731,7 @@
 </span><span class="attr">#[doc(alias = <span class="string">"gdk_content_register_serializer"</span>)]
 </span><span class="kw">pub fn </span><a href="../../gdk4/fn.content_register_serializer.html">content_register_serializer</a>&lt;
     T: <span class="lifetime">'static</span>,
-    P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_serializer.rs.html#8-27">ContentSerializer</a>, <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;T&gt;) + <span class="lifetime">'static</span>,
+    P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_serializer.rs.html#8-27">ContentSerializer</a>, <span class="kw-2">&amp;mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;) + <span class="lifetime">'static</span>,
 &gt;(
     type_: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/types/struct.Type.html">glib::types::Type</a>,
     mime_type: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
@@ -741,7 +741,7 @@
     <span class="kw">let </span>serialize_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;P&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#236">serialize</a>);
     <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>serialize_func&lt;
         T: <span class="lifetime">'static</span>,
-        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_serializer.rs.html#8-27">ContentSerializer</a>, <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;T&gt;) + <span class="lifetime">'static</span>,
+        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_serializer.rs.html#8-27">ContentSerializer</a>, <span class="kw-2">&amp;mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;) + <span class="lifetime">'static</span>,
     &gt;(
         serializer: <span class="kw-2">*mut </span><a href="../../gdk4_sys/struct.GdkContentSerializer.html">ffi::GdkContentSerializer</a>,
     ) {
@@ -749,11 +749,11 @@
         <span class="kw">let </span>callback: <span class="kw-2">&amp;</span>P =
             <span class="kw-2">&amp;*</span>(<a href="../../gdk4_sys/fn.gdk_content_serializer_get_user_data.html">ffi::gdk_content_serializer_get_user_data</a>(<a href="#246">serializer</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
 
-        <span class="kw">let </span><span class="kw-2">mut </span>task_data: <span class="kw-2">*mut </span><span class="prelude-ty">Option</span>&lt;T&gt; =
+        <span class="kw">let </span><span class="kw-2">mut </span>task_data: <span class="kw-2">*mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt; =
             <a href="../../gdk4_sys/fn.gdk_content_serializer_get_task_data.html">ffi::gdk_content_serializer_get_task_data</a>(<a href="#246">serializer</a>.<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>) <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>;
         <span class="kw">if </span>task_data.is_null() {
             <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_func&lt;T: <span class="lifetime">'static</span>&gt;(data: glib::ffi::gpointer) {
-                <span class="kw">let </span>_task_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="prelude-ty">Option</span>&lt;T&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box::from_raw</a>(<a href="#253">data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+                <span class="kw">let </span>_task_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.from_raw">Box::from_raw</a>(<a href="#253">data</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
             }
             <a href="#250">task_data</a> = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box::into_raw</a>(<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<span class="prelude-val">None</span>));
             <a href="../../gdk4_sys/fn.gdk_content_serializer_set_task_data.html">ffi::gdk_content_serializer_set_task_data</a>(
@@ -768,7 +768,7 @@
     <span class="kw">let </span>serialize = <span class="prelude-val">Some</span>(<a href="#240-265">serialize_func</a>::&lt;T, P&gt; <span class="kw">as _</span>);
     <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_func&lt;
         T: <span class="lifetime">'static</span>,
-        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_serializer.rs.html#8-27">ContentSerializer</a>, <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;T&gt;) + <span class="lifetime">'static</span>,
+        P: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="auto/content_serializer.rs.html#8-27">ContentSerializer</a>, <span class="kw-2">&amp;mut </span><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;T&gt;) + <span class="lifetime">'static</span>,
     &gt;(
         data: glib::ffi::gpointer,
     ) {
@@ -804,12 +804,12 @@
 /// ## `callback`
 /// callback to call when the operation is done
 </span><span class="attr">#[doc(alias = <span class="string">"gdk_content_serialize_async"</span>)]
-</span><span class="kw">pub fn </span><a href="../../gdk4/fn.content_serialize_async.html">content_serialize_async</a>&lt;R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<span class="prelude-ty">Result</span>&lt;(), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>&gt;(
+</span><span class="kw">pub fn </span><a href="../../gdk4/fn.content_serialize_async.html">content_serialize_async</a>&lt;R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>&gt;(
     stream: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/output_stream/struct.OutputStream.html">gio::OutputStream</a>&gt;,
     mime_type: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     value: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>,
     io_priority: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/source/struct.Priority.html">glib::Priority</a>,
-    cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/cancellable/struct.Cancellable.html">gio::Cancellable</a>&gt;&gt;,
+    cancellable: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/gio/auto/cancellable/struct.Cancellable.html">gio::Cancellable</a>&gt;&gt;,
     callback: R,
 ) {
     <span class="macro">assert_initialized_main_thread!</span>();
@@ -825,7 +825,7 @@
     <span class="kw">let </span>user_data: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html">glib::thread_guard::ThreadGuard</a>&lt;R&gt;&gt; =
         <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/thread_guard/struct.ThreadGuard.html#method.new">glib::thread_guard::ThreadGuard::new</a>(<a href="#311">callback</a>));
     <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>content_serialize_async_trampoline&lt;
-        R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<span class="prelude-ty">Result</span>&lt;(), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>,
+        R: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html">FnOnce</a>(<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;) + <span class="lifetime">'static</span>,
     &gt;(
         _source_object: <span class="kw-2">*mut </span>glib::gobject_ffi::GObject,
         res: <span class="kw-2">*mut </span>gio::ffi::GAsyncResult,
@@ -861,7 +861,7 @@
     mime_type: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     value: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/value/struct.Value.html">glib::Value</a>,
     io_priority: <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/source/struct.Priority.html">glib::Priority</a>,
-) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">future::Future</a>&lt;Output = <span class="prelude-ty">Result</span>&lt;(), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;&gt; + <span class="lifetime">'static</span>&gt;&gt; {
+) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">future::Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html">glib::Error</a>&gt;&gt; + <span class="lifetime">'static</span>&gt;&gt; {
     <span class="macro">assert_initialized_main_thread!</span>();
 
     <span class="kw">let </span>stream = <a href="#358">stream</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
