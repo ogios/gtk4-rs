@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/style_context.rs`."><title>style_context.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/style_context.rs`."><title>style_context.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -654,7 +654,7 @@
 // DO NOT EDIT
 </span><span class="attr">#![allow(deprecated)]
 
-</span><span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../border.rs.html#8-20">Border</a>, <a href="flags.rs.html#1503-1561">StateFlags</a>, <a href="flags.rs.html#1638-1661">StyleContextPrintFlags</a>, <a href="style_provider.rs.html#13-39">StyleProvider</a>};
+</span><span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../border.rs.html#8-20">Border</a>, <a href="flags.rs.html#1508-1566">StateFlags</a>, <a href="flags.rs.html#1643-1666">StyleContextPrintFlags</a>, <a href="style_provider.rs.html#13-39">StyleProvider</a>};
 <span class="kw">use </span>glib::{
     <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>,
     signal::{<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/signal/fn.connect_raw.html">connect_raw</a>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a>},
@@ -724,12 +724,12 @@
 }
 
 <span class="kw">impl </span><a href="#14-73">StyleContext</a> {
-    <span class="kw">pub const </span>NONE: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#14-73">StyleContext</a>&gt; = <span class="prelude-val">None</span>;
+    <span class="kw">pub const </span>NONE: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#14-73">StyleContext</a>&gt; = <span class="prelude-val">None</span>;
 }
 
 <span class="kw">mod </span>sealed {
     <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="#14-73"><span class="kw">super</span>::StyleContext</a>&gt;&gt; <a href="#80">Sealed</a> <span class="kw">for </span>T {}
+    <span class="kw">impl</span>&lt;T: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html"><span class="kw">super</span>::IsA</a>&lt;<a href="#14-73"><span class="kw">super</span>::StyleContext</a>&gt;&gt; <a href="#80">Sealed</a> <span class="kw">for </span>T {}
 }
 
 <span class="doccomment">/// Trait containing all [`struct@StyleContext`] methods.
@@ -737,7 +737,7 @@
 /// # Implementors
 ///
 /// [`StyleContext`][struct@crate::StyleContext]
-</span><span class="kw">pub trait </span><a href="../../../gtk4/prelude/trait.StyleContextExt.html">StyleContextExt</a>: IsA&lt;<a href="#14-73">StyleContext</a>&gt; + <a href="#80">sealed::Sealed</a> + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../../gtk4/prelude/trait.StyleContextExt.html">StyleContextExt</a>: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="#14-73">StyleContext</a>&gt; + <a href="#80">sealed::Sealed</a> + <span class="lifetime">'static </span>{
     <span class="doccomment">/// Adds a style class to @self, so later uses of the
     /// style context will make use of this new class for styling.
     ///
@@ -796,7 +796,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_style_context_add_provider"</span>)]
-    </span><span class="kw">fn </span>add_provider(<span class="kw-2">&amp;</span><span class="self">self</span>, provider: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="style_provider.rs.html#13-39">StyleProvider</a>&gt;, priority: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) {
+    </span><span class="kw">fn </span>add_provider(<span class="kw-2">&amp;</span><span class="self">self</span>, provider: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="style_provider.rs.html#13-39">StyleProvider</a>&gt;, priority: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_style_context_add_provider.html">ffi::gtk_style_context_add_provider</a>(
                 <a class="self" href="#148">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -967,7 +967,7 @@
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_style_context_get_state"</span>)]
     #[doc(alias = <span class="string">"get_state"</span>)]
-    </span><span class="kw">fn </span>state(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="flags.rs.html#1503-1561">StateFlags</a> {
+    </span><span class="kw">fn </span>state(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="flags.rs.html#1508-1566">StateFlags</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_style_context_get_state.html">ffi::gtk_style_context_get_state</a>(
                 <a class="self" href="#319">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -1016,7 +1016,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_style_context_lookup_color"</span>)]
-    </span><span class="kw">fn </span>lookup_color(<span class="kw-2">&amp;</span><span class="self">self</span>, color_name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../../../gdk4/auto/rgba/struct.RGBA.html">gdk::RGBA</a>&gt; {
+    </span><span class="kw">fn </span>lookup_color(<span class="kw-2">&amp;</span><span class="self">self</span>, color_name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../gdk4/auto/rgba/struct.RGBA.html">gdk::RGBA</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>color = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.Uninitialized.html#tymethod.uninitialized">gdk::RGBA::uninitialized</a>();
             <span class="kw">let </span>ret = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_style_context_lookup_color.html">ffi::gtk_style_context_lookup_color</a>(
@@ -1060,7 +1060,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_style_context_remove_provider"</span>)]
-    </span><span class="kw">fn </span>remove_provider(<span class="kw-2">&amp;</span><span class="self">self</span>, provider: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="style_provider.rs.html#13-39">StyleProvider</a>&gt;) {
+    </span><span class="kw">fn </span>remove_provider(<span class="kw-2">&amp;</span><span class="self">self</span>, provider: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="style_provider.rs.html#13-39">StyleProvider</a>&gt;) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_style_context_remove_provider.html">ffi::gtk_style_context_remove_provider</a>(
                 <a class="self" href="#412">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -1126,7 +1126,7 @@
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_style_context_set_display"</span>)]
     #[doc(alias = <span class="string">"display"</span>)]
-    </span><span class="kw">fn </span>set_display(<span class="kw-2">&amp;</span><span class="self">self</span>, display: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="../../../gdk4/auto/display/struct.Display.html">gdk::Display</a>&gt;) {
+    </span><span class="kw">fn </span>set_display(<span class="kw-2">&amp;</span><span class="self">self</span>, display: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../../../gdk4/auto/display/struct.Display.html">gdk::Display</a>&gt;) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_style_context_set_display.html">ffi::gtk_style_context_set_display</a>(
                 <a class="self" href="#478">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -1161,7 +1161,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_style_context_set_state"</span>)]
-    </span><span class="kw">fn </span>set_state(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1503-1561">StateFlags</a>) {
+    </span><span class="kw">fn </span>set_state(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1508-1566">StateFlags</a>) {
         <span class="kw">unsafe </span>{
             <a href="../../../gtk4_sys/fn.gtk_style_context_set_state.html">ffi::gtk_style_context_set_state</a>(<a class="self" href="#513">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#513">flags</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>());
         }
@@ -1190,7 +1190,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_style_context_to_string"</span>)]
-    </span><span class="kw">fn </span>to_string(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1638-1661">StyleContextPrintFlags</a>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">glib::GString</a> {
+    </span><span class="kw">fn </span>to_string(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#1643-1666">StyleContextPrintFlags</a>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">glib::GString</a> {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_style_context_to_string.html">ffi::gtk_style_context_to_string</a>(
                 <a class="self" href="#542">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -1200,10 +1200,10 @@
     }
 
     <span class="attr">#[doc(alias = <span class="string">"display"</span>)]
-    </span><span class="kw">fn </span>connect_display_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
+    </span><span class="kw">fn </span>connect_display_notify&lt;F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
         <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>notify_display_trampoline&lt;
-            P: IsA&lt;<a href="#14-73">StyleContext</a>&gt;,
-            F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">'static</span>,
+            P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="#14-73">StyleContext</a>&gt;,
+            F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>P) + <span class="lifetime">'static</span>,
         &gt;(
             this: <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkStyleContext.html">ffi::GtkStyleContext</a>,
             _param_spec: glib::ffi::gpointer,
@@ -1213,12 +1213,12 @@
             <a href="#561">f</a>(<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.FromGlibPtrBorrow.html#tymethod.from_glib_borrow">StyleContext::from_glib_borrow</a>(<a href="#557">this</a>).<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.Cast.html#tymethod.unsafe_cast_ref">unsafe_cast_ref</a>())
         }
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span>f: Box_&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#552">f</a>);
+            <span class="kw">let </span>f: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box_</a>&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box_::new</a>(<a href="#552">f</a>);
             <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/signal/fn.connect_raw.html">connect_raw</a>(
                 <a class="self" href="#552">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.ObjectType.html#tymethod.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
                 <span class="string">b"notify::display\0"</span>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
-                <span class="prelude-val">Some</span>(std::mem::transmute::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
-                    notify_display_trampoline::&lt;<span class="self">Self</span>, F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
+                <span class="prelude-val">Some</span>(<a href="https://doc.rust-lang.org/nightly/core/intrinsics/fn.transmute.html">std::mem::transmute</a>::&lt;<span class="kw-2">*const </span>(), <span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>()&gt;(
+                    <a href="#553-563">notify_display_trampoline</a>::&lt;<span class="self">Self</span>, F&gt; <span class="kw">as </span><span class="kw-2">*const </span>(),
                 )),
                 <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box_::into_raw</a>(<a href="#565">f</a>),
             )
@@ -1226,5 +1226,5 @@
     }
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="#14-73">StyleContext</a>&gt;&gt; <a href="#89-576">StyleContextExt</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="#14-73">StyleContext</a>&gt;&gt; <a href="#89-576">StyleContextExt</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

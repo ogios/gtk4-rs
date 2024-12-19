@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/keys.rs`."><title>keys.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/keys.rs`."><title>keys.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -4911,7 +4911,7 @@
     /// the corresponding key value, or `GDK_KEY_VoidSymbol`
     ///   if the key name is not a valid key
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_keyval_from_name"</span>)]
-    </span><span class="kw">pub fn </span>from_name(name: <span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/trait.IntoGStr.html">IntoGStr</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
+    </span><span class="kw">pub fn </span>from_name(name: <span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/trait.IntoGStr.html">IntoGStr</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="self">Self</span>&gt; {
         <span class="macro">skip_assert_initialized!</span>();
         <span class="kw">unsafe </span>{
             <a href="#26">name</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/trait.IntoGStr.html#tymethod.run_with_gstr">run_with_gstr</a>(|name| {
@@ -4966,7 +4966,7 @@
     /// the corresponding unicode character, or 0 if there
     ///   is no corresponding character.
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_keyval_to_unicode"</span>)]
-    </span><span class="kw">pub fn </span>to_unicode(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>&gt; {
+    </span><span class="kw">pub fn </span>to_unicode(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>&gt; {
         <span class="macro">skip_assert_initialized!</span>();
         <span class="kw">unsafe </span>{
             <a href="https://doc.rust-lang.org/nightly/core/char/fn.from_u32.html">::std::char::from_u32</a>(<a href="../../gdk4_sys/fn.gdk_keyval_to_unicode.html">ffi::gdk_keyval_to_unicode</a>(<a class="self" href="#81">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()))
@@ -4987,7 +4987,7 @@
     /// a string containing the name
     ///   of the key
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_keyval_name"</span>)]
-    </span><span class="kw">pub fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; {
+    </span><span class="kw">pub fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; {
         <span class="macro">skip_assert_initialized!</span>();
         <span class="kw">unsafe </span>{ <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_none.html">from_glib_none</a>(<a href="../../gdk4_sys/fn.gdk_keyval_name.html">ffi::gdk_keyval_name</a>(<a class="self" href="#102">self</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>())) }
     }
@@ -9612,7 +9612,7 @@
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html">::std::fmt::Display</a> <span class="kw">for </span><a href="#9">Key</a> {
-    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>::std::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">::std::fmt::Result</a> {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html">::std::fmt::Formatter</a>&lt;<span class="lifetime">'_</span>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">::std::fmt::Result</a> {
         <a href="#4727">f</a>.<a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html#method.debug_struct">debug_struct</a>(<span class="string">"Key"</span>)
             .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.field">field</a>(<span class="string">"name"</span>, <span class="kw-2">&amp;</span><a class="self" href="#4727">self</a>.<a href="#102-105">name</a>())
             .<a href="https://doc.rust-lang.org/nightly/core/fmt/builders/struct.DebugStruct.html#method.field">field</a>(<span class="string">"is_lower"</span>, <span class="kw-2">&amp;</span><a class="self" href="#4727">self</a>.<a href="#130-133">is_lower</a>())
@@ -9621,7 +9621,7 @@
     }
 }
 
-<span class="kw">impl </span>FromGlib&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt; <span class="kw">for </span><a href="#9">Key</a> {
+<span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.FromGlib.html">FromGlib</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt; <span class="kw">for </span><a href="#9">Key</a> {
     <span class="attr">#[inline]
     </span><span class="kw">unsafe fn </span>from_glib(value: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <span class="self">Self </span>{
         <span class="macro">skip_assert_initialized!</span>();
@@ -9642,8 +9642,8 @@
     <span class="kw">type </span>Type = <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>;
 }
 
-<span class="kw">unsafe impl</span>&lt;<span class="lifetime">'a</span>&gt; FromValue&lt;<span class="lifetime">'a</span>&gt; <span class="kw">for </span><a href="#9">Key</a> {
-    <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<a href="#9">Key</a>&gt;;
+<span class="kw">unsafe impl</span>&lt;<span class="lifetime">'a</span>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/value/trait.FromValue.html">FromValue</a>&lt;<span class="lifetime">'a</span>&gt; <span class="kw">for </span><a href="#9">Key</a> {
+    <span class="kw">type </span>Checker = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/value/struct.GenericValueTypeChecker.html">glib::value::GenericValueTypeChecker</a>&lt;<a href="#9">Key</a>&gt;;
 
     <span class="attr">#[inline]
     </span><span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/value/struct.Value.html">Value</a>) -&gt; <span class="self">Self </span>{
@@ -9671,7 +9671,7 @@
     }
 }
 
-<span class="kw">impl </span>From&lt;<a href="#9">Key</a>&gt; <span class="kw">for </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/value/struct.Value.html">Value</a> {
+<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;<a href="#9">Key</a>&gt; <span class="kw">for </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/value/struct.Value.html">Value</a> {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>from(k: <a href="#9">Key</a>) -&gt; <span class="self">Self </span>{
         <span class="macro">skip_assert_initialized!</span>();

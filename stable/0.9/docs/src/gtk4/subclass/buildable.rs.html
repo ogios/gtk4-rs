@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/buildable.rs`."><title>buildable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/buildable.rs`."><title>buildable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -402,10 +402,10 @@
     <span class="kw">fn </span>set_id(<span class="kw-2">&amp;</span><span class="self">self</span>, id: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
         <a class="self" href="#14">self</a>.<a href="#68-83">parent_set_id</a>(<a href="#14">id</a>)
     }
-    <span class="kw">fn </span>id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; {
+    <span class="kw">fn </span>id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; {
         <a class="self" href="#17">self</a>.<a href="#85-99">parent_id</a>()
     }
-    <span class="kw">fn </span>add_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, child: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>, type_: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
+    <span class="kw">fn </span>add_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, child: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>, type_: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#20">self</a>.<a href="#101-118">parent_add_child</a>(<a href="#20">builder</a>, <a href="#20">child</a>, <a href="#20">type_</a>)
     }
     <span class="kw">fn </span>set_buildable_property(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/value/struct.Value.html">Value</a>) {
@@ -414,7 +414,7 @@
     <span class="kw">fn </span>parser_finished(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>) {
         <a class="self" href="#26">self</a>.<a href="#141-154">parent_parser_finished</a>(<a href="#26">builder</a>)
     }
-    <span class="kw">fn </span>internal_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>&gt; {
+    <span class="kw">fn </span>internal_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>&gt; {
         <a class="self" href="#29">self</a>.<a href="#156-172">parent_internal_child</a>(<a href="#29">builder</a>, <a href="#29">name</a>)
     }
     <span class="kw">fn </span>construct_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a> {
@@ -470,7 +470,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; {
+    <span class="kw">fn </span>parent_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_iface =
@@ -486,7 +486,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_add_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, child: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>, type_: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
+    <span class="kw">fn </span>parent_add_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, child: <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>, type_: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_iface =
@@ -541,7 +541,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_internal_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>&gt; {
+    <span class="kw">fn </span>parent_internal_child(<span class="kw-2">&amp;</span><span class="self">self</span>, builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">Object</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_iface =
@@ -580,17 +580,17 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#13-60">BuildableImpl</a>&gt; <a href="#67-191">BuildableImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#13-60">BuildableImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/buildable.rs.html#8-32">Buildable</a> {
-    <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#13-60">BuildableImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsImplementable.html">IsImplementable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/buildable.rs.html#8-32">Buildable</a> {
+    <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Interface.html">glib::Interface</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="kw">let </span>iface = <a href="#196">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
-        <a href="#197">iface</a>.set_id = <span class="prelude-val">Some</span>(buildable_set_id::&lt;T&gt;);
-        <a href="#197">iface</a>.get_id = <span class="prelude-val">Some</span>(buildable_get_id::&lt;T&gt;);
-        <a href="#197">iface</a>.add_child = <span class="prelude-val">Some</span>(buildable_add_child::&lt;T&gt;);
-        <a href="#197">iface</a>.set_buildable_property = <span class="prelude-val">Some</span>(buildable_set_buildable_property::&lt;T&gt;);
-        <a href="#197">iface</a>.construct_child = <span class="prelude-val">Some</span>(buildable_construct_child::&lt;T&gt;);
-        <a href="#197">iface</a>.parser_finished = <span class="prelude-val">Some</span>(buildable_parser_finished::&lt;T&gt;);
-        <a href="#197">iface</a>.get_internal_child = <span class="prelude-val">Some</span>(buildable_get_internal_child::&lt;T&gt;);
+        <a href="#197">iface</a>.set_id = <span class="prelude-val">Some</span>(<a href="#213-222">buildable_set_id</a>::&lt;T&gt;);
+        <a href="#197">iface</a>.get_id = <span class="prelude-val">Some</span>(<a href="#224-231">buildable_get_id</a>::&lt;T&gt;);
+        <a href="#197">iface</a>.add_child = <span class="prelude-val">Some</span>(<a href="#233-248">buildable_add_child</a>::&lt;T&gt;);
+        <a href="#197">iface</a>.set_buildable_property = <span class="prelude-val">Some</span>(<a href="#250-265">buildable_set_buildable_property</a>::&lt;T&gt;);
+        <a href="#197">iface</a>.construct_child = <span class="prelude-val">Some</span>(<a href="#267-278">buildable_construct_child</a>::&lt;T&gt;);
+        <a href="#197">iface</a>.parser_finished = <span class="prelude-val">Some</span>(<a href="#280-288">buildable_parser_finished</a>::&lt;T&gt;);
+        <a href="#197">iface</a>.get_internal_child = <span class="prelude-val">Some</span>(<a href="#290-315">buildable_get_internal_child</a>::&lt;T&gt;);
         <span class="comment">// for the future
         // iface.custom_tag_start = Some(buildable_custom_tag_start::&lt;T&gt;);
         // iface.custom_tag_end = Some(buildable_custom_tag_end::&lt;T&gt;);
@@ -604,7 +604,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#214">buildable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#217">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>id = from_glib_borrow::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#215">id</a>);
+    <span class="kw">let </span>id = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#215">id</a>);
 
     <a href="#218">imp</a>.<a href="#14-16">set_id</a>(<span class="kw-2">&amp;</span><a href="#219">id</a>)
 }
@@ -626,7 +626,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#234">buildable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#239">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>type_ = from_glib_borrow::&lt;<span class="kw">_</span>, <span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;&gt;(<a href="#237">typeptr</a>);
+    <span class="kw">let </span>type_ = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>::&lt;<span class="kw">_</span>, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;&gt;(<a href="#237">typeptr</a>);
 
     <a href="#240">imp</a>.<a href="#20-22">add_child</a>(
         <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#235">builderptr</a>),
@@ -643,7 +643,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#251">buildable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#256">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>name = from_glib_borrow::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#253">nameptr</a>);
+    <span class="kw">let </span>name = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#253">nameptr</a>);
 
     <a href="#257">imp</a>.<a href="#23-25">set_buildable_property</a>(
         <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#252">builderptr</a>),
@@ -659,7 +659,7 @@
 ) -&gt; <span class="kw-2">*mut </span>glib::gobject_ffi::GObject {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#268">buildable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#272">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>name = from_glib_borrow::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#270">nameptr</a>);
+    <span class="kw">let </span>name = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#270">nameptr</a>);
 
     <a href="#273">imp</a>.<a href="#32-34">construct_child</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#269">builderptr</a>), <span class="kw-2">&amp;</span><a href="#274">name</a>)
         .<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlibPtr.html#tymethod.into_glib_ptr">into_glib_ptr</a>()
@@ -682,11 +682,11 @@
 ) -&gt; <span class="kw-2">*mut </span>glib::gobject_ffi::GObject {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#291">buildable</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#295">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>name = from_glib_borrow::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#293">nameptr</a>);
+    <span class="kw">let </span>name = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>::&lt;<span class="kw">_</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt;(<a href="#293">nameptr</a>);
 
     <span class="kw">let </span>ret = <a href="#296">imp</a>.<a href="#29-31">internal_child</a>(<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#292">builderptr</a>), <span class="kw-2">&amp;</span><a href="#297">name</a>);
 
-    <span class="kw">static </span>QUARK: OnceLock&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/quark/struct.Quark.html">Quark</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">OnceLock::new</a>();
+    <span class="kw">static </span>QUARK: <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/quark/struct.Quark.html">Quark</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">OnceLock::new</a>();
     <span class="kw">let </span>quark =
         <span class="kw-2">*</span><a href="#301">QUARK</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/quark/struct.Quark.html#method.from_str">Quark::from_str</a>(<span class="string">"gtk4-rs-subclass-buildable-get-internal-child"</span>));
 

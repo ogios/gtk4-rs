@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/builder_scope.rs`."><title>builder_scope.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/builder_scope.rs`."><title>builder_scope.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -279,7 +279,7 @@
 
 <span class="kw">pub trait </span><a href="../../../gtk4/subclass/builder_scope/trait.BuilderCScopeImpl.html">BuilderCScopeImpl</a>: <a href="#18-36">BuilderScopeImpl</a> {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#14">BuilderCScopeImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../builder_cscope.rs.html#5-12">BuilderCScope</a> {}
+<span class="kw">unsafe impl</span>&lt;T: <a href="#14">BuilderCScopeImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsSubclassable.html">IsSubclassable</a>&lt;T&gt; <span class="kw">for </span><a href="../builder_cscope.rs.html#5-12">BuilderCScope</a> {}
 
 <span class="kw">pub trait </span><a href="../../../gtk4/subclass/builder_scope/trait.BuilderScopeImpl.html">BuilderScopeImpl</a>: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> {
     <span class="attr">#[doc(alias = <span class="string">"get_type_from_name"</span>)]
@@ -297,8 +297,8 @@
         builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>,
         function_name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         flags: <a href="../auto/flags.rs.html#108-123">BuilderClosureFlags</a>,
-        object: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">glib::Object</a>&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/closure/struct.Closure.html">glib::Closure</a>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/error/struct.Error.html">glib::Error</a>&gt;;
+        object: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">glib::Object</a>&gt;,
+    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/closure/struct.Closure.html">glib::Closure</a>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/error/struct.Error.html">glib::Error</a>&gt;;
 }
 
 <span class="kw">mod </span>sealed {
@@ -354,8 +354,8 @@
         builder: <span class="kw-2">&amp;</span><a href="../auto/builder.rs.html#13-390">Builder</a>,
         function_name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         flags: <a href="../auto/flags.rs.html#108-123">BuilderClosureFlags</a>,
-        object: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">glib::Object</a>&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/closure/struct.Closure.html">glib::Closure</a>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/error/struct.Error.html">glib::Error</a>&gt; {
+        object: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">glib::Object</a>&gt;,
+    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/closure/struct.Closure.html">glib::Closure</a>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/error/struct.Error.html">glib::Error</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>type_data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_iface = <a href="#94">type_data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_interface">parent_interface</a>::&lt;<a href="../auto/builder_scope.rs.html#8-37">BuilderScope</a>&gt;()
@@ -388,15 +388,15 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#18-36">BuilderScopeImpl</a>&gt; <a href="#43-121">BuilderScopeImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#18-36">BuilderScopeImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/builder_scope.rs.html#8-37">BuilderScope</a> {
-    <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#18-36">BuilderScopeImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsImplementable.html">IsImplementable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/builder_scope.rs.html#8-37">BuilderScope</a> {
+    <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Interface.html">glib::Interface</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="kw">let </span>iface = <a href="#126">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
-        <a href="#127">iface</a>.get_type_from_name = <span class="prelude-val">Some</span>(builder_scope_get_type_from_name::&lt;T&gt;);
-        <a href="#127">iface</a>.get_type_from_function = <span class="prelude-val">Some</span>(builder_scope_get_type_from_function::&lt;T&gt;);
-        <a href="#127">iface</a>.create_closure = <span class="prelude-val">Some</span>(builder_scope_create_closure::&lt;T&gt;);
+        <a href="#127">iface</a>.get_type_from_name = <span class="prelude-val">Some</span>(<a href="#137-148">builder_scope_get_type_from_name</a>::&lt;T&gt;);
+        <a href="#127">iface</a>.get_type_from_function = <span class="prelude-val">Some</span>(<a href="#150-161">builder_scope_get_type_from_function</a>::&lt;T&gt;);
+        <a href="#127">iface</a>.create_closure = <span class="prelude-val">Some</span>(<a href="#163-193">builder_scope_create_closure</a>::&lt;T&gt;);
     }
 }
 
@@ -407,8 +407,8 @@
 ) -&gt; glib::ffi::GType {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#138">builder_scope</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#142">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>builder: Borrowed&lt;<a href="../auto/builder.rs.html#13-390">Builder</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#139">builderptr</a>);
-    <span class="kw">let </span>type_name: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#140">type_nameptr</a>);
+    <span class="kw">let </span>builder: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/builder.rs.html#13-390">Builder</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#139">builderptr</a>);
+    <span class="kw">let </span>type_name: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#140">type_nameptr</a>);
 
     <a href="#143">imp</a>.<a href="#20-22">type_from_name</a>(<span class="kw-2">&amp;</span><a href="#144">builder</a>, <span class="kw-2">&amp;</span><a href="#145">type_name</a>).<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
@@ -420,8 +420,8 @@
 ) -&gt; glib::ffi::GType {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#151">builder_scope</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#155">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>builder: Borrowed&lt;<a href="../auto/builder.rs.html#13-390">Builder</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#152">builderptr</a>);
-    <span class="kw">let </span>func_name: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#153">func_nameptr</a>);
+    <span class="kw">let </span>builder: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/builder.rs.html#13-390">Builder</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#152">builderptr</a>);
+    <span class="kw">let </span>func_name: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#153">func_nameptr</a>);
 
     <a href="#156">imp</a>.<a href="#25-27">type_from_function</a>(<span class="kw-2">&amp;</span><a href="#157">builder</a>, <span class="kw-2">&amp;</span><a href="#158">func_name</a>).<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
@@ -436,9 +436,9 @@
 ) -&gt; <span class="kw-2">*mut </span>glib::gobject_ffi::GClosure {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#164">builder_scope</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#171">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>builder: Borrowed&lt;<a href="../auto/builder.rs.html#13-390">Builder</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#165">builderptr</a>);
-    <span class="kw">let </span>func_name: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#166">func_nameptr</a>);
-    <span class="kw">let </span>object: Borrowed&lt;<span class="prelude-ty">Option</span>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">glib::Object</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#168">objectptr</a>);
+    <span class="kw">let </span>builder: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/builder.rs.html#13-390">Builder</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#165">builderptr</a>);
+    <span class="kw">let </span>func_name: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#166">func_nameptr</a>);
+    <span class="kw">let </span>object: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Object.html">glib::Object</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#168">objectptr</a>);
 
     <span class="kw">let </span>ret = <a href="#172">imp</a>.<a href="#29-35">create_closure</a>(
         <span class="kw-2">&amp;</span><a href="#173">builder</a>,

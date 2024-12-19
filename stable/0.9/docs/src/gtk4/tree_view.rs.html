@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/tree_view.rs`."><title>tree_view.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/tree_view.rs`."><title>tree_view.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -150,7 +150,7 @@
 
 <span class="kw">mod </span>sealed {
     <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="auto/tree_view.rs.html#19-764"><span class="kw">super</span>::TreeView</a>&gt;&gt; <a href="#8">Sealed</a> <span class="kw">for </span>T {}
+    <span class="kw">impl</span>&lt;T: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html"><span class="kw">super</span>::IsA</a>&lt;<a href="auto/tree_view.rs.html#19-764"><span class="kw">super</span>::TreeView</a>&gt;&gt; <a href="#8">Sealed</a> <span class="kw">for </span>T {}
 }
 
 <span class="comment">// rustdoc-stripper-ignore-next
@@ -158,7 +158,7 @@
 /// [`TreeView`](crate::TreeView).
 </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeViewExtManual.html">TreeViewExtManual</a>: <a href="#8">sealed::Sealed</a> + IsA&lt;<a href="auto/tree_view.rs.html#19-764">TreeView</a>&gt; + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeViewExtManual.html">TreeViewExtManual</a>: <a href="#8">sealed::Sealed</a> + <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="auto/tree_view.rs.html#19-764">TreeView</a>&gt; + <span class="lifetime">'static </span>{
     <span class="doccomment">/// Creates a new [`TreeViewColumn`][crate::TreeViewColumn] and inserts it into the @self at
     /// @position.  If @position is -1, then the newly created column is inserted at
     /// the end.  The column is initialized with the attributes given. If @self
@@ -183,7 +183,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         position: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
         title: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-        cell: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="auto/cell_renderer.rs.html#17-183">CellRenderer</a>&gt;,
+        cell: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="auto/cell_renderer.rs.html#17-183">CellRenderer</a>&gt;,
         attributes: <span class="kw-2">&amp;</span>[(<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)],
     ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
         <span class="kw">let </span>column = <a href="auto/tree_view_column.rs.html#149-152">TreeViewColumn::new</a>();
@@ -195,7 +195,7 @@
         <a href="#43">attributes</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.for_each">for_each</a>(|(attribute, column_id)| {
             <a href="#45">column</a>.<a href="auto/tree_view_column.rs.html#207-221">add_attribute</a>(<a href="#42">cell</a>, <a href="#51">attribute</a>, <span class="kw-2">*</span><a href="#51">column_id</a>);
         });
-        <a class="self" href="#39">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/tree_view.rs.html#2679-2687">insert_column</a>(<span class="kw-2">&amp;</span><a href="#45">column</a>, <a href="#40">position</a>)
+        <a class="self" href="#39">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="auto/tree_view.rs.html#2680-2688">insert_column</a>(<span class="kw-2">&amp;</span><a href="#45">column</a>, <a href="#40">position</a>)
     }
 
     <span class="attr">#[doc(alias = <span class="string">"gtk_tree_view_set_row_separator_func"</span>)]
@@ -212,5 +212,5 @@
     }
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/tree_view.rs.html#19-764">TreeView</a>&gt;&gt; <a href="#17-69">TreeViewExtManual</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="auto/tree_view.rs.html#19-764">TreeView</a>&gt;&gt; <a href="#17-69">TreeViewExtManual</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

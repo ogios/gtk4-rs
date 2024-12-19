@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/cell_renderer.rs`."><title>cell_renderer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/cell_renderer.rs`."><title>cell_renderer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -821,7 +821,7 @@
 
 <span class="kw">use crate</span>::{
     <a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#94-180">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/cell_editable.rs.html#14-492">CellEditable</a>, <a href="../auto/cell_renderer.rs.html#17-183">CellRenderer</a>, <a href="../auto/flags.rs.html#200-228">CellRendererState</a>,
-    <a href="../auto/enums.rs.html#11083-11095">SizeRequestMode</a>, <a href="../auto/snapshot.rs.html#9-32">Snapshot</a>, <a href="../auto/widget.rs.html#18-853">Widget</a>,
+    <a href="../auto/enums.rs.html#11083-11095">SizeRequestMode</a>, <a href="../auto/snapshot.rs.html#9-32">Snapshot</a>, <a href="../auto/widget.rs.html#18-852">Widget</a>,
 };
 
 <span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
@@ -850,9 +850,9 @@
     /// # Returns
     ///
     /// [`true`] if the event was consumed/handled
-    </span><span class="kw">fn </span>activate&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    </span><span class="kw">fn </span>activate&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        event: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
+        event: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
         widget: <span class="kw-2">&amp;</span>P,
         path: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         background_area: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/rectangle/struct.Rectangle.html">gdk::Rectangle</a>,
@@ -891,7 +891,7 @@
     /// the return location for the space inside @cell_area
     ///                that would actually be used to render.
     </span><span class="attr">#[doc(alias = <span class="string">"get_aligned_area"</span>)]
-    </span><span class="kw">fn </span>aligned_area&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    </span><span class="kw">fn </span>aligned_area&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         widget: <span class="kw-2">&amp;</span>P,
         flags: <a href="../auto/flags.rs.html#200-228">CellRendererState</a>,
@@ -919,7 +919,7 @@
     /// ## `natural_height`
     /// location for storing the preferred size
     </span><span class="attr">#[doc(alias = <span class="string">"get_preferred_height_for_width"</span>)]
-    </span><span class="kw">fn </span>preferred_height_for_width&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P, width: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
+    </span><span class="kw">fn </span>preferred_height_for_width&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P, width: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <a class="self" href="#111">self</a>.<a href="#346-369">parent_preferred_height_for_width</a>(<a href="#111">widget</a>, <a href="#111">width</a>)
     }
 
@@ -939,7 +939,7 @@
     /// ## `natural_size`
     /// location to store the natural size
     </span><span class="attr">#[doc(alias = <span class="string">"get_preferred_height"</span>)]
-    </span><span class="kw">fn </span>preferred_height&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
+    </span><span class="kw">fn </span>preferred_height&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <a class="self" href="#131">self</a>.<a href="#327-345">parent_preferred_height</a>(<a href="#131">widget</a>)
     }
 
@@ -962,7 +962,7 @@
     /// ## `natural_width`
     /// location for storing the preferred size
     </span><span class="attr">#[doc(alias = <span class="string">"get_preferred_width_for_height"</span>)]
-    </span><span class="kw">fn </span>preferred_width_for_height&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P, height: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
+    </span><span class="kw">fn </span>preferred_width_for_height&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P, height: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <a class="self" href="#154">self</a>.<a href="#302-326">parent_preferred_width_for_height</a>(<a href="#154">widget</a>, <a href="#154">height</a>)
     }
 
@@ -982,7 +982,7 @@
     /// ## `natural_size`
     /// location to store the natural size
     </span><span class="attr">#[doc(alias = <span class="string">"get_preferred_width"</span>)]
-    </span><span class="kw">fn </span>preferred_width&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
+    </span><span class="kw">fn </span>preferred_width&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <a class="self" href="#174">self</a>.<a href="#281-300">parent_preferred_width</a>(<a href="#174">widget</a>)
     }
 
@@ -1021,7 +1021,7 @@
     /// area normally rendered by a cell renderer
     /// ## `flags`
     /// flags that affect rendering
-    </span><span class="kw">fn </span>snapshot&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    </span><span class="kw">fn </span>snapshot&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         snapshot: <span class="kw-2">&amp;</span><a href="../auto/snapshot.rs.html#9-32">Snapshot</a>,
         widget: <span class="kw-2">&amp;</span>P,
@@ -1055,15 +1055,15 @@
     ///
     /// A new [`CellEditable`][crate::CellEditable] for editing this
     ///   @self, or [`None`] if editing is not possible
-    </span><span class="kw">fn </span>start_editing&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    </span><span class="kw">fn </span>start_editing&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        event: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
+        event: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
         widget: <span class="kw-2">&amp;</span>P,
         path: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         background_area: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/rectangle/struct.Rectangle.html">gdk::Rectangle</a>,
         cell_area: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/rectangle/struct.Rectangle.html">gdk::Rectangle</a>,
         flags: <a href="../auto/flags.rs.html#200-228">CellRendererState</a>,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../auto/cell_editable.rs.html#14-492">CellEditable</a>&gt; {
+    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../auto/cell_editable.rs.html#14-492">CellEditable</a>&gt; {
         <a class="self" href="#248">self</a>.<a href="#455-484">parent_start_editing</a>(<a href="#249">event</a>, <a href="#250">widget</a>, <a href="#251">path</a>, <a href="#252">background_area</a>, <a href="#253">cell_area</a>, <a href="#254">flags</a>)
     }
 }
@@ -1089,7 +1089,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_preferred_width&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
+    <span class="kw">fn </span>parent_preferred_width&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#283">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkCellRendererClass.html">ffi::GtkCellRendererClass</a>;
@@ -1110,7 +1110,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_preferred_width_for_height&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    <span class="kw">fn </span>parent_preferred_width_for_height&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         widget: <span class="kw-2">&amp;</span>P,
         height: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
@@ -1135,7 +1135,7 @@
             (<a href="#312">minimum_size</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>(), <a href="#313">natural_size</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>())
         }
     }
-    <span class="kw">fn </span>parent_preferred_height&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
+    <span class="kw">fn </span>parent_preferred_height&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span>P) -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#329">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkCellRendererClass.html">ffi::GtkCellRendererClass</a>;
@@ -1154,7 +1154,7 @@
             (<a href="#332">minimum_size</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>(), <a href="#333">natural_size</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>())
         }
     }
-    <span class="kw">fn </span>parent_preferred_height_for_width&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    <span class="kw">fn </span>parent_preferred_height_for_width&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         widget: <span class="kw-2">&amp;</span>P,
         width: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
@@ -1179,7 +1179,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_aligned_area&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    <span class="kw">fn </span>parent_aligned_area&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         widget: <span class="kw-2">&amp;</span>P,
         flags: <a href="../auto/flags.rs.html#200-228">CellRendererState</a>,
@@ -1204,7 +1204,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_snapshot&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    <span class="kw">fn </span>parent_snapshot&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         snapshot: <span class="kw-2">&amp;</span><a href="../auto/snapshot.rs.html#9-32">Snapshot</a>,
         widget: <span class="kw-2">&amp;</span>P,
@@ -1232,9 +1232,9 @@
     }
 
     <span class="comment">// Returns true if the event was consumed/handled
-    </span><span class="kw">fn </span>parent_activate&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    </span><span class="kw">fn </span>parent_activate&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        event: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
+        event: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
         widget: <span class="kw-2">&amp;</span>P,
         path: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         background_area: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/rectangle/struct.Rectangle.html">gdk::Rectangle</a>,
@@ -1263,15 +1263,15 @@
         }
     }
 
-    <span class="kw">fn </span>parent_start_editing&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(
+    <span class="kw">fn </span>parent_start_editing&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        event: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
+        event: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;,
         widget: <span class="kw-2">&amp;</span>P,
         path: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         background_area: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/rectangle/struct.Rectangle.html">gdk::Rectangle</a>,
         cell_area: <span class="kw-2">&amp;</span><a href="../../../gdk4/auto/rectangle/struct.Rectangle.html">gdk::Rectangle</a>,
         flags: <a href="../auto/flags.rs.html#200-228">CellRendererState</a>,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../auto/cell_editable.rs.html#14-492">CellEditable</a>&gt; {
+    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../auto/cell_editable.rs.html#14-492">CellEditable</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#465">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkCellRendererClass.html">ffi::GtkCellRendererClass</a>;
@@ -1328,27 +1328,27 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#18-258">CellRendererImpl</a>&gt; <a href="#267-516">CellRendererImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#18-258">CellRendererImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/cell_renderer.rs.html#17-183">CellRenderer</a> {
-    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>::glib::Class&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#18-258">CellRendererImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsSubclassable.html">IsSubclassable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/cell_renderer.rs.html#17-183">CellRenderer</a> {
+    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Class.html">::glib::Class</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#521">class</a>);
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
         <span class="kw">let </span>klass = <a href="#521">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
-        <a href="#526">klass</a>.activate = <span class="prelude-val">Some</span>(cell_renderer_activate::&lt;T&gt;);
-        <a href="#526">klass</a>.editing_canceled = <span class="prelude-val">Some</span>(cell_renderer_editing_canceled::&lt;T&gt;);
-        <a href="#526">klass</a>.editing_started = <span class="prelude-val">Some</span>(cell_renderer_editing_started::&lt;T&gt;);
-        <a href="#526">klass</a>.get_aligned_area = <span class="prelude-val">Some</span>(cell_renderer_get_aligned_area::&lt;T&gt;);
+        <a href="#526">klass</a>.activate = <span class="prelude-val">Some</span>(<a href="#544-567">cell_renderer_activate</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.editing_canceled = <span class="prelude-val">Some</span>(<a href="#569-576">cell_renderer_editing_canceled</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.editing_started = <span class="prelude-val">Some</span>(<a href="#578-588">cell_renderer_editing_started</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.get_aligned_area = <span class="prelude-val">Some</span>(<a href="#590-603">cell_renderer_get_aligned_area</a>::&lt;T&gt;);
         <a href="#526">klass</a>.get_preferred_height_for_width =
-            <span class="prelude-val">Some</span>(cell_renderer_get_preferred_height_for_width::&lt;T&gt;);
-        <a href="#526">klass</a>.get_preferred_height = <span class="prelude-val">Some</span>(cell_renderer_get_preferred_height::&lt;T&gt;);
+            <span class="prelude-val">Some</span>(<a href="#605-623">cell_renderer_get_preferred_height_for_width</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.get_preferred_height = <span class="prelude-val">Some</span>(<a href="#625-642">cell_renderer_get_preferred_height</a>::&lt;T&gt;);
         <a href="#526">klass</a>.get_preferred_width_for_height =
-            <span class="prelude-val">Some</span>(cell_renderer_get_preferred_width_for_height::&lt;T&gt;);
-        <a href="#526">klass</a>.get_preferred_width = <span class="prelude-val">Some</span>(cell_renderer_get_preferred_width::&lt;T&gt;);
-        <a href="#526">klass</a>.get_request_mode = <span class="prelude-val">Some</span>(cell_renderer_get_request_mode::&lt;T&gt;);
-        <a href="#526">klass</a>.snapshot = <span class="prelude-val">Some</span>(cell_renderer_snapshot::&lt;T&gt;);
-        <a href="#526">klass</a>.start_editing = <span class="prelude-val">Some</span>(cell_renderer_start_editing::&lt;T&gt;);
+            <span class="prelude-val">Some</span>(<a href="#644-662">cell_renderer_get_preferred_width_for_height</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.get_preferred_width = <span class="prelude-val">Some</span>(<a href="#664-681">cell_renderer_get_preferred_width</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.get_request_mode = <span class="prelude-val">Some</span>(<a href="#683-690">cell_renderer_get_request_mode</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.snapshot = <span class="prelude-val">Some</span>(<a href="#692-712">cell_renderer_snapshot</a>::&lt;T&gt;);
+        <a href="#526">klass</a>.start_editing = <span class="prelude-val">Some</span>(<a href="#714-738">cell_renderer_start_editing</a>::&lt;T&gt;);
     }
 }
 
@@ -1363,8 +1363,8 @@
 ) -&gt; glib::ffi::gboolean {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#545">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#553">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#547">wdgtptr</a>);
-    <span class="kw">let </span>evt: Borrowed&lt;<span class="prelude-ty">Option</span>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#546">evtptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#547">wdgtptr</a>);
+    <span class="kw">let </span>evt: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#546">evtptr</a>);
 
     <a href="#554">imp</a>.<a href="#42-52">activate</a>(
         <a href="#556">evt</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>(),
@@ -1407,7 +1407,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#591">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#597">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#592">wdgtptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#592">wdgtptr</a>);
 
     <span class="kw">let </span>rectangle = <a href="#598">imp</a>.<a href="#83-90">aligned_area</a>(<span class="kw-2">&amp;*</span><a href="#599">widget</a>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="#593">flags</a>), <span class="kw-2">&amp;</span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#594">cellarea</a>));
     <span class="kw-2">*</span><a href="#595">alignedptr</a> = <span class="kw-2">*</span><a href="#601">rectangle</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>;
@@ -1422,7 +1422,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#606">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#612">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#607">wdgtptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#607">wdgtptr</a>);
 
     <span class="kw">let </span>(min_height, nat_height) = <a href="#613">imp</a>.<a href="#111-113">preferred_height_for_width</a>(<span class="kw-2">&amp;*</span><a href="#614">widget</a>, <a href="#608">width</a>);
     <span class="kw">if </span>!min_height_ptr.is_null() {
@@ -1441,7 +1441,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#626">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#631">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#627">wdgtptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#627">wdgtptr</a>);
 
     <span class="kw">let </span>(min_size, nat_size) = <a href="#632">imp</a>.<a href="#131-133">preferred_height</a>(<span class="kw-2">&amp;*</span><a href="#633">widget</a>);
     <span class="kw">if </span>!minptr.is_null() {
@@ -1461,7 +1461,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#645">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#651">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#646">wdgtptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#646">wdgtptr</a>);
 
     <span class="kw">let </span>(min_width, nat_width) = <a href="#652">imp</a>.<a href="#154-156">preferred_width_for_height</a>(<span class="kw-2">&amp;*</span><a href="#653">widget</a>, <a href="#647">height</a>);
     <span class="kw">if </span>!min_width_ptr.is_null() {
@@ -1480,7 +1480,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#665">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#670">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#666">wdgtptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#666">wdgtptr</a>);
 
     <span class="kw">let </span>(min_size, nat_size) = <a href="#671">imp</a>.<a href="#174-176">preferred_width</a>(<span class="kw-2">&amp;*</span><a href="#672">widget</a>);
     <span class="kw">if </span>!minptr.is_null() {
@@ -1510,8 +1510,8 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#693">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#700">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#695">wdgtptr</a>);
-    <span class="kw">let </span>snapshot: Borrowed&lt;<a href="../auto/snapshot.rs.html#9-32">Snapshot</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#694">snapshotptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#695">wdgtptr</a>);
+    <span class="kw">let </span>snapshot: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/snapshot.rs.html#9-32">Snapshot</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#694">snapshotptr</a>);
 
     <a href="#701">imp</a>.<a href="#213-222">snapshot</a>(
         <span class="kw-2">&amp;</span><a href="#703">snapshot</a>,
@@ -1533,8 +1533,8 @@
 ) -&gt; <span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkCellEditable.html">ffi::GtkCellEditable</a> {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#715">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#723">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#717">wdgtptr</a>);
-    <span class="kw">let </span>evt: Borrowed&lt;<span class="prelude-ty">Option</span>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#716">evtptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#717">wdgtptr</a>);
+    <span class="kw">let </span>evt: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#716">evtptr</a>);
 
     <a href="#724">imp</a>.<a href="#247-257">start_editing</a>(
         <a href="#726">evt</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>(),

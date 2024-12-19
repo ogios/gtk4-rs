@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/tree_sortable.rs`."><title>tree_sortable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/tree_sortable.rs`."><title>tree_sortable.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -339,7 +339,7 @@
 }
 
 <span class="attr">#[doc(hidden)]
-</span><span class="kw">impl </span>FromGlib&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt; <span class="kw">for </span><a href="#12-16">SortColumn</a> {
+</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.FromGlib.html">FromGlib</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt; <span class="kw">for </span><a href="#12-16">SortColumn</a> {
     <span class="attr">#[inline]
     </span><span class="kw">unsafe fn </span>from_glib(val: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <span class="self">Self </span>{
         <span class="macro">skip_assert_initialized!</span>();
@@ -368,7 +368,7 @@
 
 <span class="kw">mod </span>sealed {
     <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="auto/tree_sortable.rs.html#14-92"><span class="kw">super</span>::TreeSortable</a>&gt;&gt; <a href="#63">Sealed</a> <span class="kw">for </span>T {}
+    <span class="kw">impl</span>&lt;T: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html"><span class="kw">super</span>::IsA</a>&lt;<a href="auto/tree_sortable.rs.html#14-92"><span class="kw">super</span>::TreeSortable</a>&gt;&gt; <a href="#63">Sealed</a> <span class="kw">for </span>T {}
 }
 
 <span class="comment">// rustdoc-stripper-ignore-next
@@ -376,7 +376,7 @@
 /// [`TreeSortable`](crate::TreeSortable).
 </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeSortableExtManual.html">TreeSortableExtManual</a>: <a href="#63">sealed::Sealed</a> + IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt; + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../gtk4/prelude/trait.TreeSortableExtManual.html">TreeSortableExtManual</a>: <a href="#63">sealed::Sealed</a> + <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt; + <span class="lifetime">'static </span>{
     <span class="doccomment">/// Sets the default comparison function used when sorting to be @sort_func.
     /// If the current sort column id of @self is
     /// `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, then the model will sort using
@@ -394,14 +394,14 @@
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_tree_sortable_set_default_sort_func"</span>)]
     </span><span class="kw">fn </span>set_default_sort_func&lt;F&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, sort_func: F)
     <span class="kw">where
-        </span>F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a> + <span class="lifetime">'static</span>,
+        </span>F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a> + <span class="lifetime">'static</span>,
     {
         <span class="kw">unsafe </span>{
             <a href="../../gtk4_sys/fn.gtk_tree_sortable_set_default_sort_func.html">ffi::gtk_tree_sortable_set_default_sort_func</a>(
                 <a class="self" href="#88">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
-                <span class="prelude-val">Some</span>(trampoline::&lt;<span class="self">Self</span>, F&gt;),
+                <span class="prelude-val">Some</span>(<a href="#201-217">trampoline</a>::&lt;<span class="self">Self</span>, F&gt;),
                 <a href="#225-232">into_raw</a>(<a href="#88">sort_func</a>),
-                <span class="prelude-val">Some</span>(destroy_closure::&lt;<span class="self">Self</span>, F&gt;),
+                <span class="prelude-val">Some</span>(<a href="#219-223">destroy_closure</a>::&lt;<span class="self">Self</span>, F&gt;),
             )
         }
     }
@@ -418,15 +418,15 @@
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_tree_sortable_set_sort_func"</span>)]
     </span><span class="kw">fn </span>set_sort_func&lt;F&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, sort_column_id: <a href="#12-16">SortColumn</a>, sort_func: F)
     <span class="kw">where
-        </span>F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a> + <span class="lifetime">'static</span>,
+        </span>F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a> + <span class="lifetime">'static</span>,
     {
         <span class="kw">unsafe </span>{
             <a href="../../gtk4_sys/fn.gtk_tree_sortable_set_sort_func.html">ffi::gtk_tree_sortable_set_sort_func</a>(
                 <a class="self" href="#112">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
                 <a href="#112">sort_column_id</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>(),
-                <span class="prelude-val">Some</span>(trampoline::&lt;<span class="self">Self</span>, F&gt;),
+                <span class="prelude-val">Some</span>(<a href="#201-217">trampoline</a>::&lt;<span class="self">Self</span>, F&gt;),
                 <a href="#225-232">into_raw</a>(<a href="#112">sort_func</a>),
-                <span class="prelude-val">Some</span>(destroy_closure::&lt;<span class="self">Self</span>, F&gt;),
+                <span class="prelude-val">Some</span>(<a href="#219-223">destroy_closure</a>::&lt;<span class="self">Self</span>, F&gt;),
             )
         }
     }
@@ -450,7 +450,7 @@
     /// The [`SortType`][crate::SortType] to be filled in
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_tree_sortable_get_sort_column_id"</span>)]
     #[doc(alias = <span class="string">"get_sort_column_id"</span>)]
-    </span><span class="kw">fn </span>sort_column_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;(<a href="#12-16">SortColumn</a>, <a href="auto/enums.rs.html#11187-11196">SortType</a>)&gt; {
+    </span><span class="kw">fn </span>sort_column_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;(<a href="#12-16">SortColumn</a>, <a href="auto/enums.rs.html#11187-11196">SortType</a>)&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>sort_column_id = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">mem::MaybeUninit::uninit</a>();
             <span class="kw">let </span><span class="kw-2">mut </span>order = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">mem::MaybeUninit::uninit</a>();
@@ -505,14 +505,14 @@
     }
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>trampoline&lt;T, F: Fn(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>trampoline&lt;T, F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a>&gt;(
     this: <span class="kw-2">*mut </span><a href="../../gtk4_sys/struct.GtkTreeModel.html">ffi::GtkTreeModel</a>,
     iter: <span class="kw-2">*mut </span><a href="../../gtk4_sys/struct.GtkTreeIter.html">ffi::GtkTreeIter</a>,
     iter2: <span class="kw-2">*mut </span><a href="../../gtk4_sys/struct.GtkTreeIter.html">ffi::GtkTreeIter</a>,
     f: glib::ffi::gpointer,
 ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>
 <span class="kw">where
-    </span>T: IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt;,
+    </span>T: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt;,
 {
     <span class="kw">let </span>f: <span class="kw-2">&amp;</span>F = <span class="kw-2">&amp;*</span>(<a href="#205">f</a> <span class="kw">as </span><span class="kw-2">*const </span>F);
     <a href="#210">f</a>(
@@ -523,20 +523,20 @@
     .<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
 
-<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>destroy_closure&lt;T, F: Fn(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a>&gt;(
+<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>destroy_closure&lt;T, F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a>&gt;(
     ptr: glib::ffi::gpointer,
 ) {
-    <span class="kw">let _ </span>= Box::&lt;F&gt;::from_raw(<a href="#220">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+    <span class="kw">let _ </span>= <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::&lt;F&gt;::from_raw(<a href="#220">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
 }
 
 <span class="kw">fn </span>into_raw&lt;F, T&gt;(func: F) -&gt; glib::ffi::gpointer
 <span class="kw">where
-    </span>F: Fn(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a> + <span class="lifetime">'static</span>,
+    </span>F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>T, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>, <span class="kw-2">&amp;</span><a href="auto/tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a href="auto/enums.rs.html#7710-7722">Ordering</a> + <span class="lifetime">'static</span>,
 {
     <span class="macro">skip_assert_initialized!</span>();
-    <span class="kw">let </span>func: Box&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#225">func</a>);
+    <span class="kw">let </span>func: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;F&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">Box::new</a>(<a href="#225">func</a>);
     <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.into_raw">Box::into_raw</a>(<a href="#230">func</a>) <span class="kw">as </span>glib::ffi::gpointer
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt;&gt; <a href="#72-199">TreeSortableExtManual</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="auto/tree_sortable.rs.html#14-92">TreeSortable</a>&gt;&gt; <a href="#72-199">TreeSortableExtManual</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

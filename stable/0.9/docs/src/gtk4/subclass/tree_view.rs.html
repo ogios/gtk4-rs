@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/tree_view.rs`."><title>tree_view.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/tree_view.rs`."><title>tree_view.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -597,7 +597,7 @@
 
 <span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
 #[allow(deprecated)]
-</span><span class="kw">pub trait </span><a href="../../../gtk4/subclass/tree_view/trait.TreeViewImpl.html">TreeViewImpl</a>: <a href="#93-326">TreeViewImplExt</a> + <a href="widget.rs.html#113-400">WidgetImpl</a> {
+</span><span class="kw">pub trait </span><a href="../../../gtk4/subclass/tree_view/trait.TreeViewImpl.html">TreeViewImpl</a>: <a href="#93-326">TreeViewImplExt</a> + <a href="widget.rs.html#113-401">WidgetImpl</a> {
     <span class="kw">fn </span>columns_changed(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <a class="self" href="#16">self</a>.<a href="#94-103">parent_columns_changed</a>()
     }
@@ -912,26 +912,26 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#15-84">TreeViewImpl</a>&gt; <a href="#93-326">TreeViewImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#15-84">TreeViewImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/tree_view.rs.html#19-764">TreeView</a> {
-    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>glib::Class&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#15-84">TreeViewImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsSubclassable.html">IsSubclassable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/tree_view.rs.html#19-764">TreeView</a> {
+    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Class.html">glib::Class</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#331">class</a>);
 
         <span class="kw">let </span>klass = <a href="#331">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
-        <a href="#334">klass</a>.columns_changed = <span class="prelude-val">Some</span>(tree_view_columns_changed::&lt;T&gt;);
-        <a href="#334">klass</a>.cursor_changed = <span class="prelude-val">Some</span>(tree_view_cursor_changed::&lt;T&gt;);
-        <a href="#334">klass</a>.expand_collapse_cursor_row = <span class="prelude-val">Some</span>(tree_view_expand_collapse_cursor_row::&lt;T&gt;);
-        <a href="#334">klass</a>.move_cursor = <span class="prelude-val">Some</span>(tree_view_move_cursor::&lt;T&gt;);
-        <a href="#334">klass</a>.row_activated = <span class="prelude-val">Some</span>(tree_view_row_activated::&lt;T&gt;);
-        <a href="#334">klass</a>.row_collapsed = <span class="prelude-val">Some</span>(tree_view_row_collapsed::&lt;T&gt;);
-        <a href="#334">klass</a>.row_expanded = <span class="prelude-val">Some</span>(tree_view_row_expanded::&lt;T&gt;);
-        <a href="#334">klass</a>.select_all = <span class="prelude-val">Some</span>(tree_view_select_all::&lt;T&gt;);
-        <a href="#334">klass</a>.select_cursor_parent = <span class="prelude-val">Some</span>(tree_view_select_cursor_parent::&lt;T&gt;);
-        <a href="#334">klass</a>.select_cursor_row = <span class="prelude-val">Some</span>(tree_view_select_cursor_row::&lt;T&gt;);
-        <a href="#334">klass</a>.start_interactive_search = <span class="prelude-val">Some</span>(tree_view_start_interactive_search::&lt;T&gt;);
-        <a href="#334">klass</a>.test_collapse_row = <span class="prelude-val">Some</span>(tree_view_test_collapse_row::&lt;T&gt;);
-        <a href="#334">klass</a>.test_expand_row = <span class="prelude-val">Some</span>(tree_view_test_expand_row::&lt;T&gt;);
-        <a href="#334">klass</a>.toggle_cursor_row = <span class="prelude-val">Some</span>(tree_view_toggle_cursor_row::&lt;T&gt;);
-        <a href="#334">klass</a>.unselect_all = <span class="prelude-val">Some</span>(tree_view_unselect_all::&lt;T&gt;);
+        <a href="#334">klass</a>.columns_changed = <span class="prelude-val">Some</span>(<a href="#353-358">tree_view_columns_changed</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.cursor_changed = <span class="prelude-val">Some</span>(<a href="#360-365">tree_view_cursor_changed</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.expand_collapse_cursor_row = <span class="prelude-val">Some</span>(<a href="#367-378">tree_view_expand_collapse_cursor_row</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.move_cursor = <span class="prelude-val">Some</span>(<a href="#380-392">tree_view_move_cursor</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.row_activated = <span class="prelude-val">Some</span>(<a href="#394-405">tree_view_row_activated</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.row_collapsed = <span class="prelude-val">Some</span>(<a href="#407-418">tree_view_row_collapsed</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.row_expanded = <span class="prelude-val">Some</span>(<a href="#420-431">tree_view_row_expanded</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.select_all = <span class="prelude-val">Some</span>(<a href="#433-440">tree_view_select_all</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.select_cursor_parent = <span class="prelude-val">Some</span>(<a href="#442-449">tree_view_select_cursor_parent</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.select_cursor_row = <span class="prelude-val">Some</span>(<a href="#451-459">tree_view_select_cursor_row</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.start_interactive_search = <span class="prelude-val">Some</span>(<a href="#461-468">tree_view_start_interactive_search</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.test_collapse_row = <span class="prelude-val">Some</span>(<a href="#470-481">tree_view_test_collapse_row</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.test_expand_row = <span class="prelude-val">Some</span>(<a href="#483-494">tree_view_test_expand_row</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.toggle_cursor_row = <span class="prelude-val">Some</span>(<a href="#496-503">tree_view_toggle_cursor_row</a>::&lt;T&gt;);
+        <a href="#334">klass</a>.unselect_all = <span class="prelude-val">Some</span>(<a href="#505-512">tree_view_unselect_all</a>::&lt;T&gt;);
     }
 }
 
@@ -983,8 +983,8 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#395">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#399">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>path: Borrowed&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#396">pathptr</a>);
-    <span class="kw">let </span>column: Borrowed&lt;<a href="../auto/tree_view_column.rs.html#17-134">TreeViewColumn</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#397">columnptr</a>);
+    <span class="kw">let </span>path: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#396">pathptr</a>);
+    <span class="kw">let </span>column: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_view_column.rs.html#17-134">TreeViewColumn</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#397">columnptr</a>);
 
     <a href="#400">imp</a>.<a href="#41-43">row_activated</a>(<span class="kw-2">&amp;</span><a href="#401">path</a>, <span class="kw-2">&amp;</span><a href="#402">column</a>)
 }
@@ -996,8 +996,8 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#408">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#412">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>path: Borrowed&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#410">pathptr</a>);
-    <span class="kw">let </span>iter: Borrowed&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#409">iterptr</a>);
+    <span class="kw">let </span>path: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#410">pathptr</a>);
+    <span class="kw">let </span>iter: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#409">iterptr</a>);
 
     <a href="#413">imp</a>.<a href="#45-47">row_collapsed</a>(<span class="kw-2">&amp;</span><a href="#415">iter</a>, <span class="kw-2">&amp;</span><a href="#414">path</a>)
 }
@@ -1009,8 +1009,8 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#421">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#425">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>path: Borrowed&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#423">pathptr</a>);
-    <span class="kw">let </span>iter: Borrowed&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#422">iterptr</a>);
+    <span class="kw">let </span>path: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#423">pathptr</a>);
+    <span class="kw">let </span>iter: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#422">iterptr</a>);
 
     <a href="#426">imp</a>.<a href="#49-51">row_expanded</a>(<span class="kw-2">&amp;</span><a href="#428">iter</a>, <span class="kw-2">&amp;</span><a href="#427">path</a>)
 }
@@ -1059,8 +1059,8 @@
 ) -&gt; glib::ffi::gboolean {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#471">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#475">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>path: Borrowed&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#473">pathptr</a>);
-    <span class="kw">let </span>iter: Borrowed&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#472">iterptr</a>);
+    <span class="kw">let </span>path: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#473">pathptr</a>);
+    <span class="kw">let </span>iter: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#472">iterptr</a>);
 
     <a href="#476">imp</a>.<a href="#69-71">test_collapse_row</a>(<span class="kw-2">&amp;</span><a href="#478">iter</a>, <span class="kw-2">&amp;</span><a href="#477">path</a>).<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
@@ -1072,8 +1072,8 @@
 ) -&gt; glib::ffi::gboolean {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#484">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#488">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>path: Borrowed&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#486">pathptr</a>);
-    <span class="kw">let </span>iter: Borrowed&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#485">iterptr</a>);
+    <span class="kw">let </span>path: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_path.rs.html#8-21">TreePath</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#486">pathptr</a>);
+    <span class="kw">let </span>iter: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/tree_iter.rs.html#8-25">TreeIter</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#485">iterptr</a>);
 
     <a href="#489">imp</a>.<a href="#73-75">test_expand_row</a>(<span class="kw-2">&amp;</span><a href="#491">iter</a>, <span class="kw-2">&amp;</span><a href="#490">path</a>).<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }

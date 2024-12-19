@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/print_operation_preview.rs`."><title>print_operation_preview.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/print_operation_preview.rs`."><title>print_operation_preview.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -410,17 +410,17 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#13-25">PrintOperationPreviewImpl</a>&gt; <a href="#32-133">PrintOperationPreviewImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#13-25">PrintOperationPreviewImpl</a>&gt; IsImplementable&lt;T&gt; <span class="kw">for </span><a href="../auto/print_operation_preview.rs.html#13-51">PrintOperationPreview</a> {
-    <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#13-25">PrintOperationPreviewImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsImplementable.html">IsImplementable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/print_operation_preview.rs.html#13-51">PrintOperationPreview</a> {
+    <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Interface.html">glib::Interface</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="kw">let </span>iface = <a href="#138">iface</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
-        <a href="#139">iface</a>.ready = <span class="prelude-val">Some</span>(print_operation_preview_ready::&lt;T&gt;);
-        <a href="#139">iface</a>.got_page_size = <span class="prelude-val">Some</span>(print_operation_preview_got_page_size::&lt;T&gt;);
-        <a href="#139">iface</a>.render_page = <span class="prelude-val">Some</span>(print_operation_preview_render_page::&lt;T&gt;);
-        <a href="#139">iface</a>.is_selected = <span class="prelude-val">Some</span>(print_operation_preview_is_selected::&lt;T&gt;);
-        <a href="#139">iface</a>.end_preview = <span class="prelude-val">Some</span>(print_operation_preview_end_preview::&lt;T&gt;);
+        <a href="#139">iface</a>.ready = <span class="prelude-val">Some</span>(<a href="#151-160">print_operation_preview_ready</a>::&lt;T&gt;);
+        <a href="#139">iface</a>.got_page_size = <span class="prelude-val">Some</span>(<a href="#162-174">print_operation_preview_got_page_size</a>::&lt;T&gt;);
+        <a href="#139">iface</a>.render_page = <span class="prelude-val">Some</span>(<a href="#176-184">print_operation_preview_render_page</a>::&lt;T&gt;);
+        <a href="#139">iface</a>.is_selected = <span class="prelude-val">Some</span>(<a href="#186-194">print_operation_preview_is_selected</a>::&lt;T&gt;);
+        <a href="#139">iface</a>.end_preview = <span class="prelude-val">Some</span>(<a href="#196-203">print_operation_preview_end_preview</a>::&lt;T&gt;);
     }
 }
 
@@ -430,7 +430,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#152">print_operation_preview</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#155">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>context: Borrowed&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#153">contextptr</a>);
+    <span class="kw">let </span>context: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#153">contextptr</a>);
 
     <a href="#156">imp</a>.<a href="#14-16">ready</a>(<span class="kw-2">&amp;</span><a href="#157">context</a>)
 }
@@ -443,8 +443,8 @@
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#163">print_operation_preview</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#167">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span>context: Borrowed&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#164">contextptr</a>);
-    <span class="kw">let </span>setup: Borrowed&lt;<a href="../auto/page_setup.rs.html#8-63">PageSetup</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#165">setupptr</a>);
+    <span class="kw">let </span>context: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#164">contextptr</a>);
+    <span class="kw">let </span>setup: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/page_setup.rs.html#8-63">PageSetup</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#165">setupptr</a>);
 
     <a href="#168">imp</a>.<a href="#18-20">got_page_size</a>(<span class="kw-2">&amp;</span><a href="#170">context</a>, <span class="kw-2">&amp;</span><a href="#171">setup</a>)
 }

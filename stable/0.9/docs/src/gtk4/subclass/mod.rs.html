@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/mod.rs`."><title>mod.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/mod.rs`."><title>mod.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -258,9 +258,9 @@
 
 </span><span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Struct to hold a pointer and free it on `Drop::drop`
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>PtrHolder&lt;T, F: Fn(<span class="kw-2">*mut </span>T) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">*mut </span>T, F);
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>PtrHolder&lt;T, F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">*mut </span>T) + <span class="lifetime">'static</span>&gt;(<span class="kw-2">*mut </span>T, F);
 
-<span class="kw">impl</span>&lt;T, F: Fn(<span class="kw-2">*mut </span>T) + <span class="lifetime">'static</span>&gt; <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span>PtrHolder&lt;T, F&gt; {
+<span class="kw">impl</span>&lt;T, F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">*mut </span>T) + <span class="lifetime">'static</span>&gt; <a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span><a href="#8">PtrHolder</a>&lt;T, F&gt; {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
         (<a class="self" href="#12">self</a>.<span class="number">1</span>)(<a class="self" href="#12">self</a>.<span class="number">0</span>)
@@ -298,7 +298,7 @@
 <span class="kw">pub mod </span><a href="editable.rs.html#4-405">editable</a>;
 <span class="kw">pub mod </span><a href="entry.rs.html#4-51">entry</a>;
 <span class="kw">pub mod </span><a href="entry_buffer.rs.html#4-351">entry_buffer</a>;
-<span class="kw">pub mod </span><a href="filter.rs.html#4-104">filter</a>;
+<span class="kw">pub mod </span><a href="filter.rs.html#4-103">filter</a>;
 <span class="kw">pub mod </span><a href="fixed.rs.html#4-10">fixed</a>;
 <span class="kw">pub mod </span><a href="flow_box_child.rs.html#4-53">flow_box_child</a>;
 <span class="kw">pub mod </span><a href="font_chooser.rs.html#4-343">font_chooser</a>;
@@ -338,7 +338,7 @@
 <span class="kw">pub mod </span><a href="tree_drag_source.rs.html#4-138">tree_drag_source</a>;
 <span class="kw">pub mod </span><a href="tree_model_filter.rs.html#4-123">tree_model_filter</a>;
 <span class="kw">pub mod </span><a href="tree_view.rs.html#4-512">tree_view</a>;
-<span class="kw">pub mod </span><a href="widget.rs.html#4-1896">widget</a>;
+<span class="kw">pub mod </span><a href="widget.rs.html#4-1894">widget</a>;
 <span class="kw">pub mod </span><a href="window.rs.html#4-159">window</a>;
 <span class="kw">pub mod </span><a href="window_group.rs.html#4-10">window_group</a>;
 
@@ -387,7 +387,7 @@
         editable::{<a href="editable.rs.html#13-52">EditableImpl</a>, <a href="editable.rs.html#59-248">EditableImplExt</a>},
         entry::{<a href="entry.rs.html#10-16">EntryImpl</a>, <a href="entry.rs.html#23-33">EntryImplExt</a>},
         entry_buffer::{<a href="entry_buffer.rs.html#12-80">EntryBufferImpl</a>, <a href="entry_buffer.rs.html#87-175">EntryBufferImplExt</a>},
-        filter::{<a href="filter.rs.html#10-39">FilterImpl</a>, <a href="filter.rs.html#46-71">FilterImplExt</a>},
+        filter::{<a href="filter.rs.html#10-38">FilterImpl</a>, <a href="filter.rs.html#45-70">FilterImplExt</a>},
         <a href="fixed.rs.html#8">fixed::FixedImpl</a>,
         flow_box_child::{<a href="flow_box_child.rs.html#10-14">FlowBoxChildImpl</a>, <a href="flow_box_child.rs.html#21-35">FlowBoxChildImplExt</a>},
         font_chooser::{<a href="font_chooser.rs.html#52-80">FontChooserImpl</a>, <a href="font_chooser.rs.html#89-213">FontChooserImplExt</a>},
@@ -422,10 +422,10 @@
         tree_model_filter::{<a href="tree_model_filter.rs.html#12-26">TreeModelFilterImpl</a>, <a href="tree_model_filter.rs.html#35-80">TreeModelFilterImplExt</a>},
         tree_view::{<a href="tree_view.rs.html#15-84">TreeViewImpl</a>, <a href="tree_view.rs.html#93-326">TreeViewImplExt</a>},
         widget::{
-            <a href="widget.rs.html#1745-1748">CompositeTemplate</a>, <a href="widget.rs.html#1778-1808">CompositeTemplateCallbacks</a>, <a href="widget.rs.html#1814-1819">CompositeTemplateCallbacksClass</a>,
-            <a href="widget.rs.html#1754-1759">CompositeTemplateClass</a>, <a href="widget.rs.html#1875-1879">CompositeTemplateDisposeExt</a>, <a href="widget.rs.html#1854-1856">CompositeTemplateInitializingExt</a>,
-            <a href="widget.rs.html#1836-1841">CompositeTemplateInstanceCallbacksClass</a>, <a href="widget.rs.html#1642-1647">TemplateChild</a>, <a href="widget.rs.html#1056-1636">WidgetClassExt</a>, <a href="widget.rs.html#113-400">WidgetImpl</a>,
-            <a href="widget.rs.html#407-743">WidgetImplExt</a>,
+            <a href="widget.rs.html#1743-1746">CompositeTemplate</a>, <a href="widget.rs.html#1776-1806">CompositeTemplateCallbacks</a>, <a href="widget.rs.html#1812-1817">CompositeTemplateCallbacksClass</a>,
+            <a href="widget.rs.html#1752-1757">CompositeTemplateClass</a>, <a href="widget.rs.html#1873-1877">CompositeTemplateDisposeExt</a>, <a href="widget.rs.html#1852-1854">CompositeTemplateInitializingExt</a>,
+            <a href="widget.rs.html#1834-1839">CompositeTemplateInstanceCallbacksClass</a>, <a href="widget.rs.html#1640-1645">TemplateChild</a>, <a href="widget.rs.html#1057-1634">WidgetClassExt</a>, <a href="widget.rs.html#113-401">WidgetImpl</a>,
+            <a href="widget.rs.html#408-744">WidgetImplExt</a>,
         },
         window::{<a href="window.rs.html#10-37">WindowImpl</a>, <a href="window.rs.html#44-103">WindowImplExt</a>},
         <a href="window_group.rs.html#8">window_group::WindowGroupImpl</a>,

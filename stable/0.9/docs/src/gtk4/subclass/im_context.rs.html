@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/im_context.rs`."><title>im_context.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/im_context.rs`."><title>im_context.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -797,7 +797,7 @@
 </span><span class="kw">use </span>glib::{<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>};
 <span class="kw">use </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/pango/auto/attr_list/struct.AttrList.html">pango::AttrList</a>;
 
-<span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#94-180">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/im_context.rs.html#14-130">IMContext</a>, <a href="../auto/widget.rs.html#18-853">Widget</a>};
+<span class="kw">use crate</span>::{<a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#94-180">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/im_context.rs.html#14-130">IMContext</a>, <a href="../auto/widget.rs.html#18-852">Widget</a>};
 
 <span class="attr">#[allow(clippy::upper_case_acronyms)]
 </span><span class="kw">pub trait </span><a href="../../../gtk4/subclass/im_context/trait.IMContextImpl.html">IMContextImpl</a>: <a href="#234-486">IMContextImplExt</a> + <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/object/trait.ObjectImpl.html">ObjectImpl</a> {
@@ -923,7 +923,7 @@
     /// location to store byte index of the insertion
     ///   cursor within @text.
     </span><span class="attr">#[doc(alias = <span class="string">"get_surrounding"</span>)]
-    </span><span class="kw">fn </span>surrounding(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;(<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)&gt; {
+    </span><span class="kw">fn </span>surrounding(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;(<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)&gt; {
         <a class="self" href="#135">self</a>.<a href="#301-319">parent_surrounding</a>()
     }
     <span class="doccomment">/// Default handler of the [`preedit-changed`][struct@crate::IMContext#preedit-changed]
@@ -959,7 +959,7 @@
     /// ## `widget`
     /// the client widget. This may be [`None`] to indicate
     ///   that the previous client widget no longer exists.
-    </span><span class="kw">fn </span>set_client_widget&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>P&gt;) {
+    </span><span class="kw">fn </span>set_client_widget&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span>P&gt;) {
         <a class="self" href="#171">self</a>.<a href="#402-413">parent_set_client_widget</a>(<a href="#171">widget</a>)
     }
     <span class="doccomment">/// Notify the input method that a change in cursor
@@ -1011,7 +1011,7 @@
     }
     <span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_14"</span>)))]
-    </span><span class="kw">fn </span>activate_osk_with_event(<span class="kw-2">&amp;</span><span class="self">self</span>, event: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">fn </span>activate_osk_with_event(<span class="kw-2">&amp;</span><span class="self">self</span>, event: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <a class="self" href="#223">self</a>.<a href="#472-485">parent_activate_osk_with_event</a>(<a href="#223">event</a>)
     }
 }
@@ -1089,7 +1089,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_surrounding(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;(<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)&gt; {
+    <span class="kw">fn </span>parent_surrounding(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;(<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#303">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkIMContextClass.html">ffi::GtkIMContextClass</a>;
@@ -1190,7 +1190,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_set_client_widget&lt;P: IsA&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>P&gt;) {
+    <span class="kw">fn </span>parent_set_client_widget&lt;P: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span>P&gt;) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#404">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkIMContextClass.html">ffi::GtkIMContextClass</a>;
@@ -1260,7 +1260,7 @@
 
     <span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_14"</span>)))]
-    </span><span class="kw">fn </span>parent_activate_osk_with_event(<span class="kw-2">&amp;</span><span class="self">self</span>, event: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">fn </span>parent_activate_osk_with_event(<span class="kw-2">&amp;</span><span class="self">self</span>, event: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#474">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkIMContextClass.html">ffi::GtkIMContextClass</a>;
@@ -1278,38 +1278,38 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#12-226">IMContextImpl</a>&gt; <a href="#234-486">IMContextImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#12-226">IMContextImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/im_context.rs.html#14-130">IMContext</a> {
-    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>glib::Class&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#12-226">IMContextImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsSubclassable.html">IsSubclassable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/im_context.rs.html#14-130">IMContext</a> {
+    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Class.html">glib::Class</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#491">class</a>);
 
         <a class="macro" href="../rt.rs.html#24-36">assert_initialized_main_thread!</a>();
 
         <span class="kw">let </span>klass = <a href="#491">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
-        <a href="#496">klass</a>.commit = <span class="prelude-val">Some</span>(im_context_commit::&lt;T&gt;);
-        <a href="#496">klass</a>.delete_surrounding = <span class="prelude-val">Some</span>(im_context_delete_surrounding::&lt;T&gt;);
-        <a href="#496">klass</a>.filter_keypress = <span class="prelude-val">Some</span>(im_context_filter_keypress::&lt;T&gt;);
-        <a href="#496">klass</a>.focus_in = <span class="prelude-val">Some</span>(im_context_focus_in::&lt;T&gt;);
-        <a href="#496">klass</a>.focus_out = <span class="prelude-val">Some</span>(im_context_focus_out::&lt;T&gt;);
-        <a href="#496">klass</a>.get_preedit_string = <span class="prelude-val">Some</span>(im_context_get_preedit_string::&lt;T&gt;);
-        <a href="#496">klass</a>.get_surrounding = <span class="prelude-val">Some</span>(im_context_get_surrounding::&lt;T&gt;);
-        <a href="#496">klass</a>.preedit_changed = <span class="prelude-val">Some</span>(im_context_preedit_changed::&lt;T&gt;);
-        <a href="#496">klass</a>.preedit_end = <span class="prelude-val">Some</span>(im_context_preedit_end::&lt;T&gt;);
-        <a href="#496">klass</a>.preedit_start = <span class="prelude-val">Some</span>(im_context_preedit_start::&lt;T&gt;);
-        <a href="#496">klass</a>.reset = <span class="prelude-val">Some</span>(im_context_reset::&lt;T&gt;);
-        <a href="#496">klass</a>.retrieve_surrounding = <span class="prelude-val">Some</span>(im_context_retrieve_surrounding::&lt;T&gt;);
-        <a href="#496">klass</a>.set_client_widget = <span class="prelude-val">Some</span>(im_context_set_client_widget::&lt;T&gt;);
-        <a href="#496">klass</a>.set_cursor_location = <span class="prelude-val">Some</span>(im_context_set_cursor_location::&lt;T&gt;);
-        <a href="#496">klass</a>.set_surrounding = <span class="prelude-val">Some</span>(im_context_set_surrounding::&lt;T&gt;);
-        <a href="#496">klass</a>.set_use_preedit = <span class="prelude-val">Some</span>(im_context_set_use_preedit::&lt;T&gt;);
+        <a href="#496">klass</a>.commit = <span class="prelude-val">Some</span>(<a href="#526-535">im_context_commit</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.delete_surrounding = <span class="prelude-val">Some</span>(<a href="#537-546">im_context_delete_surrounding</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.filter_keypress = <span class="prelude-val">Some</span>(<a href="#548-556">im_context_filter_keypress</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.focus_in = <span class="prelude-val">Some</span>(<a href="#558-563">im_context_focus_in</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.focus_out = <span class="prelude-val">Some</span>(<a href="#565-570">im_context_focus_out</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.get_preedit_string = <span class="prelude-val">Some</span>(<a href="#572-586">im_context_get_preedit_string</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.get_surrounding = <span class="prelude-val">Some</span>(<a href="#588-605">im_context_get_surrounding</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.preedit_changed = <span class="prelude-val">Some</span>(<a href="#607-612">im_context_preedit_changed</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.preedit_end = <span class="prelude-val">Some</span>(<a href="#614-619">im_context_preedit_end</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.preedit_start = <span class="prelude-val">Some</span>(<a href="#621-626">im_context_preedit_start</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.reset = <span class="prelude-val">Some</span>(<a href="#628-633">im_context_reset</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.retrieve_surrounding = <span class="prelude-val">Some</span>(<a href="#635-642">im_context_retrieve_surrounding</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.set_client_widget = <span class="prelude-val">Some</span>(<a href="#644-653">im_context_set_client_widget</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.set_cursor_location = <span class="prelude-val">Some</span>(<a href="#655-664">im_context_set_cursor_location</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.set_surrounding = <span class="prelude-val">Some</span>(<a href="#666-684">im_context_set_surrounding</a>::&lt;T&gt;);
+        <a href="#496">klass</a>.set_use_preedit = <span class="prelude-val">Some</span>(<a href="#686-694">im_context_set_use_preedit</a>::&lt;T&gt;);
         <span class="attr">#[cfg(feature = <span class="string">"v4_10"</span>)]
         #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_10"</span>)))]
         </span>{
-            <a href="#496">klass</a>.activate_osk = <span class="prelude-val">Some</span>(im_context_activate_osk::&lt;T&gt;);
+            <a href="#496">klass</a>.activate_osk = <span class="prelude-val">Some</span>(<a href="#698-703">im_context_activate_osk</a>::&lt;T&gt;);
         };
         <span class="attr">#[cfg(feature = <span class="string">"v4_14"</span>)]
         #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_14"</span>)))]
         </span>{
-            <a href="#496">klass</a>.activate_osk_with_event = <span class="prelude-val">Some</span>(im_context_activate_osk_with_event::&lt;T&gt;);
+            <a href="#496">klass</a>.activate_osk_with_event = <span class="prelude-val">Some</span>(<a href="#707-718">im_context_activate_osk_with_event</a>::&lt;T&gt;);
         };
     }
 }
@@ -1320,7 +1320,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#527">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#530">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>string: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#528">stringptr</a>);
+    <span class="kw">let </span>string: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#528">stringptr</a>);
 
     <a href="#531">imp</a>.<a href="#14-16">commit</a>(<a href="#532">string</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html#method.as_str">as_str</a>())
 }
@@ -1342,7 +1342,7 @@
 ) -&gt; glib::ffi::gboolean {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#549">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#552">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>event: Borrowed&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#550">eventptr</a>);
+    <span class="kw">let </span>event: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#550">eventptr</a>);
     <a href="#553">imp</a>.<a href="#57-59">filter_keypress</a>(<span class="kw-2">&amp;</span><a href="#554">event</a>).<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()
 }
 
@@ -1438,7 +1438,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#645">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#648">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<span class="prelude-ty">Option</span>&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#646">widgetptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#646">widgetptr</a>);
 
     <a href="#649">imp</a>.<a href="#171-173">set_client_widget</a>(<a href="#650">widget</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>());
 }
@@ -1462,7 +1462,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#667">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#672">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>text: Borrowed&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#668">textptr</a>);
+    <span class="kw">let </span>text: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/gstring/struct.GString.html">GString</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#668">textptr</a>);
 
     <span class="comment">// length == -1 if text is null-terminated
     </span><span class="kw">let </span>text = <span class="kw">if </span>length == -<span class="number">1 </span>{
@@ -1502,7 +1502,7 @@
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#708">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#711">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
 
-    <span class="kw">let </span>event: Borrowed&lt;<span class="prelude-ty">Option</span>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#709">eventptr</a>);
+    <span class="kw">let </span>event: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../gdk4/auto/event/struct.Event.html">gdk::Event</a>&gt;&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#709">eventptr</a>);
 
     <a href="#712">imp</a>.<a href="#223-225">activate_osk_with_event</a>(<a href="#714">event</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>())
         .<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.IntoGlib.html#tymethod.into_glib">into_glib</a>()

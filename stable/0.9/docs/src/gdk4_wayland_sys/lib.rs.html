@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4-wayland/sys/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4_wayland_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4-wayland/sys/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4_wayland_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -387,14 +387,14 @@
 
 <span class="comment">// Callbacks
 </span><span class="kw">pub type </span><a href="../../gdk4_wayland_sys/type.GdkWaylandToplevelExported.html">GdkWaylandToplevelExported</a> =
-    <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(<span class="kw-2">*mut </span><a href="#180-183">GdkWaylandToplevel</a>, <span class="kw-2">*const </span><a href="https://doc.rust-lang.org/nightly/core/ffi/type.c_char.html">c_char</a>, gpointer)&gt;;
+    <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe extern </span><span class="string">"C" </span><span class="kw">fn</span>(<span class="kw-2">*mut </span><a href="#180-183">GdkWaylandToplevel</a>, <span class="kw-2">*const </span><a href="https://doc.rust-lang.org/nightly/core/ffi/type.c_char.html">c_char</a>, gpointer)&gt;;
 
 <span class="comment">// Records
 </span><span class="attr">#[repr(C)]
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct._GdkWaylandDeviceClass.html">_GdkWaylandDeviceClass</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">pub type </span><a href="../../gdk4_wayland_sys/type.GdkWaylandDeviceClass.html">GdkWaylandDeviceClass</a> = <a href="#36-39">_GdkWaylandDeviceClass</a>;
@@ -403,7 +403,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct._GdkWaylandDisplayClass.html">_GdkWaylandDisplayClass</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">pub type </span><a href="../../gdk4_wayland_sys/type.GdkWaylandDisplayClass.html">GdkWaylandDisplayClass</a> = <a href="#45-48">_GdkWaylandDisplayClass</a>;
@@ -412,7 +412,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct._GdkWaylandGLContextClass.html">_GdkWaylandGLContextClass</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">pub type </span><a href="../../gdk4_wayland_sys/type.GdkWaylandGLContextClass.html">GdkWaylandGLContextClass</a> = <a href="#54-57">_GdkWaylandGLContextClass</a>;
@@ -421,7 +421,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct._GdkWaylandMonitorClass.html">_GdkWaylandMonitorClass</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">pub type </span><a href="../../gdk4_wayland_sys/type.GdkWaylandMonitorClass.html">GdkWaylandMonitorClass</a> = <a href="#63-66">_GdkWaylandMonitorClass</a>;
@@ -430,7 +430,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct._GdkWaylandSeatClass.html">_GdkWaylandSeatClass</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">pub type </span><a href="../../gdk4_wayland_sys/type.GdkWaylandSeatClass.html">GdkWaylandSeatClass</a> = <a href="#72-75">_GdkWaylandSeatClass</a>;
@@ -440,7 +440,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandDevice.html">GdkWaylandDevice</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#82-85">GdkWaylandDevice</a> {
@@ -454,7 +454,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandDisplay.html">GdkWaylandDisplay</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#96-99">GdkWaylandDisplay</a> {
@@ -468,7 +468,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandGLContext.html">GdkWaylandGLContext</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#110-113">GdkWaylandGLContext</a> {
@@ -482,7 +482,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandMonitor.html">GdkWaylandMonitor</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#124-127">GdkWaylandMonitor</a> {
@@ -496,7 +496,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandPopup.html">GdkWaylandPopup</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#138-141">GdkWaylandPopup</a> {
@@ -510,7 +510,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandSeat.html">GdkWaylandSeat</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#152-155">GdkWaylandSeat</a> {
@@ -524,7 +524,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandSurface.html">GdkWaylandSurface</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#166-169">GdkWaylandSurface</a> {
@@ -538,7 +538,7 @@
 #[allow(dead_code)]
 </span><span class="kw">pub struct </span><a href="../../gdk4_wayland_sys/struct.GdkWaylandToplevel.html">GdkWaylandToplevel</a> {
     _data: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
-    _marker: core::marker::PhantomData&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
+    _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomPinned.html">core::marker::PhantomPinned</a>)&gt;,
 }
 
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">::std::fmt::Debug</a> <span class="kw">for </span><a href="#180-183">GdkWaylandToplevel</a> {

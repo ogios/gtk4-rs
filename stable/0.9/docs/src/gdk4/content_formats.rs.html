@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/content_formats.rs`."><title>content_formats.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk4/src/content_formats.rs`."><title>content_formats.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gdk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -124,7 +124,7 @@
 
 </span><span class="kw">use </span>glib::{<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>, <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/collections/slice/struct.Slice.html">Slice</a>};
 
-<span class="kw">use crate</span>::{<a href="../../gdk4_sys/index.html">ffi</a>, <a href="auto/content_formats.rs.html#8-49">ContentFormats</a>, <a href="auto/content_formats_builder.rs.html#8-19">ContentFormatsBuilder</a>};
+<span class="kw">use crate</span>::{<a href="../../gdk4_sys/index.html">ffi</a>, <a href="auto/content_formats.rs.html#8-49">ContentFormats</a>, <a href="auto/content_formats_builder.rs.html#8-18">ContentFormatsBuilder</a>};
 
 <span class="kw">impl </span><a href="auto/content_formats.rs.html#8-49">ContentFormats</a> {
     <span class="doccomment">/// Gets the `GType`s included in @self.
@@ -138,7 +138,7 @@
     ///   `G_TYPE_INVALID`-terminated array of types included in @self
     </span><span class="attr">#[doc(alias = <span class="string">"gdk_content_formats_get_gtypes"</span>)]
     #[doc(alias = <span class="string">"get_gtypes"</span>)]
-    </span><span class="kw">pub fn </span>types(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Slice&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/types/struct.Type.html">glib::Type</a>&gt; {
+    </span><span class="kw">pub fn </span>types(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/collections/slice/struct.Slice.html">Slice</a>&lt;<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/types/struct.Type.html">glib::Type</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>n_types = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">std::mem::MaybeUninit::uninit</a>();
             <span class="kw">let </span>types =
@@ -155,7 +155,7 @@
     /// This method returns an instance of
     /// [`ContentFormatsBuilder`](crate::builders::ContentFormatsBuilder) which
     /// can be used to create [`ContentFormats`] objects.
-    </span><span class="kw">pub fn </span>builder() -&gt; <a href="auto/content_formats_builder.rs.html#8-19">ContentFormatsBuilder</a> {
+    </span><span class="kw">pub fn </span>builder() -&gt; <a href="auto/content_formats_builder.rs.html#8-18">ContentFormatsBuilder</a> {
         <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">ContentFormatsBuilder::default</a>()
     }
 }
@@ -164,9 +164,9 @@
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v4_4"</span>)))]
 </span><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html">std::str::FromStr</a> <span class="kw">for </span><a href="auto/content_formats.rs.html#8-49">ContentFormats</a> {
     <span class="kw">type </span><span class="prelude-val">Err </span>= <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/error/struct.BoolError.html">glib::BoolError</a>;
-    <span class="kw">fn </span>from_str(s: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Err&gt; {
+    <span class="kw">fn </span>from_str(s: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Err&gt; {
         <span class="macro">skip_assert_initialized!</span>();
-        <a href="auto/content_formats.rs.html#328-334">ContentFormats::parse</a>(<a href="#45">s</a>)
+        <a href="auto/content_formats.rs.html#340-346">ContentFormats::parse</a>(<a href="#45">s</a>)
     }
 }
 </code></pre></div></section></main></body></html>

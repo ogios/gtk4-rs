@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/tree_model_sort.rs`."><title>tree_model_sort.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/auto/tree_model_sort.rs`."><title>tree_model_sort.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -562,7 +562,7 @@
 }
 
 <span class="kw">impl </span><a href="#9-133">TreeModelSort</a> {
-    <span class="kw">pub const </span>NONE: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#9-133">TreeModelSort</a>&gt; = <span class="prelude-val">None</span>;
+    <span class="kw">pub const </span>NONE: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#9-133">TreeModelSort</a>&gt; = <span class="prelude-val">None</span>;
 
     <span class="doccomment">/// Creates a new [`TreeModelSort`][crate::TreeModelSort], with @child_model as the child model.
     /// ## `child_model`
@@ -573,7 +573,7 @@
     /// A new [`TreeModelSort`][crate::TreeModelSort].
     </span><span class="attr">#[doc(alias = <span class="string">"gtk_tree_model_sort_new_with_model"</span>)]
     #[doc(alias = <span class="string">"new_with_model"</span>)]
-    </span><span class="kw">pub fn </span>with_model(child_model: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="tree_model.rs.html#14-276">TreeModel</a>&gt;) -&gt; <a href="#9-133">TreeModelSort</a> {
+    </span><span class="kw">pub fn </span>with_model(child_model: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="tree_model.rs.html#14-276">TreeModel</a>&gt;) -&gt; <a href="#9-133">TreeModelSort</a> {
         <span class="macro">skip_assert_initialized!</span>();
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_tree_model_sort_new_with_model.html">ffi::gtk_tree_model_sort_new_with_model</a>(
@@ -585,7 +585,7 @@
 
 <span class="kw">mod </span>sealed {
     <span class="kw">pub trait </span>Sealed {}
-    <span class="kw">impl</span>&lt;T: <span class="kw">super</span>::IsA&lt;<a href="#9-133"><span class="kw">super</span>::TreeModelSort</a>&gt;&gt; <a href="#158">Sealed</a> <span class="kw">for </span>T {}
+    <span class="kw">impl</span>&lt;T: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html"><span class="kw">super</span>::IsA</a>&lt;<a href="#9-133"><span class="kw">super</span>::TreeModelSort</a>&gt;&gt; <a href="#158">Sealed</a> <span class="kw">for </span>T {}
 }
 
 <span class="doccomment">/// Trait containing all [`struct@TreeModelSort`] methods.
@@ -593,7 +593,7 @@
 /// # Implementors
 ///
 /// [`TreeModelSort`][struct@crate::TreeModelSort]
-</span><span class="kw">pub trait </span><a href="../../../gtk4/prelude/trait.TreeModelSortExt.html">TreeModelSortExt</a>: IsA&lt;<a href="#9-133">TreeModelSort</a>&gt; + <a href="#158">sealed::Sealed</a> + <span class="lifetime">'static </span>{
+</span><span class="kw">pub trait </span><a href="../../../gtk4/prelude/trait.TreeModelSortExt.html">TreeModelSortExt</a>: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="#9-133">TreeModelSort</a>&gt; + <a href="#158">sealed::Sealed</a> + <span class="lifetime">'static </span>{
     <span class="doccomment">/// This function should almost never be called.  It clears the @self
     /// of any cached iterators that haven’t been reffed with
     /// gtk_tree_model_ref_node().  This might be useful if the child model being
@@ -631,7 +631,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_tree_model_sort_convert_child_iter_to_iter"</span>)]
-    </span><span class="kw">fn </span>convert_child_iter_to_iter(<span class="kw-2">&amp;</span><span class="self">self</span>, child_iter: <span class="kw-2">&amp;</span><a href="tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="tree_iter.rs.html#8-25">TreeIter</a>&gt; {
+    </span><span class="kw">fn </span>convert_child_iter_to_iter(<span class="kw-2">&amp;</span><span class="self">self</span>, child_iter: <span class="kw-2">&amp;</span><a href="tree_iter.rs.html#8-25">TreeIter</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="tree_iter.rs.html#8-25">TreeIter</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>sort_iter = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.Uninitialized.html#tymethod.uninitialized">TreeIter::uninitialized</a>();
             <span class="kw">let </span>ret = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gtk4_sys/fn.gtk_tree_model_sort_convert_child_iter_to_iter.html">ffi::gtk_tree_model_sort_convert_child_iter_to_iter</a>(
@@ -663,7 +663,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_tree_model_sort_convert_child_path_to_path"</span>)]
-    </span><span class="kw">fn </span>convert_child_path_to_path(<span class="kw-2">&amp;</span><span class="self">self</span>, child_path: <span class="kw-2">&amp;</span><a href="tree_path.rs.html#8-21">TreePath</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="tree_path.rs.html#8-21">TreePath</a>&gt; {
+    </span><span class="kw">fn </span>convert_child_path_to_path(<span class="kw-2">&amp;</span><span class="self">self</span>, child_path: <span class="kw-2">&amp;</span><a href="tree_path.rs.html#8-21">TreePath</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="tree_path.rs.html#8-21">TreePath</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_tree_model_sort_convert_child_path_to_path.html">ffi::gtk_tree_model_sort_convert_child_path_to_path</a>(
                 <a class="self" href="#237">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -716,7 +716,7 @@
     </span><span class="attr">#[cfg_attr(feature = <span class="string">"v4_10"</span>, deprecated = <span class="string">"Since 4.10"</span>)]
     #[allow(deprecated)]
     #[doc(alias = <span class="string">"gtk_tree_model_sort_convert_path_to_child_path"</span>)]
-    </span><span class="kw">fn </span>convert_path_to_child_path(<span class="kw-2">&amp;</span><span class="self">self</span>, sorted_path: <span class="kw-2">&amp;</span><a href="tree_path.rs.html#8-21">TreePath</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="tree_path.rs.html#8-21">TreePath</a>&gt; {
+    </span><span class="kw">fn </span>convert_path_to_child_path(<span class="kw-2">&amp;</span><span class="self">self</span>, sorted_path: <span class="kw-2">&amp;</span><a href="tree_path.rs.html#8-21">TreePath</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="tree_path.rs.html#8-21">TreePath</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_full.html">from_glib_full</a>(<a href="../../../gtk4_sys/fn.gtk_tree_model_sort_convert_path_to_child_path.html">ffi::gtk_tree_model_sort_convert_path_to_child_path</a>(
                 <a class="self" href="#290">self</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
@@ -782,5 +782,5 @@
     }
 }
 
-<span class="kw">impl</span>&lt;O: IsA&lt;<a href="#9-133">TreeModelSort</a>&gt;&gt; <a href="#167-354">TreeModelSortExt</a> <span class="kw">for </span>O {}
+<span class="kw">impl</span>&lt;O: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/trait.IsA.html">IsA</a>&lt;<a href="#9-133">TreeModelSort</a>&gt;&gt; <a href="#167-354">TreeModelSortExt</a> <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

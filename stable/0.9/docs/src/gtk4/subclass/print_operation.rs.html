@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/print_operation.rs`."><title>print_operation.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (81eef2d36 2024-11-11)" data-channel="nightly" data-search-js="search-853ef39b.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gtk4/src/subclass/print_operation.rs`."><title>print_operation.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gtk4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (4ba4ac612 2024-12-18)" data-channel="nightly" data-search-js="search-036cda7a.js" data-settings-js="settings-0f613d39.js" ><script src="../../../static.files/storage-59e33391.js"></script><script defer src="../../../static.files/src-script-56102188.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -488,7 +488,7 @@
 
 <span class="kw">use crate</span>::{
     <a href="../../../gtk4_sys/index.html">ffi</a>, <a href="../lib.rs.html#138">prelude</a>::<span class="kw-2">*</span>, <a href="mod.rs.html#94-180">subclass::prelude</a>::<span class="kw-2">*</span>, <a href="../auto/page_setup.rs.html#8-63">PageSetup</a>, <a href="../auto/print_context.rs.html#8-90">PrintContext</a>, <a href="../auto/print_operation.rs.html#16-501">PrintOperation</a>,
-    <a href="../auto/print_operation_preview.rs.html#13-51">PrintOperationPreview</a>, <a href="../auto/enums.rs.html#9127-9144">PrintOperationResult</a>, <a href="../auto/print_settings.rs.html#11-34">PrintSettings</a>, <a href="../auto/widget.rs.html#18-853">Widget</a>, <a href="../auto/window.rs.html#17-752">Window</a>,
+    <a href="../auto/print_operation_preview.rs.html#13-51">PrintOperationPreview</a>, <a href="../auto/enums.rs.html#9127-9144">PrintOperationResult</a>, <a href="../auto/print_settings.rs.html#11-34">PrintSettings</a>, <a href="../auto/widget.rs.html#18-852">Widget</a>, <a href="../auto/window.rs.html#17-752">Window</a>,
 };
 
 <span class="kw">pub trait </span><a href="../../../gtk4/subclass/print_operation/trait.PrintOperationImpl.html">PrintOperationImpl</a>: <a href="#87-287">PrintOperationImplExt</a> + <a href="print_operation_preview.rs.html#13-25">PrintOperationPreviewImpl</a> {
@@ -499,13 +499,13 @@
     }
 
     <span class="doccomment">/// Signal emitted when displaying the print dialog.
-    </span><span class="kw">fn </span>create_custom_widget(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; {
+    </span><span class="kw">fn </span>create_custom_widget(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; {
         <a class="self" href="#21">self</a>.<a href="#104-119">parent_create_custom_widget</a>()
     }
 
     <span class="doccomment">/// Signal emitted right before “begin-print” if
     ///    you added a custom widget in the “create-custom-widget” handler.
-    </span><span class="kw">fn </span>custom_widget_apply(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-853">Widget</a>) {
+    </span><span class="kw">fn </span>custom_widget_apply(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-852">Widget</a>) {
         <a class="self" href="#27">self</a>.<a href="#121-135">parent_custom_widget_apply</a>(<a href="#27">widget</a>)
     }
 
@@ -537,7 +537,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         preview: <span class="kw-2">&amp;</span><a href="../auto/print_operation_preview.rs.html#13-51">PrintOperationPreview</a>,
         context: <span class="kw-2">&amp;</span><a href="../auto/print_context.rs.html#8-90">PrintContext</a>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../auto/window.rs.html#17-752">Window</a>&gt;,
+        parent: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../auto/window.rs.html#17-752">Window</a>&gt;,
     ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <a class="self" href="#56">self</a>.<a href="#207-231">parent_preview</a>(<a href="#57">preview</a>, <a href="#58">context</a>, <a href="#59">parent</a>)
     }
@@ -555,7 +555,7 @@
     }
 
     <span class="doccomment">/// Emitted after change of selected printer.
-    </span><span class="kw">fn </span>update_custom_widget(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-853">Widget</a>, setup: <span class="kw-2">&amp;</span><a href="../auto/page_setup.rs.html#8-63">PageSetup</a>, settings: <span class="kw-2">&amp;</span><a href="../auto/print_settings.rs.html#11-34">PrintSettings</a>) {
+    </span><span class="kw">fn </span>update_custom_widget(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-852">Widget</a>, setup: <span class="kw-2">&amp;</span><a href="../auto/page_setup.rs.html#8-63">PageSetup</a>, settings: <span class="kw-2">&amp;</span><a href="../auto/print_settings.rs.html#11-34">PrintSettings</a>) {
         <a class="self" href="#77">self</a>.<a href="#265-286">parent_update_custom_widget</a>(<a href="#77">widget</a>, <a href="#77">setup</a>, <a href="#77">settings</a>)
     }
 }
@@ -582,7 +582,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_create_custom_widget(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; {
+    <span class="kw">fn </span>parent_create_custom_widget(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#106">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkPrintOperationClass.html">ffi::GtkPrintOperationClass</a>;
@@ -599,7 +599,7 @@
         }
     }
 
-    <span class="kw">fn </span>parent_custom_widget_apply(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-853">Widget</a>) {
+    <span class="kw">fn </span>parent_custom_widget_apply(<span class="kw-2">&amp;</span><span class="self">self</span>, widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-852">Widget</a>) {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
             <span class="kw">let </span>parent_class = <a href="#123">data</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>().<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/struct.TypeData.html#method.parent_class">parent_class</a>() <span class="kw">as </span><span class="kw-2">*mut </span><a href="../../../gtk4_sys/struct.GtkPrintOperationClass.html">ffi::GtkPrintOperationClass</a>;
@@ -689,7 +689,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         preview: <span class="kw-2">&amp;</span><a href="../auto/print_operation_preview.rs.html#13-51">PrintOperationPreview</a>,
         context: <span class="kw-2">&amp;</span><a href="../auto/print_context.rs.html#8-90">PrintContext</a>,
-        parent: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="../auto/window.rs.html#17-752">Window</a>&gt;,
+        parent: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="../auto/window.rs.html#17-752">Window</a>&gt;,
     ) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>data = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.ObjectSubclassType.html#tymethod.type_data"><span class="self">Self</span>::type_data</a>();
@@ -745,7 +745,7 @@
 
     <span class="kw">fn </span>parent_update_custom_widget(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-853">Widget</a>,
+        widget: <span class="kw-2">&amp;</span><a href="../auto/widget.rs.html#18-852">Widget</a>,
         setup: <span class="kw-2">&amp;</span><a href="../auto/page_setup.rs.html#8-63">PageSetup</a>,
         settings: <span class="kw-2">&amp;</span><a href="../auto/print_settings.rs.html#11-34">PrintSettings</a>,
     ) {
@@ -769,20 +769,20 @@
 
 <span class="kw">impl</span>&lt;T: <a href="#13-80">PrintOperationImpl</a>&gt; <a href="#87-287">PrintOperationImplExt</a> <span class="kw">for </span>T {}
 
-<span class="kw">unsafe impl</span>&lt;T: <a href="#13-80">PrintOperationImpl</a>&gt; IsSubclassable&lt;T&gt; <span class="kw">for </span><a href="../auto/print_operation.rs.html#16-501">PrintOperation</a> {
-    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span>glib::Class&lt;<span class="self">Self</span>&gt;) {
+<span class="kw">unsafe impl</span>&lt;T: <a href="#13-80">PrintOperationImpl</a>&gt; <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.IsSubclassable.html">IsSubclassable</a>&lt;T&gt; <span class="kw">for </span><a href="../auto/print_operation.rs.html#16-501">PrintOperation</a> {
+    <span class="kw">fn </span>class_init(class: <span class="kw-2">&amp;mut </span><a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/object/struct.Class.html">glib::Class</a>&lt;<span class="self">Self</span>&gt;) {
         <span class="self">Self</span>::parent_class_init::&lt;T&gt;(<a href="#292">class</a>);
 
         <span class="kw">let </span>klass = <a href="#292">class</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html#tymethod.as_mut">as_mut</a>();
-        <a href="#295">klass</a>.begin_print = <span class="prelude-val">Some</span>(print_operation_begin_print::&lt;T&gt;);
-        <a href="#295">klass</a>.create_custom_widget = <span class="prelude-val">Some</span>(print_operation_create_custom_widget::&lt;T&gt;);
-        <a href="#295">klass</a>.custom_widget_apply = <span class="prelude-val">Some</span>(print_operation_custom_widget_apply::&lt;T&gt;);
-        <a href="#295">klass</a>.done = <span class="prelude-val">Some</span>(print_operation_done::&lt;T&gt;);
-        <a href="#295">klass</a>.draw_page = <span class="prelude-val">Some</span>(print_operation_draw_page::&lt;T&gt;);
-        <a href="#295">klass</a>.end_print = <span class="prelude-val">Some</span>(print_operation_end_print::&lt;T&gt;);
-        <a href="#295">klass</a>.request_page_setup = <span class="prelude-val">Some</span>(print_operation_request_page_setup::&lt;T&gt;);
-        <a href="#295">klass</a>.status_changed = <span class="prelude-val">Some</span>(print_operation_status_changed::&lt;T&gt;);
-        <a href="#295">klass</a>.update_custom_widget = <span class="prelude-val">Some</span>(print_operation_update_custom_widget::&lt;T&gt;);
+        <a href="#295">klass</a>.begin_print = <span class="prelude-val">Some</span>(<a href="#308-317">print_operation_begin_print</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.create_custom_widget = <span class="prelude-val">Some</span>(<a href="#319-326">print_operation_create_custom_widget</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.custom_widget_apply = <span class="prelude-val">Some</span>(<a href="#328-337">print_operation_custom_widget_apply</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.done = <span class="prelude-val">Some</span>(<a href="#339-347">print_operation_done</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.draw_page = <span class="prelude-val">Some</span>(<a href="#349-359">print_operation_draw_page</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.end_print = <span class="prelude-val">Some</span>(<a href="#361-370">print_operation_end_print</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.request_page_setup = <span class="prelude-val">Some</span>(<a href="#372-384">print_operation_request_page_setup</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.status_changed = <span class="prelude-val">Some</span>(<a href="#386-393">print_operation_status_changed</a>::&lt;T&gt;);
+        <a href="#295">klass</a>.update_custom_widget = <span class="prelude-val">Some</span>(<a href="#395-408">print_operation_update_custom_widget</a>::&lt;T&gt;);
     }
 }
 
@@ -792,7 +792,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#309">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#312">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>context: Borrowed&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#310">contextptr</a>);
+    <span class="kw">let </span>context: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#310">contextptr</a>);
 
     <a href="#313">imp</a>.<a href="#16-18">begin_print</a>(<span class="kw-2">&amp;</span><a href="#314">context</a>)
 }
@@ -812,7 +812,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#329">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#332">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#330">widgetptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#330">widgetptr</a>);
 
     <a href="#333">imp</a>.<a href="#27-29">custom_widget_apply</a>(<span class="kw-2">&amp;</span><a href="#334">widget</a>)
 }
@@ -834,7 +834,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#350">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#354">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>context: Borrowed&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#351">contextptr</a>);
+    <span class="kw">let </span>context: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#351">contextptr</a>);
 
     <a href="#355">imp</a>.<a href="#38-40">draw_page</a>(<span class="kw-2">&amp;</span><a href="#356">context</a>, <a href="#352">page_nr</a>)
 }
@@ -845,7 +845,7 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#362">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#365">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>context: Borrowed&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#363">contextptr</a>);
+    <span class="kw">let </span>context: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#363">contextptr</a>);
 
     <a href="#366">imp</a>.<a href="#43-45">end_print</a>(<span class="kw-2">&amp;</span><a href="#367">context</a>)
 }
@@ -858,8 +858,8 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#373">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#378">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>context: Borrowed&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#374">contextptr</a>);
-    <span class="kw">let </span>setup: Borrowed&lt;<a href="../auto/page_setup.rs.html#8-63">PageSetup</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#376">setupptr</a>);
+    <span class="kw">let </span>context: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/print_context.rs.html#8-90">PrintContext</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#374">contextptr</a>);
+    <span class="kw">let </span>setup: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/page_setup.rs.html#8-63">PageSetup</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#376">setupptr</a>);
 
     <a href="#379">imp</a>.<a href="#66-68">request_page_setup</a>(<span class="kw-2">&amp;</span><a href="#380">context</a>, <a href="#375">page_nr</a>, <span class="kw-2">&amp;</span><a href="#381">setup</a>)
 }
@@ -881,9 +881,9 @@
 ) {
     <span class="kw">let </span>instance = <span class="kw-2">&amp;*</span>(<a href="#396">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T::Instance);
     <span class="kw">let </span>imp = <a href="#401">instance</a>.<a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/subclass/types/trait.InstanceStructExt.html#tymethod.imp">imp</a>();
-    <span class="kw">let </span>widget: Borrowed&lt;<a href="../auto/widget.rs.html#18-853">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#397">widgetptr</a>);
-    <span class="kw">let </span>setup: Borrowed&lt;<a href="../auto/page_setup.rs.html#8-63">PageSetup</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#398">setupptr</a>);
-    <span class="kw">let </span>settings: Borrowed&lt;<a href="../auto/print_settings.rs.html#11-34">PrintSettings</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#399">settingsptr</a>);
+    <span class="kw">let </span>widget: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/widget.rs.html#18-852">Widget</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#397">widgetptr</a>);
+    <span class="kw">let </span>setup: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/page_setup.rs.html#8-63">PageSetup</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#398">setupptr</a>);
+    <span class="kw">let </span>settings: <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/struct.Borrowed.html">Borrowed</a>&lt;<a href="../auto/print_settings.rs.html#11-34">PrintSettings</a>&gt; = <a href="https://gtk-rs.org/gtk-rs-core/stable/0.20/docs/glib/translate/fn.from_glib_borrow.html">from_glib_borrow</a>(<a href="#399">settingsptr</a>);
 
     <a href="#402">imp</a>.<a href="#77-79">update_custom_widget</a>(<span class="kw-2">&amp;</span><a href="#403">widget</a>, <span class="kw-2">&amp;</span><a href="#404">setup</a>, <span class="kw-2">&amp;</span><a href="#405">settings</a>)
 }
